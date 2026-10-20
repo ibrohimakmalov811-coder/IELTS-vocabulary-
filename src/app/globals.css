@@ -1,26 +1,48 @@
 @import "tailwindcss";
 
-:root {
-  --primary: #4A90E2;
-  --primary-hover: #357ABD;
-  --primary-light: #EBF3FC;
+@layer base {
+  :root {
+    --primary: #4A90E2;
+    --primary-hover: #357ABD;
+    --primary-light: #EBF3FC;
 
-  --tealAccent: #50E3C2;
-  --tealAccent-hover: #38cbb0;
-  --tealAccent-light: #E6FBF7;
+    --electric-blue: #38BDF8;
+    --brand-indigo: #6366F1;
+    --tealAccent: #50E3C2;
+    --tealAccent-hover: #38cbb0;
+    --tealAccent-light: #E6FBF7;
 
-  --secondary: #F5A623;
-  --secondary-hover: #E09314;
-  --secondary-light: #FEF6E9;
+    --secondary: #F5A623;
+    --secondary-hover: #E09314;
+    --secondary-light: #FEF6E9;
 
-  --background: #F9FAFB;
-  --surface: #FFFFFF;
+    --background: #F8FAFC;
+    --surface: #FFFFFF;
+    --surface-elevated: #FFFFFF;
 
-  --slateText-heading: #1F2937;
-  --slateText-body: #4B5563;
-  --slateText-muted: #9CA3AF;
+    --slateText-heading: #0F172A;
+    --slateText-body: #475569;
+    --slateText-muted: #94A3B8;
 
-  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --border-subtle: rgba(148, 163, 184, 0.2);
+    --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .dark {
+    --primary: #38BDF8;
+    --primary-hover: #0ea5e9;
+    --primary-light: rgba(56, 189, 248, 0.15);
+
+    --background: #0B1120;
+    --surface: #0F172A;
+    --surface-elevated: #1E293B;
+
+    --slateText-heading: #F8FAFC;
+    --slateText-body: #94A3B8;
+    --slateText-muted: #64748B;
+
+    --border-subtle: rgba(255, 255, 255, 0.08);
+  }
 }
 
 body {
@@ -32,7 +54,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Explicit color helpers for exact design tokens */
+/* Explicit color helpers */
 .bg-primary { background-color: var(--primary); }
 .bg-primary-hover { background-color: var(--primary-hover); }
 .hover\:bg-primary-hover:hover { background-color: var(--primary-hover); }
@@ -60,35 +82,94 @@ body {
 .border-tealAccent { border-color: var(--tealAccent); }
 .border-secondary { border-color: var(--secondary); }
 
-/* Soft diffused shadows */
-.shadow-soft {
-  box-shadow: 0 4px 20px -2px rgba(31, 41, 55, 0.05), 0 2px 6px -1px rgba(31, 41, 55, 0.02);
+/* Ambient Glassmorphism & Glowing Highlights */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
 }
 
-.shadow-card-hover {
-  box-shadow: 0 10px 25px -4px rgba(74, 144, 226, 0.12), 0 4px 10px -2px rgba(31, 41, 55, 0.04);
+.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .glass-card {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.5);
+}
+
+.glass-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 16px 32px -8px rgba(56, 189, 248, 0.12);
+}
+
+.dark .glass-card:hover {
+  box-shadow: 0 16px 36px -8px rgba(99, 102, 241, 0.25);
+  border-color: rgba(99, 102, 241, 0.4);
+}
+
+/* Glow effects */
+.shadow-soft {
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+}
+
+.dark .shadow-soft {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4), 0 2px 6px -1px rgba(0, 0, 0, 0.2);
+}
+
+.shadow-glow-blue {
+  box-shadow: 0 0 28px -4px rgba(56, 189, 248, 0.35);
+}
+
+.shadow-glow-violet {
+  box-shadow: 0 0 28px -4px rgba(99, 102, 241, 0.35);
 }
 
 .shadow-glow-teal {
   box-shadow: 0 0 24px -2px rgba(80, 227, 194, 0.35);
 }
 
-.shadow-glow-coral {
-  box-shadow: 0 0 24px -2px rgba(245, 166, 35, 0.35);
+.shadow-card-hover {
+  box-shadow: 0 16px 32px -6px rgba(15, 23, 42, 0.08), 0 6px 12px -2px rgba(15, 23, 42, 0.03);
 }
 
-/* Custom gentle scrollbar */
+.dark .shadow-card-hover {
+  box-shadow: 0 16px 32px -6px rgba(0, 0, 0, 0.6), 0 6px 12px -2px rgba(99, 102, 241, 0.15);
+}
+
+/* Custom smooth scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F9FAFB;
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #E5E7EB;
+  background: #CBD5E1;
   border-radius: 9999px;
 }
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
 ::-webkit-scrollbar-thumb:hover {
-  background: #D1D5DB;
+  background: #94A3B8;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
 }
