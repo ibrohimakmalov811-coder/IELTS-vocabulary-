@@ -143,7 +143,7 @@ export const WordCardInterface: React.FC<WordCardInterfaceProps> = ({
   // Task 3 Submit
   const handleCheckTask3 = () => {
     const cleaned = typedListenWord.trim().toLowerCase();
-    const correctTarget = currentWord.targetAnswer.toLowerCase();
+    const correctTarget = (currentWord.targetAnswer || currentWord.word).toLowerCase();
     const baseWord = currentWord.word.toLowerCase();
 
     if (cleaned === correctTarget || cleaned === baseWord) {

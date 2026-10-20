@@ -3,10 +3,10 @@ import { WordItem, Unit, UserStats, ShopItem } from "@/types/vocabulary";
 export const initialUserStats: UserStats = {
   userName: "Ibrohim",
   streakDays: 5,
-  totalCoins: 160,
-  wordsMastered: 38,
+  totalCoins: 240,
+  wordsMastered: 20,
   dailyGoalWords: 10,
-  completedTodayWords: 7,
+  completedTodayWords: 6,
   hasStreakFreeze: false,
   isDarkModeUnlocked: false,
   hasGoldenCrown: false,
@@ -14,104 +14,8170 @@ export const initialUserStats: UserStats = {
 
 export const sampleUnits: Unit[] = [
   {
-    id: 1,
-    title: "Unit 1: The Foundations",
-    subtitle: "Essential Words Book 5",
-    description: "Master academic and descriptive vocabulary essential for IELTS Task 2 essays and Speaking Band 7+.",
-    totalWords: 20,
-    masteredWords: 14,
-    isLocked: false,
+    "id": 1,
+    "title": "Unit 1: The Foundations",
+    "subtitle": "Essential Words Book 5",
+    "description": "Core academic verbs, adjectives, and descriptive concepts essential for IELTS Writing Task 2 and Speaking Band 7+.",
+    "totalWords": 20,
+    "masteredWords": 14,
+    "isLocked": false,
+    "category": "Foundation & Academic"
   },
   {
-    id: 2,
-    title: "Unit 2: Academic Explorations",
-    subtitle: "Essential Words Book 5",
-    description: "Advanced analytical terms commonly found in IELTS Academic Reading passages.",
-    totalWords: 20,
-    masteredWords: 6,
-    isLocked: false,
+    "id": 2,
+    "title": "Unit 2: Geography, Nature & Environment",
+    "subtitle": "Essential Words Book 5",
+    "description": "Geographical, climatic, and natural environment vocabulary frequently encountered in IELTS Academic Reading.",
+    "totalWords": 20,
+    "masteredWords": 6,
+    "isLocked": false,
+    "category": "Foundation & Academic"
   },
   {
-    id: 3,
-    title: "Unit 3: Society & Governance",
-    subtitle: "Essential Words Book 5",
-    description: "Formal terminology regarding institutions, social laws, and civic engagement.",
-    totalWords: 20,
-    masteredWords: 0,
-    isLocked: true,
+    "id": 3,
+    "title": "Unit 3: Science, Logic & Intellect",
+    "subtitle": "Essential Words Book 5",
+    "description": "Analytical, academic, and scientific terms essential for formal academic discourse and essay development.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": false,
+    "category": "Foundation & Academic"
   },
   {
-    id: 4,
-    title: "Unit 4: Science & Global Impact",
-    subtitle: "Essential Words Book 5",
-    description: "Environmental and technological high-frequency words for IELTS Writing Task 1 and 2.",
-    totalWords: 20,
-    masteredWords: 0,
-    isLocked: true,
+    "id": 4,
+    "title": "Unit 4: Business, Economy & Governance",
+    "subtitle": "Essential Words Book 5",
+    "description": "Commerce, administration, corporate infrastructure, and financial law vocabulary.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": false,
+    "category": "Foundation & Academic"
   },
+  {
+    "id": 5,
+    "title": "Unit 5: Medicine, Chemistry & Discovery",
+    "subtitle": "Essential Words Book 5",
+    "description": "Pharmaceutical, clinical, and technological process terminology for IELTS Reading and Writing.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": false,
+    "category": "Foundation & Academic"
+  },
+  {
+    "id": 6,
+    "title": "Unit 6: Physiology, Health & Challenges",
+    "subtitle": "Essential Words Book 5",
+    "description": "Terms regarding anatomy, physical condition, overcoming medical hurdles, and exploration.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": false,
+    "category": "Nature & Society"
+  },
+  {
+    "id": 7,
+    "title": "Unit 7: Biosphere & Marine Biology",
+    "subtitle": "Essential Words Book 5",
+    "description": "Ecosystems, cellular biology, animal behavior, and organism survival vocabulary.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": false,
+    "category": "Nature & Society"
+  },
+  {
+    "id": 8,
+    "title": "Unit 8: Culinary Arts, Health & Nutrition",
+    "subtitle": "Essential Words Book 5",
+    "description": "Dietary science, agricultural yield, nutrition, and medical therapy terms.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": false,
+    "category": "Nature & Society"
+  },
+  {
+    "id": 9,
+    "title": "Unit 9: History, Society & Heritage",
+    "subtitle": "Essential Words Book 5",
+    "description": "Historical eras, architectural monuments, economic structures, and cultural heritage.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": false,
+    "category": "Nature & Society"
+  },
+  {
+    "id": 10,
+    "title": "Unit 10: Commerce, Agriculture & Finance",
+    "subtitle": "Essential Words Book 5",
+    "description": "Investment, agrarian technology, market mechanics, and resource management.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": false,
+    "category": "Nature & Society"
+  },
+  {
+    "id": 11,
+    "title": "Unit 11: Arts, Human Behavior & Biography",
+    "subtitle": "Essential Words Book 5",
+    "description": "Creative masterworks, psychological drives, and historical personal narratives.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": false,
+    "category": "Humanities & Sciences"
+  },
+  {
+    "id": 12,
+    "title": "Unit 12: Anthropology, Culture & Physique",
+    "subtitle": "Essential Words Book 5",
+    "description": "Societal customs, physical aesthetics, professional ranks, and human heritage.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": false,
+    "category": "Humanities & Sciences"
+  },
+  {
+    "id": 13,
+    "title": "Unit 13: Community, Architecture & Wildlife",
+    "subtitle": "Essential Words Book 5",
+    "description": "Urban infrastructure, biological kingdoms, considerate behavior, and protected sanctuaries.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": false,
+    "category": "Humanities & Sciences"
+  },
+  {
+    "id": 14,
+    "title": "Unit 14: Perception, Science & Innovation",
+    "subtitle": "Essential Words Book 5",
+    "description": "Hypothesis testing, sensory science, academic skepticism, and historic renaissance innovations.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": false,
+    "category": "Humanities & Sciences"
+  },
+  {
+    "id": 15,
+    "title": "Unit 15: Logistics, Materials & Industry",
+    "subtitle": "Essential Words Book 5",
+    "description": "Maritime trade, supply chain networks, material properties, and manufacturing dilemmas.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": false,
+    "category": "Humanities & Sciences"
+  },
+  {
+    "id": 16,
+    "title": "Unit 16: Advanced IELTS Lexicon Part 1",
+    "subtitle": "Essential Words Book 5 (Part 2)",
+    "description": "Official Unit 16 from Paul Nation's 4000 Essential English Words Book 5. Roadmap expansion pack.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": true,
+    "category": "Roadmap Curriculum"
+  },
+  {
+    "id": 17,
+    "title": "Unit 17: Advanced IELTS Lexicon Part 2",
+    "subtitle": "Essential Words Book 5 (Part 2)",
+    "description": "Official Unit 17 from Paul Nation's 4000 Essential English Words Book 5. Roadmap expansion pack.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": true,
+    "category": "Roadmap Curriculum"
+  },
+  {
+    "id": 18,
+    "title": "Unit 18: Advanced IELTS Lexicon Part 3",
+    "subtitle": "Essential Words Book 5 (Part 2)",
+    "description": "Official Unit 18 from Paul Nation's 4000 Essential English Words Book 5. Roadmap expansion pack.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": true,
+    "category": "Roadmap Curriculum"
+  },
+  {
+    "id": 19,
+    "title": "Unit 19: Advanced IELTS Lexicon Part 4",
+    "subtitle": "Essential Words Book 5 (Part 2)",
+    "description": "Official Unit 19 from Paul Nation's 4000 Essential English Words Book 5. Roadmap expansion pack.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": true,
+    "category": "Roadmap Curriculum"
+  },
+  {
+    "id": 20,
+    "title": "Unit 20: Advanced IELTS Lexicon Part 5",
+    "subtitle": "Essential Words Book 5 (Part 2)",
+    "description": "Official Unit 20 from Paul Nation's 4000 Essential English Words Book 5. Roadmap expansion pack.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": true,
+    "category": "Roadmap Curriculum"
+  },
+  {
+    "id": 21,
+    "title": "Unit 21: Advanced IELTS Lexicon Part 6",
+    "subtitle": "Essential Words Book 5 (Part 2)",
+    "description": "Official Unit 21 from Paul Nation's 4000 Essential English Words Book 5. Roadmap expansion pack.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": true,
+    "category": "Roadmap Curriculum"
+  },
+  {
+    "id": 22,
+    "title": "Unit 22: Advanced IELTS Lexicon Part 7",
+    "subtitle": "Essential Words Book 5 (Part 2)",
+    "description": "Official Unit 22 from Paul Nation's 4000 Essential English Words Book 5. Roadmap expansion pack.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": true,
+    "category": "Roadmap Curriculum"
+  },
+  {
+    "id": 23,
+    "title": "Unit 23: Advanced IELTS Lexicon Part 8",
+    "subtitle": "Essential Words Book 5 (Part 2)",
+    "description": "Official Unit 23 from Paul Nation's 4000 Essential English Words Book 5. Roadmap expansion pack.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": true,
+    "category": "Roadmap Curriculum"
+  },
+  {
+    "id": 24,
+    "title": "Unit 24: Advanced IELTS Lexicon Part 9",
+    "subtitle": "Essential Words Book 5 (Part 2)",
+    "description": "Official Unit 24 from Paul Nation's 4000 Essential English Words Book 5. Roadmap expansion pack.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": true,
+    "category": "Roadmap Curriculum"
+  },
+  {
+    "id": 25,
+    "title": "Unit 25: Advanced IELTS Lexicon Part 10",
+    "subtitle": "Essential Words Book 5 (Part 2)",
+    "description": "Official Unit 25 from Paul Nation's 4000 Essential English Words Book 5. Roadmap expansion pack.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": true,
+    "category": "Roadmap Curriculum"
+  },
+  {
+    "id": 26,
+    "title": "Unit 26: Advanced IELTS Lexicon Part 11",
+    "subtitle": "Essential Words Book 5 (Part 2)",
+    "description": "Official Unit 26 from Paul Nation's 4000 Essential English Words Book 5. Roadmap expansion pack.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": true,
+    "category": "Roadmap Curriculum"
+  },
+  {
+    "id": 27,
+    "title": "Unit 27: Advanced IELTS Lexicon Part 12",
+    "subtitle": "Essential Words Book 5 (Part 2)",
+    "description": "Official Unit 27 from Paul Nation's 4000 Essential English Words Book 5. Roadmap expansion pack.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": true,
+    "category": "Roadmap Curriculum"
+  },
+  {
+    "id": 28,
+    "title": "Unit 28: Advanced IELTS Lexicon Part 13",
+    "subtitle": "Essential Words Book 5 (Part 2)",
+    "description": "Official Unit 28 from Paul Nation's 4000 Essential English Words Book 5. Roadmap expansion pack.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": true,
+    "category": "Roadmap Curriculum"
+  },
+  {
+    "id": 29,
+    "title": "Unit 29: Advanced IELTS Lexicon Part 14",
+    "subtitle": "Essential Words Book 5 (Part 2)",
+    "description": "Official Unit 29 from Paul Nation's 4000 Essential English Words Book 5. Roadmap expansion pack.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": true,
+    "category": "Roadmap Curriculum"
+  },
+  {
+    "id": 30,
+    "title": "Unit 30: Advanced IELTS Lexicon Part 15",
+    "subtitle": "Essential Words Book 5 (Part 2)",
+    "description": "Official Unit 30 from Paul Nation's 4000 Essential English Words Book 5. Roadmap expansion pack.",
+    "totalWords": 20,
+    "masteredWords": 0,
+    "isLocked": true,
+    "category": "Roadmap Curriculum"
+  }
 ];
 
 export const sampleWords: WordItem[] = [
   {
-    id: "w1",
-    word: "Allot",
-    phonetic: "/əˈlɒt/",
-    partOfSpeech: "verb",
-    definition: "To allot something means to give it to someone.",
-    example: "The coach allotted each team five minutes to prepare a strategy.",
-    translations: {
-      uzbek: "Ajratmoq, bermoq",
-      russian: "Выделять, предоставлять",
+    "id": "w1",
+    "word": "Allot",
+    "phonetic": "/əˈlɒt/",
+    "partOfSpeech": "verb",
+    "definition": "To allot means to perform or exhibit allot in a given academic or social context.",
+    "uzbekDefinition": "Biror narsani biror kishiga taqsimlab bermoq",
+    "example": "The coach allotted each team five minutes to prepare a strategy.",
+    "uzbekExample": "Murabbiy har bir jamoaga strategiya tayyorlash uchun besh daqiqa ajratdi.",
+    "translations": {
+      "uzbek": "Ajratmoq, bermoq",
+      "russian": "Allot (русский перевод)"
     },
-    audioText: "Allot. To allot something means to give it to someone. The coach allotted each team five minutes to prepare a strategy.",
-    clozeSentence: "The coach ______ each team five minutes to prepare a strategy.",
-    targetAnswer: "allotted",
+    "unit": 1,
+    "synonyms": [
+      "allocate",
+      "assign",
+      "distribute"
+    ],
+    "collocations": [
+      "allot time",
+      "allot resources"
+    ],
+    "audioText": "Allot. To allot means to perform or exhibit allot in a given academic or social context.",
+    "clozeSentence": "The coach ______ted each team five minutes to prepare a strategy.",
+    "targetAnswer": "allot"
   },
   {
-    id: "w2",
-    word: "Appall",
-    phonetic: "/əˈpɔːl/",
-    partOfSpeech: "verb",
-    definition: "To appall someone means to cause disgust, shock, or dismay.",
-    example: "The horrific news of the disaster appalled everyone across the world.",
-    translations: {
-      uzbek: "Dahshatga solmoq, lol qoldirmoq",
-      russian: "Ужасать, потрясать",
+    "id": "w2",
+    "word": "Appall",
+    "phonetic": "/əˈpɔːl/",
+    "partOfSpeech": "verb",
+    "definition": "To appall means to horrify, shock, or disgust someone.",
+    "uzbekDefinition": "Kimnidir qattiq qo'rqitmoq yoki hayratda qoldirmoq",
+    "example": "The boy was appalled when he saw the accident.",
+    "uzbekExample": "Halokatni ko'rgan bola qattiq dahshatga tushdi.",
+    "translations": {
+      "uzbek": "Dahshatga solmoq, lol qoldirmoq",
+      "russian": "Appall (русский перевод)"
     },
-    audioText: "Appall. To appall someone means to cause disgust, shock, or dismay.",
-    clozeSentence: "The horrific news of the disaster ______ everyone across the world.",
-    targetAnswer: "appalled",
+    "unit": 1,
+    "synonyms": [
+      "horrify",
+      "shock",
+      "dismay"
+    ],
+    "collocations": [
+      "deeply appalled",
+      "appall the public"
+    ],
+    "audioText": "Appall. To appall means to horrify, shock, or disgust someone.",
+    "clozeSentence": "The boy was ______ed when he saw the accident.",
+    "targetAnswer": "appall"
   },
   {
-    id: "w3",
-    word: "Cache",
-    phonetic: "/kæʃ/",
-    partOfSpeech: "noun",
-    definition: "A cache is a hiding place for valuable things.",
-    example: "The pirate hid his treasure in a secret cache inside the mountain cave.",
-    translations: {
-      uzbek: "Maxfiy ombor, yashirin joy",
-      russian: "Тайник, скрытый склад",
+    "id": "w3",
+    "word": "Cache",
+    "phonetic": "/kæʃ/",
+    "partOfSpeech": "noun",
+    "definition": "To cache means to perform or exhibit cache in a given academic or social context.",
+    "uzbekDefinition": "Qimmatbaho narsalarni saqlash uchun yashirin joy",
+    "example": "The pirates kept their jewelry in a cache hidden in a cave.",
+    "uzbekExample": "Qaroqchilar o'z taqinchoqlarini g'orda yashirilgan maxfiy omborda saqlashgan.",
+    "translations": {
+      "uzbek": "Maxfiy ombor, yashirin joy",
+      "russian": "Cache (русский перевод)"
     },
-    audioText: "Cache. A cache is a hiding place for valuable things.",
-    clozeSentence: "The pirate hid his treasure in a secret ______ inside the mountain cave.",
-    targetAnswer: "cache",
+    "unit": 1,
+    "synonyms": [
+      "hoard",
+      "hiding place",
+      "stash"
+    ],
+    "collocations": [
+      "cache of weapons",
+      "secret cache"
+    ],
+    "audioText": "Cache. To cache means to perform or exhibit cache in a given academic or social context.",
+    "clozeSentence": "The pirates kept their jewelry in a ______ hidden in a cave.",
+    "targetAnswer": "cache"
   },
   {
-    id: "w4",
-    word: "Concur",
-    phonetic: "/kənˈkɜːr/",
-    partOfSpeech: "verb",
-    definition: "To concur means to agree with someone or have the same opinion.",
-    example: "All members of the research council concurred that the findings were groundbreaking.",
-    translations: {
-      uzbek: "Fikrga qo'shilmoq, yakdillik bildirmoq",
-      russian: "Соглашаться, сходиться во мнениях",
+    "id": "w4",
+    "word": "Convenience",
+    "phonetic": "/kənˈviː.ni.əns/",
+    "partOfSpeech": "noun",
+    "definition": "To convenience means to perform or exhibit convenience in a given academic or social context.",
+    "uzbekDefinition": "Ishni kam kuch bilan oson bajarish holati",
+    "example": "The Internet allows consumers to shop at their own convenience.",
+    "uzbekExample": "Internet iste'molchilarga o'zlariga qulay vaqtda xarid qilish imkonini beradi.",
+    "translations": {
+      "uzbek": "Qulaylik",
+      "russian": "Convenience (русский перевод)"
     },
-    audioText: "Concur. To concur means to agree with someone or have the same opinion.",
-    clozeSentence: "All members of the research council ______ that the findings were groundbreaking.",
-    targetAnswer: "concurred",
+    "unit": 1,
+    "synonyms": [
+      "comfort",
+      "handiness",
+      "ease"
+    ],
+    "collocations": [
+      "at your convenience",
+      "modern convenience"
+    ],
+    "audioText": "Convenience. To convenience means to perform or exhibit convenience in a given academic or social context.",
+    "clozeSentence": "The Internet allows consumers to shop at their own ______.",
+    "targetAnswer": "convenience"
   },
+  {
+    "id": "w5",
+    "word": "Dearth",
+    "phonetic": "/dɜːθ/",
+    "partOfSpeech": "noun",
+    "definition": "To dearth means to perform or exhibit dearth in a given academic or social context.",
+    "uzbekDefinition": "Biror narsaning yetarli miqdorda bo'lmasligi",
+    "example": "There is a dearth of money in my bank account. I can’t afford a new car.",
+    "uzbekExample": "Mening bank hisobimda pul tanqisligi bor.",
+    "translations": {
+      "uzbek": "Yetishmovchilik, tanqislik",
+      "russian": "Dearth (русский перевод)"
+    },
+    "unit": 1,
+    "synonyms": [
+      "scarcity",
+      "shortage",
+      "lack"
+    ],
+    "collocations": [
+      "dearth of evidence",
+      "dearth of resources"
+    ],
+    "audioText": "Dearth. To dearth means to perform or exhibit dearth in a given academic or social context.",
+    "clozeSentence": "There is a ______ of money in my bank account. I can’t afford a new car.",
+    "targetAnswer": "dearth"
+  },
+  {
+    "id": "w6",
+    "word": "Deliberate",
+    "phonetic": "/dɪˈlɪb.ər.ət/",
+    "partOfSpeech": "adjective",
+    "definition": "If a thing you do is deliberate, you intend to do it.",
+    "uzbekDefinition": "Oldindan maqsad qilib, ataylab bajarilgan",
+    "example": "She made a deliberate effort to save money each month.",
+    "uzbekExample": "U har oy pul tejashga ongli ravishda harakat qildi.",
+    "translations": {
+      "uzbek": "Qasddan qilingan, o'ylab qilingan",
+      "russian": "Deliberate (русский перевод)"
+    },
+    "unit": 1,
+    "synonyms": [
+      "intentional",
+      "planned",
+      "premeditated"
+    ],
+    "collocations": [
+      "deliberate action",
+      "deliberate attempt"
+    ],
+    "audioText": "Deliberate. If a thing you do is deliberate, you intend to do it.",
+    "clozeSentence": "She made a ______ effort to save money each month.",
+    "targetAnswer": "deliberate"
+  },
+  {
+    "id": "w7",
+    "word": "Dire",
+    "phonetic": "/daɪər/",
+    "partOfSpeech": "adjective",
+    "definition": "When something is dire, it is terrible and very serious.",
+    "uzbekDefinition": "O'ta xavfli, jiddiy va salbiy oqibatlarga ega",
+    "example": "The tornado created a dire situation for the small town.",
+    "uzbekExample": "Tornado kichik shaharcha uchun og'ir vaziyatni keltirib chiqardi.",
+    "translations": {
+      "uzbek": "Dahshatli, o'ta og'ir",
+      "russian": "Dire (русский перевод)"
+    },
+    "unit": 1,
+    "synonyms": [
+      "terrible",
+      "dreadful",
+      "critical"
+    ],
+    "collocations": [
+      "dire need",
+      "dire consequences"
+    ],
+    "audioText": "Dire. When something is dire, it is terrible and very serious.",
+    "clozeSentence": "The tornado created a ______ situation for the small town.",
+    "targetAnswer": "dire"
+  },
+  {
+    "id": "w8",
+    "word": "Elapse",
+    "phonetic": "/ɪˈlæps/",
+    "partOfSpeech": "verb",
+    "definition": "To elapse means to pass, as in seconds, minutes, or hours.",
+    "uzbekDefinition": "Vaqt, daqiqalar yoki soatlarning o'tishi",
+    "example": "A few seconds must elapse before you can take another picture.",
+    "uzbekExample": "Boshqa rasm olishingizdan oldin bir necha soniya o'tishi kerak.",
+    "translations": {
+      "uzbek": "O'tmoq (vaqt haqida)",
+      "russian": "Elapse (русский перевод)"
+    },
+    "unit": 1,
+    "synonyms": [
+      "pass by",
+      "slip away",
+      "go by"
+    ],
+    "collocations": [
+      "time elapsed",
+      "hours elapsed"
+    ],
+    "audioText": "Elapse. To elapse means to pass, as in seconds, minutes, or hours.",
+    "clozeSentence": "A few seconds must ______ before you can take another picture.",
+    "targetAnswer": "elapse"
+  },
+  {
+    "id": "w9",
+    "word": "Empathy",
+    "phonetic": "/ˈem.pə.θi/",
+    "partOfSpeech": "noun",
+    "definition": "Empathy is sharing or understanding another person’s feelings.",
+    "uzbekDefinition": "Boshqa insonning his-tuyg'ularini tushunish va unga sherik bo'lish",
+    "example": "The caring nurse had empathy for her patients.",
+    "uzbekExample": "G'amxo'r hamshira o'z bemorlariga samimiy hamdardlik bildirdi.",
+    "translations": {
+      "uzbek": "Hamdardlik, his-tuyg'uni tushunish",
+      "russian": "Empathy (русский перевод)"
+    },
+    "unit": 1,
+    "synonyms": [
+      "compassion",
+      "understanding",
+      "sympathy"
+    ],
+    "collocations": [
+      "feel empathy",
+      "deep empathy"
+    ],
+    "audioText": "Empathy. Empathy is sharing or understanding another person’s feelings.",
+    "clozeSentence": "The caring nurse had ______ for her patients.",
+    "targetAnswer": "empathy"
+  },
+  {
+    "id": "w10",
+    "word": "Fanciful",
+    "phonetic": "/ˈfæn.sɪ.fəl/",
+    "partOfSpeech": "adjective",
+    "definition": "When something is fanciful, it is unusual or unrealistic.",
+    "uzbekDefinition": "G'ayrioddiy yoki haqiqatga to'g'ri kelmaydigan",
+    "example": "The girl had fanciful ideas about doing well in school without studying.",
+    "uzbekExample": "Qiz o'qimasdan turib a'lochi bo'lish haqidagi xayoliy orzularga ega edi.",
+    "translations": {
+      "uzbek": "Xayoliy, haqiqatdan uzoq",
+      "russian": "Fanciful (русский перевод)"
+    },
+    "unit": 1,
+    "synonyms": [
+      "unrealistic",
+      "imaginary",
+      "whimsical"
+    ],
+    "collocations": [
+      "fanciful idea",
+      "fanciful notion"
+    ],
+    "audioText": "Fanciful. When something is fanciful, it is unusual or unrealistic.",
+    "clozeSentence": "The girl had ______ ideas about doing well in school without studying.",
+    "targetAnswer": "fanciful"
+  },
+  {
+    "id": "w11",
+    "word": "Gripe",
+    "phonetic": "/ɡraɪp/",
+    "partOfSpeech": "verb",
+    "definition": "To gripe means to perform or exhibit gripe in a given academic or social context.",
+    "uzbekDefinition": "Doimiy ravishda norozilik bildirib turish",
+    "example": "The researcher used the word gripe to clarify the findings in the study.",
+    "uzbekExample": "Lourens uy yumushlarini bajarishi kerak bo'lganda doim nolirdi.",
+    "translations": {
+      "uzbek": "Nolimoq, tinimsiz shikoyat qilmoq",
+      "russian": "Gripe (русский перевод)"
+    },
+    "unit": 1,
+    "synonyms": [
+      "complain",
+      "grumble",
+      "whine"
+    ],
+    "collocations": [
+      "constant gripes",
+      "gripe about"
+    ],
+    "audioText": "Gripe. To gripe means to perform or exhibit gripe in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "gripe"
+  },
+  {
+    "id": "w12",
+    "word": "Grueling",
+    "phonetic": "/ˈɡruː.ə.lɪŋ/",
+    "partOfSpeech": "adjective",
+    "definition": "When something is grueling, it is very hard to do.",
+    "uzbekDefinition": "Jismoniy yoki aqliy jihatdan juda og'ir va charchatuvchi",
+    "example": "The climber faced the grueling task of reaching the top of the steep mountain.",
+    "uzbekExample": "Tog'chi tik cho'qqiga chiqishdek mashaqqatli vazifaga duch keldi.",
+    "translations": {
+      "uzbek": "Mashaqqatli, holdan toydiruvchi",
+      "russian": "Grueling (русский перевод)"
+    },
+    "unit": 1,
+    "synonyms": [
+      "exhausting",
+      "strenuous",
+      "demanding"
+    ],
+    "collocations": [
+      "grueling schedule",
+      "grueling workout"
+    ],
+    "audioText": "Grueling. When something is grueling, it is very hard to do.",
+    "clozeSentence": "The climber faced the ______ task of reaching the top of the steep mountain.",
+    "targetAnswer": "grueling"
+  },
+  {
+    "id": "w13",
+    "word": "Mundane",
+    "phonetic": "/mʌnˈdeɪn/",
+    "partOfSpeech": "adjective",
+    "definition": "When something is mundane, it is boring, common, or ordinary.",
+    "uzbekDefinition": "Juda oddiy, bir xil yoki kundalik odatiy",
+    "example": "The man had the mundane chore of raking thousands of leaves into piles.",
+    "uzbekExample": "Erkak minglab to'kilgan barglarni yig'ishdek zerikarli yumushga ega edi.",
+    "translations": {
+      "uzbek": "Oddiy, zerikarli, kundalik",
+      "russian": "Mundane (русский перевод)"
+    },
+    "unit": 1,
+    "synonyms": [
+      "ordinary",
+      "routine",
+      "monotonous"
+    ],
+    "collocations": [
+      "mundane task",
+      "mundane matters"
+    ],
+    "audioText": "Mundane. When something is mundane, it is boring, common, or ordinary.",
+    "clozeSentence": "The man had the ______ chore of raking thousands of leaves into piles.",
+    "targetAnswer": "mundane"
+  },
+  {
+    "id": "w14",
+    "word": "Opt",
+    "phonetic": "/ɒpt/",
+    "partOfSpeech": "verb",
+    "definition": "To opt is to make a choice, especially when deciding in favor of something.",
+    "uzbekDefinition": "Biror narsaning foydasiga qaror qabul qilmoq",
+    "example": "My brother likes chocolate ice cream, but I always opt for vanilla.",
+    "uzbekExample": "Akam shokoladli muzqaymoqni yoqtiradi, lekin men doim vanilni tanlayman.",
+    "translations": {
+      "uzbek": "Tanlamoq, ma'qul ko'rmoq",
+      "russian": "Opt (русский перевод)"
+    },
+    "unit": 1,
+    "synonyms": [
+      "choose",
+      "select",
+      "decide on"
+    ],
+    "collocations": [
+      "opt for",
+      "opt to do something"
+    ],
+    "audioText": "Opt. To opt is to make a choice, especially when deciding in favor of something.",
+    "clozeSentence": "My brother likes chocolate ice cream, but I always ______ for vanilla.",
+    "targetAnswer": "opt"
+  },
+  {
+    "id": "w15",
+    "word": "Outrage",
+    "phonetic": "/ˈaʊt.reɪdʒ/",
+    "partOfSpeech": "noun",
+    "definition": "To outrage means to perform or exhibit outrage in a given academic or social context.",
+    "uzbekDefinition": "Adolatsizlik yoki yomonlikka nisbatan juda kuchli g'azab",
+    "example": "Tommy was feeling outrage when his parents said he couldn’t go to the dance.",
+    "uzbekExample": "Ota-onasi ziyofatga borishga ruxsat bermaganda Tommi qattiq g'azablandi.",
+    "translations": {
+      "uzbek": "G'azab, qattiq nafrat",
+      "russian": "Outrage (русский перевод)"
+    },
+    "unit": 1,
+    "synonyms": [
+      "fury",
+      "indignation",
+      "anger"
+    ],
+    "collocations": [
+      "public outrage",
+      "spark outrage"
+    ],
+    "audioText": "Outrage. To outrage means to perform or exhibit outrage in a given academic or social context.",
+    "clozeSentence": "Tommy was feeling ______ when his parents said he couldn’t go to the dance.",
+    "targetAnswer": "outrage"
+  },
+  {
+    "id": "w16",
+    "word": "Paltry",
+    "phonetic": "/ˈpɔːl.tri/",
+    "partOfSpeech": "adjective",
+    "definition": "When an amount of something is paltry, it is very small.",
+    "uzbekDefinition": "Miqdori yoki ahamiyati juda kichik bo'lgan",
+    "example": "The poor man had a paltry sum of money.",
+    "uzbekExample": "Kambag'al kishida juda ozgina arzimas pul bor edi.",
+    "translations": {
+      "uzbek": "Juda kam, arzimas",
+      "russian": "Paltry (русский перевод)"
+    },
+    "unit": 1,
+    "synonyms": [
+      "meager",
+      "trivial",
+      "insignificant"
+    ],
+    "collocations": [
+      "paltry sum",
+      "paltry amount"
+    ],
+    "audioText": "Paltry. When an amount of something is paltry, it is very small.",
+    "clozeSentence": "The poor man had a ______ sum of money.",
+    "targetAnswer": "paltry"
+  },
+  {
+    "id": "w17",
+    "word": "Rectify",
+    "phonetic": "/ˈrek.tɪ.faɪ/",
+    "partOfSpeech": "verb",
+    "definition": "To rectify means to perform or exhibit rectify in a given academic or social context.",
+    "uzbekDefinition": "Xato yoki noxush vaziyatni bartaraf etib to'g'rilamoq",
+    "example": "I quickly rectified the spelling mistakes that I had on my essay.",
+    "uzbekExample": "Inshomda yo'l qo'ygan imlo xatolarimni tezda to'g'irladim.",
+    "translations": {
+      "uzbek": "Tuzatmoq, to'g'irlamoq",
+      "russian": "Rectify (русский перевод)"
+    },
+    "unit": 1,
+    "synonyms": [
+      "correct",
+      "amend",
+      "remedy"
+    ],
+    "collocations": [
+      "rectify mistakes",
+      "rectify the situation"
+    ],
+    "audioText": "Rectify. To rectify means to perform or exhibit rectify in a given academic or social context.",
+    "clozeSentence": "I quickly rectified the spelling mistakes that I had on my essay.",
+    "targetAnswer": "rectify"
+  },
+  {
+    "id": "w18",
+    "word": "Resourceful",
+    "phonetic": "/rɪˈzɔː.sfəl/",
+    "partOfSpeech": "adjective",
+    "definition": "When someone is resourceful, they are good at dealing with hard situations.",
+    "uzbekDefinition": "Qiyin vaziyatlardan oson yo'l topa oladigan",
+    "example": "+ After his boat sunk, Matt was resourceful enough to build a raft.",
+    "uzbekExample": "Qayig'i cho'kib ketgach, Mett sol yasashga yetarlicha topqirlik ko'rsatdi.",
+    "translations": {
+      "uzbek": "Topqir, uddaburon",
+      "russian": "Resourceful (русский перевод)"
+    },
+    "unit": 1,
+    "synonyms": [
+      "clever",
+      "inventive",
+      "capable"
+    ],
+    "collocations": [
+      "resourceful person",
+      "resourceful mind"
+    ],
+    "audioText": "Resourceful. When someone is resourceful, they are good at dealing with hard situations.",
+    "clozeSentence": "+ After his boat sunk, Matt was ______ enough to build a raft.",
+    "targetAnswer": "resourceful"
+  },
+  {
+    "id": "w19",
+    "word": "Sustenance",
+    "phonetic": "/ˈsʌs.tɪ.nəns/",
+    "partOfSpeech": "noun",
+    "definition": "To sustenance means to perform or exhibit sustenance in a given academic or social context.",
+    "uzbekDefinition": "Tirik qolish uchun zarur bo'lgan oziq-ovqat va suv",
+    "example": "The researcher used the word sustenance to clarify the findings in the study.",
+    "uzbekExample": "Tegishli ozuqasiz inson ochlikdan nobud bo'ladi.",
+    "translations": {
+      "uzbek": "Ozuqa, tirikchilik manbai",
+      "russian": "Sustenance (русский перевод)"
+    },
+    "unit": 1,
+    "synonyms": [
+      "nourishment",
+      "food",
+      "livelihood"
+    ],
+    "collocations": [
+      "basic sustenance",
+      "source of sustenance"
+    ],
+    "audioText": "Sustenance. To sustenance means to perform or exhibit sustenance in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "sustenance"
+  },
+  {
+    "id": "w20",
+    "word": "Tedious",
+    "phonetic": "/ˈtiː.di.əs/",
+    "partOfSpeech": "adjective",
+    "definition": "When something is tedious, it is long, frustrating, and boring.",
+    "uzbekDefinition": "Juda uzoq vaqt oladigan, bir xil va zerikarli",
+    "example": "His job involved a lot of tedious typing, filing, and organizing.",
+    "uzbekExample": "Uning ishi ko'plab zerikarli yozishmalar va saralashni talab qilardi.",
+    "translations": {
+      "uzbek": "Zerikarli, cho'zilgan",
+      "russian": "Tedious (русский перевод)"
+    },
+    "unit": 1,
+    "synonyms": [
+      "boring",
+      "tiresome",
+      "dull"
+    ],
+    "collocations": [
+      "tedious job",
+      "tedious process"
+    ],
+    "audioText": "Tedious. When something is tedious, it is long, frustrating, and boring.",
+    "clozeSentence": "His job involved a lot of ______ typing, filing, and organizing.",
+    "targetAnswer": "tedious"
+  },
+  {
+    "id": "w21",
+    "word": "Abbey",
+    "phonetic": "/ˈæb.i/",
+    "partOfSpeech": "noun",
+    "definition": "To abbey means to perform or exhibit abbey in a given academic or social context.",
+    "uzbekDefinition": "Rohiblar yoki rohibalar yashaydigan maskan",
+    "example": "When the monk returned to the abbey, he went immediately to his bedroom.",
+    "uzbekExample": "Rohib monastirga qaytgach, darhol o'z xonasiga kirdi.",
+    "translations": {
+      "uzbek": "Monastir, abbatlik",
+      "russian": "Abbey (русский перевод)"
+    },
+    "unit": 2,
+    "synonyms": [
+      "monastery",
+      "convent"
+    ],
+    "collocations": [
+      "ancient abbey",
+      "visit an abbey"
+    ],
+    "audioText": "Abbey. To abbey means to perform or exhibit abbey in a given academic or social context.",
+    "clozeSentence": "When the monk returned to the ______, he went immediately to his bedroom.",
+    "targetAnswer": "abbey"
+  },
+  {
+    "id": "w22",
+    "word": "Abundant",
+    "phonetic": "/əˈbʌn.dənt/",
+    "partOfSpeech": "adjective",
+    "definition": "If something is abundant, then it is available in large quantities.",
+    "uzbekDefinition": "Katta miqdorda mavjud bo'lgan",
+    "example": "Cakes, cookies, and candy were so abundant that the child was very happy.",
+    "uzbekExample": "Pishiriqlar va shirinliklar shu qadar ko'p ediki, bola juda quvondi.",
+    "translations": {
+      "uzbek": "Mo'l-ko'l, serob",
+      "russian": "Abundant (русский перевод)"
+    },
+    "unit": 2,
+    "synonyms": [
+      "plentiful",
+      "bountiful",
+      "ample"
+    ],
+    "collocations": [
+      "abundant supply",
+      "abundant resources"
+    ],
+    "audioText": "Abundant. If something is abundant, then it is available in large quantities.",
+    "clozeSentence": "Cakes, cookies, and candy were so ______ that the child was very happy.",
+    "targetAnswer": "abundant"
+  },
+  {
+    "id": "w23",
+    "word": "Adjoin",
+    "phonetic": "/əˈdʒɔɪn/",
+    "partOfSpeech": "verb",
+    "definition": "To adjoin means to perform or exhibit adjoin in a given academic or social context.",
+    "uzbekDefinition": "Biror narsaga yopishgan yoki unga bevosita qo'shni bo'lmoq",
+    "example": "She can listen to her brother’s conversations because her room adjoins his.",
+    "uzbekExample": "Yangi ovqatlanish zali mehmonxonaga tutash qilib qurilgan.",
+    "translations": {
+      "uzbek": "Yondosh bo'lmoq, tutashmoq",
+      "russian": "Adjoin (русский перевод)"
+    },
+    "unit": 2,
+    "synonyms": [
+      "border",
+      "neighbor",
+      "abut"
+    ],
+    "collocations": [
+      "adjoining room",
+      "adjoin the park"
+    ],
+    "audioText": "Adjoin. To adjoin means to perform or exhibit adjoin in a given academic or social context.",
+    "clozeSentence": "She can listen to her brother’s conversations because her room ______s his.",
+    "targetAnswer": "adjoin"
+  },
+  {
+    "id": "w24",
+    "word": "Ample",
+    "phonetic": "/ˈæm.pəl/",
+    "partOfSpeech": "adjective",
+    "definition": "To ample means to perform or exhibit ample in a given academic or social context.",
+    "uzbekDefinition": "Talab qilinganidan ko'proq bo'lgan, yetarli",
+    "example": "The researcher used the word ample to clarify the findings in the study.",
+    "uzbekExample": "Bizda loyihani tugatish uchun yetarli vaqt bor edi.",
+    "translations": {
+      "uzbek": "Yetarli darajada ko'p, keng",
+      "russian": "Ample (русский перевод)"
+    },
+    "unit": 2,
+    "synonyms": [
+      "sufficient",
+      "plenty",
+      "copious"
+    ],
+    "collocations": [
+      "ample opportunity",
+      "ample evidence"
+    ],
+    "audioText": "Ample. To ample means to perform or exhibit ample in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "ample"
+  },
+  {
+    "id": "w25",
+    "word": "Arid",
+    "phonetic": "/ˈær.ɪd/",
+    "partOfSpeech": "adjective",
+    "definition": "If a place is arid, then it is hot and dry and gets very little or no rain.",
+    "uzbekDefinition": "Yog'ingarchilik juda kam bo'ladigan issiq va quruq yer",
+    "example": "Not many plants grow in the arid desert.",
+    "uzbekExample": "Qurg'oqchil cho'lda ko'p o'simliklar o'smaydi.",
+    "translations": {
+      "uzbek": "Qurg'oqchil, quruq",
+      "russian": "Arid (русский перевод)"
+    },
+    "unit": 2,
+    "synonyms": [
+      "dry",
+      "parched",
+      "barren"
+    ],
+    "collocations": [
+      "arid climate",
+      "arid zone"
+    ],
+    "audioText": "Arid. If a place is arid, then it is hot and dry and gets very little or no rain.",
+    "clozeSentence": "Not many plants grow in the ______ desert.",
+    "targetAnswer": "arid"
+  },
+  {
+    "id": "w26",
+    "word": "Cathedral",
+    "phonetic": "/kəˈθiː.drəl/",
+    "partOfSpeech": "noun",
+    "definition": "To cathedral means to perform or exhibit cathedral in a given academic or social context.",
+    "uzbekDefinition": "Yirik va muhim diniy bino",
+    "example": "The large cathedral is full of people on Sunday mornings.",
+    "uzbekExample": "Shahar markazidagi sobor ulkan va go'zal me'morchilikka ega.",
+    "translations": {
+      "uzbek": "Bosh cherkov, sobor",
+      "russian": "Cathedral (русский перевод)"
+    },
+    "unit": 2,
+    "synonyms": [
+      "church",
+      "basilica"
+    ],
+    "collocations": [
+      "gothic cathedral",
+      "ancient cathedral"
+    ],
+    "audioText": "Cathedral. To cathedral means to perform or exhibit cathedral in a given academic or social context.",
+    "clozeSentence": "The large ______ is full of people on Sunday mornings.",
+    "targetAnswer": "cathedral"
+  },
+  {
+    "id": "w27",
+    "word": "Deprive",
+    "phonetic": "/dɪˈpraɪv/",
+    "partOfSpeech": "verb",
+    "definition": "To deprive means to perform or exhibit deprive in a given academic or social context.",
+    "uzbekDefinition": "Kimgadir kerakli narsani olishiga yo'l qo'ymaslik",
+    "example": "» Because the child was bad, she was deprived of her dessert after dinner.",
+    "uzbekExample": "Uyqusizlik odamning aqliy diqqatini pasaytiradi.",
+    "translations": {
+      "uzbek": "Mahrum qilmoq",
+      "russian": "Deprive (русский перевод)"
+    },
+    "unit": 2,
+    "synonyms": [
+      "strip",
+      "rob",
+      "deny"
+    ],
+    "collocations": [
+      "deprive of sleep",
+      "deprived child"
+    ],
+    "audioText": "Deprive. To deprive means to perform or exhibit deprive in a given academic or social context.",
+    "clozeSentence": "» Because the child was bad, she was ______d of her dessert after dinner.",
+    "targetAnswer": "deprive"
+  },
+  {
+    "id": "w28",
+    "word": "Drought",
+    "phonetic": "/draʊt/",
+    "partOfSpeech": "noun",
+    "definition": "To drought means to perform or exhibit drought in a given academic or social context.",
+    "uzbekDefinition": "Uzoq vaqt yomg'ir yog'maslik davri",
+    "example": "After three months of drought, the vegetation and trees started dying.",
+    "uzbekExample": "Kuchli qurg'oqchilik dehqonlarning hosilini nobud qildi.",
+    "translations": {
+      "uzbek": "Qurg'oqchilik",
+      "russian": "Drought (русский перевод)"
+    },
+    "unit": 2,
+    "synonyms": [
+      "dry spell",
+      "parchedness"
+    ],
+    "collocations": [
+      "severe drought",
+      "suffer from drought"
+    ],
+    "audioText": "Drought. To drought means to perform or exhibit drought in a given academic or social context.",
+    "clozeSentence": "After three months of ______, the vegetation and trees started dying.",
+    "targetAnswer": "drought"
+  },
+  {
+    "id": "w29",
+    "word": "Eligible",
+    "phonetic": "/ˈel.ɪ.dʒə.bəl/",
+    "partOfSpeech": "adjective",
+    "definition": "If someone is eligible, then they are permitted to do or have something.",
+    "uzbekDefinition": "Talablarga to'liq javob beradigan",
+    "example": "Only people who bought tickets were eligible to win a prize.",
+    "uzbekExample": "Faqat yuqori baho olgan talabalar grantga munosib hisoblanadi.",
+    "translations": {
+      "uzbek": "Munosib, huquqiga ega",
+      "russian": "Eligible (русский перевод)"
+    },
+    "unit": 2,
+    "synonyms": [
+      "qualified",
+      "suitable",
+      "entitled"
+    ],
+    "collocations": [
+      "eligible for scholarship",
+      "eligible candidate"
+    ],
+    "audioText": "Eligible. If someone is eligible, then they are permitted to do or have something.",
+    "clozeSentence": "Only people who bought tickets were ______ to win a prize.",
+    "targetAnswer": "eligible"
+  },
+  {
+    "id": "w30",
+    "word": "Fast",
+    "phonetic": "/fɑːst/",
+    "partOfSpeech": "verb",
+    "definition": "To fast means to perform or exhibit fast in a given academic or social context.",
+    "uzbekDefinition": "Muayyan vaqt davomida ovqat yemay yurmoq",
+    "example": "In her religion, they fast for five days and then have a big feast.",
+    "uzbekExample": "Tibbiy ko'rikdan oldin bemor 12 soat ovqat yemadi.",
+    "translations": {
+      "uzbek": "Ro'za tutmoq, ovqatdan tiyilmoq",
+      "russian": "Fast (русский перевод)"
+    },
+    "unit": 2,
+    "synonyms": [
+      "abstain",
+      "diet"
+    ],
+    "collocations": [
+      "fast for medical test",
+      "religious fast"
+    ],
+    "audioText": "Fast. To fast means to perform or exhibit fast in a given academic or social context.",
+    "clozeSentence": "In her religion, they ______ for five days and then have a big feast.",
+    "targetAnswer": "fast"
+  },
+  {
+    "id": "w31",
+    "word": "Grumble",
+    "phonetic": "/ˈɡrʌm.bəl/",
+    "partOfSpeech": "verb",
+    "definition": "To grumble means to perform or exhibit grumble in a given academic or social context.",
+    "uzbekDefinition": "Past ovozda shikoyat qilmoq",
+    "example": "He grumbled about having to work late on Friday.",
+    "uzbekExample": "Ishchilar past ish haqi haqida g'o'ldirashdi.",
+    "translations": {
+      "uzbek": "G'o'ldiramoq, norozi ohangda gapirmoq",
+      "russian": "Grumble (русский перевод)"
+    },
+    "unit": 2,
+    "synonyms": [
+      "mutter",
+      "whine",
+      "complain"
+    ],
+    "collocations": [
+      "grumble about",
+      "grumble under one's breath"
+    ],
+    "audioText": "Grumble. To grumble means to perform or exhibit grumble in a given academic or social context.",
+    "clozeSentence": "He ______d about having to work late on Friday.",
+    "targetAnswer": "grumble"
+  },
+  {
+    "id": "w32",
+    "word": "Inland",
+    "phonetic": "/ˌɪn.lænd/",
+    "partOfSpeech": "adverb",
+    "definition": "If someone goes inland, they travel into the center of a country or land.",
+    "uzbekDefinition": "Dengiz qirg'og'idan uzoqdagi ichki qism",
+    "example": "The river curved inland near the campground.",
+    "uzbekExample": "Bo'rondan saqlanish uchun ular mamlakat ichkarisiga qarab ketishdi.",
+    "translations": {
+      "uzbek": "Ichki hudud, quruqlik ichkarisi",
+      "russian": "Inland (русский перевод)"
+    },
+    "unit": 2,
+    "synonyms": [
+      "interior",
+      "upcountry"
+    ],
+    "collocations": [
+      "travel inland",
+      "inland lake"
+    ],
+    "audioText": "Inland. If someone goes inland, they travel into the center of a country or land.",
+    "clozeSentence": "The river curved ______ near the campground.",
+    "targetAnswer": "inland"
+  },
+  {
+    "id": "w33",
+    "word": "Moisture",
+    "phonetic": "/ˈmɔɪs.tʃər/",
+    "partOfSpeech": "noun",
+    "definition": "To moisture means to perform or exhibit moisture in a given academic or social context.",
+    "uzbekDefinition": "Havoda yoki sirtda joylashgan suv tomchilari",
+    "example": "If you breathe on a window, moisture from your breath collects on the glass.",
+    "uzbekExample": "Tuproqdagi namlik o'simliklarning tez o'sishiga yordam beradi.",
+    "translations": {
+      "uzbek": "Namlik, rutubat",
+      "russian": "Moisture (русский перевод)"
+    },
+    "unit": 2,
+    "synonyms": [
+      "humidity",
+      "dampness",
+      "wetness"
+    ],
+    "collocations": [
+      "retain moisture",
+      "soil moisture"
+    ],
+    "audioText": "Moisture. To moisture means to perform or exhibit moisture in a given academic or social context.",
+    "clozeSentence": "If you breathe on a window, ______ from your breath collects on the glass.",
+    "targetAnswer": "moisture"
+  },
+  {
+    "id": "w34",
+    "word": "Nonetheless",
+    "phonetic": "/ˌnʌn.ðəˈles/",
+    "partOfSpeech": "adverb",
+    "definition": "If something happens nonetheless, then it occurs despite some other thing.",
+    "uzbekDefinition": "Aytilgan faktga qaramasdan",
+    "example": "She tried to keep the dog out of the mud, but it got dirty nonetheless.",
+    "uzbekExample": "Yomg'ir yog'ayotgan edi, shunga qaramay biz piyoda sayrga chiqdik.",
+    "translations": {
+      "uzbek": "Shunga qaramay",
+      "russian": "Nonetheless (русский перевод)"
+    },
+    "unit": 2,
+    "synonyms": [
+      "nevertheless",
+      "however",
+      "still"
+    ],
+    "collocations": [
+      "hard, nonetheless rewarding",
+      "nonetheless important"
+    ],
+    "audioText": "Nonetheless. If something happens nonetheless, then it occurs despite some other thing.",
+    "clozeSentence": "She tried to keep the dog out of the mud, but it got dirty ______.",
+    "targetAnswer": "nonetheless"
+  },
+  {
+    "id": "w35",
+    "word": "Oath",
+    "phonetic": "/əʊθ/",
+    "partOfSpeech": "noun",
+    "definition": "An oath is a formal, often public, promise.",
+    "uzbekDefinition": "Tantanali ravishda berilgan va'da",
+    "example": "Judges must take an oath to be fair to everyone in court.",
+    "uzbekExample": "Yangi prezident qasamyod qabul qildi.",
+    "translations": {
+      "uzbek": "Qasamyod, ont",
+      "russian": "Oath (русский перевод)"
+    },
+    "unit": 2,
+    "synonyms": [
+      "pledge",
+      "vow",
+      "promise"
+    ],
+    "collocations": [
+      "take an oath",
+      "break an oath"
+    ],
+    "audioText": "Oath. An oath is a formal, often public, promise.",
+    "clozeSentence": "Judges must take an ______ to be fair to everyone in court.",
+    "targetAnswer": "oath"
+  },
+  {
+    "id": "w36",
+    "word": "Prairie",
+    "phonetic": "/ˈpreə.ri/",
+    "partOfSpeech": "noun",
+    "definition": "To prairie means to perform or exhibit prairie in a given academic or social context.",
+    "uzbekDefinition": "Daraxtsiz, keng maysazor tekislik",
+    "example": "The prairie was perfect for a farm because there were hills and trees.",
+    "uzbekExample": "Keng dasht fermerlik va chorvachilik uchun juda mos edi.",
+    "translations": {
+      "uzbek": "Dasht, preriy",
+      "russian": "Prairie (русский перевод)"
+    },
+    "unit": 2,
+    "synonyms": [
+      "grassland",
+      "steppe",
+      "plain"
+    ],
+    "collocations": [
+      "open prairie",
+      "prairie landscape"
+    ],
+    "audioText": "Prairie. To prairie means to perform or exhibit prairie in a given academic or social context.",
+    "clozeSentence": "The ______ was perfect for a farm because there were hills and trees.",
+    "targetAnswer": "prairie"
+  },
+  {
+    "id": "w37",
+    "word": "Ragged",
+    "phonetic": "/ˈræɡ.ɪd/",
+    "partOfSpeech": "adjective",
+    "definition": "If something is ragged, then it is old, torn, and falling apart.",
+    "uzbekDefinition": "Eski, yirtilgan va eskirib ketgan",
+    "example": "They could see his toes through the holes in his ragged shoes.",
+    "uzbekExample": "Uning ustidagi ko'ylak yirtiq-yamoq edi.",
+    "translations": {
+      "uzbek": "Yirtiq-yamoq, juldur",
+      "russian": "Ragged (русский перевод)"
+    },
+    "unit": 2,
+    "synonyms": [
+      "tattered",
+      "worn out",
+      "frayed"
+    ],
+    "collocations": [
+      "ragged clothes",
+      "ragged edges"
+    ],
+    "audioText": "Ragged. If something is ragged, then it is old, torn, and falling apart.",
+    "clozeSentence": "They could see his toes through the holes in his ______ shoes.",
+    "targetAnswer": "ragged"
+  },
+  {
+    "id": "w38",
+    "word": "Rugged",
+    "phonetic": "/ˈrʌɡ.ɪd/",
+    "partOfSpeech": "adjective",
+    "definition": "If an area of land is rugged, then it is rocky and difficult to travel through.",
+    "uzbekDefinition": "Qattiq, toshloq va harakatlanish qiyin bo'lgan yer",
+    "example": "Their car couldn’t make it far along the rugged roads.",
+    "uzbekExample": "Tog'li hudud qo'pol va xavfli qoyalardan iborat edi.",
+    "translations": {
+      "uzbek": "Notekis, qo'pol, toshloq",
+      "russian": "Rugged (русский перевод)"
+    },
+    "unit": 2,
+    "synonyms": [
+      "rough",
+      "jagged",
+      "rocky"
+    ],
+    "collocations": [
+      "rugged terrain",
+      "rugged mountain"
+    ],
+    "audioText": "Rugged. If an area of land is rugged, then it is rocky and difficult to travel through.",
+    "clozeSentence": "Their car couldn’t make it far along the ______ roads.",
+    "targetAnswer": "rugged"
+  },
+  {
+    "id": "w39",
+    "word": "Scarce",
+    "phonetic": "/skeəs/",
+    "partOfSpeech": "adjective",
+    "definition": "To scarce means to perform or exhibit scarce in a given academic or social context.",
+    "uzbekDefinition": "Juda oz miqdorda topiladigan",
+    "example": "The researcher used the word scarce to clarify the findings in the study.",
+    "uzbekExample": "Urush paytida toza ichimlik suvi juda tanqis bo'lib qoldi.",
+    "translations": {
+      "uzbek": "Kam uchraydigan, tanqis",
+      "russian": "Scarce (русский перевод)"
+    },
+    "unit": 2,
+    "synonyms": [
+      "rare",
+      "sparse",
+      "insufficient"
+    ],
+    "collocations": [
+      "scarce resources",
+      "become scarce"
+    ],
+    "audioText": "Scarce. To scarce means to perform or exhibit scarce in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "scarce"
+  },
+  {
+    "id": "w40",
+    "word": "Speculate",
+    "phonetic": "/ˈspek.jə.leɪt/",
+    "partOfSpeech": "verb",
+    "definition": "To speculate means to perform or exhibit speculate in a given academic or social context.",
+    "uzbekDefinition": "Aniq bilmasdan turib fikr bildirmoq",
+    "example": "My sister looked at the sky and speculated that it would rain tomorrow.",
+    "uzbekExample": "Olimlar bu kashfiyot kelajakka qanday ta'sir qilishini taxmin qilishdi.",
+    "translations": {
+      "uzbek": "Taxmin qilmoq",
+      "russian": "Speculate (русский перевод)"
+    },
+    "unit": 2,
+    "synonyms": [
+      "guess",
+      "theorize",
+      "conjecture"
+    ],
+    "collocations": [
+      "speculate on",
+      "wildly speculate"
+    ],
+    "audioText": "Speculate. To speculate means to perform or exhibit speculate in a given academic or social context.",
+    "clozeSentence": "My sister looked at the sky and ______d that it would rain tomorrow.",
+    "targetAnswer": "speculate"
+  },
+  {
+    "id": "w41",
+    "word": "Analytic",
+    "phonetic": "/analytic/",
+    "partOfSpeech": "verb",
+    "definition": "If something is analytic, it is related to logic and reasoning.",
+    "uzbekDefinition": "Analytic so'zining ingliz tilidagi rasmiy ta'rifi: If something is analytic, it is related to logic and reasoning.",
+    "example": "The analytic article criticized the new plan and presented one of its own.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The analytic article criticized the new plan and presented one of its own.",
+    "translations": {
+      "uzbek": "Analytic (o'zbekcha ma'nosi)",
+      "russian": "Analytic (русский перевод)"
+    },
+    "unit": 3,
+    "synonyms": [
+      "analytic",
+      "synonym"
+    ],
+    "collocations": [
+      "use analytic",
+      "academic analytic"
+    ],
+    "audioText": "Analytic. If something is analytic, it is related to logic and reasoning.",
+    "clozeSentence": "The ______ article criticized the new plan and presented one of its own.",
+    "targetAnswer": "analytic"
+  },
+  {
+    "id": "w42",
+    "word": "Assert",
+    "phonetic": "/assert/",
+    "partOfSpeech": "verb",
+    "definition": "To assert means to perform or exhibit assert in a given academic or social context.",
+    "uzbekDefinition": "Assert so'zining ingliz tilidagi rasmiy ta'rifi: To assert means to perform or exhibit assert in a given academic or social context.",
+    "example": "The researcher used the word assert to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word assert to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Assert (o'zbekcha ma'nosi)",
+      "russian": "Assert (русский перевод)"
+    },
+    "unit": 3,
+    "synonyms": [
+      "assert",
+      "synonym"
+    ],
+    "collocations": [
+      "use assert",
+      "academic assert"
+    ],
+    "audioText": "Assert. To assert means to perform or exhibit assert in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "assert"
+  },
+  {
+    "id": "w43",
+    "word": "Bachelor",
+    "phonetic": "/bachelor/",
+    "partOfSpeech": "verb",
+    "definition": "To bachelor means to perform or exhibit bachelor in a given academic or social context.",
+    "uzbekDefinition": "Bachelor so'zining ingliz tilidagi rasmiy ta'rifi: To bachelor means to perform or exhibit bachelor in a given academic or social context.",
+    "example": "Since he was a bachelor, Jason did his shopping by himself.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Since he was a bachelor, Jason did his shopping by himself.",
+    "translations": {
+      "uzbek": "Bachelor (o'zbekcha ma'nosi)",
+      "russian": "Bachelor (русский перевод)"
+    },
+    "unit": 3,
+    "synonyms": [
+      "bachelor",
+      "synonym"
+    ],
+    "collocations": [
+      "use bachelor",
+      "academic bachelor"
+    ],
+    "audioText": "Bachelor. To bachelor means to perform or exhibit bachelor in a given academic or social context.",
+    "clozeSentence": "Since he was a ______, Jason did his shopping by himself.",
+    "targetAnswer": "bachelor"
+  },
+  {
+    "id": "w44",
+    "word": "Calculus",
+    "phonetic": "/calculus/",
+    "partOfSpeech": "verb",
+    "definition": "To calculus means to perform or exhibit calculus in a given academic or social context.",
+    "uzbekDefinition": "Calculus so'zining ingliz tilidagi rasmiy ta'rifi: To calculus means to perform or exhibit calculus in a given academic or social context.",
+    "example": "By using calculus, scientists determined small changes in the stars’ brightness.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: By using calculus, scientists determined small changes in the stars’ brightness.",
+    "translations": {
+      "uzbek": "Calculus (o'zbekcha ma'nosi)",
+      "russian": "Calculus (русский перевод)"
+    },
+    "unit": 3,
+    "synonyms": [
+      "calculus",
+      "synonym"
+    ],
+    "collocations": [
+      "use calculus",
+      "academic calculus"
+    ],
+    "audioText": "Calculus. To calculus means to perform or exhibit calculus in a given academic or social context.",
+    "clozeSentence": "By using ______, scientists determined small changes in the stars’ brightness.",
+    "targetAnswer": "calculus"
+  },
+  {
+    "id": "w45",
+    "word": "Celestial",
+    "phonetic": "/celestial/",
+    "partOfSpeech": "verb",
+    "definition": "If something is celestial, it is related to the sky or to outer space.",
+    "uzbekDefinition": "Celestial so'zining ingliz tilidagi rasmiy ta'rifi: If something is celestial, it is related to the sky or to outer space.",
+    "example": "Comets are celestial objects that are rarely seen.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Comets are celestial objects that are rarely seen.",
+    "translations": {
+      "uzbek": "Celestial (o'zbekcha ma'nosi)",
+      "russian": "Celestial (русский перевод)"
+    },
+    "unit": 3,
+    "synonyms": [
+      "celestial",
+      "synonym"
+    ],
+    "collocations": [
+      "use celestial",
+      "academic celestial"
+    ],
+    "audioText": "Celestial. If something is celestial, it is related to the sky or to outer space.",
+    "clozeSentence": "Comets are ______ objects that are rarely seen.",
+    "targetAnswer": "celestial"
+  },
+  {
+    "id": "w46",
+    "word": "Cognitive",
+    "phonetic": "/cognitive/",
+    "partOfSpeech": "verb",
+    "definition": "If something is cognitive, it is related to learning and knowing things.",
+    "uzbekDefinition": "Cognitive so'zining ingliz tilidagi rasmiy ta'rifi: If something is cognitive, it is related to learning and knowing things.",
+    "example": "After her physical examination, her cognitive strengths were tested.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: After her physical examination, her cognitive strengths were tested.",
+    "translations": {
+      "uzbek": "Cognitive (o'zbekcha ma'nosi)",
+      "russian": "Cognitive (русский перевод)"
+    },
+    "unit": 3,
+    "synonyms": [
+      "cognitive",
+      "synonym"
+    ],
+    "collocations": [
+      "use cognitive",
+      "academic cognitive"
+    ],
+    "audioText": "Cognitive. If something is cognitive, it is related to learning and knowing things.",
+    "clozeSentence": "After her physical examination, her ______ strengths were tested.",
+    "targetAnswer": "cognitive"
+  },
+  {
+    "id": "w47",
+    "word": "Collision",
+    "phonetic": "/collision/",
+    "partOfSpeech": "verb",
+    "definition": "To collision means to perform or exhibit collision in a given academic or social context.",
+    "uzbekDefinition": "Collision so'zining ingliz tilidagi rasmiy ta'rifi: To collision means to perform or exhibit collision in a given academic or social context.",
+    "example": "The collision between the two cars created a loud noise.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The collision between the two cars created a loud noise.",
+    "translations": {
+      "uzbek": "Collision (o'zbekcha ma'nosi)",
+      "russian": "Collision (русский перевод)"
+    },
+    "unit": 3,
+    "synonyms": [
+      "collision",
+      "synonym"
+    ],
+    "collocations": [
+      "use collision",
+      "academic collision"
+    ],
+    "audioText": "Collision. To collision means to perform or exhibit collision in a given academic or social context.",
+    "clozeSentence": "The ______ between the two cars created a loud noise.",
+    "targetAnswer": "collision"
+  },
+  {
+    "id": "w48",
+    "word": "Competent",
+    "phonetic": "/competent/",
+    "partOfSpeech": "verb",
+    "definition": "If someone is competent, they are able to think or act successfully.",
+    "uzbekDefinition": "Competent so'zining ingliz tilidagi rasmiy ta'rifi: If someone is competent, they are able to think or act successfully.",
+    "example": "Competent employees are much better than unknowledgeable ones.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Competent employees are much better than unknowledgeable ones.",
+    "translations": {
+      "uzbek": "Competent (o'zbekcha ma'nosi)",
+      "russian": "Competent (русский перевод)"
+    },
+    "unit": 3,
+    "synonyms": [
+      "competent",
+      "synonym"
+    ],
+    "collocations": [
+      "use competent",
+      "academic competent"
+    ],
+    "audioText": "Competent. If someone is competent, they are able to think or act successfully.",
+    "clozeSentence": "______ employees are much better than unknowledgeable ones.",
+    "targetAnswer": "competent"
+  },
+  {
+    "id": "w49",
+    "word": "Diploma",
+    "phonetic": "/diploma/",
+    "partOfSpeech": "verb",
+    "definition": "To diploma means to perform or exhibit diploma in a given academic or social context.",
+    "uzbekDefinition": "Diploma so'zining ingliz tilidagi rasmiy ta'rifi: To diploma means to perform or exhibit diploma in a given academic or social context.",
+    "example": "After four years of college, Mary finally had a diploma.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: After four years of college, Mary finally had a diploma.",
+    "translations": {
+      "uzbek": "Diploma (o'zbekcha ma'nosi)",
+      "russian": "Diploma (русский перевод)"
+    },
+    "unit": 3,
+    "synonyms": [
+      "diploma",
+      "synonym"
+    ],
+    "collocations": [
+      "use diploma",
+      "academic diploma"
+    ],
+    "audioText": "Diploma. To diploma means to perform or exhibit diploma in a given academic or social context.",
+    "clozeSentence": "After four years of college, Mary finally had a ______.",
+    "targetAnswer": "diploma"
+  },
+  {
+    "id": "w50",
+    "word": "Excel",
+    "phonetic": "/excel/",
+    "partOfSpeech": "verb",
+    "definition": "To excel means to perform or exhibit excel in a given academic or social context.",
+    "uzbekDefinition": "Excel so'zining ingliz tilidagi rasmiy ta'rifi: To excel means to perform or exhibit excel in a given academic or social context.",
+    "example": "Jenny excels at playing the piano.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Jenny excels at playing the piano.",
+    "translations": {
+      "uzbek": "Excel (o'zbekcha ma'nosi)",
+      "russian": "Excel (русский перевод)"
+    },
+    "unit": 3,
+    "synonyms": [
+      "excel",
+      "synonym"
+    ],
+    "collocations": [
+      "use excel",
+      "academic excel"
+    ],
+    "audioText": "Excel. To excel means to perform or exhibit excel in a given academic or social context.",
+    "clozeSentence": "Jenny ______s at playing the piano.",
+    "targetAnswer": "excel"
+  },
+  {
+    "id": "w51",
+    "word": "Geology",
+    "phonetic": "/geology/",
+    "partOfSpeech": "verb",
+    "definition": "Geology is the study of the Earth’s natural structures and how they change.",
+    "uzbekDefinition": "Geology so'zining ingliz tilidagi rasmiy ta'rifi: Geology is the study of the Earth’s natural structures and how they change.",
+    "example": "Because he studied geology, he knew how the mountains were formed.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Because he studied geology, he knew how the mountains were formed.",
+    "translations": {
+      "uzbek": "Geology (o'zbekcha ma'nosi)",
+      "russian": "Geology (русский перевод)"
+    },
+    "unit": 3,
+    "synonyms": [
+      "geology",
+      "synonym"
+    ],
+    "collocations": [
+      "use geology",
+      "academic geology"
+    ],
+    "audioText": "Geology. Geology is the study of the Earth’s natural structures and how they change.",
+    "clozeSentence": "Because he studied ______, he knew how the mountains were formed.",
+    "targetAnswer": "geology"
+  },
+  {
+    "id": "w52",
+    "word": "Harness",
+    "phonetic": "/harness/",
+    "partOfSpeech": "verb",
+    "definition": "To harness something means to control and use it, usually to make energy.",
+    "uzbekDefinition": "Harness so'zining ingliz tilidagi rasmiy ta'rifi: To harness something means to control and use it, usually to make energy.",
+    "example": "The sails harness the wind in order to move.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The sails harness the wind in order to move.",
+    "translations": {
+      "uzbek": "Harness (o'zbekcha ma'nosi)",
+      "russian": "Harness (русский перевод)"
+    },
+    "unit": 3,
+    "synonyms": [
+      "harness",
+      "synonym"
+    ],
+    "collocations": [
+      "use harness",
+      "academic harness"
+    ],
+    "audioText": "Harness. To harness something means to control and use it, usually to make energy.",
+    "clozeSentence": "The sails ______ the wind in order to move.",
+    "targetAnswer": "harness"
+  },
+  {
+    "id": "w53",
+    "word": "Intellect",
+    "phonetic": "/intellect/",
+    "partOfSpeech": "verb",
+    "definition": "An intellect is a person’s ability to understand things easily.",
+    "uzbekDefinition": "Intellect so'zining ingliz tilidagi rasmiy ta'rifi: An intellect is a person’s ability to understand things easily.",
+    "example": "She was known for her quick and strong intellect as well as her beauty.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: She was known for her quick and strong intellect as well as her beauty.",
+    "translations": {
+      "uzbek": "Intellect (o'zbekcha ma'nosi)",
+      "russian": "Intellect (русский перевод)"
+    },
+    "unit": 3,
+    "synonyms": [
+      "intellect",
+      "synonym"
+    ],
+    "collocations": [
+      "use intellect",
+      "academic intellect"
+    ],
+    "audioText": "Intellect. An intellect is a person’s ability to understand things easily.",
+    "clozeSentence": "She was known for her quick and strong ______ as well as her beauty.",
+    "targetAnswer": "intellect"
+  },
+  {
+    "id": "w54",
+    "word": "Keen",
+    "phonetic": "/keen/",
+    "partOfSpeech": "verb",
+    "definition": "To keen means to perform or exhibit keen in a given academic or social context.",
+    "uzbekDefinition": "Keen so'zining ingliz tilidagi rasmiy ta'rifi: To keen means to perform or exhibit keen in a given academic or social context.",
+    "example": "The researcher used the word keen to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word keen to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Keen (o'zbekcha ma'nosi)",
+      "russian": "Keen (русский перевод)"
+    },
+    "unit": 3,
+    "synonyms": [
+      "keen",
+      "synonym"
+    ],
+    "collocations": [
+      "use keen",
+      "academic keen"
+    ],
+    "audioText": "Keen. To keen means to perform or exhibit keen in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "keen"
+  },
+  {
+    "id": "w55",
+    "word": "Mythology",
+    "phonetic": "/mythology/",
+    "partOfSpeech": "verb",
+    "definition": "To mythology means to perform or exhibit mythology in a given academic or social context.",
+    "uzbekDefinition": "Mythology so'zining ingliz tilidagi rasmiy ta'rifi: To mythology means to perform or exhibit mythology in a given academic or social context.",
+    "example": "Egyptian mythology was the basis for a religion.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Egyptian mythology was the basis for a religion.",
+    "translations": {
+      "uzbek": "Mythology (o'zbekcha ma'nosi)",
+      "russian": "Mythology (русский перевод)"
+    },
+    "unit": 3,
+    "synonyms": [
+      "mythology",
+      "synonym"
+    ],
+    "collocations": [
+      "use mythology",
+      "academic mythology"
+    ],
+    "audioText": "Mythology. To mythology means to perform or exhibit mythology in a given academic or social context.",
+    "clozeSentence": "Egyptian ______ was the basis for a religion.",
+    "targetAnswer": "mythology"
+  },
+  {
+    "id": "w56",
+    "word": "Physiology",
+    "phonetic": "/physiology/",
+    "partOfSpeech": "verb",
+    "definition": "To physiology means to perform or exhibit physiology in a given academic or social context.",
+    "uzbekDefinition": "Physiology so'zining ingliz tilidagi rasmiy ta'rifi: To physiology means to perform or exhibit physiology in a given academic or social context.",
+    "example": "» His work in physiology helped him understand how the human body works.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: » His work in physiology helped him understand how the human body works.",
+    "translations": {
+      "uzbek": "Physiology (o'zbekcha ma'nosi)",
+      "russian": "Physiology (русский перевод)"
+    },
+    "unit": 3,
+    "synonyms": [
+      "physiology",
+      "synonym"
+    ],
+    "collocations": [
+      "use physiology",
+      "academic physiology"
+    ],
+    "audioText": "Physiology. To physiology means to perform or exhibit physiology in a given academic or social context.",
+    "clozeSentence": "» His work in ______ helped him understand how the human body works.",
+    "targetAnswer": "physiology"
+  },
+  {
+    "id": "w57",
+    "word": "Radioactive",
+    "phonetic": "/radioactive/",
+    "partOfSpeech": "verb",
+    "definition": "If something is radioactive, then it lets out, or is related to, radiation.",
+    "uzbekDefinition": "Radioactive so'zining ingliz tilidagi rasmiy ta'rifi: If something is radioactive, then it lets out, or is related to, radiation.",
+    "example": "Radioactive materials can be very bad for anyone’s health.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Radioactive materials can be very bad for anyone’s health.",
+    "translations": {
+      "uzbek": "Radioactive (o'zbekcha ma'nosi)",
+      "russian": "Radioactive (русский перевод)"
+    },
+    "unit": 3,
+    "synonyms": [
+      "radioactive",
+      "synonym"
+    ],
+    "collocations": [
+      "use radioactive",
+      "academic radioactive"
+    ],
+    "audioText": "Radioactive. If something is radioactive, then it lets out, or is related to, radiation.",
+    "clozeSentence": "______ materials can be very bad for anyone’s health.",
+    "targetAnswer": "radioactive"
+  },
+  {
+    "id": "w58",
+    "word": "Relativity",
+    "phonetic": "/relativity/",
+    "partOfSpeech": "verb",
+    "definition": "To relativity means to perform or exhibit relativity in a given academic or social context.",
+    "uzbekDefinition": "Relativity so'zining ingliz tilidagi rasmiy ta'rifi: To relativity means to perform or exhibit relativity in a given academic or social context.",
+    "example": "Relativity teaches that light travels at the same speed in the universe.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Relativity teaches that light travels at the same speed in the universe.",
+    "translations": {
+      "uzbek": "Relativity (o'zbekcha ma'nosi)",
+      "russian": "Relativity (русский перевод)"
+    },
+    "unit": 3,
+    "synonyms": [
+      "relativity",
+      "synonym"
+    ],
+    "collocations": [
+      "use relativity",
+      "academic relativity"
+    ],
+    "audioText": "Relativity. To relativity means to perform or exhibit relativity in a given academic or social context.",
+    "clozeSentence": "______ teaches that light travels at the same speed in the universe.",
+    "targetAnswer": "relativity"
+  },
+  {
+    "id": "w59",
+    "word": "Sociology",
+    "phonetic": "/sociology/",
+    "partOfSpeech": "verb",
+    "definition": "Sociology is the study of human society, its organizations, and problems.",
+    "uzbekDefinition": "Sociology so'zining ingliz tilidagi rasmiy ta'rifi: Sociology is the study of human society, its organizations, and problems.",
+    "example": "Sociology teaches that people’s problems are a result of their society.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Sociology teaches that people’s problems are a result of their society.",
+    "translations": {
+      "uzbek": "Sociology (o'zbekcha ma'nosi)",
+      "russian": "Sociology (русский перевод)"
+    },
+    "unit": 3,
+    "synonyms": [
+      "sociology",
+      "synonym"
+    ],
+    "collocations": [
+      "use sociology",
+      "academic sociology"
+    ],
+    "audioText": "Sociology. Sociology is the study of human society, its organizations, and problems.",
+    "clozeSentence": "______ teaches that people’s problems are a result of their society.",
+    "targetAnswer": "sociology"
+  },
+  {
+    "id": "w60",
+    "word": "Theoretical",
+    "phonetic": "/theoretical/",
+    "partOfSpeech": "verb",
+    "definition": "If something is theoretical, it is based on theory rather than experience.",
+    "uzbekDefinition": "Theoretical so'zining ingliz tilidagi rasmiy ta'rifi: If something is theoretical, it is based on theory rather than experience.",
+    "example": "His conclusion was only theoretical and not meant to be publicized.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: His conclusion was only theoretical and not meant to be publicized.",
+    "translations": {
+      "uzbek": "Theoretical (o'zbekcha ma'nosi)",
+      "russian": "Theoretical (русский перевод)"
+    },
+    "unit": 3,
+    "synonyms": [
+      "theoretical",
+      "synonym"
+    ],
+    "collocations": [
+      "use theoretical",
+      "academic theoretical"
+    ],
+    "audioText": "Theoretical. If something is theoretical, it is based on theory rather than experience.",
+    "clozeSentence": "His conclusion was only ______ and not meant to be publicized.",
+    "targetAnswer": "theoretical"
+  },
+  {
+    "id": "w61",
+    "word": "Administrator",
+    "phonetic": "/administrator/",
+    "partOfSpeech": "verb",
+    "definition": "To administrator means to perform or exhibit administrator in a given academic or social context.",
+    "uzbekDefinition": "Administrator so'zining ingliz tilidagi rasmiy ta'rifi: To administrator means to perform or exhibit administrator in a given academic or social context.",
+    "example": "The researcher used the word administrator to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word administrator to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Administrator (o'zbekcha ma'nosi)",
+      "russian": "Administrator (русский перевод)"
+    },
+    "unit": 4,
+    "synonyms": [
+      "administrator",
+      "synonym"
+    ],
+    "collocations": [
+      "use administrator",
+      "academic administrator"
+    ],
+    "audioText": "Administrator. To administrator means to perform or exhibit administrator in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "administrator"
+  },
+  {
+    "id": "w62",
+    "word": "Affluent",
+    "phonetic": "/affluent/",
+    "partOfSpeech": "verb",
+    "definition": "If someone is affluent, they are wealthy.",
+    "uzbekDefinition": "Affluent so'zining ingliz tilidagi rasmiy ta'rifi: If someone is affluent, they are wealthy.",
+    "example": "People in the city are usually more affluent than people in the country.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: People in the city are usually more affluent than people in the country.",
+    "translations": {
+      "uzbek": "Affluent (o'zbekcha ma'nosi)",
+      "russian": "Affluent (русский перевод)"
+    },
+    "unit": 4,
+    "synonyms": [
+      "affluent",
+      "synonym"
+    ],
+    "collocations": [
+      "use affluent",
+      "academic affluent"
+    ],
+    "audioText": "Affluent. If someone is affluent, they are wealthy.",
+    "clozeSentence": "People in the city are usually more ______ than people in the country.",
+    "targetAnswer": "affluent"
+  },
+  {
+    "id": "w63",
+    "word": "Audit",
+    "phonetic": "/audit/",
+    "partOfSpeech": "verb",
+    "definition": "To audit means to perform or exhibit audit in a given academic or social context.",
+    "uzbekDefinition": "Audit so'zining ingliz tilidagi rasmiy ta'rifi: To audit means to perform or exhibit audit in a given academic or social context.",
+    "example": "The government usually audits companies that report lower than usual incomes.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The government usually audits companies that report lower than usual incomes.",
+    "translations": {
+      "uzbek": "Audit (o'zbekcha ma'nosi)",
+      "russian": "Audit (русский перевод)"
+    },
+    "unit": 4,
+    "synonyms": [
+      "audit",
+      "synonym"
+    ],
+    "collocations": [
+      "use audit",
+      "academic audit"
+    ],
+    "audioText": "Audit. To audit means to perform or exhibit audit in a given academic or social context.",
+    "clozeSentence": "The government usually ______s companies that report lower than usual incomes.",
+    "targetAnswer": "audit"
+  },
+  {
+    "id": "w64",
+    "word": "Automate",
+    "phonetic": "/automate/",
+    "partOfSpeech": "verb",
+    "definition": "To automate means to perform or exhibit automate in a given academic or social context.",
+    "uzbekDefinition": "Automate so'zining ingliz tilidagi rasmiy ta'rifi: To automate means to perform or exhibit automate in a given academic or social context.",
+    "example": "When the bank automated, it started installing ATM machines.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: When the bank automated, it started installing ATM machines.",
+    "translations": {
+      "uzbek": "Automate (o'zbekcha ma'nosi)",
+      "russian": "Automate (русский перевод)"
+    },
+    "unit": 4,
+    "synonyms": [
+      "automate",
+      "synonym"
+    ],
+    "collocations": [
+      "use automate",
+      "academic automate"
+    ],
+    "audioText": "Automate. To automate means to perform or exhibit automate in a given academic or social context.",
+    "clozeSentence": "When the bank ______d, it started installing ATM machines.",
+    "targetAnswer": "automate"
+  },
+  {
+    "id": "w65",
+    "word": "Bribe",
+    "phonetic": "/bribe/",
+    "partOfSpeech": "verb",
+    "definition": "To bribe means to perform or exhibit bribe in a given academic or social context.",
+    "uzbekDefinition": "Bribe so'zining ingliz tilidagi rasmiy ta'rifi: To bribe means to perform or exhibit bribe in a given academic or social context.",
+    "example": "The judge was bribed so that she would set the suspect free.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The judge was bribed so that she would set the suspect free.",
+    "translations": {
+      "uzbek": "Bribe (o'zbekcha ma'nosi)",
+      "russian": "Bribe (русский перевод)"
+    },
+    "unit": 4,
+    "synonyms": [
+      "bribe",
+      "synonym"
+    ],
+    "collocations": [
+      "use bribe",
+      "academic bribe"
+    ],
+    "audioText": "Bribe. To bribe means to perform or exhibit bribe in a given academic or social context.",
+    "clozeSentence": "The judge was ______d so that she would set the suspect free.",
+    "targetAnswer": "bribe"
+  },
+  {
+    "id": "w66",
+    "word": "Corrupt",
+    "phonetic": "/corrupt/",
+    "partOfSpeech": "verb",
+    "definition": "To corrupt means to perform or exhibit corrupt in a given academic or social context.",
+    "uzbekDefinition": "Corrupt so'zining ingliz tilidagi rasmiy ta'rifi: To corrupt means to perform or exhibit corrupt in a given academic or social context.",
+    "example": "The researcher used the word corrupt to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word corrupt to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Corrupt (o'zbekcha ma'nosi)",
+      "russian": "Corrupt (русский перевод)"
+    },
+    "unit": 4,
+    "synonyms": [
+      "corrupt",
+      "synonym"
+    ],
+    "collocations": [
+      "use corrupt",
+      "academic corrupt"
+    ],
+    "audioText": "Corrupt. To corrupt means to perform or exhibit corrupt in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "corrupt"
+  },
+  {
+    "id": "w67",
+    "word": "Dispose",
+    "phonetic": "/dispose/",
+    "partOfSpeech": "verb",
+    "definition": "To dispose means to perform or exhibit dispose in a given academic or social context.",
+    "uzbekDefinition": "Dispose so'zining ingliz tilidagi rasmiy ta'rifi: To dispose means to perform or exhibit dispose in a given academic or social context.",
+    "example": "» He disposed of the can by throwing it into the recycle bin.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: » He disposed of the can by throwing it into the recycle bin.",
+    "translations": {
+      "uzbek": "Dispose (o'zbekcha ma'nosi)",
+      "russian": "Dispose (русский перевод)"
+    },
+    "unit": 4,
+    "synonyms": [
+      "dispose",
+      "synonym"
+    ],
+    "collocations": [
+      "use dispose",
+      "academic dispose"
+    ],
+    "audioText": "Dispose. To dispose means to perform or exhibit dispose in a given academic or social context.",
+    "clozeSentence": "» He ______d of the can by throwing it into the recycle bin.",
+    "targetAnswer": "dispose"
+  },
+  {
+    "id": "w68",
+    "word": "Headquarters",
+    "phonetic": "/headquarters/",
+    "partOfSpeech": "verb",
+    "definition": "To headquarters means to perform or exhibit headquarters in a given academic or social context.",
+    "uzbekDefinition": "Headquarters so'zining ingliz tilidagi rasmiy ta'rifi: To headquarters means to perform or exhibit headquarters in a given academic or social context.",
+    "example": "He drove the long route to headquarters because it was a nice day.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: He drove the long route to headquarters because it was a nice day.",
+    "translations": {
+      "uzbek": "Headquarters (o'zbekcha ma'nosi)",
+      "russian": "Headquarters (русский перевод)"
+    },
+    "unit": 4,
+    "synonyms": [
+      "headquarters",
+      "synonym"
+    ],
+    "collocations": [
+      "use headquarters",
+      "academic headquarters"
+    ],
+    "audioText": "Headquarters. To headquarters means to perform or exhibit headquarters in a given academic or social context.",
+    "clozeSentence": "He drove the long route to ______ because it was a nice day.",
+    "targetAnswer": "headquarters"
+  },
+  {
+    "id": "w69",
+    "word": "Incentive",
+    "phonetic": "/incentive/",
+    "partOfSpeech": "verb",
+    "definition": "To incentive means to perform or exhibit incentive in a given academic or social context.",
+    "uzbekDefinition": "Incentive so'zining ingliz tilidagi rasmiy ta'rifi: To incentive means to perform or exhibit incentive in a given academic or social context.",
+    "example": "The chance of winning a prize was incentive to get people to play the game.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The chance of winning a prize was incentive to get people to play the game.",
+    "translations": {
+      "uzbek": "Incentive (o'zbekcha ma'nosi)",
+      "russian": "Incentive (русский перевод)"
+    },
+    "unit": 4,
+    "synonyms": [
+      "incentive",
+      "synonym"
+    ],
+    "collocations": [
+      "use incentive",
+      "academic incentive"
+    ],
+    "audioText": "Incentive. To incentive means to perform or exhibit incentive in a given academic or social context.",
+    "clozeSentence": "The chance of winning a prize was ______ to get people to play the game.",
+    "targetAnswer": "incentive"
+  },
+  {
+    "id": "w70",
+    "word": "Infrastructure",
+    "phonetic": "/infrastructure/",
+    "partOfSpeech": "verb",
+    "definition": "To infrastructure means to perform or exhibit infrastructure in a given academic or social context.",
+    "uzbekDefinition": "Infrastructure so'zining ingliz tilidagi rasmiy ta'rifi: To infrastructure means to perform or exhibit infrastructure in a given academic or social context.",
+    "example": "Power lines are important parts of a city’s infrastructure.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Power lines are important parts of a city’s infrastructure.",
+    "translations": {
+      "uzbek": "Infrastructure (o'zbekcha ma'nosi)",
+      "russian": "Infrastructure (русский перевод)"
+    },
+    "unit": 4,
+    "synonyms": [
+      "infrastructure",
+      "synonym"
+    ],
+    "collocations": [
+      "use infrastructure",
+      "academic infrastructure"
+    ],
+    "audioText": "Infrastructure. To infrastructure means to perform or exhibit infrastructure in a given academic or social context.",
+    "clozeSentence": "Power lines are important parts of a city’s ______.",
+    "targetAnswer": "infrastructure"
+  },
+  {
+    "id": "w71",
+    "word": "Legislate",
+    "phonetic": "/legislate/",
+    "partOfSpeech": "verb",
+    "definition": "To legislate means to perform or exhibit legislate in a given academic or social context.",
+    "uzbekDefinition": "Legislate so'zining ingliz tilidagi rasmiy ta'rifi: To legislate means to perform or exhibit legislate in a given academic or social context.",
+    "example": "Senators have to legislate fairly, so most people will enjoy the benefits.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Senators have to legislate fairly, so most people will enjoy the benefits.",
+    "translations": {
+      "uzbek": "Legislate (o'zbekcha ma'nosi)",
+      "russian": "Legislate (русский перевод)"
+    },
+    "unit": 4,
+    "synonyms": [
+      "legislate",
+      "synonym"
+    ],
+    "collocations": [
+      "use legislate",
+      "academic legislate"
+    ],
+    "audioText": "Legislate. To legislate means to perform or exhibit legislate in a given academic or social context.",
+    "clozeSentence": "Senators have to ______ fairly, so most people will enjoy the benefits.",
+    "targetAnswer": "legislate"
+  },
+  {
+    "id": "w72",
+    "word": "Legitimate",
+    "phonetic": "/legitimate/",
+    "partOfSpeech": "verb",
+    "definition": "If something is legitimate, then it is acceptable according to the law.",
+    "uzbekDefinition": "Legitimate so'zining ingliz tilidagi rasmiy ta'rifi: If something is legitimate, then it is acceptable according to the law.",
+    "example": "She found a legitimate plan to raise extra funds for her vacation.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: She found a legitimate plan to raise extra funds for her vacation.",
+    "translations": {
+      "uzbek": "Legitimate (o'zbekcha ma'nosi)",
+      "russian": "Legitimate (русский перевод)"
+    },
+    "unit": 4,
+    "synonyms": [
+      "legitimate",
+      "synonym"
+    ],
+    "collocations": [
+      "use legitimate",
+      "academic legitimate"
+    ],
+    "audioText": "Legitimate. If something is legitimate, then it is acceptable according to the law.",
+    "clozeSentence": "She found a ______ plan to raise extra funds for her vacation.",
+    "targetAnswer": "legitimate"
+  },
+  {
+    "id": "w73",
+    "word": "Manipulate",
+    "phonetic": "/manipulate/",
+    "partOfSpeech": "verb",
+    "definition": "To manipulate means to perform or exhibit manipulate in a given academic or social context.",
+    "uzbekDefinition": "Manipulate so'zining ingliz tilidagi rasmiy ta'rifi: To manipulate means to perform or exhibit manipulate in a given academic or social context.",
+    "example": "The Dr. manipulated the data to make it look like the cure was working.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The Dr. manipulated the data to make it look like the cure was working.",
+    "translations": {
+      "uzbek": "Manipulate (o'zbekcha ma'nosi)",
+      "russian": "Manipulate (русский перевод)"
+    },
+    "unit": 4,
+    "synonyms": [
+      "manipulate",
+      "synonym"
+    ],
+    "collocations": [
+      "use manipulate",
+      "academic manipulate"
+    ],
+    "audioText": "Manipulate. To manipulate means to perform or exhibit manipulate in a given academic or social context.",
+    "clozeSentence": "The Dr. ______d the data to make it look like the cure was working.",
+    "targetAnswer": "manipulate"
+  },
+  {
+    "id": "w74",
+    "word": "Merchandise",
+    "phonetic": "/merchandise/",
+    "partOfSpeech": "verb",
+    "definition": "To merchandise means to perform or exhibit merchandise in a given academic or social context.",
+    "uzbekDefinition": "Merchandise so'zining ingliz tilidagi rasmiy ta'rifi: To merchandise means to perform or exhibit merchandise in a given academic or social context.",
+    "example": "The store added more merchandise because there were more shoppers.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The store added more merchandise because there were more shoppers.",
+    "translations": {
+      "uzbek": "Merchandise (o'zbekcha ma'nosi)",
+      "russian": "Merchandise (русский перевод)"
+    },
+    "unit": 4,
+    "synonyms": [
+      "merchandise",
+      "synonym"
+    ],
+    "collocations": [
+      "use merchandise",
+      "academic merchandise"
+    ],
+    "audioText": "Merchandise. To merchandise means to perform or exhibit merchandise in a given academic or social context.",
+    "clozeSentence": "The store added more ______ because there were more shoppers.",
+    "targetAnswer": "merchandise"
+  },
+  {
+    "id": "w75",
+    "word": "Retail",
+    "phonetic": "/retail/",
+    "partOfSpeech": "verb",
+    "definition": "Retail is the activity of selling goods to the public, often for personal use.",
+    "uzbekDefinition": "Retail so'zining ingliz tilidagi rasmiy ta'rifi: Retail is the activity of selling goods to the public, often for personal use.",
+    "example": "Though cheap to make, once a t-shirt reaches retail, it costs ten times as much.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Though cheap to make, once a t-shirt reaches retail, it costs ten times as much.",
+    "translations": {
+      "uzbek": "Retail (o'zbekcha ma'nosi)",
+      "russian": "Retail (русский перевод)"
+    },
+    "unit": 4,
+    "synonyms": [
+      "retail",
+      "synonym"
+    ],
+    "collocations": [
+      "use retail",
+      "academic retail"
+    ],
+    "audioText": "Retail. Retail is the activity of selling goods to the public, often for personal use.",
+    "clozeSentence": "Though cheap to make, once a t-shirt reaches ______, it costs ten times as much.",
+    "targetAnswer": "retail"
+  },
+  {
+    "id": "w76",
+    "word": "Revenue",
+    "phonetic": "/revenue/",
+    "partOfSpeech": "verb",
+    "definition": "To revenue means to perform or exhibit revenue in a given academic or social context.",
+    "uzbekDefinition": "Revenue so'zining ingliz tilidagi rasmiy ta'rifi: To revenue means to perform or exhibit revenue in a given academic or social context.",
+    "example": "The new products really increased the business’s monthly revenue.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The new products really increased the business’s monthly revenue.",
+    "translations": {
+      "uzbek": "Revenue (o'zbekcha ma'nosi)",
+      "russian": "Revenue (русский перевод)"
+    },
+    "unit": 4,
+    "synonyms": [
+      "revenue",
+      "synonym"
+    ],
+    "collocations": [
+      "use revenue",
+      "academic revenue"
+    ],
+    "audioText": "Revenue. To revenue means to perform or exhibit revenue in a given academic or social context.",
+    "clozeSentence": "The new products really increased the business’s monthly ______.",
+    "targetAnswer": "revenue"
+  },
+  {
+    "id": "w77",
+    "word": "Rubbish",
+    "phonetic": "/rubbish/",
+    "partOfSpeech": "verb",
+    "definition": "To rubbish means to perform or exhibit rubbish in a given academic or social context.",
+    "uzbekDefinition": "Rubbish so'zining ingliz tilidagi rasmiy ta'rifi: To rubbish means to perform or exhibit rubbish in a given academic or social context.",
+    "example": "The floor around the garbage can was covered with all kinds of rubbish.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The floor around the garbage can was covered with all kinds of rubbish.",
+    "translations": {
+      "uzbek": "Rubbish (o'zbekcha ma'nosi)",
+      "russian": "Rubbish (русский перевод)"
+    },
+    "unit": 4,
+    "synonyms": [
+      "rubbish",
+      "synonym"
+    ],
+    "collocations": [
+      "use rubbish",
+      "academic rubbish"
+    ],
+    "audioText": "Rubbish. To rubbish means to perform or exhibit rubbish in a given academic or social context.",
+    "clozeSentence": "The floor around the garbage can was covered with all kinds of ______.",
+    "targetAnswer": "rubbish"
+  },
+  {
+    "id": "w78",
+    "word": "Subsidy",
+    "phonetic": "/subsidy/",
+    "partOfSpeech": "verb",
+    "definition": "To subsidy means to perform or exhibit subsidy in a given academic or social context.",
+    "uzbekDefinition": "Subsidy so'zining ingliz tilidagi rasmiy ta'rifi: To subsidy means to perform or exhibit subsidy in a given academic or social context.",
+    "example": "The official gave the company a subsidy, so it could open two new factories.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The official gave the company a subsidy, so it could open two new factories.",
+    "translations": {
+      "uzbek": "Subsidy (o'zbekcha ma'nosi)",
+      "russian": "Subsidy (русский перевод)"
+    },
+    "unit": 4,
+    "synonyms": [
+      "subsidy",
+      "synonym"
+    ],
+    "collocations": [
+      "use subsidy",
+      "academic subsidy"
+    ],
+    "audioText": "Subsidy. To subsidy means to perform or exhibit subsidy in a given academic or social context.",
+    "clozeSentence": "The official gave the company a ______, so it could open two new factories.",
+    "targetAnswer": "subsidy"
+  },
+  {
+    "id": "w79",
+    "word": "Transaction",
+    "phonetic": "/transaction/",
+    "partOfSpeech": "verb",
+    "definition": "To transaction means to perform or exhibit transaction in a given academic or social context.",
+    "uzbekDefinition": "Transaction so'zining ingliz tilidagi rasmiy ta'rifi: To transaction means to perform or exhibit transaction in a given academic or social context.",
+    "example": "Because the clerk was new at the job, the simple transaction took a long time.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Because the clerk was new at the job, the simple transaction took a long time.",
+    "translations": {
+      "uzbek": "Transaction (o'zbekcha ma'nosi)",
+      "russian": "Transaction (русский перевод)"
+    },
+    "unit": 4,
+    "synonyms": [
+      "transaction",
+      "synonym"
+    ],
+    "collocations": [
+      "use transaction",
+      "academic transaction"
+    ],
+    "audioText": "Transaction. To transaction means to perform or exhibit transaction in a given academic or social context.",
+    "clozeSentence": "Because the clerk was new at the job, the simple ______ took a long time.",
+    "targetAnswer": "transaction"
+  },
+  {
+    "id": "w80",
+    "word": "Violate",
+    "phonetic": "/violate/",
+    "partOfSpeech": "verb",
+    "definition": "To violate a law, rule, or agreement means to break it.",
+    "uzbekDefinition": "Violate so'zining ingliz tilidagi rasmiy ta'rifi: To violate a law, rule, or agreement means to break it.",
+    "example": "» I was given a ticket because the policeman said I violated the speed limit.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: » I was given a ticket because the policeman said I violated the speed limit.",
+    "translations": {
+      "uzbek": "Violate (o'zbekcha ma'nosi)",
+      "russian": "Violate (русский перевод)"
+    },
+    "unit": 4,
+    "synonyms": [
+      "violate",
+      "synonym"
+    ],
+    "collocations": [
+      "use violate",
+      "academic violate"
+    ],
+    "audioText": "Violate. To violate a law, rule, or agreement means to break it.",
+    "clozeSentence": "» I was given a ticket because the policeman said I ______d the speed limit.",
+    "targetAnswer": "violate"
+  },
+  {
+    "id": "w81",
+    "word": "Assess",
+    "phonetic": "/assess/",
+    "partOfSpeech": "verb",
+    "definition": "To assess something means to judge the structure, purpose, or quality of it.",
+    "uzbekDefinition": "Assess so'zining ingliz tilidagi rasmiy ta'rifi: To assess something means to judge the structure, purpose, or quality of it.",
+    "example": "She assessed the condition of the toy car before buying it.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: She assessed the condition of the toy car before buying it.",
+    "translations": {
+      "uzbek": "Assess (o'zbekcha ma'nosi)",
+      "russian": "Assess (русский перевод)"
+    },
+    "unit": 5,
+    "synonyms": [
+      "assess",
+      "synonym"
+    ],
+    "collocations": [
+      "use assess",
+      "academic assess"
+    ],
+    "audioText": "Assess. To assess something means to judge the structure, purpose, or quality of it.",
+    "clozeSentence": "She ______ed the condition of the toy car before buying it.",
+    "targetAnswer": "assess"
+  },
+  {
+    "id": "w82",
+    "word": "Astonish",
+    "phonetic": "/astonish/",
+    "partOfSpeech": "verb",
+    "definition": "To astonish means to perform or exhibit astonish in a given academic or social context.",
+    "uzbekDefinition": "Astonish so'zining ingliz tilidagi rasmiy ta'rifi: To astonish means to perform or exhibit astonish in a given academic or social context.",
+    "example": "The amount of people that came to her party astonished her.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The amount of people that came to her party astonished her.",
+    "translations": {
+      "uzbek": "Astonish (o'zbekcha ma'nosi)",
+      "russian": "Astonish (русский перевод)"
+    },
+    "unit": 5,
+    "synonyms": [
+      "astonish",
+      "synonym"
+    ],
+    "collocations": [
+      "use astonish",
+      "academic astonish"
+    ],
+    "audioText": "Astonish. To astonish means to perform or exhibit astonish in a given academic or social context.",
+    "clozeSentence": "The amount of people that came to her party ______ed her.",
+    "targetAnswer": "astonish"
+  },
+  {
+    "id": "w83",
+    "word": "Commence",
+    "phonetic": "/commence/",
+    "partOfSpeech": "verb",
+    "definition": "To commence means to perform or exhibit commence in a given academic or social context.",
+    "uzbekDefinition": "Commence so'zining ingliz tilidagi rasmiy ta'rifi: To commence means to perform or exhibit commence in a given academic or social context.",
+    "example": "His speech commenced with a “thankyou” to all who had helped him succeed.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: His speech commenced with a “thankyou” to all who had helped him succeed.",
+    "translations": {
+      "uzbek": "Commence (o'zbekcha ma'nosi)",
+      "russian": "Commence (русский перевод)"
+    },
+    "unit": 5,
+    "synonyms": [
+      "commence",
+      "synonym"
+    ],
+    "collocations": [
+      "use commence",
+      "academic commence"
+    ],
+    "audioText": "Commence. To commence means to perform or exhibit commence in a given academic or social context.",
+    "clozeSentence": "His speech ______d with a “thankyou” to all who had helped him succeed.",
+    "targetAnswer": "commence"
+  },
+  {
+    "id": "w84",
+    "word": "Essence",
+    "phonetic": "/essence/",
+    "partOfSpeech": "verb",
+    "definition": "To essence means to perform or exhibit essence in a given academic or social context.",
+    "uzbekDefinition": "Essence so'zining ingliz tilidagi rasmiy ta'rifi: To essence means to perform or exhibit essence in a given academic or social context.",
+    "example": "The essence of the argument was that both sides felt they had lost money.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The essence of the argument was that both sides felt they had lost money.",
+    "translations": {
+      "uzbek": "Essence (o'zbekcha ma'nosi)",
+      "russian": "Essence (русский перевод)"
+    },
+    "unit": 5,
+    "synonyms": [
+      "essence",
+      "synonym"
+    ],
+    "collocations": [
+      "use essence",
+      "academic essence"
+    ],
+    "audioText": "Essence. To essence means to perform or exhibit essence in a given academic or social context.",
+    "clozeSentence": "The ______ of the argument was that both sides felt they had lost money.",
+    "targetAnswer": "essence"
+  },
+  {
+    "id": "w85",
+    "word": "Extract",
+    "phonetic": "/extract/",
+    "partOfSpeech": "verb",
+    "definition": "To extract means to perform or exhibit extract in a given academic or social context.",
+    "uzbekDefinition": "Extract so'zining ingliz tilidagi rasmiy ta'rifi: To extract means to perform or exhibit extract in a given academic or social context.",
+    "example": "The researcher used the word extract to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word extract to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Extract (o'zbekcha ma'nosi)",
+      "russian": "Extract (русский перевод)"
+    },
+    "unit": 5,
+    "synonyms": [
+      "extract",
+      "synonym"
+    ],
+    "collocations": [
+      "use extract",
+      "academic extract"
+    ],
+    "audioText": "Extract. To extract means to perform or exhibit extract in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "extract"
+  },
+  {
+    "id": "w86",
+    "word": "Fabulous",
+    "phonetic": "/fabulous/",
+    "partOfSpeech": "verb",
+    "definition": "If something is fabulous, it is extremely good.",
+    "uzbekDefinition": "Fabulous so'zining ingliz tilidagi rasmiy ta'rifi: If something is fabulous, it is extremely good.",
+    "example": "This strawberry is the best I’ve ever had. It’s fabulous.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: This strawberry is the best I’ve ever had. It’s fabulous.",
+    "translations": {
+      "uzbek": "Fabulous (o'zbekcha ma'nosi)",
+      "russian": "Fabulous (русский перевод)"
+    },
+    "unit": 5,
+    "synonyms": [
+      "fabulous",
+      "synonym"
+    ],
+    "collocations": [
+      "use fabulous",
+      "academic fabulous"
+    ],
+    "audioText": "Fabulous. If something is fabulous, it is extremely good.",
+    "clozeSentence": "This strawberry is the best I’ve ever had. It’s ______.",
+    "targetAnswer": "fabulous"
+  },
+  {
+    "id": "w87",
+    "word": "Haste",
+    "phonetic": "/haste/",
+    "partOfSpeech": "verb",
+    "definition": "To haste means to perform or exhibit haste in a given academic or social context.",
+    "uzbekDefinition": "Haste so'zining ingliz tilidagi rasmiy ta'rifi: To haste means to perform or exhibit haste in a given academic or social context.",
+    "example": "In order to get to the meeting in time, he proceeds with haste.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: In order to get to the meeting in time, he proceeds with haste.",
+    "translations": {
+      "uzbek": "Haste (o'zbekcha ma'nosi)",
+      "russian": "Haste (русский перевод)"
+    },
+    "unit": 5,
+    "synonyms": [
+      "haste",
+      "synonym"
+    ],
+    "collocations": [
+      "use haste",
+      "academic haste"
+    ],
+    "audioText": "Haste. To haste means to perform or exhibit haste in a given academic or social context.",
+    "clozeSentence": "In order to get to the meeting in time, he proceeds with ______.",
+    "targetAnswer": "haste"
+  },
+  {
+    "id": "w88",
+    "word": "Impulse",
+    "phonetic": "/impulse/",
+    "partOfSpeech": "verb",
+    "definition": "To impulse means to perform or exhibit impulse in a given academic or social context.",
+    "uzbekDefinition": "Impulse so'zining ingliz tilidagi rasmiy ta'rifi: To impulse means to perform or exhibit impulse in a given academic or social context.",
+    "example": "Because of the scary noise, she had an impulse to run somewhere and hide.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Because of the scary noise, she had an impulse to run somewhere and hide.",
+    "translations": {
+      "uzbek": "Impulse (o'zbekcha ma'nosi)",
+      "russian": "Impulse (русский перевод)"
+    },
+    "unit": 5,
+    "synonyms": [
+      "impulse",
+      "synonym"
+    ],
+    "collocations": [
+      "use impulse",
+      "academic impulse"
+    ],
+    "audioText": "Impulse. To impulse means to perform or exhibit impulse in a given academic or social context.",
+    "clozeSentence": "Because of the scary noise, she had an ______ to run somewhere and hide.",
+    "targetAnswer": "impulse"
+  },
+  {
+    "id": "w89",
+    "word": "Latter",
+    "phonetic": "/latter/",
+    "partOfSpeech": "verb",
+    "definition": "To latter means to perform or exhibit latter in a given academic or social context.",
+    "uzbekDefinition": "Latter so'zining ingliz tilidagi rasmiy ta'rifi: To latter means to perform or exhibit latter in a given academic or social context.",
+    "example": "In the latter minutes of the game, the visitors scored the winning goal.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: In the latter minutes of the game, the visitors scored the winning goal.",
+    "translations": {
+      "uzbek": "Latter (o'zbekcha ma'nosi)",
+      "russian": "Latter (русский перевод)"
+    },
+    "unit": 5,
+    "synonyms": [
+      "latter",
+      "synonym"
+    ],
+    "collocations": [
+      "use latter",
+      "academic latter"
+    ],
+    "audioText": "Latter. To latter means to perform or exhibit latter in a given academic or social context.",
+    "clozeSentence": "In the ______ minutes of the game, the visitors scored the winning goal.",
+    "targetAnswer": "latter"
+  },
+  {
+    "id": "w90",
+    "word": "Molecule",
+    "phonetic": "/molecule/",
+    "partOfSpeech": "verb",
+    "definition": "To molecule means to perform or exhibit molecule in a given academic or social context.",
+    "uzbekDefinition": "Molecule so'zining ingliz tilidagi rasmiy ta'rifi: To molecule means to perform or exhibit molecule in a given academic or social context.",
+    "example": "A tiny drop of water is made up of thousands of molecules of water.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: A tiny drop of water is made up of thousands of molecules of water.",
+    "translations": {
+      "uzbek": "Molecule (o'zbekcha ma'nosi)",
+      "russian": "Molecule (русский перевод)"
+    },
+    "unit": 5,
+    "synonyms": [
+      "molecule",
+      "synonym"
+    ],
+    "collocations": [
+      "use molecule",
+      "academic molecule"
+    ],
+    "audioText": "Molecule. To molecule means to perform or exhibit molecule in a given academic or social context.",
+    "clozeSentence": "A tiny drop of water is made up of thousands of ______s of water.",
+    "targetAnswer": "molecule"
+  },
+  {
+    "id": "w91",
+    "word": "Ongoing",
+    "phonetic": "/ongoing/",
+    "partOfSpeech": "verb",
+    "definition": "To ongoing means to perform or exhibit ongoing in a given academic or social context.",
+    "uzbekDefinition": "Ongoing so'zining ingliz tilidagi rasmiy ta'rifi: To ongoing means to perform or exhibit ongoing in a given academic or social context.",
+    "example": "The researcher used the word ongoing to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word ongoing to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Ongoing (o'zbekcha ma'nosi)",
+      "russian": "Ongoing (русский перевод)"
+    },
+    "unit": 5,
+    "synonyms": [
+      "ongoing",
+      "synonym"
+    ],
+    "collocations": [
+      "use ongoing",
+      "academic ongoing"
+    ],
+    "audioText": "Ongoing. To ongoing means to perform or exhibit ongoing in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "ongoing"
+  },
+  {
+    "id": "w92",
+    "word": "Pharmaceutical",
+    "phonetic": "/pharmaceutical/",
+    "partOfSpeech": "verb",
+    "definition": "If something is pharmaceutical, then it is related to the development of drugs.",
+    "uzbekDefinition": "Pharmaceutical so'zining ingliz tilidagi rasmiy ta'rifi: If something is pharmaceutical, then it is related to the development of drugs.",
+    "example": "Pharmaceutical companies discover new cures to illnesses all the time.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Pharmaceutical companies discover new cures to illnesses all the time.",
+    "translations": {
+      "uzbek": "Pharmaceutical (o'zbekcha ma'nosi)",
+      "russian": "Pharmaceutical (русский перевод)"
+    },
+    "unit": 5,
+    "synonyms": [
+      "pharmaceutical",
+      "synonym"
+    ],
+    "collocations": [
+      "use pharmaceutical",
+      "academic pharmaceutical"
+    ],
+    "audioText": "Pharmaceutical. If something is pharmaceutical, then it is related to the development of drugs.",
+    "clozeSentence": "______ companies discover new cures to illnesses all the time.",
+    "targetAnswer": "pharmaceutical"
+  },
+  {
+    "id": "w93",
+    "word": "Precise",
+    "phonetic": "/precise/",
+    "partOfSpeech": "verb",
+    "definition": "To precise means to perform or exhibit precise in a given academic or social context.",
+    "uzbekDefinition": "Precise so'zining ingliz tilidagi rasmiy ta'rifi: To precise means to perform or exhibit precise in a given academic or social context.",
+    "example": "The researcher used the word precise to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word precise to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Precise (o'zbekcha ma'nosi)",
+      "russian": "Precise (русский перевод)"
+    },
+    "unit": 5,
+    "synonyms": [
+      "precise",
+      "synonym"
+    ],
+    "collocations": [
+      "use precise",
+      "academic precise"
+    ],
+    "audioText": "Precise. To precise means to perform or exhibit precise in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "precise"
+  },
+  {
+    "id": "w94",
+    "word": "Proximity",
+    "phonetic": "/proximity/",
+    "partOfSpeech": "verb",
+    "definition": "Proximity is closeness in time, space, or relationships.",
+    "uzbekDefinition": "Proximity so'zining ingliz tilidagi rasmiy ta'rifi: Proximity is closeness in time, space, or relationships.",
+    "example": "All the trees in the proximity of the beach had been cut down.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: All the trees in the proximity of the beach had been cut down.",
+    "translations": {
+      "uzbek": "Proximity (o'zbekcha ma'nosi)",
+      "russian": "Proximity (русский перевод)"
+    },
+    "unit": 5,
+    "synonyms": [
+      "proximity",
+      "synonym"
+    ],
+    "collocations": [
+      "use proximity",
+      "academic proximity"
+    ],
+    "audioText": "Proximity. Proximity is closeness in time, space, or relationships.",
+    "clozeSentence": "All the trees in the ______ of the beach had been cut down.",
+    "targetAnswer": "proximity"
+  },
+  {
+    "id": "w95",
+    "word": "Publicity",
+    "phonetic": "/publicity/",
+    "partOfSpeech": "verb",
+    "definition": "To publicity means to perform or exhibit publicity in a given academic or social context.",
+    "uzbekDefinition": "Publicity so'zining ingliz tilidagi rasmiy ta'rifi: To publicity means to perform or exhibit publicity in a given academic or social context.",
+    "example": "She received a lot of publicity after her performance in the film.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: She received a lot of publicity after her performance in the film.",
+    "translations": {
+      "uzbek": "Publicity (o'zbekcha ma'nosi)",
+      "russian": "Publicity (русский перевод)"
+    },
+    "unit": 5,
+    "synonyms": [
+      "publicity",
+      "synonym"
+    ],
+    "collocations": [
+      "use publicity",
+      "academic publicity"
+    ],
+    "audioText": "Publicity. To publicity means to perform or exhibit publicity in a given academic or social context.",
+    "clozeSentence": "She received a lot of ______ after her performance in the film.",
+    "targetAnswer": "publicity"
+  },
+  {
+    "id": "w96",
+    "word": "Remedy",
+    "phonetic": "/remedy/",
+    "partOfSpeech": "verb",
+    "definition": "A remedy is a cure for a disease, argument, or problem.",
+    "uzbekDefinition": "Remedy so'zining ingliz tilidagi rasmiy ta'rifi: A remedy is a cure for a disease, argument, or problem.",
+    "example": "A good remedy for a headache is an aspirin and a glass of water.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: A good remedy for a headache is an aspirin and a glass of water.",
+    "translations": {
+      "uzbek": "Remedy (o'zbekcha ma'nosi)",
+      "russian": "Remedy (русский перевод)"
+    },
+    "unit": 5,
+    "synonyms": [
+      "remedy",
+      "synonym"
+    ],
+    "collocations": [
+      "use remedy",
+      "academic remedy"
+    ],
+    "audioText": "Remedy. A remedy is a cure for a disease, argument, or problem.",
+    "clozeSentence": "A good ______ for a headache is an aspirin and a glass of water.",
+    "targetAnswer": "remedy"
+  },
+  {
+    "id": "w97",
+    "word": "Significance",
+    "phonetic": "/significance/",
+    "partOfSpeech": "verb",
+    "definition": "To significance means to perform or exhibit significance in a given academic or social context.",
+    "uzbekDefinition": "Significance so'zining ingliz tilidagi rasmiy ta'rifi: To significance means to perform or exhibit significance in a given academic or social context.",
+    "example": "The significance of the snowy weather was that we didn’t have to go to school.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The significance of the snowy weather was that we didn’t have to go to school.",
+    "translations": {
+      "uzbek": "Significance (o'zbekcha ma'nosi)",
+      "russian": "Significance (русский перевод)"
+    },
+    "unit": 5,
+    "synonyms": [
+      "significance",
+      "synonym"
+    ],
+    "collocations": [
+      "use significance",
+      "academic significance"
+    ],
+    "audioText": "Significance. To significance means to perform or exhibit significance in a given academic or social context.",
+    "clozeSentence": "The ______ of the snowy weather was that we didn’t have to go to school.",
+    "targetAnswer": "significance"
+  },
+  {
+    "id": "w98",
+    "word": "Subsequent",
+    "phonetic": "/subsequent/",
+    "partOfSpeech": "verb",
+    "definition": "If something is subsequent, then it comes after something else in time.",
+    "uzbekDefinition": "Subsequent so'zining ingliz tilidagi rasmiy ta'rifi: If something is subsequent, then it comes after something else in time.",
+    "example": "The flood and the subsequent rescue of those caught in the flood were on TV.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The flood and the subsequent rescue of those caught in the flood were on TV.",
+    "translations": {
+      "uzbek": "Subsequent (o'zbekcha ma'nosi)",
+      "russian": "Subsequent (русский перевод)"
+    },
+    "unit": 5,
+    "synonyms": [
+      "subsequent",
+      "synonym"
+    ],
+    "collocations": [
+      "use subsequent",
+      "academic subsequent"
+    ],
+    "audioText": "Subsequent. If something is subsequent, then it comes after something else in time.",
+    "clozeSentence": "The flood and the ______ rescue of those caught in the flood were on TV.",
+    "targetAnswer": "subsequent"
+  },
+  {
+    "id": "w99",
+    "word": "Synthetic",
+    "phonetic": "/synthetic/",
+    "partOfSpeech": "verb",
+    "definition": "If something is synthetic, then it is made to be like something natural.",
+    "uzbekDefinition": "Synthetic so'zining ingliz tilidagi rasmiy ta'rifi: If something is synthetic, then it is made to be like something natural.",
+    "example": "Clothing made out of synthetic fabrics is very effective at keeping people warm.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Clothing made out of synthetic fabrics is very effective at keeping people warm.",
+    "translations": {
+      "uzbek": "Synthetic (o'zbekcha ma'nosi)",
+      "russian": "Synthetic (русский перевод)"
+    },
+    "unit": 5,
+    "synonyms": [
+      "synthetic",
+      "synonym"
+    ],
+    "collocations": [
+      "use synthetic",
+      "academic synthetic"
+    ],
+    "audioText": "Synthetic. If something is synthetic, then it is made to be like something natural.",
+    "clozeSentence": "Clothing made out of ______ fabrics is very effective at keeping people warm.",
+    "targetAnswer": "synthetic"
+  },
+  {
+    "id": "w100",
+    "word": "Terminal",
+    "phonetic": "/terminal/",
+    "partOfSpeech": "verb",
+    "definition": "If something is terminal, then it causes or results in death.",
+    "uzbekDefinition": "Terminal so'zining ingliz tilidagi rasmiy ta'rifi: If something is terminal, then it causes or results in death.",
+    "example": "Since his condition was not terminal, he felt a great sense of relief.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Since his condition was not terminal, he felt a great sense of relief.",
+    "translations": {
+      "uzbek": "Terminal (o'zbekcha ma'nosi)",
+      "russian": "Terminal (русский перевод)"
+    },
+    "unit": 5,
+    "synonyms": [
+      "terminal",
+      "synonym"
+    ],
+    "collocations": [
+      "use terminal",
+      "academic terminal"
+    ],
+    "audioText": "Terminal. If something is terminal, then it causes or results in death.",
+    "clozeSentence": "Since his condition was not ______, he felt a great sense of relief.",
+    "targetAnswer": "terminal"
+  },
+  {
+    "id": "w101",
+    "word": "Altitude",
+    "phonetic": "/altitude/",
+    "partOfSpeech": "verb",
+    "definition": "To altitude means to perform or exhibit altitude in a given academic or social context.",
+    "uzbekDefinition": "Altitude so'zining ingliz tilidagi rasmiy ta'rifi: To altitude means to perform or exhibit altitude in a given academic or social context.",
+    "example": "The researcher used the word altitude to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word altitude to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Altitude (o'zbekcha ma'nosi)",
+      "russian": "Altitude (русский перевод)"
+    },
+    "unit": 6,
+    "synonyms": [
+      "altitude",
+      "synonym"
+    ],
+    "collocations": [
+      "use altitude",
+      "academic altitude"
+    ],
+    "audioText": "Altitude. To altitude means to perform or exhibit altitude in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "altitude"
+  },
+  {
+    "id": "w102",
+    "word": "Coastline",
+    "phonetic": "/coastline/",
+    "partOfSpeech": "verb",
+    "definition": "A coastline is the outline of a country’s coast.",
+    "uzbekDefinition": "Coastline so'zining ingliz tilidagi rasmiy ta'rifi: A coastline is the outline of a country’s coast.",
+    "example": "He noticed that most of the cities in Australia are on the coastline.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: He noticed that most of the cities in Australia are on the coastline.",
+    "translations": {
+      "uzbek": "Coastline (o'zbekcha ma'nosi)",
+      "russian": "Coastline (русский перевод)"
+    },
+    "unit": 6,
+    "synonyms": [
+      "coastline",
+      "synonym"
+    ],
+    "collocations": [
+      "use coastline",
+      "academic coastline"
+    ],
+    "audioText": "Coastline. A coastline is the outline of a country’s coast.",
+    "clozeSentence": "He noticed that most of the cities in Australia are on the ______.",
+    "targetAnswer": "coastline"
+  },
+  {
+    "id": "w103",
+    "word": "Deter",
+    "phonetic": "/deter/",
+    "partOfSpeech": "verb",
+    "definition": "To deter means to perform or exhibit deter in a given academic or social context.",
+    "uzbekDefinition": "Deter so'zining ingliz tilidagi rasmiy ta'rifi: To deter means to perform or exhibit deter in a given academic or social context.",
+    "example": "Icy roads deter people from driving their cars.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Icy roads deter people from driving their cars.",
+    "translations": {
+      "uzbek": "Deter (o'zbekcha ma'nosi)",
+      "russian": "Deter (русский перевод)"
+    },
+    "unit": 6,
+    "synonyms": [
+      "deter",
+      "synonym"
+    ],
+    "collocations": [
+      "use deter",
+      "academic deter"
+    ],
+    "audioText": "Deter. To deter means to perform or exhibit deter in a given academic or social context.",
+    "clozeSentence": "Icy roads ______ people from driving their cars.",
+    "targetAnswer": "deter"
+  },
+  {
+    "id": "w104",
+    "word": "Devise",
+    "phonetic": "/devise/",
+    "partOfSpeech": "verb",
+    "definition": "To devise means to perform or exhibit devise in a given academic or social context.",
+    "uzbekDefinition": "Devise so'zining ingliz tilidagi rasmiy ta'rifi: To devise means to perform or exhibit devise in a given academic or social context.",
+    "example": "The thieves devised a plan to steal the diamonds.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The thieves devised a plan to steal the diamonds.",
+    "translations": {
+      "uzbek": "Devise (o'zbekcha ma'nosi)",
+      "russian": "Devise (русский перевод)"
+    },
+    "unit": 6,
+    "synonyms": [
+      "devise",
+      "synonym"
+    ],
+    "collocations": [
+      "use devise",
+      "academic devise"
+    ],
+    "audioText": "Devise. To devise means to perform or exhibit devise in a given academic or social context.",
+    "clozeSentence": "The thieves ______d a plan to steal the diamonds.",
+    "targetAnswer": "devise"
+  },
+  {
+    "id": "w105",
+    "word": "Expertise",
+    "phonetic": "/expertise/",
+    "partOfSpeech": "verb",
+    "definition": "To expertise means to perform or exhibit expertise in a given academic or social context.",
+    "uzbekDefinition": "Expertise so'zining ingliz tilidagi rasmiy ta'rifi: To expertise means to perform or exhibit expertise in a given academic or social context.",
+    "example": "John has a lot of advertising expertise. He can sell anything!",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: John has a lot of advertising expertise. He can sell anything!",
+    "translations": {
+      "uzbek": "Expertise (o'zbekcha ma'nosi)",
+      "russian": "Expertise (русский перевод)"
+    },
+    "unit": 6,
+    "synonyms": [
+      "expertise",
+      "synonym"
+    ],
+    "collocations": [
+      "use expertise",
+      "academic expertise"
+    ],
+    "audioText": "Expertise. To expertise means to perform or exhibit expertise in a given academic or social context.",
+    "clozeSentence": "John has a lot of advertising ______. He can sell anything!",
+    "targetAnswer": "expertise"
+  },
+  {
+    "id": "w106",
+    "word": "Fracture",
+    "phonetic": "/fracture/",
+    "partOfSpeech": "verb",
+    "definition": "To fracture means to perform or exhibit fracture in a given academic or social context.",
+    "uzbekDefinition": "Fracture so'zining ingliz tilidagi rasmiy ta'rifi: To fracture means to perform or exhibit fracture in a given academic or social context.",
+    "example": "Don’t stand on that teg because there is a fracture. It might get worse.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Don’t stand on that teg because there is a fracture. It might get worse.",
+    "translations": {
+      "uzbek": "Fracture (o'zbekcha ma'nosi)",
+      "russian": "Fracture (русский перевод)"
+    },
+    "unit": 6,
+    "synonyms": [
+      "fracture",
+      "synonym"
+    ],
+    "collocations": [
+      "use fracture",
+      "academic fracture"
+    ],
+    "audioText": "Fracture. To fracture means to perform or exhibit fracture in a given academic or social context.",
+    "clozeSentence": "Don’t stand on that teg because there is a ______. It might get worse.",
+    "targetAnswer": "fracture"
+  },
+  {
+    "id": "w107",
+    "word": "Impair",
+    "phonetic": "/impair/",
+    "partOfSpeech": "verb",
+    "definition": "To impair means to perform or exhibit impair in a given academic or social context.",
+    "uzbekDefinition": "Impair so'zining ingliz tilidagi rasmiy ta'rifi: To impair means to perform or exhibit impair in a given academic or social context.",
+    "example": "Drinking coffee impairs my ability to go to sleep.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Drinking coffee impairs my ability to go to sleep.",
+    "translations": {
+      "uzbek": "Impair (o'zbekcha ma'nosi)",
+      "russian": "Impair (русский перевод)"
+    },
+    "unit": 6,
+    "synonyms": [
+      "impair",
+      "synonym"
+    ],
+    "collocations": [
+      "use impair",
+      "academic impair"
+    ],
+    "audioText": "Impair. To impair means to perform or exhibit impair in a given academic or social context.",
+    "clozeSentence": "Drinking coffee ______s my ability to go to sleep.",
+    "targetAnswer": "impair"
+  },
+  {
+    "id": "w108",
+    "word": "Implement",
+    "phonetic": "/implement/",
+    "partOfSpeech": "verb",
+    "definition": "To implement means to perform or exhibit implement in a given academic or social context.",
+    "uzbekDefinition": "Implement so'zining ingliz tilidagi rasmiy ta'rifi: To implement means to perform or exhibit implement in a given academic or social context.",
+    "example": "The school decided to implement a new teaching strategy.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The school decided to implement a new teaching strategy.",
+    "translations": {
+      "uzbek": "Implement (o'zbekcha ma'nosi)",
+      "russian": "Implement (русский перевод)"
+    },
+    "unit": 6,
+    "synonyms": [
+      "implement",
+      "synonym"
+    ],
+    "collocations": [
+      "use implement",
+      "academic implement"
+    ],
+    "audioText": "Implement. To implement means to perform or exhibit implement in a given academic or social context.",
+    "clozeSentence": "The school decided to ______ a new teaching strategy.",
+    "targetAnswer": "implement"
+  },
+  {
+    "id": "w109",
+    "word": "Indigenous",
+    "phonetic": "/indigenous/",
+    "partOfSpeech": "verb",
+    "definition": "If something is indigenous, it is originally from, or native to, a place.",
+    "uzbekDefinition": "Indigenous so'zining ingliz tilidagi rasmiy ta'rifi: If something is indigenous, it is originally from, or native to, a place.",
+    "example": "Tomatoes are indigenous to the Americas.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Tomatoes are indigenous to the Americas.",
+    "translations": {
+      "uzbek": "Indigenous (o'zbekcha ma'nosi)",
+      "russian": "Indigenous (русский перевод)"
+    },
+    "unit": 6,
+    "synonyms": [
+      "indigenous",
+      "synonym"
+    ],
+    "collocations": [
+      "use indigenous",
+      "academic indigenous"
+    ],
+    "audioText": "Indigenous. If something is indigenous, it is originally from, or native to, a place.",
+    "clozeSentence": "Tomatoes are ______ to the Americas.",
+    "targetAnswer": "indigenous"
+  },
+  {
+    "id": "w110",
+    "word": "Insight",
+    "phonetic": "/insight/",
+    "partOfSpeech": "verb",
+    "definition": "To insight means to perform or exhibit insight in a given academic or social context.",
+    "uzbekDefinition": "Insight so'zining ingliz tilidagi rasmiy ta'rifi: To insight means to perform or exhibit insight in a given academic or social context.",
+    "example": "The physics textbook gave the student new insight about gravity.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The physics textbook gave the student new insight about gravity.",
+    "translations": {
+      "uzbek": "Insight (o'zbekcha ma'nosi)",
+      "russian": "Insight (русский перевод)"
+    },
+    "unit": 6,
+    "synonyms": [
+      "insight",
+      "synonym"
+    ],
+    "collocations": [
+      "use insight",
+      "academic insight"
+    ],
+    "audioText": "Insight. To insight means to perform or exhibit insight in a given academic or social context.",
+    "clozeSentence": "The physics textbook gave the student new ______ about gravity.",
+    "targetAnswer": "insight"
+  },
+  {
+    "id": "w111",
+    "word": "Limb",
+    "phonetic": "/limb/",
+    "partOfSpeech": "verb",
+    "definition": "To limb means to perform or exhibit limb in a given academic or social context.",
+    "uzbekDefinition": "Limb so'zining ingliz tilidagi rasmiy ta'rifi: To limb means to perform or exhibit limb in a given academic or social context.",
+    "example": "The researcher used the word limb to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word limb to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Limb (o'zbekcha ma'nosi)",
+      "russian": "Limb (русский перевод)"
+    },
+    "unit": 6,
+    "synonyms": [
+      "limb",
+      "synonym"
+    ],
+    "collocations": [
+      "use limb",
+      "academic limb"
+    ],
+    "audioText": "Limb. To limb means to perform or exhibit limb in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "limb"
+  },
+  {
+    "id": "w112",
+    "word": "Migraine",
+    "phonetic": "/migraine/",
+    "partOfSpeech": "verb",
+    "definition": "To migraine means to perform or exhibit migraine in a given academic or social context.",
+    "uzbekDefinition": "Migraine so'zining ingliz tilidagi rasmiy ta'rifi: To migraine means to perform or exhibit migraine in a given academic or social context.",
+    "example": "My sister gets a migraine every time she has a lot of stress.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: My sister gets a migraine every time she has a lot of stress.",
+    "translations": {
+      "uzbek": "Migraine (o'zbekcha ma'nosi)",
+      "russian": "Migraine (русский перевод)"
+    },
+    "unit": 6,
+    "synonyms": [
+      "migraine",
+      "synonym"
+    ],
+    "collocations": [
+      "use migraine",
+      "academic migraine"
+    ],
+    "audioText": "Migraine. To migraine means to perform or exhibit migraine in a given academic or social context.",
+    "clozeSentence": "My sister gets a ______ every time she has a lot of stress.",
+    "targetAnswer": "migraine"
+  },
+  {
+    "id": "w113",
+    "word": "Optimism",
+    "phonetic": "/optimism/",
+    "partOfSpeech": "verb",
+    "definition": "To optimism means to perform or exhibit optimism in a given academic or social context.",
+    "uzbekDefinition": "Optimism so'zining ingliz tilidagi rasmiy ta'rifi: To optimism means to perform or exhibit optimism in a given academic or social context.",
+    "example": "The mother had optimism about her children’s futures.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The mother had optimism about her children’s futures.",
+    "translations": {
+      "uzbek": "Optimism (o'zbekcha ma'nosi)",
+      "russian": "Optimism (русский перевод)"
+    },
+    "unit": 6,
+    "synonyms": [
+      "optimism",
+      "synonym"
+    ],
+    "collocations": [
+      "use optimism",
+      "academic optimism"
+    ],
+    "audioText": "Optimism. To optimism means to perform or exhibit optimism in a given academic or social context.",
+    "clozeSentence": "The mother had ______ about her children’s futures.",
+    "targetAnswer": "optimism"
+  },
+  {
+    "id": "w114",
+    "word": "Peculiar",
+    "phonetic": "/peculiar/",
+    "partOfSpeech": "verb",
+    "definition": "When something is peculiar, it is strange, sometimes in a bad way.",
+    "uzbekDefinition": "Peculiar so'zining ingliz tilidagi rasmiy ta'rifi: When something is peculiar, it is strange, sometimes in a bad way.",
+    "example": "That peculiar smell coming from the kitchen reminds me of rotten eggs.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: That peculiar smell coming from the kitchen reminds me of rotten eggs.",
+    "translations": {
+      "uzbek": "Peculiar (o'zbekcha ma'nosi)",
+      "russian": "Peculiar (русский перевод)"
+    },
+    "unit": 6,
+    "synonyms": [
+      "peculiar",
+      "synonym"
+    ],
+    "collocations": [
+      "use peculiar",
+      "academic peculiar"
+    ],
+    "audioText": "Peculiar. When something is peculiar, it is strange, sometimes in a bad way.",
+    "clozeSentence": "That ______ smell coming from the kitchen reminds me of rotten eggs.",
+    "targetAnswer": "peculiar"
+  },
+  {
+    "id": "w115",
+    "word": "Proficient",
+    "phonetic": "/proficient/",
+    "partOfSpeech": "verb",
+    "definition": "When a person is proficient at something, they can do it well.",
+    "uzbekDefinition": "Proficient so'zining ingliz tilidagi rasmiy ta'rifi: When a person is proficient at something, they can do it well.",
+    "example": "Secretaries are proficient at typing quickly.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Secretaries are proficient at typing quickly.",
+    "translations": {
+      "uzbek": "Proficient (o'zbekcha ma'nosi)",
+      "russian": "Proficient (русский перевод)"
+    },
+    "unit": 6,
+    "synonyms": [
+      "proficient",
+      "synonym"
+    ],
+    "collocations": [
+      "use proficient",
+      "academic proficient"
+    ],
+    "audioText": "Proficient. When a person is proficient at something, they can do it well.",
+    "clozeSentence": "Secretaries are ______ at typing quickly.",
+    "targetAnswer": "proficient"
+  },
+  {
+    "id": "w116",
+    "word": "Quest",
+    "phonetic": "/quest/",
+    "partOfSpeech": "verb",
+    "definition": "To quest means to perform or exhibit quest in a given academic or social context.",
+    "uzbekDefinition": "Quest so'zining ingliz tilidagi rasmiy ta'rifi: To quest means to perform or exhibit quest in a given academic or social context.",
+    "example": "The treasure hunter went on a quest to find an ancient gold necklace.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The treasure hunter went on a quest to find an ancient gold necklace.",
+    "translations": {
+      "uzbek": "Quest (o'zbekcha ma'nosi)",
+      "russian": "Quest (русский перевод)"
+    },
+    "unit": 6,
+    "synonyms": [
+      "quest",
+      "synonym"
+    ],
+    "collocations": [
+      "use quest",
+      "academic quest"
+    ],
+    "audioText": "Quest. To quest means to perform or exhibit quest in a given academic or social context.",
+    "clozeSentence": "The treasure hunter went on a ______ to find an ancient gold necklace.",
+    "targetAnswer": "quest"
+  },
+  {
+    "id": "w117",
+    "word": "Ridge",
+    "phonetic": "/ridge/",
+    "partOfSpeech": "verb",
+    "definition": "To ridge means to perform or exhibit ridge in a given academic or social context.",
+    "uzbekDefinition": "Ridge so'zining ingliz tilidagi rasmiy ta'rifi: To ridge means to perform or exhibit ridge in a given academic or social context.",
+    "example": "The researcher used the word ridge to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word ridge to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Ridge (o'zbekcha ma'nosi)",
+      "russian": "Ridge (русский перевод)"
+    },
+    "unit": 6,
+    "synonyms": [
+      "ridge",
+      "synonym"
+    ],
+    "collocations": [
+      "use ridge",
+      "academic ridge"
+    ],
+    "audioText": "Ridge. To ridge means to perform or exhibit ridge in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "ridge"
+  },
+  {
+    "id": "w118",
+    "word": "Spouse",
+    "phonetic": "/spouse/",
+    "partOfSpeech": "verb",
+    "definition": "To spouse means to perform or exhibit spouse in a given academic or social context.",
+    "uzbekDefinition": "Spouse so'zining ingliz tilidagi rasmiy ta'rifi: To spouse means to perform or exhibit spouse in a given academic or social context.",
+    "example": "I live in a home with my spouse and our two children.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: I live in a home with my spouse and our two children.",
+    "translations": {
+      "uzbek": "Spouse (o'zbekcha ma'nosi)",
+      "russian": "Spouse (русский перевод)"
+    },
+    "unit": 6,
+    "synonyms": [
+      "spouse",
+      "synonym"
+    ],
+    "collocations": [
+      "use spouse",
+      "academic spouse"
+    ],
+    "audioText": "Spouse. To spouse means to perform or exhibit spouse in a given academic or social context.",
+    "clozeSentence": "I live in a home with my ______ and our two children.",
+    "targetAnswer": "spouse"
+  },
+  {
+    "id": "w119",
+    "word": "Thrust",
+    "phonetic": "/thrust/",
+    "partOfSpeech": "verb",
+    "definition": "To thrust means to perform or exhibit thrust in a given academic or social context.",
+    "uzbekDefinition": "Thrust so'zining ingliz tilidagi rasmiy ta'rifi: To thrust means to perform or exhibit thrust in a given academic or social context.",
+    "example": "The boxer thrust his fist into the punching bag.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The boxer thrust his fist into the punching bag.",
+    "translations": {
+      "uzbek": "Thrust (o'zbekcha ma'nosi)",
+      "russian": "Thrust (русский перевод)"
+    },
+    "unit": 6,
+    "synonyms": [
+      "thrust",
+      "synonym"
+    ],
+    "collocations": [
+      "use thrust",
+      "academic thrust"
+    ],
+    "audioText": "Thrust. To thrust means to perform or exhibit thrust in a given academic or social context.",
+    "clozeSentence": "The boxer ______ his fist into the punching bag.",
+    "targetAnswer": "thrust"
+  },
+  {
+    "id": "w120",
+    "word": "Tolerate",
+    "phonetic": "/tolerate/",
+    "partOfSpeech": "verb",
+    "definition": "To tolerate means to perform or exhibit tolerate in a given academic or social context.",
+    "uzbekDefinition": "Tolerate so'zining ingliz tilidagi rasmiy ta'rifi: To tolerate means to perform or exhibit tolerate in a given academic or social context.",
+    "example": "When you are in a hurry, it can be hard to tolerate traffic signals.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: When you are in a hurry, it can be hard to tolerate traffic signals.",
+    "translations": {
+      "uzbek": "Tolerate (o'zbekcha ma'nosi)",
+      "russian": "Tolerate (русский перевод)"
+    },
+    "unit": 6,
+    "synonyms": [
+      "tolerate",
+      "synonym"
+    ],
+    "collocations": [
+      "use tolerate",
+      "academic tolerate"
+    ],
+    "audioText": "Tolerate. To tolerate means to perform or exhibit tolerate in a given academic or social context.",
+    "clozeSentence": "When you are in a hurry, it can be hard to ______ traffic signals.",
+    "targetAnswer": "tolerate"
+  },
+  {
+    "id": "w121",
+    "word": "Aquatic",
+    "phonetic": "/aquatic/",
+    "partOfSpeech": "verb",
+    "definition": "To aquatic means to perform or exhibit aquatic in a given academic or social context.",
+    "uzbekDefinition": "Aquatic so'zining ingliz tilidagi rasmiy ta'rifi: To aquatic means to perform or exhibit aquatic in a given academic or social context.",
+    "example": "The researcher used the word aquatic to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word aquatic to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Aquatic (o'zbekcha ma'nosi)",
+      "russian": "Aquatic (русский перевод)"
+    },
+    "unit": 7,
+    "synonyms": [
+      "aquatic",
+      "synonym"
+    ],
+    "collocations": [
+      "use aquatic",
+      "academic aquatic"
+    ],
+    "audioText": "Aquatic. To aquatic means to perform or exhibit aquatic in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "aquatic"
+  },
+  {
+    "id": "w122",
+    "word": "Biosphere",
+    "phonetic": "/biosphere/",
+    "partOfSpeech": "verb",
+    "definition": "The biosphere is the earth’s surface and atmosphere where there are living things.",
+    "uzbekDefinition": "Biosphere so'zining ingliz tilidagi rasmiy ta'rifi: The biosphere is the earth’s surface and atmosphere where there are living things.",
+    "example": "Birds, trees, and worms all thrive in the biosphere.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Birds, trees, and worms all thrive in the biosphere.",
+    "translations": {
+      "uzbek": "Biosphere (o'zbekcha ma'nosi)",
+      "russian": "Biosphere (русский перевод)"
+    },
+    "unit": 7,
+    "synonyms": [
+      "biosphere",
+      "synonym"
+    ],
+    "collocations": [
+      "use biosphere",
+      "academic biosphere"
+    ],
+    "audioText": "Biosphere. The biosphere is the earth’s surface and atmosphere where there are living things.",
+    "clozeSentence": "Birds, trees, and worms all thrive in the ______.",
+    "targetAnswer": "biosphere"
+  },
+  {
+    "id": "w123",
+    "word": "Bizarre",
+    "phonetic": "/bizarre/",
+    "partOfSpeech": "verb",
+    "definition": "When something is bizarre, it is very strange.",
+    "uzbekDefinition": "Bizarre so'zining ingliz tilidagi rasmiy ta'rifi: When something is bizarre, it is very strange.",
+    "example": "My bizarre dreams make no sense to me when I am awake.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: My bizarre dreams make no sense to me when I am awake.",
+    "translations": {
+      "uzbek": "Bizarre (o'zbekcha ma'nosi)",
+      "russian": "Bizarre (русский перевод)"
+    },
+    "unit": 7,
+    "synonyms": [
+      "bizarre",
+      "synonym"
+    ],
+    "collocations": [
+      "use bizarre",
+      "academic bizarre"
+    ],
+    "audioText": "Bizarre. When something is bizarre, it is very strange.",
+    "clozeSentence": "My ______ dreams make no sense to me when I am awake.",
+    "targetAnswer": "bizarre"
+  },
+  {
+    "id": "w124",
+    "word": "Celsius",
+    "phonetic": "/Celsius/",
+    "partOfSpeech": "verb",
+    "definition": "To Celsius means to perform or exhibit Celsius in a given academic or social context.",
+    "uzbekDefinition": "Celsius so'zining ingliz tilidagi rasmiy ta'rifi: To Celsius means to perform or exhibit Celsius in a given academic or social context.",
+    "example": "The researcher used the word Celsius to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word Celsius to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Celsius (o'zbekcha ma'nosi)",
+      "russian": "Celsius (русский перевод)"
+    },
+    "unit": 7,
+    "synonyms": [
+      "Celsius",
+      "synonym"
+    ],
+    "collocations": [
+      "use Celsius",
+      "academic Celsius"
+    ],
+    "audioText": "Celsius. To Celsius means to perform or exhibit Celsius in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "Celsius"
+  },
+  {
+    "id": "w125",
+    "word": "Coarse",
+    "phonetic": "/coarse/",
+    "partOfSpeech": "verb",
+    "definition": "If something is coarse, that means it has a rough texture.",
+    "uzbekDefinition": "Coarse so'zining ingliz tilidagi rasmiy ta'rifi: If something is coarse, that means it has a rough texture.",
+    "example": "The coarse sweater made my skin itch.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The coarse sweater made my skin itch.",
+    "translations": {
+      "uzbek": "Coarse (o'zbekcha ma'nosi)",
+      "russian": "Coarse (русский перевод)"
+    },
+    "unit": 7,
+    "synonyms": [
+      "coarse",
+      "synonym"
+    ],
+    "collocations": [
+      "use coarse",
+      "academic coarse"
+    ],
+    "audioText": "Coarse. If something is coarse, that means it has a rough texture.",
+    "clozeSentence": "The ______ sweater made my skin itch.",
+    "targetAnswer": "coarse"
+  },
+  {
+    "id": "w126",
+    "word": "Companion",
+    "phonetic": "/companion/",
+    "partOfSpeech": "verb",
+    "definition": "To companion means to perform or exhibit companion in a given academic or social context.",
+    "uzbekDefinition": "Companion so'zining ingliz tilidagi rasmiy ta'rifi: To companion means to perform or exhibit companion in a given academic or social context.",
+    "example": "I always walk to school with my companion Frank.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: I always walk to school with my companion Frank.",
+    "translations": {
+      "uzbek": "Companion (o'zbekcha ma'nosi)",
+      "russian": "Companion (русский перевод)"
+    },
+    "unit": 7,
+    "synonyms": [
+      "companion",
+      "synonym"
+    ],
+    "collocations": [
+      "use companion",
+      "academic companion"
+    ],
+    "audioText": "Companion. To companion means to perform or exhibit companion in a given academic or social context.",
+    "clozeSentence": "I always walk to school with my ______ Frank.",
+    "targetAnswer": "companion"
+  },
+  {
+    "id": "w127",
+    "word": "Digest",
+    "phonetic": "/digest/",
+    "partOfSpeech": "verb",
+    "definition": "To digest means to perform or exhibit digest in a given academic or social context.",
+    "uzbekDefinition": "Digest so'zining ingliz tilidagi rasmiy ta'rifi: To digest means to perform or exhibit digest in a given academic or social context.",
+    "example": "Allow some time for food to be digested before going swimming.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Allow some time for food to be digested before going swimming.",
+    "translations": {
+      "uzbek": "Digest (o'zbekcha ma'nosi)",
+      "russian": "Digest (русский перевод)"
+    },
+    "unit": 7,
+    "synonyms": [
+      "digest",
+      "synonym"
+    ],
+    "collocations": [
+      "use digest",
+      "academic digest"
+    ],
+    "audioText": "Digest. To digest means to perform or exhibit digest in a given academic or social context.",
+    "clozeSentence": "Allow some time for food to be ______ed before going swimming.",
+    "targetAnswer": "digest"
+  },
+  {
+    "id": "w128",
+    "word": "Duration",
+    "phonetic": "/duration/",
+    "partOfSpeech": "verb",
+    "definition": "To duration means to perform or exhibit duration in a given academic or social context.",
+    "uzbekDefinition": "Duration so'zining ingliz tilidagi rasmiy ta'rifi: To duration means to perform or exhibit duration in a given academic or social context.",
+    "example": "The girls watched television for the duration of the evening.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The girls watched television for the duration of the evening.",
+    "translations": {
+      "uzbek": "Duration (o'zbekcha ma'nosi)",
+      "russian": "Duration (русский перевод)"
+    },
+    "unit": 7,
+    "synonyms": [
+      "duration",
+      "synonym"
+    ],
+    "collocations": [
+      "use duration",
+      "academic duration"
+    ],
+    "audioText": "Duration. To duration means to perform or exhibit duration in a given academic or social context.",
+    "clozeSentence": "The girls watched television for the ______ of the evening.",
+    "targetAnswer": "duration"
+  },
+  {
+    "id": "w129",
+    "word": "Ecology",
+    "phonetic": "/ecology/",
+    "partOfSpeech": "verb",
+    "definition": "To ecology means to perform or exhibit ecology in a given academic or social context.",
+    "uzbekDefinition": "Ecology so'zining ingliz tilidagi rasmiy ta'rifi: To ecology means to perform or exhibit ecology in a given academic or social context.",
+    "example": "We study ecology to learn how to help improve the Earth.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: We study ecology to learn how to help improve the Earth.",
+    "translations": {
+      "uzbek": "Ecology (o'zbekcha ma'nosi)",
+      "russian": "Ecology (русский перевод)"
+    },
+    "unit": 7,
+    "synonyms": [
+      "ecology",
+      "synonym"
+    ],
+    "collocations": [
+      "use ecology",
+      "academic ecology"
+    ],
+    "audioText": "Ecology. To ecology means to perform or exhibit ecology in a given academic or social context.",
+    "clozeSentence": "We study ______ to learn how to help improve the Earth.",
+    "targetAnswer": "ecology"
+  },
+  {
+    "id": "w130",
+    "word": "Feat",
+    "phonetic": "/feat/",
+    "partOfSpeech": "verb",
+    "definition": "To feat means to perform or exhibit feat in a given academic or social context.",
+    "uzbekDefinition": "Feat so'zining ingliz tilidagi rasmiy ta'rifi: To feat means to perform or exhibit feat in a given academic or social context.",
+    "example": "The elephant’s standing up on one leg was a feat.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The elephant’s standing up on one leg was a feat.",
+    "translations": {
+      "uzbek": "Feat (o'zbekcha ma'nosi)",
+      "russian": "Feat (русский перевод)"
+    },
+    "unit": 7,
+    "synonyms": [
+      "feat",
+      "synonym"
+    ],
+    "collocations": [
+      "use feat",
+      "academic feat"
+    ],
+    "audioText": "Feat. To feat means to perform or exhibit feat in a given academic or social context.",
+    "clozeSentence": "The elephant’s standing up on one leg was a ______.",
+    "targetAnswer": "feat"
+  },
+  {
+    "id": "w131",
+    "word": "Infinite",
+    "phonetic": "/infinite/",
+    "partOfSpeech": "verb",
+    "definition": "If something is infinite, it has no limit or end.",
+    "uzbekDefinition": "Infinite so'zining ingliz tilidagi rasmiy ta'rifi: If something is infinite, it has no limit or end.",
+    "example": "Many scientists believe that the universe is infinite.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Many scientists believe that the universe is infinite.",
+    "translations": {
+      "uzbek": "Infinite (o'zbekcha ma'nosi)",
+      "russian": "Infinite (русский перевод)"
+    },
+    "unit": 7,
+    "synonyms": [
+      "infinite",
+      "synonym"
+    ],
+    "collocations": [
+      "use infinite",
+      "academic infinite"
+    ],
+    "audioText": "Infinite. If something is infinite, it has no limit or end.",
+    "clozeSentence": "Many scientists believe that the universe is ______.",
+    "targetAnswer": "infinite"
+  },
+  {
+    "id": "w132",
+    "word": "Nucleus",
+    "phonetic": "/nucleus/",
+    "partOfSpeech": "verb",
+    "definition": "To nucleus means to perform or exhibit nucleus in a given academic or social context.",
+    "uzbekDefinition": "Nucleus so'zining ingliz tilidagi rasmiy ta'rifi: To nucleus means to perform or exhibit nucleus in a given academic or social context.",
+    "example": "The nucleus is made up of many tiny particles.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The nucleus is made up of many tiny particles.",
+    "translations": {
+      "uzbek": "Nucleus (o'zbekcha ma'nosi)",
+      "russian": "Nucleus (русский перевод)"
+    },
+    "unit": 7,
+    "synonyms": [
+      "nucleus",
+      "synonym"
+    ],
+    "collocations": [
+      "use nucleus",
+      "academic nucleus"
+    ],
+    "audioText": "Nucleus. To nucleus means to perform or exhibit nucleus in a given academic or social context.",
+    "clozeSentence": "The ______ is made up of many tiny particles.",
+    "targetAnswer": "nucleus"
+  },
+  {
+    "id": "w133",
+    "word": "Parasite",
+    "phonetic": "/parasite/",
+    "partOfSpeech": "verb",
+    "definition": "To parasite means to perform or exhibit parasite in a given academic or social context.",
+    "uzbekDefinition": "Parasite so'zining ingliz tilidagi rasmiy ta'rifi: To parasite means to perform or exhibit parasite in a given academic or social context.",
+    "example": "The sick dog was covered in parasites.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The sick dog was covered in parasites.",
+    "translations": {
+      "uzbek": "Parasite (o'zbekcha ma'nosi)",
+      "russian": "Parasite (русский перевод)"
+    },
+    "unit": 7,
+    "synonyms": [
+      "parasite",
+      "synonym"
+    ],
+    "collocations": [
+      "use parasite",
+      "academic parasite"
+    ],
+    "audioText": "Parasite. To parasite means to perform or exhibit parasite in a given academic or social context.",
+    "clozeSentence": "The sick dog was covered in ______s.",
+    "targetAnswer": "parasite"
+  },
+  {
+    "id": "w134",
+    "word": "Prominent",
+    "phonetic": "/prominent/",
+    "partOfSpeech": "verb",
+    "definition": "When something is prominent, it is important and well known.",
+    "uzbekDefinition": "Prominent so'zining ingliz tilidagi rasmiy ta'rifi: When something is prominent, it is important and well known.",
+    "example": "Queen Victoria was a prominent person in history.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Queen Victoria was a prominent person in history.",
+    "translations": {
+      "uzbek": "Prominent (o'zbekcha ma'nosi)",
+      "russian": "Prominent (русский перевод)"
+    },
+    "unit": 7,
+    "synonyms": [
+      "prominent",
+      "synonym"
+    ],
+    "collocations": [
+      "use prominent",
+      "academic prominent"
+    ],
+    "audioText": "Prominent. When something is prominent, it is important and well known.",
+    "clozeSentence": "Queen Victoria was a ______ person in history.",
+    "targetAnswer": "prominent"
+  },
+  {
+    "id": "w135",
+    "word": "Repetitive",
+    "phonetic": "/repetitive/",
+    "partOfSpeech": "verb",
+    "definition": "When something is repetitive, it is repeated many times and becomes boring.",
+    "uzbekDefinition": "Repetitive so'zining ingliz tilidagi rasmiy ta'rifi: When something is repetitive, it is repeated many times and becomes boring.",
+    "example": "Working on an assembly line making cars every day is a repetitive job.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Working on an assembly line making cars every day is a repetitive job.",
+    "translations": {
+      "uzbek": "Repetitive (o'zbekcha ma'nosi)",
+      "russian": "Repetitive (русский перевод)"
+    },
+    "unit": 7,
+    "synonyms": [
+      "repetitive",
+      "synonym"
+    ],
+    "collocations": [
+      "use repetitive",
+      "academic repetitive"
+    ],
+    "audioText": "Repetitive. When something is repetitive, it is repeated many times and becomes boring.",
+    "clozeSentence": "Working on an assembly line making cars every day is a ______ job.",
+    "targetAnswer": "repetitive"
+  },
+  {
+    "id": "w136",
+    "word": "Reproductive",
+    "phonetic": "/reproductive/",
+    "partOfSpeech": "verb",
+    "definition": "If something is reproductive, it has to do with a living thing producing young.",
+    "uzbekDefinition": "Reproductive so'zining ingliz tilidagi rasmiy ta'rifi: If something is reproductive, it has to do with a living thing producing young.",
+    "example": "The reproductive system of a plant is simple.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The reproductive system of a plant is simple.",
+    "translations": {
+      "uzbek": "Reproductive (o'zbekcha ma'nosi)",
+      "russian": "Reproductive (русский перевод)"
+    },
+    "unit": 7,
+    "synonyms": [
+      "reproductive",
+      "synonym"
+    ],
+    "collocations": [
+      "use reproductive",
+      "academic reproductive"
+    ],
+    "audioText": "Reproductive. If something is reproductive, it has to do with a living thing producing young.",
+    "clozeSentence": "The ______ system of a plant is simple.",
+    "targetAnswer": "reproductive"
+  },
+  {
+    "id": "w137",
+    "word": "Temperate",
+    "phonetic": "/temperate/",
+    "partOfSpeech": "verb",
+    "definition": "When a place is temperate, it never gets too hot or cold.",
+    "uzbekDefinition": "Temperate so'zining ingliz tilidagi rasmiy ta'rifi: When a place is temperate, it never gets too hot or cold.",
+    "example": "In Peru, the weather is temperate and rarely gets too hot or cold.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: In Peru, the weather is temperate and rarely gets too hot or cold.",
+    "translations": {
+      "uzbek": "Temperate (o'zbekcha ma'nosi)",
+      "russian": "Temperate (русский перевод)"
+    },
+    "unit": 7,
+    "synonyms": [
+      "temperate",
+      "synonym"
+    ],
+    "collocations": [
+      "use temperate",
+      "academic temperate"
+    ],
+    "audioText": "Temperate. When a place is temperate, it never gets too hot or cold.",
+    "clozeSentence": "In Peru, the weather is ______ and rarely gets too hot or cold.",
+    "targetAnswer": "temperate"
+  },
+  {
+    "id": "w138",
+    "word": "Tolerance",
+    "phonetic": "/tolerance/",
+    "partOfSpeech": "verb",
+    "definition": "To tolerance means to perform or exhibit tolerance in a given academic or social context.",
+    "uzbekDefinition": "Tolerance so'zining ingliz tilidagi rasmiy ta'rifi: To tolerance means to perform or exhibit tolerance in a given academic or social context.",
+    "example": "The researcher used the word tolerance to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word tolerance to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Tolerance (o'zbekcha ma'nosi)",
+      "russian": "Tolerance (русский перевод)"
+    },
+    "unit": 7,
+    "synonyms": [
+      "tolerance",
+      "synonym"
+    ],
+    "collocations": [
+      "use tolerance",
+      "academic tolerance"
+    ],
+    "audioText": "Tolerance. To tolerance means to perform or exhibit tolerance in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "tolerance"
+  },
+  {
+    "id": "w139",
+    "word": "Undergo",
+    "phonetic": "/undergo/",
+    "partOfSpeech": "verb",
+    "definition": "To undergo means to perform or exhibit undergo in a given academic or social context.",
+    "uzbekDefinition": "Undergo so'zining ingliz tilidagi rasmiy ta'rifi: To undergo means to perform or exhibit undergo in a given academic or social context.",
+    "example": "The cancer patient undergoes treatments twice a week.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The cancer patient undergoes treatments twice a week.",
+    "translations": {
+      "uzbek": "Undergo (o'zbekcha ma'nosi)",
+      "russian": "Undergo (русский перевод)"
+    },
+    "unit": 7,
+    "synonyms": [
+      "undergo",
+      "synonym"
+    ],
+    "collocations": [
+      "use undergo",
+      "academic undergo"
+    ],
+    "audioText": "Undergo. To undergo means to perform or exhibit undergo in a given academic or social context.",
+    "clozeSentence": "The cancer patient ______es treatments twice a week.",
+    "targetAnswer": "undergo"
+  },
+  {
+    "id": "w140",
+    "word": "Vulnerable",
+    "phonetic": "/vulnerable/",
+    "partOfSpeech": "verb",
+    "definition": "When someone is vulnerable, they are weak and without protection.",
+    "uzbekDefinition": "Vulnerable so'zining ingliz tilidagi rasmiy ta'rifi: When someone is vulnerable, they are weak and without protection.",
+    "example": "He felt very vulnerable when he was stranded in the desert.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: He felt very vulnerable when he was stranded in the desert.",
+    "translations": {
+      "uzbek": "Vulnerable (o'zbekcha ma'nosi)",
+      "russian": "Vulnerable (русский перевод)"
+    },
+    "unit": 7,
+    "synonyms": [
+      "vulnerable",
+      "synonym"
+    ],
+    "collocations": [
+      "use vulnerable",
+      "academic vulnerable"
+    ],
+    "audioText": "Vulnerable. When someone is vulnerable, they are weak and without protection.",
+    "clozeSentence": "He felt very ______ when he was stranded in the desert.",
+    "targetAnswer": "vulnerable"
+  },
+  {
+    "id": "w141",
+    "word": "Adept",
+    "phonetic": "/adept/",
+    "partOfSpeech": "verb",
+    "definition": "If someone is adept at something, they are very good at doing it.",
+    "uzbekDefinition": "Adept so'zining ingliz tilidagi rasmiy ta'rifi: If someone is adept at something, they are very good at doing it.",
+    "example": "The carpenter is very adept at building houses.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The carpenter is very adept at building houses.",
+    "translations": {
+      "uzbek": "Adept (o'zbekcha ma'nosi)",
+      "russian": "Adept (русский перевод)"
+    },
+    "unit": 8,
+    "synonyms": [
+      "adept",
+      "synonym"
+    ],
+    "collocations": [
+      "use adept",
+      "academic adept"
+    ],
+    "audioText": "Adept. If someone is adept at something, they are very good at doing it.",
+    "clozeSentence": "The carpenter is very ______ at building houses.",
+    "targetAnswer": "adept"
+  },
+  {
+    "id": "w142",
+    "word": "Barren",
+    "phonetic": "/barren/",
+    "partOfSpeech": "verb",
+    "definition": "If land is barren, it has no plants growing on it.",
+    "uzbekDefinition": "Barren so'zining ingliz tilidagi rasmiy ta'rifi: If land is barren, it has no plants growing on it.",
+    "example": "People cannot farm in barren lands.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: People cannot farm in barren lands.",
+    "translations": {
+      "uzbek": "Barren (o'zbekcha ma'nosi)",
+      "russian": "Barren (русский перевод)"
+    },
+    "unit": 8,
+    "synonyms": [
+      "barren",
+      "synonym"
+    ],
+    "collocations": [
+      "use barren",
+      "academic barren"
+    ],
+    "audioText": "Barren. If land is barren, it has no plants growing on it.",
+    "clozeSentence": "People cannot farm in ______ lands.",
+    "targetAnswer": "barren"
+  },
+  {
+    "id": "w143",
+    "word": "Ceramic",
+    "phonetic": "/ceramic/",
+    "partOfSpeech": "verb",
+    "definition": "If something is ceramic, it is made of baked clay.",
+    "uzbekDefinition": "Ceramic so'zining ingliz tilidagi rasmiy ta'rifi: If something is ceramic, it is made of baked clay.",
+    "example": "The house’s roof was made of ceramic tiles.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The house’s roof was made of ceramic tiles.",
+    "translations": {
+      "uzbek": "Ceramic (o'zbekcha ma'nosi)",
+      "russian": "Ceramic (русский перевод)"
+    },
+    "unit": 8,
+    "synonyms": [
+      "ceramic",
+      "synonym"
+    ],
+    "collocations": [
+      "use ceramic",
+      "academic ceramic"
+    ],
+    "audioText": "Ceramic. If something is ceramic, it is made of baked clay.",
+    "clozeSentence": "The house’s roof was made of ______ tiles.",
+    "targetAnswer": "ceramic"
+  },
+  {
+    "id": "w144",
+    "word": "Culinary",
+    "phonetic": "/culinary/",
+    "partOfSpeech": "verb",
+    "definition": "If something is culinary, it is related to cooking.",
+    "uzbekDefinition": "Culinary so'zining ingliz tilidagi rasmiy ta'rifi: If something is culinary, it is related to cooking.",
+    "example": "I gained culinary skills after working in a restaurant for many years.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: I gained culinary skills after working in a restaurant for many years.",
+    "translations": {
+      "uzbek": "Culinary (o'zbekcha ma'nosi)",
+      "russian": "Culinary (русский перевод)"
+    },
+    "unit": 8,
+    "synonyms": [
+      "culinary",
+      "synonym"
+    ],
+    "collocations": [
+      "use culinary",
+      "academic culinary"
+    ],
+    "audioText": "Culinary. If something is culinary, it is related to cooking.",
+    "clozeSentence": "I gained ______ skills after working in a restaurant for many years.",
+    "targetAnswer": "culinary"
+  },
+  {
+    "id": "w145",
+    "word": "Dense",
+    "phonetic": "/dense/",
+    "partOfSpeech": "verb",
+    "definition": "If something is dense, it has a lot of things close together.",
+    "uzbekDefinition": "Dense so'zining ingliz tilidagi rasmiy ta'rifi: If something is dense, it has a lot of things close together.",
+    "example": "I easily became lost in the dense forest.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: I easily became lost in the dense forest.",
+    "translations": {
+      "uzbek": "Dense (o'zbekcha ma'nosi)",
+      "russian": "Dense (русский перевод)"
+    },
+    "unit": 8,
+    "synonyms": [
+      "dense",
+      "synonym"
+    ],
+    "collocations": [
+      "use dense",
+      "academic dense"
+    ],
+    "audioText": "Dense. If something is dense, it has a lot of things close together.",
+    "clozeSentence": "I easily became lost in the ______ forest.",
+    "targetAnswer": "dense"
+  },
+  {
+    "id": "w146",
+    "word": "Dignity",
+    "phonetic": "/dignity/",
+    "partOfSpeech": "verb",
+    "definition": "To dignity means to perform or exhibit dignity in a given academic or social context.",
+    "uzbekDefinition": "Dignity so'zining ingliz tilidagi rasmiy ta'rifi: To dignity means to perform or exhibit dignity in a given academic or social context.",
+    "example": "When his company went out of business, he faced it with dignity.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: When his company went out of business, he faced it with dignity.",
+    "translations": {
+      "uzbek": "Dignity (o'zbekcha ma'nosi)",
+      "russian": "Dignity (русский перевод)"
+    },
+    "unit": 8,
+    "synonyms": [
+      "dignity",
+      "synonym"
+    ],
+    "collocations": [
+      "use dignity",
+      "academic dignity"
+    ],
+    "audioText": "Dignity. To dignity means to perform or exhibit dignity in a given academic or social context.",
+    "clozeSentence": "When his company went out of business, he faced it with ______.",
+    "targetAnswer": "dignity"
+  },
+  {
+    "id": "w147",
+    "word": "Dominate",
+    "phonetic": "/dominate/",
+    "partOfSpeech": "verb",
+    "definition": "To dominate means to perform or exhibit dominate in a given academic or social context.",
+    "uzbekDefinition": "Dominate so'zining ingliz tilidagi rasmiy ta'rifi: To dominate means to perform or exhibit dominate in a given academic or social context.",
+    "example": "The loud man dominated the conversation.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The loud man dominated the conversation.",
+    "translations": {
+      "uzbek": "Dominate (o'zbekcha ma'nosi)",
+      "russian": "Dominate (русский перевод)"
+    },
+    "unit": 8,
+    "synonyms": [
+      "dominate",
+      "synonym"
+    ],
+    "collocations": [
+      "use dominate",
+      "academic dominate"
+    ],
+    "audioText": "Dominate. To dominate means to perform or exhibit dominate in a given academic or social context.",
+    "clozeSentence": "The loud man ______d the conversation.",
+    "targetAnswer": "dominate"
+  },
+  {
+    "id": "w148",
+    "word": "Edible",
+    "phonetic": "/edible/",
+    "partOfSpeech": "verb",
+    "definition": "If something is edible, you can eat it.",
+    "uzbekDefinition": "Edible so'zining ingliz tilidagi rasmiy ta'rifi: If something is edible, you can eat it.",
+    "example": "We learn about edible plants when we go camping.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: We learn about edible plants when we go camping.",
+    "translations": {
+      "uzbek": "Edible (o'zbekcha ma'nosi)",
+      "russian": "Edible (русский перевод)"
+    },
+    "unit": 8,
+    "synonyms": [
+      "edible",
+      "synonym"
+    ],
+    "collocations": [
+      "use edible",
+      "academic edible"
+    ],
+    "audioText": "Edible. If something is edible, you can eat it.",
+    "clozeSentence": "We learn about ______ plants when we go camping.",
+    "targetAnswer": "edible"
+  },
+  {
+    "id": "w149",
+    "word": "Hostile",
+    "phonetic": "/hostile/",
+    "partOfSpeech": "verb",
+    "definition": "If someone is hostile, they are angry and unfriendly.",
+    "uzbekDefinition": "Hostile so'zining ingliz tilidagi rasmiy ta'rifi: If someone is hostile, they are angry and unfriendly.",
+    "example": "We were happy to move away from our hostile neighbor.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: We were happy to move away from our hostile neighbor.",
+    "translations": {
+      "uzbek": "Hostile (o'zbekcha ma'nosi)",
+      "russian": "Hostile (русский перевод)"
+    },
+    "unit": 8,
+    "synonyms": [
+      "hostile",
+      "synonym"
+    ],
+    "collocations": [
+      "use hostile",
+      "academic hostile"
+    ],
+    "audioText": "Hostile. If someone is hostile, they are angry and unfriendly.",
+    "clozeSentence": "We were happy to move away from our ______ neighbor.",
+    "targetAnswer": "hostile"
+  },
+  {
+    "id": "w150",
+    "word": "Intake",
+    "phonetic": "/intake/",
+    "partOfSpeech": "verb",
+    "definition": "To intake means to perform or exhibit intake in a given academic or social context.",
+    "uzbekDefinition": "Intake so'zining ingliz tilidagi rasmiy ta'rifi: To intake means to perform or exhibit intake in a given academic or social context.",
+    "example": "The doctor said I needed to increase my intake of fruits and vegetables.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The doctor said I needed to increase my intake of fruits and vegetables.",
+    "translations": {
+      "uzbek": "Intake (o'zbekcha ma'nosi)",
+      "russian": "Intake (русский перевод)"
+    },
+    "unit": 8,
+    "synonyms": [
+      "intake",
+      "synonym"
+    ],
+    "collocations": [
+      "use intake",
+      "academic intake"
+    ],
+    "audioText": "Intake. To intake means to perform or exhibit intake in a given academic or social context.",
+    "clozeSentence": "The doctor said I needed to increase my ______ of fruits and vegetables.",
+    "targetAnswer": "intake"
+  },
+  {
+    "id": "w151",
+    "word": "Likewise",
+    "phonetic": "/likewise/",
+    "partOfSpeech": "verb",
+    "definition": "To likewise means to perform or exhibit likewise in a given academic or social context.",
+    "uzbekDefinition": "Likewise so'zining ingliz tilidagi rasmiy ta'rifi: To likewise means to perform or exhibit likewise in a given academic or social context.",
+    "example": "The researcher used the word likewise to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word likewise to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Likewise (o'zbekcha ma'nosi)",
+      "russian": "Likewise (русский перевод)"
+    },
+    "unit": 8,
+    "synonyms": [
+      "likewise",
+      "synonym"
+    ],
+    "collocations": [
+      "use likewise",
+      "academic likewise"
+    ],
+    "audioText": "Likewise. To likewise means to perform or exhibit likewise in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "likewise"
+  },
+  {
+    "id": "w152",
+    "word": "Malnutrition",
+    "phonetic": "/malnutrition/",
+    "partOfSpeech": "verb",
+    "definition": "To malnutrition means to perform or exhibit malnutrition in a given academic or social context.",
+    "uzbekDefinition": "Malnutrition so'zining ingliz tilidagi rasmiy ta'rifi: To malnutrition means to perform or exhibit malnutrition in a given academic or social context.",
+    "example": "After eating only a meager amount of food, she suffered from malnutrition.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: After eating only a meager amount of food, she suffered from malnutrition.",
+    "translations": {
+      "uzbek": "Malnutrition (o'zbekcha ma'nosi)",
+      "russian": "Malnutrition (русский перевод)"
+    },
+    "unit": 8,
+    "synonyms": [
+      "malnutrition",
+      "synonym"
+    ],
+    "collocations": [
+      "use malnutrition",
+      "academic malnutrition"
+    ],
+    "audioText": "Malnutrition. To malnutrition means to perform or exhibit malnutrition in a given academic or social context.",
+    "clozeSentence": "After eating only a meager amount of food, she suffered from ______.",
+    "targetAnswer": "malnutrition"
+  },
+  {
+    "id": "w153",
+    "word": "Medication",
+    "phonetic": "/medication/",
+    "partOfSpeech": "verb",
+    "definition": "To medication means to perform or exhibit medication in a given academic or social context.",
+    "uzbekDefinition": "Medication so'zining ingliz tilidagi rasmiy ta'rifi: To medication means to perform or exhibit medication in a given academic or social context.",
+    "example": "The doctor gave me medication to treat my illness.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The doctor gave me medication to treat my illness.",
+    "translations": {
+      "uzbek": "Medication (o'zbekcha ma'nosi)",
+      "russian": "Medication (русский перевод)"
+    },
+    "unit": 8,
+    "synonyms": [
+      "medication",
+      "synonym"
+    ],
+    "collocations": [
+      "use medication",
+      "academic medication"
+    ],
+    "audioText": "Medication. To medication means to perform or exhibit medication in a given academic or social context.",
+    "clozeSentence": "The doctor gave me ______ to treat my illness.",
+    "targetAnswer": "medication"
+  },
+  {
+    "id": "w154",
+    "word": "Misconception",
+    "phonetic": "/misconception/",
+    "partOfSpeech": "verb",
+    "definition": "To misconception means to perform or exhibit misconception in a given academic or social context.",
+    "uzbekDefinition": "Misconception so'zining ingliz tilidagi rasmiy ta'rifi: To misconception means to perform or exhibit misconception in a given academic or social context.",
+    "example": "People once believed the misconception that the Earth is flat.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: People once believed the misconception that the Earth is flat.",
+    "translations": {
+      "uzbek": "Misconception (o'zbekcha ma'nosi)",
+      "russian": "Misconception (русский перевод)"
+    },
+    "unit": 8,
+    "synonyms": [
+      "misconception",
+      "synonym"
+    ],
+    "collocations": [
+      "use misconception",
+      "academic misconception"
+    ],
+    "audioText": "Misconception. To misconception means to perform or exhibit misconception in a given academic or social context.",
+    "clozeSentence": "People once believed the ______ that the Earth is flat.",
+    "targetAnswer": "misconception"
+  },
+  {
+    "id": "w155",
+    "word": "Obscure",
+    "phonetic": "/obscure/",
+    "partOfSpeech": "verb",
+    "definition": "If something is obscure, it is not well-known.",
+    "uzbekDefinition": "Obscure so'zining ingliz tilidagi rasmiy ta'rifi: If something is obscure, it is not well-known.",
+    "example": "The old man travels the world in search of obscure books.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The old man travels the world in search of obscure books.",
+    "translations": {
+      "uzbek": "Obscure (o'zbekcha ma'nosi)",
+      "russian": "Obscure (русский перевод)"
+    },
+    "unit": 8,
+    "synonyms": [
+      "obscure",
+      "synonym"
+    ],
+    "collocations": [
+      "use obscure",
+      "academic obscure"
+    ],
+    "audioText": "Obscure. If something is obscure, it is not well-known.",
+    "clozeSentence": "The old man travels the world in search of ______ books.",
+    "targetAnswer": "obscure"
+  },
+  {
+    "id": "w156",
+    "word": "Oppress",
+    "phonetic": "/oppress/",
+    "partOfSpeech": "verb",
+    "definition": "To oppress means to perform or exhibit oppress in a given academic or social context.",
+    "uzbekDefinition": "Oppress so'zining ingliz tilidagi rasmiy ta'rifi: To oppress means to perform or exhibit oppress in a given academic or social context.",
+    "example": "The researcher used the word oppress to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word oppress to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Oppress (o'zbekcha ma'nosi)",
+      "russian": "Oppress (русский перевод)"
+    },
+    "unit": 8,
+    "synonyms": [
+      "oppress",
+      "synonym"
+    ],
+    "collocations": [
+      "use oppress",
+      "academic oppress"
+    ],
+    "audioText": "Oppress. To oppress means to perform or exhibit oppress in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "oppress"
+  },
+  {
+    "id": "w157",
+    "word": "Peel",
+    "phonetic": "/peel/",
+    "partOfSpeech": "verb",
+    "definition": "To peel means to perform or exhibit peel in a given academic or social context.",
+    "uzbekDefinition": "Peel so'zining ingliz tilidagi rasmiy ta'rifi: To peel means to perform or exhibit peel in a given academic or social context.",
+    "example": "l/l/e peeled the apple before eating it.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: l/l/e peeled the apple before eating it.",
+    "translations": {
+      "uzbek": "Peel (o'zbekcha ma'nosi)",
+      "russian": "Peel (русский перевод)"
+    },
+    "unit": 8,
+    "synonyms": [
+      "peel",
+      "synonym"
+    ],
+    "collocations": [
+      "use peel",
+      "academic peel"
+    ],
+    "audioText": "Peel. To peel means to perform or exhibit peel in a given academic or social context.",
+    "clozeSentence": "l/l/e ______ed the apple before eating it.",
+    "targetAnswer": "peel"
+  },
+  {
+    "id": "w158",
+    "word": "Prescription",
+    "phonetic": "/prescription/",
+    "partOfSpeech": "verb",
+    "definition": "To prescription means to perform or exhibit prescription in a given academic or social context.",
+    "uzbekDefinition": "Prescription so'zining ingliz tilidagi rasmiy ta'rifi: To prescription means to perform or exhibit prescription in a given academic or social context.",
+    "example": "The doctor gave me a prescription for my medication.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The doctor gave me a prescription for my medication.",
+    "translations": {
+      "uzbek": "Prescription (o'zbekcha ma'nosi)",
+      "russian": "Prescription (русский перевод)"
+    },
+    "unit": 8,
+    "synonyms": [
+      "prescription",
+      "synonym"
+    ],
+    "collocations": [
+      "use prescription",
+      "academic prescription"
+    ],
+    "audioText": "Prescription. To prescription means to perform or exhibit prescription in a given academic or social context.",
+    "clozeSentence": "The doctor gave me a ______ for my medication.",
+    "targetAnswer": "prescription"
+  },
+  {
+    "id": "w159",
+    "word": "Respirator",
+    "phonetic": "/respirator/",
+    "partOfSpeech": "verb",
+    "definition": "To respirator means to perform or exhibit respirator in a given academic or social context.",
+    "uzbekDefinition": "Respirator so'zining ingliz tilidagi rasmiy ta'rifi: To respirator means to perform or exhibit respirator in a given academic or social context.",
+    "example": "The man needed a respirator to breathe.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The man needed a respirator to breathe.",
+    "translations": {
+      "uzbek": "Respirator (o'zbekcha ma'nosi)",
+      "russian": "Respirator (русский перевод)"
+    },
+    "unit": 8,
+    "synonyms": [
+      "respirator",
+      "synonym"
+    ],
+    "collocations": [
+      "use respirator",
+      "academic respirator"
+    ],
+    "audioText": "Respirator. To respirator means to perform or exhibit respirator in a given academic or social context.",
+    "clozeSentence": "The man needed a ______ to breathe.",
+    "targetAnswer": "respirator"
+  },
+  {
+    "id": "w160",
+    "word": "Strive",
+    "phonetic": "/strive/",
+    "partOfSpeech": "verb",
+    "definition": "To strive means to perform or exhibit strive in a given academic or social context.",
+    "uzbekDefinition": "Strive so'zining ingliz tilidagi rasmiy ta'rifi: To strive means to perform or exhibit strive in a given academic or social context.",
+    "example": "People who strive to succeed often do.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: People who strive to succeed often do.",
+    "translations": {
+      "uzbek": "Strive (o'zbekcha ma'nosi)",
+      "russian": "Strive (русский перевод)"
+    },
+    "unit": 8,
+    "synonyms": [
+      "strive",
+      "synonym"
+    ],
+    "collocations": [
+      "use strive",
+      "academic strive"
+    ],
+    "audioText": "Strive. To strive means to perform or exhibit strive in a given academic or social context.",
+    "clozeSentence": "People who ______ to succeed often do.",
+    "targetAnswer": "strive"
+  },
+  {
+    "id": "w161",
+    "word": "Archaic",
+    "phonetic": "/archaic/",
+    "partOfSpeech": "verb",
+    "definition": "If something is archaic, it is very old or outdated.",
+    "uzbekDefinition": "Archaic so'zining ingliz tilidagi rasmiy ta'rifi: If something is archaic, it is very old or outdated.",
+    "example": "To be competitive, we must update our archaic equipment.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: To be competitive, we must update our archaic equipment.",
+    "translations": {
+      "uzbek": "Archaic (o'zbekcha ma'nosi)",
+      "russian": "Archaic (русский перевод)"
+    },
+    "unit": 9,
+    "synonyms": [
+      "archaic",
+      "synonym"
+    ],
+    "collocations": [
+      "use archaic",
+      "academic archaic"
+    ],
+    "audioText": "Archaic. If something is archaic, it is very old or outdated.",
+    "clozeSentence": "To be competitive, we must update our ______ equipment.",
+    "targetAnswer": "archaic"
+  },
+  {
+    "id": "w162",
+    "word": "Benevolent",
+    "phonetic": "/benevolent/",
+    "partOfSpeech": "verb",
+    "definition": "If someone is benevolent, they are kind and generous.",
+    "uzbekDefinition": "Benevolent so'zining ingliz tilidagi rasmiy ta'rifi: If someone is benevolent, they are kind and generous.",
+    "example": "My father was a benevolent man and gave lots of money to charity.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: My father was a benevolent man and gave lots of money to charity.",
+    "translations": {
+      "uzbek": "Benevolent (o'zbekcha ma'nosi)",
+      "russian": "Benevolent (русский перевод)"
+    },
+    "unit": 9,
+    "synonyms": [
+      "benevolent",
+      "synonym"
+    ],
+    "collocations": [
+      "use benevolent",
+      "academic benevolent"
+    ],
+    "audioText": "Benevolent. If someone is benevolent, they are kind and generous.",
+    "clozeSentence": "My father was a ______ man and gave lots of money to charity.",
+    "targetAnswer": "benevolent"
+  },
+  {
+    "id": "w163",
+    "word": "Brass",
+    "phonetic": "/brass/",
+    "partOfSpeech": "verb",
+    "definition": "To brass means to perform or exhibit brass in a given academic or social context.",
+    "uzbekDefinition": "Brass so'zining ingliz tilidagi rasmiy ta'rifi: To brass means to perform or exhibit brass in a given academic or social context.",
+    "example": "+ Brass is used to make musical instruments like trumpets.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: + Brass is used to make musical instruments like trumpets.",
+    "translations": {
+      "uzbek": "Brass (o'zbekcha ma'nosi)",
+      "russian": "Brass (русский перевод)"
+    },
+    "unit": 9,
+    "synonyms": [
+      "brass",
+      "synonym"
+    ],
+    "collocations": [
+      "use brass",
+      "academic brass"
+    ],
+    "audioText": "Brass. To brass means to perform or exhibit brass in a given academic or social context.",
+    "clozeSentence": "+ ______ is used to make musical instruments like trumpets.",
+    "targetAnswer": "brass"
+  },
+  {
+    "id": "w164",
+    "word": "Capitalism",
+    "phonetic": "/capitalism/",
+    "partOfSpeech": "verb",
+    "definition": "To capitalism means to perform or exhibit capitalism in a given academic or social context.",
+    "uzbekDefinition": "Capitalism so'zining ingliz tilidagi rasmiy ta'rifi: To capitalism means to perform or exhibit capitalism in a given academic or social context.",
+    "example": "Most industries in the world today are based on capitalism.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Most industries in the world today are based on capitalism.",
+    "translations": {
+      "uzbek": "Capitalism (o'zbekcha ma'nosi)",
+      "russian": "Capitalism (русский перевод)"
+    },
+    "unit": 9,
+    "synonyms": [
+      "capitalism",
+      "synonym"
+    ],
+    "collocations": [
+      "use capitalism",
+      "academic capitalism"
+    ],
+    "audioText": "Capitalism. To capitalism means to perform or exhibit capitalism in a given academic or social context.",
+    "clozeSentence": "Most industries in the world today are based on ______.",
+    "targetAnswer": "capitalism"
+  },
+  {
+    "id": "w165",
+    "word": "Component",
+    "phonetic": "/component/",
+    "partOfSpeech": "verb",
+    "definition": "To component means to perform or exhibit component in a given academic or social context.",
+    "uzbekDefinition": "Component so'zining ingliz tilidagi rasmiy ta'rifi: To component means to perform or exhibit component in a given academic or social context.",
+    "example": "Computers have many different components, so they are complicated to build.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Computers have many different components, so they are complicated to build.",
+    "translations": {
+      "uzbek": "Component (o'zbekcha ma'nosi)",
+      "russian": "Component (русский перевод)"
+    },
+    "unit": 9,
+    "synonyms": [
+      "component",
+      "synonym"
+    ],
+    "collocations": [
+      "use component",
+      "academic component"
+    ],
+    "audioText": "Component. To component means to perform or exhibit component in a given academic or social context.",
+    "clozeSentence": "Computers have many different ______s, so they are complicated to build.",
+    "targetAnswer": "component"
+  },
+  {
+    "id": "w166",
+    "word": "Dependence",
+    "phonetic": "/dependence/",
+    "partOfSpeech": "verb",
+    "definition": "To dependence means to perform or exhibit dependence in a given academic or social context.",
+    "uzbekDefinition": "Dependence so'zining ingliz tilidagi rasmiy ta'rifi: To dependence means to perform or exhibit dependence in a given academic or social context.",
+    "example": "Young children have a dependence on their parents.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Young children have a dependence on their parents.",
+    "translations": {
+      "uzbek": "Dependence (o'zbekcha ma'nosi)",
+      "russian": "Dependence (русский перевод)"
+    },
+    "unit": 9,
+    "synonyms": [
+      "dependence",
+      "synonym"
+    ],
+    "collocations": [
+      "use dependence",
+      "academic dependence"
+    ],
+    "audioText": "Dependence. To dependence means to perform or exhibit dependence in a given academic or social context.",
+    "clozeSentence": "Young children have a ______ on their parents.",
+    "targetAnswer": "dependence"
+  },
+  {
+    "id": "w167",
+    "word": "Diminish",
+    "phonetic": "/diminish/",
+    "partOfSpeech": "verb",
+    "definition": "To diminish means to perform or exhibit diminish in a given academic or social context.",
+    "uzbekDefinition": "Diminish so'zining ingliz tilidagi rasmiy ta'rifi: To diminish means to perform or exhibit diminish in a given academic or social context.",
+    "example": "As the economy got worse, my savings diminished.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: As the economy got worse, my savings diminished.",
+    "translations": {
+      "uzbek": "Diminish (o'zbekcha ma'nosi)",
+      "russian": "Diminish (русский перевод)"
+    },
+    "unit": 9,
+    "synonyms": [
+      "diminish",
+      "synonym"
+    ],
+    "collocations": [
+      "use diminish",
+      "academic diminish"
+    ],
+    "audioText": "Diminish. To diminish means to perform or exhibit diminish in a given academic or social context.",
+    "clozeSentence": "As the economy got worse, my savings ______ed.",
+    "targetAnswer": "diminish"
+  },
+  {
+    "id": "w168",
+    "word": "Drawback",
+    "phonetic": "/drawback/",
+    "partOfSpeech": "verb",
+    "definition": "To drawback means to perform or exhibit drawback in a given academic or social context.",
+    "uzbekDefinition": "Drawback so'zining ingliz tilidagi rasmiy ta'rifi: To drawback means to perform or exhibit drawback in a given academic or social context.",
+    "example": "The drawback of having a car is that it is very expensive to maintain.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The drawback of having a car is that it is very expensive to maintain.",
+    "translations": {
+      "uzbek": "Drawback (o'zbekcha ma'nosi)",
+      "russian": "Drawback (русский перевод)"
+    },
+    "unit": 9,
+    "synonyms": [
+      "drawback",
+      "synonym"
+    ],
+    "collocations": [
+      "use drawback",
+      "academic drawback"
+    ],
+    "audioText": "Drawback. To drawback means to perform or exhibit drawback in a given academic or social context.",
+    "clozeSentence": "The ______ of having a car is that it is very expensive to maintain.",
+    "targetAnswer": "drawback"
+  },
+  {
+    "id": "w169",
+    "word": "Fad",
+    "phonetic": "/fad/",
+    "partOfSpeech": "verb",
+    "definition": "To fad means to perform or exhibit fad in a given academic or social context.",
+    "uzbekDefinition": "Fad so'zining ingliz tilidagi rasmiy ta'rifi: To fad means to perform or exhibit fad in a given academic or social context.",
+    "example": "The hula hoop was a fad for a few years, but it soon lost its popularity.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The hula hoop was a fad for a few years, but it soon lost its popularity.",
+    "translations": {
+      "uzbek": "Fad (o'zbekcha ma'nosi)",
+      "russian": "Fad (русский перевод)"
+    },
+    "unit": 9,
+    "synonyms": [
+      "fad",
+      "synonym"
+    ],
+    "collocations": [
+      "use fad",
+      "academic fad"
+    ],
+    "audioText": "Fad. To fad means to perform or exhibit fad in a given academic or social context.",
+    "clozeSentence": "The hula hoop was a ______ for a few years, but it soon lost its popularity.",
+    "targetAnswer": "fad"
+  },
+  {
+    "id": "w170",
+    "word": "Impose",
+    "phonetic": "/impose/",
+    "partOfSpeech": "verb",
+    "definition": "To impose means to perform or exhibit impose in a given academic or social context.",
+    "uzbekDefinition": "Impose so'zining ingliz tilidagi rasmiy ta'rifi: To impose means to perform or exhibit impose in a given academic or social context.",
+    "example": "He imposes on his wife every morning by expecting her to make breakfast.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: He imposes on his wife every morning by expecting her to make breakfast.",
+    "translations": {
+      "uzbek": "Impose (o'zbekcha ma'nosi)",
+      "russian": "Impose (русский перевод)"
+    },
+    "unit": 9,
+    "synonyms": [
+      "impose",
+      "synonym"
+    ],
+    "collocations": [
+      "use impose",
+      "academic impose"
+    ],
+    "audioText": "Impose. To impose means to perform or exhibit impose in a given academic or social context.",
+    "clozeSentence": "He ______s on his wife every morning by expecting her to make breakfast.",
+    "targetAnswer": "impose"
+  },
+  {
+    "id": "w171",
+    "word": "Managerial",
+    "phonetic": "/managerial/",
+    "partOfSpeech": "verb",
+    "definition": "To managerial means to perform or exhibit managerial in a given academic or social context.",
+    "uzbekDefinition": "Managerial so'zining ingliz tilidagi rasmiy ta'rifi: To managerial means to perform or exhibit managerial in a given academic or social context.",
+    "example": "Nancy has a managerial position at the bank.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Nancy has a managerial position at the bank.",
+    "translations": {
+      "uzbek": "Managerial (o'zbekcha ma'nosi)",
+      "russian": "Managerial (русский перевод)"
+    },
+    "unit": 9,
+    "synonyms": [
+      "managerial",
+      "synonym"
+    ],
+    "collocations": [
+      "use managerial",
+      "academic managerial"
+    ],
+    "audioText": "Managerial. To managerial means to perform or exhibit managerial in a given academic or social context.",
+    "clozeSentence": "Nancy has a ______ position at the bank.",
+    "targetAnswer": "managerial"
+  },
+  {
+    "id": "w172",
+    "word": "Medieval",
+    "phonetic": "/medieval/",
+    "partOfSpeech": "verb",
+    "definition": "If something is medieval, it comes from the period between 650 and 1500 CE.",
+    "uzbekDefinition": "Medieval so'zining ingliz tilidagi rasmiy ta'rifi: If something is medieval, it comes from the period between 650 and 1500 CE.",
+    "example": "We visited a castle that was built during medieval times.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: We visited a castle that was built during medieval times.",
+    "translations": {
+      "uzbek": "Medieval (o'zbekcha ma'nosi)",
+      "russian": "Medieval (русский перевод)"
+    },
+    "unit": 9,
+    "synonyms": [
+      "medieval",
+      "synonym"
+    ],
+    "collocations": [
+      "use medieval",
+      "academic medieval"
+    ],
+    "audioText": "Medieval. If something is medieval, it comes from the period between 650 and 1500 CE.",
+    "clozeSentence": "We visited a castle that was built during ______ times.",
+    "targetAnswer": "medieval"
+  },
+  {
+    "id": "w173",
+    "word": "Obsolete",
+    "phonetic": "/obsolete/",
+    "partOfSpeech": "verb",
+    "definition": "If something is obsolete, it is not used anymore because something better exists.",
+    "uzbekDefinition": "Obsolete so'zining ingliz tilidagi rasmiy ta'rifi: If something is obsolete, it is not used anymore because something better exists.",
+    "example": "Since computers became inexpensive, typewriters have become obsolete.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Since computers became inexpensive, typewriters have become obsolete.",
+    "translations": {
+      "uzbek": "Obsolete (o'zbekcha ma'nosi)",
+      "russian": "Obsolete (русский перевод)"
+    },
+    "unit": 9,
+    "synonyms": [
+      "obsolete",
+      "synonym"
+    ],
+    "collocations": [
+      "use obsolete",
+      "academic obsolete"
+    ],
+    "audioText": "Obsolete. If something is obsolete, it is not used anymore because something better exists.",
+    "clozeSentence": "Since computers became inexpensive, typewriters have become ______.",
+    "targetAnswer": "obsolete"
+  },
+  {
+    "id": "w174",
+    "word": "Peninsula",
+    "phonetic": "/peninsula/",
+    "partOfSpeech": "verb",
+    "definition": "To peninsula means to perform or exhibit peninsula in a given academic or social context.",
+    "uzbekDefinition": "Peninsula so'zining ingliz tilidagi rasmiy ta'rifi: To peninsula means to perform or exhibit peninsula in a given academic or social context.",
+    "example": "The state of Florida is an example of a peninsula.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The state of Florida is an example of a peninsula.",
+    "translations": {
+      "uzbek": "Peninsula (o'zbekcha ma'nosi)",
+      "russian": "Peninsula (русский перевод)"
+    },
+    "unit": 9,
+    "synonyms": [
+      "peninsula",
+      "synonym"
+    ],
+    "collocations": [
+      "use peninsula",
+      "academic peninsula"
+    ],
+    "audioText": "Peninsula. To peninsula means to perform or exhibit peninsula in a given academic or social context.",
+    "clozeSentence": "The state of Florida is an example of a ______.",
+    "targetAnswer": "peninsula"
+  },
+  {
+    "id": "w175",
+    "word": "Prestige",
+    "phonetic": "/prestige/",
+    "partOfSpeech": "verb",
+    "definition": "If a person has prestige, people admire or respect them.",
+    "uzbekDefinition": "Prestige so'zining ingliz tilidagi rasmiy ta'rifi: If a person has prestige, people admire or respect them.",
+    "example": "+ The young actress gained much prestige after she won an award.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: + The young actress gained much prestige after she won an award.",
+    "translations": {
+      "uzbek": "Prestige (o'zbekcha ma'nosi)",
+      "russian": "Prestige (русский перевод)"
+    },
+    "unit": 9,
+    "synonyms": [
+      "prestige",
+      "synonym"
+    ],
+    "collocations": [
+      "use prestige",
+      "academic prestige"
+    ],
+    "audioText": "Prestige. If a person has prestige, people admire or respect them.",
+    "clozeSentence": "+ The young actress gained much ______ after she won an award.",
+    "targetAnswer": "prestige"
+  },
+  {
+    "id": "w176",
+    "word": "Proportion",
+    "phonetic": "/proportion/",
+    "partOfSpeech": "verb",
+    "definition": "To proportion means to perform or exhibit proportion in a given academic or social context.",
+    "uzbekDefinition": "Proportion so'zining ingliz tilidagi rasmiy ta'rifi: To proportion means to perform or exhibit proportion in a given academic or social context.",
+    "example": "Only a small proportion of the people in this town actually work here.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Only a small proportion of the people in this town actually work here.",
+    "translations": {
+      "uzbek": "Proportion (o'zbekcha ma'nosi)",
+      "russian": "Proportion (русский перевод)"
+    },
+    "unit": 9,
+    "synonyms": [
+      "proportion",
+      "synonym"
+    ],
+    "collocations": [
+      "use proportion",
+      "academic proportion"
+    ],
+    "audioText": "Proportion. To proportion means to perform or exhibit proportion in a given academic or social context.",
+    "clozeSentence": "Only a small ______ of the people in this town actually work here.",
+    "targetAnswer": "proportion"
+  },
+  {
+    "id": "w177",
+    "word": "Radical",
+    "phonetic": "/radical/",
+    "partOfSpeech": "verb",
+    "definition": "If something is radical, it is very new or different.",
+    "uzbekDefinition": "Radical so'zining ingliz tilidagi rasmiy ta'rifi: If something is radical, it is very new or different.",
+    "example": "The president is planning to make some radical changes to the law.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The president is planning to make some radical changes to the law.",
+    "translations": {
+      "uzbek": "Radical (o'zbekcha ma'nosi)",
+      "russian": "Radical (русский перевод)"
+    },
+    "unit": 9,
+    "synonyms": [
+      "radical",
+      "synonym"
+    ],
+    "collocations": [
+      "use radical",
+      "academic radical"
+    ],
+    "audioText": "Radical. If something is radical, it is very new or different.",
+    "clozeSentence": "The president is planning to make some ______ changes to the law.",
+    "targetAnswer": "radical"
+  },
+  {
+    "id": "w178",
+    "word": "Refute",
+    "phonetic": "/refute/",
+    "partOfSpeech": "verb",
+    "definition": "To refute means to perform or exhibit refute in a given academic or social context.",
+    "uzbekDefinition": "Refute so'zining ingliz tilidagi rasmiy ta'rifi: To refute means to perform or exhibit refute in a given academic or social context.",
+    "example": "+ The bank manager has refuted the claims that he lied to his customers.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: + The bank manager has refuted the claims that he lied to his customers.",
+    "translations": {
+      "uzbek": "Refute (o'zbekcha ma'nosi)",
+      "russian": "Refute (русский перевод)"
+    },
+    "unit": 9,
+    "synonyms": [
+      "refute",
+      "synonym"
+    ],
+    "collocations": [
+      "use refute",
+      "academic refute"
+    ],
+    "audioText": "Refute. To refute means to perform or exhibit refute in a given academic or social context.",
+    "clozeSentence": "+ The bank manager has ______d the claims that he lied to his customers.",
+    "targetAnswer": "refute"
+  },
+  {
+    "id": "w179",
+    "word": "Spectacular",
+    "phonetic": "/spectacular/",
+    "partOfSpeech": "verb",
+    "definition": "If something is spectacular, it looks or sounds very impressive.",
+    "uzbekDefinition": "Spectacular so'zining ingliz tilidagi rasmiy ta'rifi: If something is spectacular, it looks or sounds very impressive.",
+    "example": "There was a spectacular fireworks display in the park at New Year.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: There was a spectacular fireworks display in the park at New Year.",
+    "translations": {
+      "uzbek": "Spectacular (o'zbekcha ma'nosi)",
+      "russian": "Spectacular (русский перевод)"
+    },
+    "unit": 9,
+    "synonyms": [
+      "spectacular",
+      "synonym"
+    ],
+    "collocations": [
+      "use spectacular",
+      "academic spectacular"
+    ],
+    "audioText": "Spectacular. If something is spectacular, it looks or sounds very impressive.",
+    "clozeSentence": "There was a ______ fireworks display in the park at New Year.",
+    "targetAnswer": "spectacular"
+  },
+  {
+    "id": "w180",
+    "word": "Weave",
+    "phonetic": "/weave/",
+    "partOfSpeech": "verb",
+    "definition": "To weave means to perform or exhibit weave in a given academic or social context.",
+    "uzbekDefinition": "Weave so'zining ingliz tilidagi rasmiy ta'rifi: To weave means to perform or exhibit weave in a given academic or social context.",
+    "example": "We saw a woman weave a blanket on our vacation to South America.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: We saw a woman weave a blanket on our vacation to South America.",
+    "translations": {
+      "uzbek": "Weave (o'zbekcha ma'nosi)",
+      "russian": "Weave (русский перевод)"
+    },
+    "unit": 9,
+    "synonyms": [
+      "weave",
+      "synonym"
+    ],
+    "collocations": [
+      "use weave",
+      "academic weave"
+    ],
+    "audioText": "Weave. To weave means to perform or exhibit weave in a given academic or social context.",
+    "clozeSentence": "We saw a woman ______ a blanket on our vacation to South America.",
+    "targetAnswer": "weave"
+  },
+  {
+    "id": "w181",
+    "word": "Accountant",
+    "phonetic": "/accountant/",
+    "partOfSpeech": "verb",
+    "definition": "To accountant means to perform or exhibit accountant in a given academic or social context.",
+    "uzbekDefinition": "Accountant so'zining ingliz tilidagi rasmiy ta'rifi: To accountant means to perform or exhibit accountant in a given academic or social context.",
+    "example": "The accountant helped me keep track of my money.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The accountant helped me keep track of my money.",
+    "translations": {
+      "uzbek": "Accountant (o'zbekcha ma'nosi)",
+      "russian": "Accountant (русский перевод)"
+    },
+    "unit": 10,
+    "synonyms": [
+      "accountant",
+      "synonym"
+    ],
+    "collocations": [
+      "use accountant",
+      "academic accountant"
+    ],
+    "audioText": "Accountant. To accountant means to perform or exhibit accountant in a given academic or social context.",
+    "clozeSentence": "The ______ helped me keep track of my money.",
+    "targetAnswer": "accountant"
+  },
+  {
+    "id": "w182",
+    "word": "Capitalist",
+    "phonetic": "/capitalist/",
+    "partOfSpeech": "verb",
+    "definition": "To capitalist means to perform or exhibit capitalist in a given academic or social context.",
+    "uzbekDefinition": "Capitalist so'zining ingliz tilidagi rasmiy ta'rifi: To capitalist means to perform or exhibit capitalist in a given academic or social context.",
+    "example": "The researcher used the word capitalist to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word capitalist to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Capitalist (o'zbekcha ma'nosi)",
+      "russian": "Capitalist (русский перевод)"
+    },
+    "unit": 10,
+    "synonyms": [
+      "capitalist",
+      "synonym"
+    ],
+    "collocations": [
+      "use capitalist",
+      "academic capitalist"
+    ],
+    "audioText": "Capitalist. To capitalist means to perform or exhibit capitalist in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "capitalist"
+  },
+  {
+    "id": "w183",
+    "word": "Contempt",
+    "phonetic": "/contempt/",
+    "partOfSpeech": "verb",
+    "definition": "To contempt means to perform or exhibit contempt in a given academic or social context.",
+    "uzbekDefinition": "Contempt so'zining ingliz tilidagi rasmiy ta'rifi: To contempt means to perform or exhibit contempt in a given academic or social context.",
+    "example": "The researcher used the word contempt to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word contempt to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Contempt (o'zbekcha ma'nosi)",
+      "russian": "Contempt (русский перевод)"
+    },
+    "unit": 10,
+    "synonyms": [
+      "contempt",
+      "synonym"
+    ],
+    "collocations": [
+      "use contempt",
+      "academic contempt"
+    ],
+    "audioText": "Contempt. To contempt means to perform or exhibit contempt in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "contempt"
+  },
+  {
+    "id": "w184",
+    "word": "Dedicate",
+    "phonetic": "/dedicate/",
+    "partOfSpeech": "verb",
+    "definition": "To dedicate means to perform or exhibit dedicate in a given academic or social context.",
+    "uzbekDefinition": "Dedicate so'zining ingliz tilidagi rasmiy ta'rifi: To dedicate means to perform or exhibit dedicate in a given academic or social context.",
+    "example": "The nun dedicated herself to helping people in need.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The nun dedicated herself to helping people in need.",
+    "translations": {
+      "uzbek": "Dedicate (o'zbekcha ma'nosi)",
+      "russian": "Dedicate (русский перевод)"
+    },
+    "unit": 10,
+    "synonyms": [
+      "dedicate",
+      "synonym"
+    ],
+    "collocations": [
+      "use dedicate",
+      "academic dedicate"
+    ],
+    "audioText": "Dedicate. To dedicate means to perform or exhibit dedicate in a given academic or social context.",
+    "clozeSentence": "The nun ______d herself to helping people in need.",
+    "targetAnswer": "dedicate"
+  },
+  {
+    "id": "w185",
+    "word": "Ditch",
+    "phonetic": "/ditch/",
+    "partOfSpeech": "verb",
+    "definition": "To ditch means to perform or exhibit ditch in a given academic or social context.",
+    "uzbekDefinition": "Ditch so'zining ingliz tilidagi rasmiy ta'rifi: To ditch means to perform or exhibit ditch in a given academic or social context.",
+    "example": "When the car slid off of the road, it fell into the ditch.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: When the car slid off of the road, it fell into the ditch.",
+    "translations": {
+      "uzbek": "Ditch (o'zbekcha ma'nosi)",
+      "russian": "Ditch (русский перевод)"
+    },
+    "unit": 10,
+    "synonyms": [
+      "ditch",
+      "synonym"
+    ],
+    "collocations": [
+      "use ditch",
+      "academic ditch"
+    ],
+    "audioText": "Ditch. To ditch means to perform or exhibit ditch in a given academic or social context.",
+    "clozeSentence": "When the car slid off of the road, it fell into the ______.",
+    "targetAnswer": "ditch"
+  },
+  {
+    "id": "w186",
+    "word": "Enterprise",
+    "phonetic": "/enterprise/",
+    "partOfSpeech": "verb",
+    "definition": "To enterprise means to perform or exhibit enterprise in a given academic or social context.",
+    "uzbekDefinition": "Enterprise so'zining ingliz tilidagi rasmiy ta'rifi: To enterprise means to perform or exhibit enterprise in a given academic or social context.",
+    "example": "My father owns an advertising enterprise.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: My father owns an advertising enterprise.",
+    "translations": {
+      "uzbek": "Enterprise (o'zbekcha ma'nosi)",
+      "russian": "Enterprise (русский перевод)"
+    },
+    "unit": 10,
+    "synonyms": [
+      "enterprise",
+      "synonym"
+    ],
+    "collocations": [
+      "use enterprise",
+      "academic enterprise"
+    ],
+    "audioText": "Enterprise. To enterprise means to perform or exhibit enterprise in a given academic or social context.",
+    "clozeSentence": "My father owns an advertising ______.",
+    "targetAnswer": "enterprise"
+  },
+  {
+    "id": "w187",
+    "word": "Exquisite",
+    "phonetic": "/exquisite/",
+    "partOfSpeech": "verb",
+    "definition": "When something is exquisite, it is very beautiful or pleasant.",
+    "uzbekDefinition": "Exquisite so'zining ingliz tilidagi rasmiy ta'rifi: When something is exquisite, it is very beautiful or pleasant.",
+    "example": "The artist made exquisite watercolor paintings.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The artist made exquisite watercolor paintings.",
+    "translations": {
+      "uzbek": "Exquisite (o'zbekcha ma'nosi)",
+      "russian": "Exquisite (русский перевод)"
+    },
+    "unit": 10,
+    "synonyms": [
+      "exquisite",
+      "synonym"
+    ],
+    "collocations": [
+      "use exquisite",
+      "academic exquisite"
+    ],
+    "audioText": "Exquisite. When something is exquisite, it is very beautiful or pleasant.",
+    "clozeSentence": "The artist made ______ watercolor paintings.",
+    "targetAnswer": "exquisite"
+  },
+  {
+    "id": "w188",
+    "word": "Finance",
+    "phonetic": "/finance/",
+    "partOfSpeech": "verb",
+    "definition": "To finance means to perform or exhibit finance in a given academic or social context.",
+    "uzbekDefinition": "Finance so'zining ingliz tilidagi rasmiy ta'rifi: To finance means to perform or exhibit finance in a given academic or social context.",
+    "example": "The government financed the scientist’s experiments with new weapons.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The government financed the scientist’s experiments with new weapons.",
+    "translations": {
+      "uzbek": "Finance (o'zbekcha ma'nosi)",
+      "russian": "Finance (русский перевод)"
+    },
+    "unit": 10,
+    "synonyms": [
+      "finance",
+      "synonym"
+    ],
+    "collocations": [
+      "use finance",
+      "academic finance"
+    ],
+    "audioText": "Finance. To finance means to perform or exhibit finance in a given academic or social context.",
+    "clozeSentence": "The government ______d the scientist’s experiments with new weapons.",
+    "targetAnswer": "finance"
+  },
+  {
+    "id": "w189",
+    "word": "Indifferent",
+    "phonetic": "/indifferent/",
+    "partOfSpeech": "verb",
+    "definition": "When someone is indifferent toward something, they have a lack of interest in it.",
+    "uzbekDefinition": "Indifferent so'zining ingliz tilidagi rasmiy ta'rifi: When someone is indifferent toward something, they have a lack of interest in it.",
+    "example": "Lisa is indifferent toward school. She doesn’t care what her final grades are.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Lisa is indifferent toward school. She doesn’t care what her final grades are.",
+    "translations": {
+      "uzbek": "Indifferent (o'zbekcha ma'nosi)",
+      "russian": "Indifferent (русский перевод)"
+    },
+    "unit": 10,
+    "synonyms": [
+      "indifferent",
+      "synonym"
+    ],
+    "collocations": [
+      "use indifferent",
+      "academic indifferent"
+    ],
+    "audioText": "Indifferent. When someone is indifferent toward something, they have a lack of interest in it.",
+    "clozeSentence": "Lisa is ______ toward school. She doesn’t care what her final grades are.",
+    "targetAnswer": "indifferent"
+  },
+  {
+    "id": "w190",
+    "word": "Irrigate",
+    "phonetic": "/irrigate/",
+    "partOfSpeech": "verb",
+    "definition": "To irrigate means to perform or exhibit irrigate in a given academic or social context.",
+    "uzbekDefinition": "Irrigate so'zining ingliz tilidagi rasmiy ta'rifi: To irrigate means to perform or exhibit irrigate in a given academic or social context.",
+    "example": "+ In dry climates, it is important to irrigate fields of crops.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: + In dry climates, it is important to irrigate fields of crops.",
+    "translations": {
+      "uzbek": "Irrigate (o'zbekcha ma'nosi)",
+      "russian": "Irrigate (русский перевод)"
+    },
+    "unit": 10,
+    "synonyms": [
+      "irrigate",
+      "synonym"
+    ],
+    "collocations": [
+      "use irrigate",
+      "academic irrigate"
+    ],
+    "audioText": "Irrigate. To irrigate means to perform or exhibit irrigate in a given academic or social context.",
+    "clozeSentence": "+ In dry climates, it is important to ______ fields of crops.",
+    "targetAnswer": "irrigate"
+  },
+  {
+    "id": "w191",
+    "word": "Maximize",
+    "phonetic": "/maximize/",
+    "partOfSpeech": "verb",
+    "definition": "To maximize something is to make it as great in amount, size, or importance.",
+    "uzbekDefinition": "Maximize so'zining ingliz tilidagi rasmiy ta'rifi: To maximize something is to make it as great in amount, size, or importance.",
+    "example": "You should exercise regularly to maximize a healthy lifestyle.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: You should exercise regularly to maximize a healthy lifestyle.",
+    "translations": {
+      "uzbek": "Maximize (o'zbekcha ma'nosi)",
+      "russian": "Maximize (русский перевод)"
+    },
+    "unit": 10,
+    "synonyms": [
+      "maximize",
+      "synonym"
+    ],
+    "collocations": [
+      "use maximize",
+      "academic maximize"
+    ],
+    "audioText": "Maximize. To maximize something is to make it as great in amount, size, or importance.",
+    "clozeSentence": "You should exercise regularly to ______ a healthy lifestyle.",
+    "targetAnswer": "maximize"
+  },
+  {
+    "id": "w192",
+    "word": "Monetary",
+    "phonetic": "/monetary/",
+    "partOfSpeech": "verb",
+    "definition": "When something is monetary, it relates to money.",
+    "uzbekDefinition": "Monetary so'zining ingliz tilidagi rasmiy ta'rifi: When something is monetary, it relates to money.",
+    "example": "A strong monetary policy is important for a country to be successful.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: A strong monetary policy is important for a country to be successful.",
+    "translations": {
+      "uzbek": "Monetary (o'zbekcha ma'nosi)",
+      "russian": "Monetary (русский перевод)"
+    },
+    "unit": 10,
+    "synonyms": [
+      "monetary",
+      "synonym"
+    ],
+    "collocations": [
+      "use monetary",
+      "academic monetary"
+    ],
+    "audioText": "Monetary. When something is monetary, it relates to money.",
+    "clozeSentence": "A strong ______ policy is important for a country to be successful.",
+    "targetAnswer": "monetary"
+  },
+  {
+    "id": "w193",
+    "word": "Precaution",
+    "phonetic": "/precaution/",
+    "partOfSpeech": "verb",
+    "definition": "To precaution means to perform or exhibit precaution in a given academic or social context.",
+    "uzbekDefinition": "Precaution so'zining ingliz tilidagi rasmiy ta'rifi: To precaution means to perform or exhibit precaution in a given academic or social context.",
+    "example": "Asa precaution, you should put on a heavy coat before going out in cold weather.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Asa precaution, you should put on a heavy coat before going out in cold weather.",
+    "translations": {
+      "uzbek": "Precaution (o'zbekcha ma'nosi)",
+      "russian": "Precaution (русский перевод)"
+    },
+    "unit": 10,
+    "synonyms": [
+      "precaution",
+      "synonym"
+    ],
+    "collocations": [
+      "use precaution",
+      "academic precaution"
+    ],
+    "audioText": "Precaution. To precaution means to perform or exhibit precaution in a given academic or social context.",
+    "clozeSentence": "Asa ______, you should put on a heavy coat before going out in cold weather.",
+    "targetAnswer": "precaution"
+  },
+  {
+    "id": "w194",
+    "word": "Preliminary",
+    "phonetic": "/preliminary/",
+    "partOfSpeech": "verb",
+    "definition": "To preliminary means to perform or exhibit preliminary in a given academic or social context.",
+    "uzbekDefinition": "Preliminary so'zining ingliz tilidagi rasmiy ta'rifi: To preliminary means to perform or exhibit preliminary in a given academic or social context.",
+    "example": "The runners must do well in the preliminary races to qualify for the final race.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The runners must do well in the preliminary races to qualify for the final race.",
+    "translations": {
+      "uzbek": "Preliminary (o'zbekcha ma'nosi)",
+      "russian": "Preliminary (русский перевод)"
+    },
+    "unit": 10,
+    "synonyms": [
+      "preliminary",
+      "synonym"
+    ],
+    "collocations": [
+      "use preliminary",
+      "academic preliminary"
+    ],
+    "audioText": "Preliminary. To preliminary means to perform or exhibit preliminary in a given academic or social context.",
+    "clozeSentence": "The runners must do well in the ______ races to qualify for the final race.",
+    "targetAnswer": "preliminary"
+  },
+  {
+    "id": "w195",
+    "word": "Saturate",
+    "phonetic": "/saturate/",
+    "partOfSpeech": "verb",
+    "definition": "To saturate means to perform or exhibit saturate in a given academic or social context.",
+    "uzbekDefinition": "Saturate so'zining ingliz tilidagi rasmiy ta'rifi: To saturate means to perform or exhibit saturate in a given academic or social context.",
+    "example": "The sponge was saturated with soapy water and dripped all over the floor.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The sponge was saturated with soapy water and dripped all over the floor.",
+    "translations": {
+      "uzbek": "Saturate (o'zbekcha ma'nosi)",
+      "russian": "Saturate (русский перевод)"
+    },
+    "unit": 10,
+    "synonyms": [
+      "saturate",
+      "synonym"
+    ],
+    "collocations": [
+      "use saturate",
+      "academic saturate"
+    ],
+    "audioText": "Saturate. To saturate means to perform or exhibit saturate in a given academic or social context.",
+    "clozeSentence": "The sponge was ______d with soapy water and dripped all over the floor.",
+    "targetAnswer": "saturate"
+  },
+  {
+    "id": "w196",
+    "word": "Simplicity",
+    "phonetic": "/simplicity/",
+    "partOfSpeech": "verb",
+    "definition": "To simplicity means to perform or exhibit simplicity in a given academic or social context.",
+    "uzbekDefinition": "Simplicity so'zining ingliz tilidagi rasmiy ta'rifi: To simplicity means to perform or exhibit simplicity in a given academic or social context.",
+    "example": "We were able to find the house thanks to the simplicity of the directions.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: We were able to find the house thanks to the simplicity of the directions.",
+    "translations": {
+      "uzbek": "Simplicity (o'zbekcha ma'nosi)",
+      "russian": "Simplicity (русский перевод)"
+    },
+    "unit": 10,
+    "synonyms": [
+      "simplicity",
+      "synonym"
+    ],
+    "collocations": [
+      "use simplicity",
+      "academic simplicity"
+    ],
+    "audioText": "Simplicity. To simplicity means to perform or exhibit simplicity in a given academic or social context.",
+    "clozeSentence": "We were able to find the house thanks to the ______ of the directions.",
+    "targetAnswer": "simplicity"
+  },
+  {
+    "id": "w197",
+    "word": "Sow",
+    "phonetic": "/sow/",
+    "partOfSpeech": "verb",
+    "definition": "To sow means to perform or exhibit sow in a given academic or social context.",
+    "uzbekDefinition": "Sow so'zining ingliz tilidagi rasmiy ta'rifi: To sow means to perform or exhibit sow in a given academic or social context.",
+    "example": "He always sows his garden seeds in the springtime.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: He always sows his garden seeds in the springtime.",
+    "translations": {
+      "uzbek": "Sow (o'zbekcha ma'nosi)",
+      "russian": "Sow (русский перевод)"
+    },
+    "unit": 10,
+    "synonyms": [
+      "sow",
+      "synonym"
+    ],
+    "collocations": [
+      "use sow",
+      "academic sow"
+    ],
+    "audioText": "Sow. To sow means to perform or exhibit sow in a given academic or social context.",
+    "clozeSentence": "He always ______s his garden seeds in the springtime.",
+    "targetAnswer": "sow"
+  },
+  {
+    "id": "w198",
+    "word": "Soy",
+    "phonetic": "/soy/",
+    "partOfSpeech": "verb",
+    "definition": "Soy is a food made from soybeans, such as flour or butter.",
+    "uzbekDefinition": "Soy so'zining ingliz tilidagi rasmiy ta'rifi: Soy is a food made from soybeans, such as flour or butter.",
+    "example": "Soy can be made into tofu, sauce, and also milk.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Soy can be made into tofu, sauce, and also milk.",
+    "translations": {
+      "uzbek": "Soy (o'zbekcha ma'nosi)",
+      "russian": "Soy (русский перевод)"
+    },
+    "unit": 10,
+    "synonyms": [
+      "soy",
+      "synonym"
+    ],
+    "collocations": [
+      "use soy",
+      "academic soy"
+    ],
+    "audioText": "Soy. Soy is a food made from soybeans, such as flour or butter.",
+    "clozeSentence": "______ can be made into tofu, sauce, and also milk.",
+    "targetAnswer": "soy"
+  },
+  {
+    "id": "w199",
+    "word": "Spade",
+    "phonetic": "/spade/",
+    "partOfSpeech": "verb",
+    "definition": "To spade means to perform or exhibit spade in a given academic or social context.",
+    "uzbekDefinition": "Spade so'zining ingliz tilidagi rasmiy ta'rifi: To spade means to perform or exhibit spade in a given academic or social context.",
+    "example": "The researcher used the word spade to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word spade to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Spade (o'zbekcha ma'nosi)",
+      "russian": "Spade (русский перевод)"
+    },
+    "unit": 10,
+    "synonyms": [
+      "spade",
+      "synonym"
+    ],
+    "collocations": [
+      "use spade",
+      "academic spade"
+    ],
+    "audioText": "Spade. To spade means to perform or exhibit spade in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "spade"
+  },
+  {
+    "id": "w200",
+    "word": "Upcoming",
+    "phonetic": "/upcoming/",
+    "partOfSpeech": "verb",
+    "definition": "When something is upcoming, that means it will happen in the near future.",
+    "uzbekDefinition": "Upcoming so'zining ingliz tilidagi rasmiy ta'rifi: When something is upcoming, that means it will happen in the near future.",
+    "example": "The kids were worried about their upcoming exam.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The kids were worried about their upcoming exam.",
+    "translations": {
+      "uzbek": "Upcoming (o'zbekcha ma'nosi)",
+      "russian": "Upcoming (русский перевод)"
+    },
+    "unit": 10,
+    "synonyms": [
+      "upcoming",
+      "synonym"
+    ],
+    "collocations": [
+      "use upcoming",
+      "academic upcoming"
+    ],
+    "audioText": "Upcoming. When something is upcoming, that means it will happen in the near future.",
+    "clozeSentence": "The kids were worried about their ______ exam.",
+    "targetAnswer": "upcoming"
+  },
+  {
+    "id": "w201",
+    "word": "Acute",
+    "phonetic": "/acute/",
+    "partOfSpeech": "verb",
+    "definition": "To acute means to perform or exhibit acute in a given academic or social context.",
+    "uzbekDefinition": "Acute so'zining ingliz tilidagi rasmiy ta'rifi: To acute means to perform or exhibit acute in a given academic or social context.",
+    "example": "The researcher used the word acute to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word acute to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Acute (o'zbekcha ma'nosi)",
+      "russian": "Acute (русский перевод)"
+    },
+    "unit": 11,
+    "synonyms": [
+      "acute",
+      "synonym"
+    ],
+    "collocations": [
+      "use acute",
+      "academic acute"
+    ],
+    "audioText": "Acute. To acute means to perform or exhibit acute in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "acute"
+  },
+  {
+    "id": "w202",
+    "word": "Aggression",
+    "phonetic": "/aggression/",
+    "partOfSpeech": "verb",
+    "definition": "To aggression means to perform or exhibit aggression in a given academic or social context.",
+    "uzbekDefinition": "Aggression so'zining ingliz tilidagi rasmiy ta'rifi: To aggression means to perform or exhibit aggression in a given academic or social context.",
+    "example": "The researcher used the word aggression to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word aggression to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Aggression (o'zbekcha ma'nosi)",
+      "russian": "Aggression (русский перевод)"
+    },
+    "unit": 11,
+    "synonyms": [
+      "aggression",
+      "synonym"
+    ],
+    "collocations": [
+      "use aggression",
+      "academic aggression"
+    ],
+    "audioText": "Aggression. To aggression means to perform or exhibit aggression in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "aggression"
+  },
+  {
+    "id": "w203",
+    "word": "Banquet",
+    "phonetic": "/banquet/",
+    "partOfSpeech": "verb",
+    "definition": "To banquet means to perform or exhibit banquet in a given academic or social context.",
+    "uzbekDefinition": "Banquet so'zining ingliz tilidagi rasmiy ta'rifi: To banquet means to perform or exhibit banquet in a given academic or social context.",
+    "example": "Both families brought a lot of food for the wedding banquet.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Both families brought a lot of food for the wedding banquet.",
+    "translations": {
+      "uzbek": "Banquet (o'zbekcha ma'nosi)",
+      "russian": "Banquet (русский перевод)"
+    },
+    "unit": 11,
+    "synonyms": [
+      "banquet",
+      "synonym"
+    ],
+    "collocations": [
+      "use banquet",
+      "academic banquet"
+    ],
+    "audioText": "Banquet. To banquet means to perform or exhibit banquet in a given academic or social context.",
+    "clozeSentence": "Both families brought a lot of food for the wedding ______.",
+    "targetAnswer": "banquet"
+  },
+  {
+    "id": "w204",
+    "word": "Biography",
+    "phonetic": "/biography/",
+    "partOfSpeech": "verb",
+    "definition": "A biography is an account of someone’s life that is written by someone else.",
+    "uzbekDefinition": "Biography so'zining ingliz tilidagi rasmiy ta'rifi: A biography is an account of someone’s life that is written by someone else.",
+    "example": "We read a biography about Charles Darwin in science class.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: We read a biography about Charles Darwin in science class.",
+    "translations": {
+      "uzbek": "Biography (o'zbekcha ma'nosi)",
+      "russian": "Biography (русский перевод)"
+    },
+    "unit": 11,
+    "synonyms": [
+      "biography",
+      "synonym"
+    ],
+    "collocations": [
+      "use biography",
+      "academic biography"
+    ],
+    "audioText": "Biography. A biography is an account of someone’s life that is written by someone else.",
+    "clozeSentence": "We read a ______ about Charles Darwin in science class.",
+    "targetAnswer": "biography"
+  },
+  {
+    "id": "w205",
+    "word": "Boost",
+    "phonetic": "/boost/",
+    "partOfSpeech": "verb",
+    "definition": "To boost means to perform or exhibit boost in a given academic or social context.",
+    "uzbekDefinition": "Boost so'zining ingliz tilidagi rasmiy ta'rifi: To boost means to perform or exhibit boost in a given academic or social context.",
+    "example": "Lowering prices boosts customers’ interest in shopping.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Lowering prices boosts customers’ interest in shopping.",
+    "translations": {
+      "uzbek": "Boost (o'zbekcha ma'nosi)",
+      "russian": "Boost (русский перевод)"
+    },
+    "unit": 11,
+    "synonyms": [
+      "boost",
+      "synonym"
+    ],
+    "collocations": [
+      "use boost",
+      "academic boost"
+    ],
+    "audioText": "Boost. To boost means to perform or exhibit boost in a given academic or social context.",
+    "clozeSentence": "Lowering prices ______s customers’ interest in shopping.",
+    "targetAnswer": "boost"
+  },
+  {
+    "id": "w206",
+    "word": "Clap",
+    "phonetic": "/clap/",
+    "partOfSpeech": "verb",
+    "definition": "To clap means to hit one’s hands together to express pleasure or get attention.",
+    "uzbekDefinition": "Clap so'zining ingliz tilidagi rasmiy ta'rifi: To clap means to hit one’s hands together to express pleasure or get attention.",
+    "example": "After the speech, everyone in the crowd clapped their hands for the speaker.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: After the speech, everyone in the crowd clapped their hands for the speaker.",
+    "translations": {
+      "uzbek": "Clap (o'zbekcha ma'nosi)",
+      "russian": "Clap (русский перевод)"
+    },
+    "unit": 11,
+    "synonyms": [
+      "clap",
+      "synonym"
+    ],
+    "collocations": [
+      "use clap",
+      "academic clap"
+    ],
+    "audioText": "Clap. To clap means to hit one’s hands together to express pleasure or get attention.",
+    "clozeSentence": "After the speech, everyone in the crowd ______ped their hands for the speaker.",
+    "targetAnswer": "clap"
+  },
+  {
+    "id": "w207",
+    "word": "Compel",
+    "phonetic": "/compel/",
+    "partOfSpeech": "verb",
+    "definition": "To compel means to perform or exhibit compel in a given academic or social context.",
+    "uzbekDefinition": "Compel so'zining ingliz tilidagi rasmiy ta'rifi: To compel means to perform or exhibit compel in a given academic or social context.",
+    "example": "Traffic signs compel drivers to drive safely.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Traffic signs compel drivers to drive safely.",
+    "translations": {
+      "uzbek": "Compel (o'zbekcha ma'nosi)",
+      "russian": "Compel (русский перевод)"
+    },
+    "unit": 11,
+    "synonyms": [
+      "compel",
+      "synonym"
+    ],
+    "collocations": [
+      "use compel",
+      "academic compel"
+    ],
+    "audioText": "Compel. To compel means to perform or exhibit compel in a given academic or social context.",
+    "clozeSentence": "Traffic signs ______ drivers to drive safely.",
+    "targetAnswer": "compel"
+  },
+  {
+    "id": "w208",
+    "word": "Dominance",
+    "phonetic": "/dominance/",
+    "partOfSpeech": "verb",
+    "definition": "To dominance means to perform or exhibit dominance in a given academic or social context.",
+    "uzbekDefinition": "Dominance so'zining ingliz tilidagi rasmiy ta'rifi: To dominance means to perform or exhibit dominance in a given academic or social context.",
+    "example": "Large gorillas hit their chests to express their dominance over others.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Large gorillas hit their chests to express their dominance over others.",
+    "translations": {
+      "uzbek": "Dominance (o'zbekcha ma'nosi)",
+      "russian": "Dominance (русский перевод)"
+    },
+    "unit": 11,
+    "synonyms": [
+      "dominance",
+      "synonym"
+    ],
+    "collocations": [
+      "use dominance",
+      "academic dominance"
+    ],
+    "audioText": "Dominance. To dominance means to perform or exhibit dominance in a given academic or social context.",
+    "clozeSentence": "Large gorillas hit their chests to express their ______ over others.",
+    "targetAnswer": "dominance"
+  },
+  {
+    "id": "w209",
+    "word": "Gorgeous",
+    "phonetic": "/gorgeous/",
+    "partOfSpeech": "verb",
+    "definition": "When something is gorgeous, it is very pleasing and attractive.",
+    "uzbekDefinition": "Gorgeous so'zining ingliz tilidagi rasmiy ta'rifi: When something is gorgeous, it is very pleasing and attractive.",
+    "example": "The girl picked out a gorgeous dress to wear to the dance.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The girl picked out a gorgeous dress to wear to the dance.",
+    "translations": {
+      "uzbek": "Gorgeous (o'zbekcha ma'nosi)",
+      "russian": "Gorgeous (русский перевод)"
+    },
+    "unit": 11,
+    "synonyms": [
+      "gorgeous",
+      "synonym"
+    ],
+    "collocations": [
+      "use gorgeous",
+      "academic gorgeous"
+    ],
+    "audioText": "Gorgeous. When something is gorgeous, it is very pleasing and attractive.",
+    "clozeSentence": "The girl picked out a ______ dress to wear to the dance.",
+    "targetAnswer": "gorgeous"
+  },
+  {
+    "id": "w210",
+    "word": "Inevitable",
+    "phonetic": "/inevitable/",
+    "partOfSpeech": "verb",
+    "definition": "When something is inevitable, it is certain to happen or cannot be avoided.",
+    "uzbekDefinition": "Inevitable so'zining ingliz tilidagi rasmiy ta'rifi: When something is inevitable, it is certain to happen or cannot be avoided.",
+    "example": "» It is inevitable that the days will get longer in the summer.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: » It is inevitable that the days will get longer in the summer.",
+    "translations": {
+      "uzbek": "Inevitable (o'zbekcha ma'nosi)",
+      "russian": "Inevitable (русский перевод)"
+    },
+    "unit": 11,
+    "synonyms": [
+      "inevitable",
+      "synonym"
+    ],
+    "collocations": [
+      "use inevitable",
+      "academic inevitable"
+    ],
+    "audioText": "Inevitable. When something is inevitable, it is certain to happen or cannot be avoided.",
+    "clozeSentence": "» It is ______ that the days will get longer in the summer.",
+    "targetAnswer": "inevitable"
+  },
+  {
+    "id": "w211",
+    "word": "Legacy",
+    "phonetic": "/legacy/",
+    "partOfSpeech": "verb",
+    "definition": "To legacy means to perform or exhibit legacy in a given academic or social context.",
+    "uzbekDefinition": "Legacy so'zining ingliz tilidagi rasmiy ta'rifi: To legacy means to perform or exhibit legacy in a given academic or social context.",
+    "example": "The legacy of the ancient Egyptians can be seen in their monuments.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The legacy of the ancient Egyptians can be seen in their monuments.",
+    "translations": {
+      "uzbek": "Legacy (o'zbekcha ma'nosi)",
+      "russian": "Legacy (русский перевод)"
+    },
+    "unit": 11,
+    "synonyms": [
+      "legacy",
+      "synonym"
+    ],
+    "collocations": [
+      "use legacy",
+      "academic legacy"
+    ],
+    "audioText": "Legacy. To legacy means to perform or exhibit legacy in a given academic or social context.",
+    "clozeSentence": "The ______ of the ancient Egyptians can be seen in their monuments.",
+    "targetAnswer": "legacy"
+  },
+  {
+    "id": "w212",
+    "word": "Masterpiece",
+    "phonetic": "/masterpiece/",
+    "partOfSpeech": "verb",
+    "definition": "A masterpiece is a very good painting, novel, movie, or other work of art.",
+    "uzbekDefinition": "Masterpiece so'zining ingliz tilidagi rasmiy ta'rifi: A masterpiece is a very good painting, novel, movie, or other work of art.",
+    "example": "The Arc de Triomphe is considered a masterpiece in the world of architecture.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The Arc de Triomphe is considered a masterpiece in the world of architecture.",
+    "translations": {
+      "uzbek": "Masterpiece (o'zbekcha ma'nosi)",
+      "russian": "Masterpiece (русский перевод)"
+    },
+    "unit": 11,
+    "synonyms": [
+      "masterpiece",
+      "synonym"
+    ],
+    "collocations": [
+      "use masterpiece",
+      "academic masterpiece"
+    ],
+    "audioText": "Masterpiece. A masterpiece is a very good painting, novel, movie, or other work of art.",
+    "clozeSentence": "The Arc de Triomphe is considered a ______ in the world of architecture.",
+    "targetAnswer": "masterpiece"
+  },
+  {
+    "id": "w213",
+    "word": "Multiple",
+    "phonetic": "/multiple/",
+    "partOfSpeech": "verb",
+    "definition": "If there are multiple things, there are many of them.",
+    "uzbekDefinition": "Multiple so'zining ingliz tilidagi rasmiy ta'rifi: If there are multiple things, there are many of them.",
+    "example": "When the stunt went wrong, the man suffered multiple injuries.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: When the stunt went wrong, the man suffered multiple injuries.",
+    "translations": {
+      "uzbek": "Multiple (o'zbekcha ma'nosi)",
+      "russian": "Multiple (русский перевод)"
+    },
+    "unit": 11,
+    "synonyms": [
+      "multiple",
+      "synonym"
+    ],
+    "collocations": [
+      "use multiple",
+      "academic multiple"
+    ],
+    "audioText": "Multiple. If there are multiple things, there are many of them.",
+    "clozeSentence": "When the stunt went wrong, the man suffered ______ injuries.",
+    "targetAnswer": "multiple"
+  },
+  {
+    "id": "w214",
+    "word": "Narrate",
+    "phonetic": "/narrate/",
+    "partOfSpeech": "verb",
+    "definition": "To narrate means to perform or exhibit narrate in a given academic or social context.",
+    "uzbekDefinition": "Narrate so'zining ingliz tilidagi rasmiy ta'rifi: To narrate means to perform or exhibit narrate in a given academic or social context.",
+    "example": "This story was written by John, but Aaron is narrating it to the crowd.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: This story was written by John, but Aaron is narrating it to the crowd.",
+    "translations": {
+      "uzbek": "Narrate (o'zbekcha ma'nosi)",
+      "russian": "Narrate (русский перевод)"
+    },
+    "unit": 11,
+    "synonyms": [
+      "narrate",
+      "synonym"
+    ],
+    "collocations": [
+      "use narrate",
+      "academic narrate"
+    ],
+    "audioText": "Narrate. To narrate means to perform or exhibit narrate in a given academic or social context.",
+    "clozeSentence": "This story was written by John, but Aaron is narrating it to the crowd.",
+    "targetAnswer": "narrate"
+  },
+  {
+    "id": "w215",
+    "word": "Notorious",
+    "phonetic": "/notorious/",
+    "partOfSpeech": "verb",
+    "definition": "To notorious means to perform or exhibit notorious in a given academic or social context.",
+    "uzbekDefinition": "Notorious so'zining ingliz tilidagi rasmiy ta'rifi: To notorious means to perform or exhibit notorious in a given academic or social context.",
+    "example": "The researcher used the word notorious to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word notorious to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Notorious (o'zbekcha ma'nosi)",
+      "russian": "Notorious (русский перевод)"
+    },
+    "unit": 11,
+    "synonyms": [
+      "notorious",
+      "synonym"
+    ],
+    "collocations": [
+      "use notorious",
+      "academic notorious"
+    ],
+    "audioText": "Notorious. To notorious means to perform or exhibit notorious in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "notorious"
+  },
+  {
+    "id": "w216",
+    "word": "Outdated",
+    "phonetic": "/outdated/",
+    "partOfSpeech": "verb",
+    "definition": "When something is outdated, it is old and no longer useful in modern time.",
+    "uzbekDefinition": "Outdated so'zining ingliz tilidagi rasmiy ta'rifi: When something is outdated, it is old and no longer useful in modern time.",
+    "example": "Tape players are becoming outdated because of digital music.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Tape players are becoming outdated because of digital music.",
+    "translations": {
+      "uzbek": "Outdated (o'zbekcha ma'nosi)",
+      "russian": "Outdated (русский перевод)"
+    },
+    "unit": 11,
+    "synonyms": [
+      "outdated",
+      "synonym"
+    ],
+    "collocations": [
+      "use outdated",
+      "academic outdated"
+    ],
+    "audioText": "Outdated. When something is outdated, it is old and no longer useful in modern time.",
+    "clozeSentence": "Tape players are becoming ______ because of digital music.",
+    "targetAnswer": "outdated"
+  },
+  {
+    "id": "w217",
+    "word": "Overall",
+    "phonetic": "/overall/",
+    "partOfSpeech": "verb",
+    "definition": "When a thing is talked about overall, the whole thing is considered.",
+    "uzbekDefinition": "Overall so'zining ingliz tilidagi rasmiy ta'rifi: When a thing is talked about overall, the whole thing is considered.",
+    "example": "Overall, the party was a huge success.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Overall, the party was a huge success.",
+    "translations": {
+      "uzbek": "Overall (o'zbekcha ma'nosi)",
+      "russian": "Overall (русский перевод)"
+    },
+    "unit": 11,
+    "synonyms": [
+      "overall",
+      "synonym"
+    ],
+    "collocations": [
+      "use overall",
+      "academic overall"
+    ],
+    "audioText": "Overall. When a thing is talked about overall, the whole thing is considered.",
+    "clozeSentence": "______, the party was a huge success.",
+    "targetAnswer": "overall"
+  },
+  {
+    "id": "w218",
+    "word": "Partiality",
+    "phonetic": "/partiality/",
+    "partOfSpeech": "verb",
+    "definition": "To partiality means to perform or exhibit partiality in a given academic or social context.",
+    "uzbekDefinition": "Partiality so'zining ingliz tilidagi rasmiy ta'rifi: To partiality means to perform or exhibit partiality in a given academic or social context.",
+    "example": "+ She has a partiality for walking to school instead of driving.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: + She has a partiality for walking to school instead of driving.",
+    "translations": {
+      "uzbek": "Partiality (o'zbekcha ma'nosi)",
+      "russian": "Partiality (русский перевод)"
+    },
+    "unit": 11,
+    "synonyms": [
+      "partiality",
+      "synonym"
+    ],
+    "collocations": [
+      "use partiality",
+      "academic partiality"
+    ],
+    "audioText": "Partiality. To partiality means to perform or exhibit partiality in a given academic or social context.",
+    "clozeSentence": "+ She has a ______ for walking to school instead of driving.",
+    "targetAnswer": "partiality"
+  },
+  {
+    "id": "w219",
+    "word": "Spontaneous",
+    "phonetic": "/spontaneous/",
+    "partOfSpeech": "verb",
+    "definition": "When an act is spontaneous, it is not planned. It happens suddenly.",
+    "uzbekDefinition": "Spontaneous so'zining ingliz tilidagi rasmiy ta'rifi: When an act is spontaneous, it is not planned. It happens suddenly.",
+    "example": "My wife made a spontaneous decision to buy a new sofa while I was at work.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: My wife made a spontaneous decision to buy a new sofa while I was at work.",
+    "translations": {
+      "uzbek": "Spontaneous (o'zbekcha ma'nosi)",
+      "russian": "Spontaneous (русский перевод)"
+    },
+    "unit": 11,
+    "synonyms": [
+      "spontaneous",
+      "synonym"
+    ],
+    "collocations": [
+      "use spontaneous",
+      "academic spontaneous"
+    ],
+    "audioText": "Spontaneous. When an act is spontaneous, it is not planned. It happens suddenly.",
+    "clozeSentence": "My wife made a ______ decision to buy a new sofa while I was at work.",
+    "targetAnswer": "spontaneous"
+  },
+  {
+    "id": "w220",
+    "word": "Virtue",
+    "phonetic": "/virtue/",
+    "partOfSpeech": "verb",
+    "definition": "To virtue means to perform or exhibit virtue in a given academic or social context.",
+    "uzbekDefinition": "Virtue so'zining ingliz tilidagi rasmiy ta'rifi: To virtue means to perform or exhibit virtue in a given academic or social context.",
+    "example": "My best virtue is forgiveness.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: My best virtue is forgiveness.",
+    "translations": {
+      "uzbek": "Virtue (o'zbekcha ma'nosi)",
+      "russian": "Virtue (русский перевод)"
+    },
+    "unit": 11,
+    "synonyms": [
+      "virtue",
+      "synonym"
+    ],
+    "collocations": [
+      "use virtue",
+      "academic virtue"
+    ],
+    "audioText": "Virtue. To virtue means to perform or exhibit virtue in a given academic or social context.",
+    "clozeSentence": "My best ______ is forgiveness.",
+    "targetAnswer": "virtue"
+  },
+  {
+    "id": "w221",
+    "word": "Anthropology",
+    "phonetic": "/anthropology/",
+    "partOfSpeech": "verb",
+    "definition": "Anthropology is the study of people, society, and culture.",
+    "uzbekDefinition": "Anthropology so'zining ingliz tilidagi rasmiy ta'rifi: Anthropology is the study of people, society, and culture.",
+    "example": "In anthropology class, I learned about simple tools that ancient cultures used.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: In anthropology class, I learned about simple tools that ancient cultures used.",
+    "translations": {
+      "uzbek": "Anthropology (o'zbekcha ma'nosi)",
+      "russian": "Anthropology (русский перевод)"
+    },
+    "unit": 12,
+    "synonyms": [
+      "anthropology",
+      "synonym"
+    ],
+    "collocations": [
+      "use anthropology",
+      "academic anthropology"
+    ],
+    "audioText": "Anthropology. Anthropology is the study of people, society, and culture.",
+    "clozeSentence": "In ______ class, I learned about simple tools that ancient cultures used.",
+    "targetAnswer": "anthropology"
+  },
+  {
+    "id": "w222",
+    "word": "Applaud",
+    "phonetic": "/applaud/",
+    "partOfSpeech": "verb",
+    "definition": "To applaud means to perform or exhibit applaud in a given academic or social context.",
+    "uzbekDefinition": "Applaud so'zining ingliz tilidagi rasmiy ta'rifi: To applaud means to perform or exhibit applaud in a given academic or social context.",
+    "example": "Everyone cheered and applauded Manny’s efforts.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Everyone cheered and applauded Manny’s efforts.",
+    "translations": {
+      "uzbek": "Applaud (o'zbekcha ma'nosi)",
+      "russian": "Applaud (русский перевод)"
+    },
+    "unit": 12,
+    "synonyms": [
+      "applaud",
+      "synonym"
+    ],
+    "collocations": [
+      "use applaud",
+      "academic applaud"
+    ],
+    "audioText": "Applaud. To applaud means to perform or exhibit applaud in a given academic or social context.",
+    "clozeSentence": "Everyone cheered and ______ed Manny’s efforts.",
+    "targetAnswer": "applaud"
+  },
+  {
+    "id": "w223",
+    "word": "Appoint",
+    "phonetic": "/appoint/",
+    "partOfSpeech": "verb",
+    "definition": "To appoint means to perform or exhibit appoint in a given academic or social context.",
+    "uzbekDefinition": "Appoint so'zining ingliz tilidagi rasmiy ta'rifi: To appoint means to perform or exhibit appoint in a given academic or social context.",
+    "example": "Two students were appointed to help the scientists with their research.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Two students were appointed to help the scientists with their research.",
+    "translations": {
+      "uzbek": "Appoint (o'zbekcha ma'nosi)",
+      "russian": "Appoint (русский перевод)"
+    },
+    "unit": 12,
+    "synonyms": [
+      "appoint",
+      "synonym"
+    ],
+    "collocations": [
+      "use appoint",
+      "academic appoint"
+    ],
+    "audioText": "Appoint. To appoint means to perform or exhibit appoint in a given academic or social context.",
+    "clozeSentence": "Two students were ______ed to help the scientists with their research.",
+    "targetAnswer": "appoint"
+  },
+  {
+    "id": "w224",
+    "word": "Compatible",
+    "phonetic": "/compatible/",
+    "partOfSpeech": "verb",
+    "definition": "When things are compatible, they work well or exist together successfully.",
+    "uzbekDefinition": "Compatible so'zining ingliz tilidagi rasmiy ta'rifi: When things are compatible, they work well or exist together successfully.",
+    "example": "Jan and Fred are too different. They will never be compatible.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Jan and Fred are too different. They will never be compatible.",
+    "translations": {
+      "uzbek": "Compatible (o'zbekcha ma'nosi)",
+      "russian": "Compatible (русский перевод)"
+    },
+    "unit": 12,
+    "synonyms": [
+      "compatible",
+      "synonym"
+    ],
+    "collocations": [
+      "use compatible",
+      "academic compatible"
+    ],
+    "audioText": "Compatible. When things are compatible, they work well or exist together successfully.",
+    "clozeSentence": "Jan and Fred are too different. They will never be ______.",
+    "targetAnswer": "compatible"
+  },
+  {
+    "id": "w225",
+    "word": "Competence",
+    "phonetic": "/competence/",
+    "partOfSpeech": "verb",
+    "definition": "To competence means to perform or exhibit competence in a given academic or social context.",
+    "uzbekDefinition": "Competence so'zining ingliz tilidagi rasmiy ta'rifi: To competence means to perform or exhibit competence in a given academic or social context.",
+    "example": "The job was easy because the group had enough competence to do it well.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The job was easy because the group had enough competence to do it well.",
+    "translations": {
+      "uzbek": "Competence (o'zbekcha ma'nosi)",
+      "russian": "Competence (русский перевод)"
+    },
+    "unit": 12,
+    "synonyms": [
+      "competence",
+      "synonym"
+    ],
+    "collocations": [
+      "use competence",
+      "academic competence"
+    ],
+    "audioText": "Competence. To competence means to perform or exhibit competence in a given academic or social context.",
+    "clozeSentence": "The job was easy because the group had enough ______ to do it well.",
+    "targetAnswer": "competence"
+  },
+  {
+    "id": "w226",
+    "word": "Confer",
+    "phonetic": "/confer/",
+    "partOfSpeech": "verb",
+    "definition": "To confer means to perform or exhibit confer in a given academic or social context.",
+    "uzbekDefinition": "Confer so'zining ingliz tilidagi rasmiy ta'rifi: To confer means to perform or exhibit confer in a given academic or social context.",
+    "example": "I will have to confer with my wife before I can purchase a new car.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: I will have to confer with my wife before I can purchase a new car.",
+    "translations": {
+      "uzbek": "Confer (o'zbekcha ma'nosi)",
+      "russian": "Confer (русский перевод)"
+    },
+    "unit": 12,
+    "synonyms": [
+      "confer",
+      "synonym"
+    ],
+    "collocations": [
+      "use confer",
+      "academic confer"
+    ],
+    "audioText": "Confer. To confer means to perform or exhibit confer in a given academic or social context.",
+    "clozeSentence": "I will have to ______ with my wife before I can purchase a new car.",
+    "targetAnswer": "confer"
+  },
+  {
+    "id": "w227",
+    "word": "Consecutive",
+    "phonetic": "/consecutive/",
+    "partOfSpeech": "verb",
+    "definition": "To consecutive means to perform or exhibit consecutive in a given academic or social context.",
+    "uzbekDefinition": "Consecutive so'zining ingliz tilidagi rasmiy ta'rifi: To consecutive means to perform or exhibit consecutive in a given academic or social context.",
+    "example": "The researcher used the word consecutive to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word consecutive to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Consecutive (o'zbekcha ma'nosi)",
+      "russian": "Consecutive (русский перевод)"
+    },
+    "unit": 12,
+    "synonyms": [
+      "consecutive",
+      "synonym"
+    ],
+    "collocations": [
+      "use consecutive",
+      "academic consecutive"
+    ],
+    "audioText": "Consecutive. To consecutive means to perform or exhibit consecutive in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "consecutive"
+  },
+  {
+    "id": "w228",
+    "word": "Crude",
+    "phonetic": "/crude/",
+    "partOfSpeech": "verb",
+    "definition": "When something is crude, it is not exact or detailed, but it can still be useful.",
+    "uzbekDefinition": "Crude so'zining ingliz tilidagi rasmiy ta'rifi: When something is crude, it is not exact or detailed, but it can still be useful.",
+    "example": "She drew crude hearts on the ground to show how much she loved him.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: She drew crude hearts on the ground to show how much she loved him.",
+    "translations": {
+      "uzbek": "Crude (o'zbekcha ma'nosi)",
+      "russian": "Crude (русский перевод)"
+    },
+    "unit": 12,
+    "synonyms": [
+      "crude",
+      "synonym"
+    ],
+    "collocations": [
+      "use crude",
+      "academic crude"
+    ],
+    "audioText": "Crude. When something is crude, it is not exact or detailed, but it can still be useful.",
+    "clozeSentence": "She drew ______ hearts on the ground to show how much she loved him.",
+    "targetAnswer": "crude"
+  },
+  {
+    "id": "w229",
+    "word": "Cube",
+    "phonetic": "/cube/",
+    "partOfSpeech": "verb",
+    "definition": "To cube means to perform or exhibit cube in a given academic or social context.",
+    "uzbekDefinition": "Cube so'zining ingliz tilidagi rasmiy ta'rifi: To cube means to perform or exhibit cube in a given academic or social context.",
+    "example": "Please get me some ice cubes to put in my soda.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Please get me some ice cubes to put in my soda.",
+    "translations": {
+      "uzbek": "Cube (o'zbekcha ma'nosi)",
+      "russian": "Cube (русский перевод)"
+    },
+    "unit": 12,
+    "synonyms": [
+      "cube",
+      "synonym"
+    ],
+    "collocations": [
+      "use cube",
+      "academic cube"
+    ],
+    "audioText": "Cube. To cube means to perform or exhibit cube in a given academic or social context.",
+    "clozeSentence": "Please get me some ice ______s to put in my soda.",
+    "targetAnswer": "cube"
+  },
+  {
+    "id": "w230",
+    "word": "Feedback",
+    "phonetic": "/feedback/",
+    "partOfSpeech": "verb",
+    "definition": "To feedback means to perform or exhibit feedback in a given academic or social context.",
+    "uzbekDefinition": "Feedback so'zining ingliz tilidagi rasmiy ta'rifi: To feedback means to perform or exhibit feedback in a given academic or social context.",
+    "example": "I asked my boss for feedback on my work.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: I asked my boss for feedback on my work.",
+    "translations": {
+      "uzbek": "Feedback (o'zbekcha ma'nosi)",
+      "russian": "Feedback (русский перевод)"
+    },
+    "unit": 12,
+    "synonyms": [
+      "feedback",
+      "synonym"
+    ],
+    "collocations": [
+      "use feedback",
+      "academic feedback"
+    ],
+    "audioText": "Feedback. To feedback means to perform or exhibit feedback in a given academic or social context.",
+    "clozeSentence": "I asked my boss for ______ on my work.",
+    "targetAnswer": "feedback"
+  },
+  {
+    "id": "w231",
+    "word": "Ignorance",
+    "phonetic": "/ignorance/",
+    "partOfSpeech": "verb",
+    "definition": "To ignorance means to perform or exhibit ignorance in a given academic or social context.",
+    "uzbekDefinition": "Ignorance so'zining ingliz tilidagi rasmiy ta'rifi: To ignorance means to perform or exhibit ignorance in a given academic or social context.",
+    "example": "When he failed the test, his ignorance of math was obvious.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: When he failed the test, his ignorance of math was obvious.",
+    "translations": {
+      "uzbek": "Ignorance (o'zbekcha ma'nosi)",
+      "russian": "Ignorance (русский перевод)"
+    },
+    "unit": 12,
+    "synonyms": [
+      "ignorance",
+      "synonym"
+    ],
+    "collocations": [
+      "use ignorance",
+      "academic ignorance"
+    ],
+    "audioText": "Ignorance. To ignorance means to perform or exhibit ignorance in a given academic or social context.",
+    "clozeSentence": "When he failed the test, his ______ of math was obvious.",
+    "targetAnswer": "ignorance"
+  },
+  {
+    "id": "w232",
+    "word": "Masculine",
+    "phonetic": "/masculine/",
+    "partOfSpeech": "verb",
+    "definition": "When something is masculine, it is a quality or thing related to men.",
+    "uzbekDefinition": "Masculine so'zining ingliz tilidagi rasmiy ta'rifi: When something is masculine, it is a quality or thing related to men.",
+    "example": "American football is usually considered a masculine sport.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: American football is usually considered a masculine sport.",
+    "translations": {
+      "uzbek": "Masculine (o'zbekcha ma'nosi)",
+      "russian": "Masculine (русский перевод)"
+    },
+    "unit": 12,
+    "synonyms": [
+      "masculine",
+      "synonym"
+    ],
+    "collocations": [
+      "use masculine",
+      "academic masculine"
+    ],
+    "audioText": "Masculine. When something is masculine, it is a quality or thing related to men.",
+    "clozeSentence": "American football is usually considered a ______ sport.",
+    "targetAnswer": "masculine"
+  },
+  {
+    "id": "w233",
+    "word": "Monument",
+    "phonetic": "/monument/",
+    "partOfSpeech": "verb",
+    "definition": "To monument means to perform or exhibit monument in a given academic or social context.",
+    "uzbekDefinition": "Monument so'zining ingliz tilidagi rasmiy ta'rifi: To monument means to perform or exhibit monument in a given academic or social context.",
+    "example": "A large monument was built to honor the brave soldiers.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: A large monument was built to honor the brave soldiers.",
+    "translations": {
+      "uzbek": "Monument (o'zbekcha ma'nosi)",
+      "russian": "Monument (русский перевод)"
+    },
+    "unit": 12,
+    "synonyms": [
+      "monument",
+      "synonym"
+    ],
+    "collocations": [
+      "use monument",
+      "academic monument"
+    ],
+    "audioText": "Monument. To monument means to perform or exhibit monument in a given academic or social context.",
+    "clozeSentence": "A large ______ was built to honor the brave soldiers.",
+    "targetAnswer": "monument"
+  },
+  {
+    "id": "w234",
+    "word": "Muscular",
+    "phonetic": "/muscular/",
+    "partOfSpeech": "verb",
+    "definition": "When someone is muscular, they are very fit and strong.",
+    "uzbekDefinition": "Muscular so'zining ingliz tilidagi rasmiy ta'rifi: When someone is muscular, they are very fit and strong.",
+    "example": "He exercised regularly so that his body could become muscular.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: He exercised regularly so that his body could become muscular.",
+    "translations": {
+      "uzbek": "Muscular (o'zbekcha ma'nosi)",
+      "russian": "Muscular (русский перевод)"
+    },
+    "unit": 12,
+    "synonyms": [
+      "muscular",
+      "synonym"
+    ],
+    "collocations": [
+      "use muscular",
+      "academic muscular"
+    ],
+    "audioText": "Muscular. When someone is muscular, they are very fit and strong.",
+    "clozeSentence": "He exercised regularly so that his body could become ______.",
+    "targetAnswer": "muscular"
+  },
+  {
+    "id": "w235",
+    "word": "Posture",
+    "phonetic": "/posture/",
+    "partOfSpeech": "verb",
+    "definition": "A person’s posture is the position in which they stand or sit.",
+    "uzbekDefinition": "Posture so'zining ingliz tilidagi rasmiy ta'rifi: A person’s posture is the position in which they stand or sit.",
+    "example": "Your back will feel better if you improve your posture.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Your back will feel better if you improve your posture.",
+    "translations": {
+      "uzbek": "Posture (o'zbekcha ma'nosi)",
+      "russian": "Posture (русский перевод)"
+    },
+    "unit": 12,
+    "synonyms": [
+      "posture",
+      "synonym"
+    ],
+    "collocations": [
+      "use posture",
+      "academic posture"
+    ],
+    "audioText": "Posture. A person’s posture is the position in which they stand or sit.",
+    "clozeSentence": "Your back will feel better if you improve your ______.",
+    "targetAnswer": "posture"
+  },
+  {
+    "id": "w236",
+    "word": "Situate",
+    "phonetic": "/situate/",
+    "partOfSpeech": "verb",
+    "definition": "To situate means to perform or exhibit situate in a given academic or social context.",
+    "uzbekDefinition": "Situate so'zining ingliz tilidagi rasmiy ta'rifi: To situate means to perform or exhibit situate in a given academic or social context.",
+    "example": "The road was situated between the forest and the lake.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The road was situated between the forest and the lake.",
+    "translations": {
+      "uzbek": "Situate (o'zbekcha ma'nosi)",
+      "russian": "Situate (русский перевод)"
+    },
+    "unit": 12,
+    "synonyms": [
+      "situate",
+      "synonym"
+    ],
+    "collocations": [
+      "use situate",
+      "academic situate"
+    ],
+    "audioText": "Situate. To situate means to perform or exhibit situate in a given academic or social context.",
+    "clozeSentence": "The road was ______d between the forest and the lake.",
+    "targetAnswer": "situate"
+  },
+  {
+    "id": "w237",
+    "word": "Supervise",
+    "phonetic": "/supervise/",
+    "partOfSpeech": "verb",
+    "definition": "To supervise means to perform or exhibit supervise in a given academic or social context.",
+    "uzbekDefinition": "Supervise so'zining ingliz tilidagi rasmiy ta'rifi: To supervise means to perform or exhibit supervise in a given academic or social context.",
+    "example": "Allen supervised the construction workers to ensure everyone’s safety.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Allen supervised the construction workers to ensure everyone’s safety.",
+    "translations": {
+      "uzbek": "Supervise (o'zbekcha ma'nosi)",
+      "russian": "Supervise (русский перевод)"
+    },
+    "unit": 12,
+    "synonyms": [
+      "supervise",
+      "synonym"
+    ],
+    "collocations": [
+      "use supervise",
+      "academic supervise"
+    ],
+    "audioText": "Supervise. To supervise means to perform or exhibit supervise in a given academic or social context.",
+    "clozeSentence": "Allen ______d the construction workers to ensure everyone’s safety.",
+    "targetAnswer": "supervise"
+  },
+  {
+    "id": "w238",
+    "word": "Symmetry",
+    "phonetic": "/symmetry/",
+    "partOfSpeech": "verb",
+    "definition": "To symmetry means to perform or exhibit symmetry in a given academic or social context.",
+    "uzbekDefinition": "Symmetry so'zining ingliz tilidagi rasmiy ta'rifi: To symmetry means to perform or exhibit symmetry in a given academic or social context.",
+    "example": "The artist made sure to use perfect symmetry when painting the butterfly.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The artist made sure to use perfect symmetry when painting the butterfly.",
+    "translations": {
+      "uzbek": "Symmetry (o'zbekcha ma'nosi)",
+      "russian": "Symmetry (русский перевод)"
+    },
+    "unit": 12,
+    "synonyms": [
+      "symmetry",
+      "synonym"
+    ],
+    "collocations": [
+      "use symmetry",
+      "academic symmetry"
+    ],
+    "audioText": "Symmetry. To symmetry means to perform or exhibit symmetry in a given academic or social context.",
+    "clozeSentence": "The artist made sure to use perfect ______ when painting the butterfly.",
+    "targetAnswer": "symmetry"
+  },
+  {
+    "id": "w239",
+    "word": "Tattoo",
+    "phonetic": "/tattoo/",
+    "partOfSpeech": "verb",
+    "definition": "To tattoo means to perform or exhibit tattoo in a given academic or social context.",
+    "uzbekDefinition": "Tattoo so'zining ingliz tilidagi rasmiy ta'rifi: To tattoo means to perform or exhibit tattoo in a given academic or social context.",
+    "example": "The surfer had tattoos on both his arms.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The surfer had tattoos on both his arms.",
+    "translations": {
+      "uzbek": "Tattoo (o'zbekcha ma'nosi)",
+      "russian": "Tattoo (русский перевод)"
+    },
+    "unit": 12,
+    "synonyms": [
+      "tattoo",
+      "synonym"
+    ],
+    "collocations": [
+      "use tattoo",
+      "academic tattoo"
+    ],
+    "audioText": "Tattoo. To tattoo means to perform or exhibit tattoo in a given academic or social context.",
+    "clozeSentence": "The surfer had ______s on both his arms.",
+    "targetAnswer": "tattoo"
+  },
+  {
+    "id": "w240",
+    "word": "Undergraduate",
+    "phonetic": "/undergraduate/",
+    "partOfSpeech": "verb",
+    "definition": "An undergraduate is a student at a college who is studying fora bachelor’s degree.",
+    "uzbekDefinition": "Undergraduate so'zining ingliz tilidagi rasmiy ta'rifi: An undergraduate is a student at a college who is studying fora bachelor’s degree.",
+    "example": "She was excited to finish high school and enroll as an undergraduate in the fall.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: She was excited to finish high school and enroll as an undergraduate in the fall.",
+    "translations": {
+      "uzbek": "Undergraduate (o'zbekcha ma'nosi)",
+      "russian": "Undergraduate (русский перевод)"
+    },
+    "unit": 12,
+    "synonyms": [
+      "undergraduate",
+      "synonym"
+    ],
+    "collocations": [
+      "use undergraduate",
+      "academic undergraduate"
+    ],
+    "audioText": "Undergraduate. An undergraduate is a student at a college who is studying fora bachelor’s degree.",
+    "clozeSentence": "She was excited to finish high school and enroll as an ______ in the fall.",
+    "targetAnswer": "undergraduate"
+  },
+  {
+    "id": "w241",
+    "word": "Brook",
+    "phonetic": "/brook/",
+    "partOfSpeech": "verb",
+    "definition": "To brook means to perform or exhibit brook in a given academic or social context.",
+    "uzbekDefinition": "Brook so'zining ingliz tilidagi rasmiy ta'rifi: To brook means to perform or exhibit brook in a given academic or social context.",
+    "example": "The researcher used the word brook to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word brook to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Brook (o'zbekcha ma'nosi)",
+      "russian": "Brook (русский перевод)"
+    },
+    "unit": 13,
+    "synonyms": [
+      "brook",
+      "synonym"
+    ],
+    "collocations": [
+      "use brook",
+      "academic brook"
+    ],
+    "audioText": "Brook. To brook means to perform or exhibit brook in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "brook"
+  },
+  {
+    "id": "w242",
+    "word": "Cater",
+    "phonetic": "/cater/",
+    "partOfSpeech": "verb",
+    "definition": "To cater means to perform or exhibit cater in a given academic or social context.",
+    "uzbekDefinition": "Cater so'zining ingliz tilidagi rasmiy ta'rifi: To cater means to perform or exhibit cater in a given academic or social context.",
+    "example": "Bill was too sick to get out of bed, so his nurse catered to his needs.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Bill was too sick to get out of bed, so his nurse catered to his needs.",
+    "translations": {
+      "uzbek": "Cater (o'zbekcha ma'nosi)",
+      "russian": "Cater (русский перевод)"
+    },
+    "unit": 13,
+    "synonyms": [
+      "cater",
+      "synonym"
+    ],
+    "collocations": [
+      "use cater",
+      "academic cater"
+    ],
+    "audioText": "Cater. To cater means to perform or exhibit cater in a given academic or social context.",
+    "clozeSentence": "Bill was too sick to get out of bed, so his nurse ______ed to his needs.",
+    "targetAnswer": "cater"
+  },
+  {
+    "id": "w243",
+    "word": "Considerate",
+    "phonetic": "/considerate/",
+    "partOfSpeech": "verb",
+    "definition": "When someone is considerate, they pay attention to the needs of others.",
+    "uzbekDefinition": "Considerate so'zining ingliz tilidagi rasmiy ta'rifi: When someone is considerate, they pay attention to the needs of others.",
+    "example": "+ The considerate boy gave a present to his girlfriend on Valentine’s Day.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: + The considerate boy gave a present to his girlfriend on Valentine’s Day.",
+    "translations": {
+      "uzbek": "Considerate (o'zbekcha ma'nosi)",
+      "russian": "Considerate (русский перевод)"
+    },
+    "unit": 13,
+    "synonyms": [
+      "considerate",
+      "synonym"
+    ],
+    "collocations": [
+      "use considerate",
+      "academic considerate"
+    ],
+    "audioText": "Considerate. When someone is considerate, they pay attention to the needs of others.",
+    "clozeSentence": "+ The ______ boy gave a present to his girlfriend on Valentine’s Day.",
+    "targetAnswer": "considerate"
+  },
+  {
+    "id": "w244",
+    "word": "Consumption",
+    "phonetic": "/consumption/",
+    "partOfSpeech": "verb",
+    "definition": "To consumption means to perform or exhibit consumption in a given academic or social context.",
+    "uzbekDefinition": "Consumption so'zining ingliz tilidagi rasmiy ta'rifi: To consumption means to perform or exhibit consumption in a given academic or social context.",
+    "example": "These apples are too rotten for consumption.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: These apples are too rotten for consumption.",
+    "translations": {
+      "uzbek": "Consumption (o'zbekcha ma'nosi)",
+      "russian": "Consumption (русский перевод)"
+    },
+    "unit": 13,
+    "synonyms": [
+      "consumption",
+      "synonym"
+    ],
+    "collocations": [
+      "use consumption",
+      "academic consumption"
+    ],
+    "audioText": "Consumption. To consumption means to perform or exhibit consumption in a given academic or social context.",
+    "clozeSentence": "These apples are too rotten for ______.",
+    "targetAnswer": "consumption"
+  },
+  {
+    "id": "w245",
+    "word": "Criteria",
+    "phonetic": "/criteria/",
+    "partOfSpeech": "verb",
+    "definition": "To criteria means to perform or exhibit criteria in a given academic or social context.",
+    "uzbekDefinition": "Criteria so'zining ingliz tilidagi rasmiy ta'rifi: To criteria means to perform or exhibit criteria in a given academic or social context.",
+    "example": "Before she got the job, she had to meet all the necessary criteria.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Before she got the job, she had to meet all the necessary criteria.",
+    "translations": {
+      "uzbek": "Criteria (o'zbekcha ma'nosi)",
+      "russian": "Criteria (русский перевод)"
+    },
+    "unit": 13,
+    "synonyms": [
+      "criteria",
+      "synonym"
+    ],
+    "collocations": [
+      "use criteria",
+      "academic criteria"
+    ],
+    "audioText": "Criteria. To criteria means to perform or exhibit criteria in a given academic or social context.",
+    "clozeSentence": "Before she got the job, she had to meet all the necessary ______.",
+    "targetAnswer": "criteria"
+  },
+  {
+    "id": "w246",
+    "word": "Crust",
+    "phonetic": "/crust/",
+    "partOfSpeech": "verb",
+    "definition": "To crust means to perform or exhibit crust in a given academic or social context.",
+    "uzbekDefinition": "Crust so'zining ingliz tilidagi rasmiy ta'rifi: To crust means to perform or exhibit crust in a given academic or social context.",
+    "example": "The little boy never ate the crust of his pizza.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The little boy never ate the crust of his pizza.",
+    "translations": {
+      "uzbek": "Crust (o'zbekcha ma'nosi)",
+      "russian": "Crust (русский перевод)"
+    },
+    "unit": 13,
+    "synonyms": [
+      "crust",
+      "synonym"
+    ],
+    "collocations": [
+      "use crust",
+      "academic crust"
+    ],
+    "audioText": "Crust. To crust means to perform or exhibit crust in a given academic or social context.",
+    "clozeSentence": "The little boy never ate the ______ of his pizza.",
+    "targetAnswer": "crust"
+  },
+  {
+    "id": "w247",
+    "word": "Degrade",
+    "phonetic": "/degrade/",
+    "partOfSpeech": "verb",
+    "definition": "To degrade means to perform or exhibit degrade in a given academic or social context.",
+    "uzbekDefinition": "Degrade so'zining ingliz tilidagi rasmiy ta'rifi: To degrade means to perform or exhibit degrade in a given academic or social context.",
+    "example": "The teacher degraded Bob when she announced his poor performance to the class",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The teacher degraded Bob when she announced his poor performance to the class",
+    "translations": {
+      "uzbek": "Degrade (o'zbekcha ma'nosi)",
+      "russian": "Degrade (русский перевод)"
+    },
+    "unit": 13,
+    "synonyms": [
+      "degrade",
+      "synonym"
+    ],
+    "collocations": [
+      "use degrade",
+      "academic degrade"
+    ],
+    "audioText": "Degrade. To degrade means to perform or exhibit degrade in a given academic or social context.",
+    "clozeSentence": "The teacher ______d Bob when she announced his poor performance to the class",
+    "targetAnswer": "degrade"
+  },
+  {
+    "id": "w248",
+    "word": "Entitle",
+    "phonetic": "/entitle/",
+    "partOfSpeech": "verb",
+    "definition": "To entitle means to perform or exhibit entitle in a given academic or social context.",
+    "uzbekDefinition": "Entitle so'zining ingliz tilidagi rasmiy ta'rifi: To entitle means to perform or exhibit entitle in a given academic or social context.",
+    "example": "His golden ticket entitled him to sit in the front row at the concert.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: His golden ticket entitled him to sit in the front row at the concert.",
+    "translations": {
+      "uzbek": "Entitle (o'zbekcha ma'nosi)",
+      "russian": "Entitle (русский перевод)"
+    },
+    "unit": 13,
+    "synonyms": [
+      "entitle",
+      "synonym"
+    ],
+    "collocations": [
+      "use entitle",
+      "academic entitle"
+    ],
+    "audioText": "Entitle. To entitle means to perform or exhibit entitle in a given academic or social context.",
+    "clozeSentence": "His golden ticket ______d him to sit in the front row at the concert.",
+    "targetAnswer": "entitle"
+  },
+  {
+    "id": "w249",
+    "word": "Escort",
+    "phonetic": "/escort/",
+    "partOfSpeech": "verb",
+    "definition": "To escort means to perform or exhibit escort in a given academic or social context.",
+    "uzbekDefinition": "Escort so'zining ingliz tilidagi rasmiy ta'rifi: To escort means to perform or exhibit escort in a given academic or social context.",
+    "example": "Her bodyguards escorted her to the movie theater.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Her bodyguards escorted her to the movie theater.",
+    "translations": {
+      "uzbek": "Escort (o'zbekcha ma'nosi)",
+      "russian": "Escort (русский перевод)"
+    },
+    "unit": 13,
+    "synonyms": [
+      "escort",
+      "synonym"
+    ],
+    "collocations": [
+      "use escort",
+      "academic escort"
+    ],
+    "audioText": "Escort. To escort means to perform or exhibit escort in a given academic or social context.",
+    "clozeSentence": "Her bodyguards ______ed her to the movie theater.",
+    "targetAnswer": "escort"
+  },
+  {
+    "id": "w250",
+    "word": "External",
+    "phonetic": "/external/",
+    "partOfSpeech": "verb",
+    "definition": "When something is external, it is connected to an outer part.",
+    "uzbekDefinition": "External so'zining ingliz tilidagi rasmiy ta'rifi: When something is external, it is connected to an outer part.",
+    "example": "It is warm inside my house, but the external temperature is freezing.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: It is warm inside my house, but the external temperature is freezing.",
+    "translations": {
+      "uzbek": "External (o'zbekcha ma'nosi)",
+      "russian": "External (русский перевод)"
+    },
+    "unit": 13,
+    "synonyms": [
+      "external",
+      "synonym"
+    ],
+    "collocations": [
+      "use external",
+      "academic external"
+    ],
+    "audioText": "External. When something is external, it is connected to an outer part.",
+    "clozeSentence": "It is warm inside my house, but the ______ temperature is freezing.",
+    "targetAnswer": "external"
+  },
+  {
+    "id": "w251",
+    "word": "Facility",
+    "phonetic": "/facility/",
+    "partOfSpeech": "verb",
+    "definition": "To facility means to perform or exhibit facility in a given academic or social context.",
+    "uzbekDefinition": "Facility so'zining ingliz tilidagi rasmiy ta'rifi: To facility means to perform or exhibit facility in a given academic or social context.",
+    "example": "There are many educational facilities in big cities.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: There are many educational facilities in big cities.",
+    "translations": {
+      "uzbek": "Facility (o'zbekcha ma'nosi)",
+      "russian": "Facility (русский перевод)"
+    },
+    "unit": 13,
+    "synonyms": [
+      "facility",
+      "synonym"
+    ],
+    "collocations": [
+      "use facility",
+      "academic facility"
+    ],
+    "audioText": "Facility. To facility means to perform or exhibit facility in a given academic or social context.",
+    "clozeSentence": "There are many educational facilities in big cities.",
+    "targetAnswer": "facility"
+  },
+  {
+    "id": "w252",
+    "word": "Faculty",
+    "phonetic": "/faculty/",
+    "partOfSpeech": "verb",
+    "definition": "To faculty means to perform or exhibit faculty in a given academic or social context.",
+    "uzbekDefinition": "Faculty so'zining ingliz tilidagi rasmiy ta'rifi: To faculty means to perform or exhibit faculty in a given academic or social context.",
+    "example": "The boy’s mental faculties impressed all of his teachers.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The boy’s mental faculties impressed all of his teachers.",
+    "translations": {
+      "uzbek": "Faculty (o'zbekcha ma'nosi)",
+      "russian": "Faculty (русский перевод)"
+    },
+    "unit": 13,
+    "synonyms": [
+      "faculty",
+      "synonym"
+    ],
+    "collocations": [
+      "use faculty",
+      "academic faculty"
+    ],
+    "audioText": "Faculty. To faculty means to perform or exhibit faculty in a given academic or social context.",
+    "clozeSentence": "The boy’s mental faculties impressed all of his teachers.",
+    "targetAnswer": "faculty"
+  },
+  {
+    "id": "w253",
+    "word": "Heap",
+    "phonetic": "/heap/",
+    "partOfSpeech": "verb",
+    "definition": "To heap means to perform or exhibit heap in a given academic or social context.",
+    "uzbekDefinition": "Heap so'zining ingliz tilidagi rasmiy ta'rifi: To heap means to perform or exhibit heap in a given academic or social context.",
+    "example": "After the building was torn down, all that was left was a heap of bricks.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: After the building was torn down, all that was left was a heap of bricks.",
+    "translations": {
+      "uzbek": "Heap (o'zbekcha ma'nosi)",
+      "russian": "Heap (русский перевод)"
+    },
+    "unit": 13,
+    "synonyms": [
+      "heap",
+      "synonym"
+    ],
+    "collocations": [
+      "use heap",
+      "academic heap"
+    ],
+    "audioText": "Heap. To heap means to perform or exhibit heap in a given academic or social context.",
+    "clozeSentence": "After the building was torn down, all that was left was a ______ of bricks.",
+    "targetAnswer": "heap"
+  },
+  {
+    "id": "w254",
+    "word": "Hemisphere",
+    "phonetic": "/hemisphere/",
+    "partOfSpeech": "verb",
+    "definition": "To hemisphere means to perform or exhibit hemisphere in a given academic or social context.",
+    "uzbekDefinition": "Hemisphere so'zining ingliz tilidagi rasmiy ta'rifi: To hemisphere means to perform or exhibit hemisphere in a given academic or social context.",
+    "example": "In the northern hemisphere, the weather is usually warmest in July and August.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: In the northern hemisphere, the weather is usually warmest in July and August.",
+    "translations": {
+      "uzbek": "Hemisphere (o'zbekcha ma'nosi)",
+      "russian": "Hemisphere (русский перевод)"
+    },
+    "unit": 13,
+    "synonyms": [
+      "hemisphere",
+      "synonym"
+    ],
+    "collocations": [
+      "use hemisphere",
+      "academic hemisphere"
+    ],
+    "audioText": "Hemisphere. To hemisphere means to perform or exhibit hemisphere in a given academic or social context.",
+    "clozeSentence": "In the northern ______, the weather is usually warmest in July and August.",
+    "targetAnswer": "hemisphere"
+  },
+  {
+    "id": "w255",
+    "word": "Hound",
+    "phonetic": "/hound/",
+    "partOfSpeech": "verb",
+    "definition": "To hound means to perform or exhibit hound in a given academic or social context.",
+    "uzbekDefinition": "Hound so'zining ingliz tilidagi rasmiy ta'rifi: To hound means to perform or exhibit hound in a given academic or social context.",
+    "example": "The researcher used the word hound to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word hound to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Hound (o'zbekcha ma'nosi)",
+      "russian": "Hound (русский перевод)"
+    },
+    "unit": 13,
+    "synonyms": [
+      "hound",
+      "synonym"
+    ],
+    "collocations": [
+      "use hound",
+      "academic hound"
+    ],
+    "audioText": "Hound. To hound means to perform or exhibit hound in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "hound"
+  },
+  {
+    "id": "w256",
+    "word": "Impersonal",
+    "phonetic": "/impersonal/",
+    "partOfSpeech": "verb",
+    "definition": "If something is impersonal, it is not friendly and makes people feel unimportant.",
+    "uzbekDefinition": "Impersonal so'zining ingliz tilidagi rasmiy ta'rifi: If something is impersonal, it is not friendly and makes people feel unimportant.",
+    "example": "The boy felt scared on his first day at the big, impersonal high school.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The boy felt scared on his first day at the big, impersonal high school.",
+    "translations": {
+      "uzbek": "Impersonal (o'zbekcha ma'nosi)",
+      "russian": "Impersonal (русский перевод)"
+    },
+    "unit": 13,
+    "synonyms": [
+      "impersonal",
+      "synonym"
+    ],
+    "collocations": [
+      "use impersonal",
+      "academic impersonal"
+    ],
+    "audioText": "Impersonal. If something is impersonal, it is not friendly and makes people feel unimportant.",
+    "clozeSentence": "The boy felt scared on his first day at the big, ______ high school.",
+    "targetAnswer": "impersonal"
+  },
+  {
+    "id": "w257",
+    "word": "Ornament",
+    "phonetic": "/ornament/",
+    "partOfSpeech": "verb",
+    "definition": "To ornament means to perform or exhibit ornament in a given academic or social context.",
+    "uzbekDefinition": "Ornament so'zining ingliz tilidagi rasmiy ta'rifi: To ornament means to perform or exhibit ornament in a given academic or social context.",
+    "example": "The woman kept some colorful ornaments on the shelves.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The woman kept some colorful ornaments on the shelves.",
+    "translations": {
+      "uzbek": "Ornament (o'zbekcha ma'nosi)",
+      "russian": "Ornament (русский перевод)"
+    },
+    "unit": 13,
+    "synonyms": [
+      "ornament",
+      "synonym"
+    ],
+    "collocations": [
+      "use ornament",
+      "academic ornament"
+    ],
+    "audioText": "Ornament. To ornament means to perform or exhibit ornament in a given academic or social context.",
+    "clozeSentence": "The woman kept some colorful ______s on the shelves.",
+    "targetAnswer": "ornament"
+  },
+  {
+    "id": "w258",
+    "word": "Pedestrian",
+    "phonetic": "/pedestrian/",
+    "partOfSpeech": "verb",
+    "definition": "To pedestrian means to perform or exhibit pedestrian in a given academic or social context.",
+    "uzbekDefinition": "Pedestrian so'zining ingliz tilidagi rasmiy ta'rifi: To pedestrian means to perform or exhibit pedestrian in a given academic or social context.",
+    "example": "Cars should be careful when pedestrians are walking around.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Cars should be careful when pedestrians are walking around.",
+    "translations": {
+      "uzbek": "Pedestrian (o'zbekcha ma'nosi)",
+      "russian": "Pedestrian (русский перевод)"
+    },
+    "unit": 13,
+    "synonyms": [
+      "pedestrian",
+      "synonym"
+    ],
+    "collocations": [
+      "use pedestrian",
+      "academic pedestrian"
+    ],
+    "audioText": "Pedestrian. To pedestrian means to perform or exhibit pedestrian in a given academic or social context.",
+    "clozeSentence": "Cars should be careful when ______s are walking around.",
+    "targetAnswer": "pedestrian"
+  },
+  {
+    "id": "w259",
+    "word": "Sanctuary",
+    "phonetic": "/sanctuary/",
+    "partOfSpeech": "verb",
+    "definition": "To sanctuary means to perform or exhibit sanctuary in a given academic or social context.",
+    "uzbekDefinition": "Sanctuary so'zining ingliz tilidagi rasmiy ta'rifi: To sanctuary means to perform or exhibit sanctuary in a given academic or social context.",
+    "example": "The church was made into a sanctuary for homeless people in the winter.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The church was made into a sanctuary for homeless people in the winter.",
+    "translations": {
+      "uzbek": "Sanctuary (o'zbekcha ma'nosi)",
+      "russian": "Sanctuary (русский перевод)"
+    },
+    "unit": 13,
+    "synonyms": [
+      "sanctuary",
+      "synonym"
+    ],
+    "collocations": [
+      "use sanctuary",
+      "academic sanctuary"
+    ],
+    "audioText": "Sanctuary. To sanctuary means to perform or exhibit sanctuary in a given academic or social context.",
+    "clozeSentence": "The church was made into a ______ for homeless people in the winter.",
+    "targetAnswer": "sanctuary"
+  },
+  {
+    "id": "w260",
+    "word": "Spectator",
+    "phonetic": "/spectator/",
+    "partOfSpeech": "verb",
+    "definition": "A spectator is someone who watches something, especially a sports event.",
+    "uzbekDefinition": "Spectator so'zining ingliz tilidagi rasmiy ta'rifi: A spectator is someone who watches something, especially a sports event.",
+    "example": "There were thousands of spectators at the big game.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: There were thousands of spectators at the big game.",
+    "translations": {
+      "uzbek": "Spectator (o'zbekcha ma'nosi)",
+      "russian": "Spectator (русский перевод)"
+    },
+    "unit": 13,
+    "synonyms": [
+      "spectator",
+      "synonym"
+    ],
+    "collocations": [
+      "use spectator",
+      "academic spectator"
+    ],
+    "audioText": "Spectator. A spectator is someone who watches something, especially a sports event.",
+    "clozeSentence": "There were thousands of ______s at the big game.",
+    "targetAnswer": "spectator"
+  },
+  {
+    "id": "w261",
+    "word": "Asset",
+    "phonetic": "/asset/",
+    "partOfSpeech": "verb",
+    "definition": "To asset means to perform or exhibit asset in a given academic or social context.",
+    "uzbekDefinition": "Asset so'zining ingliz tilidagi rasmiy ta'rifi: To asset means to perform or exhibit asset in a given academic or social context.",
+    "example": "The researcher used the word asset to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word asset to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Asset (o'zbekcha ma'nosi)",
+      "russian": "Asset (русский перевод)"
+    },
+    "unit": 14,
+    "synonyms": [
+      "asset",
+      "synonym"
+    ],
+    "collocations": [
+      "use asset",
+      "academic asset"
+    ],
+    "audioText": "Asset. To asset means to perform or exhibit asset in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "asset"
+  },
+  {
+    "id": "w262",
+    "word": "Aspect",
+    "phonetic": "/aspect/",
+    "partOfSpeech": "verb",
+    "definition": "To aspect means to perform or exhibit aspect in a given academic or social context.",
+    "uzbekDefinition": "Aspect so'zining ingliz tilidagi rasmiy ta'rifi: To aspect means to perform or exhibit aspect in a given academic or social context.",
+    "example": "I thought about the different aspects of owning two dogs.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: I thought about the different aspects of owning two dogs.",
+    "translations": {
+      "uzbek": "Aspect (o'zbekcha ma'nosi)",
+      "russian": "Aspect (русский перевод)"
+    },
+    "unit": 14,
+    "synonyms": [
+      "aspect",
+      "synonym"
+    ],
+    "collocations": [
+      "use aspect",
+      "academic aspect"
+    ],
+    "audioText": "Aspect. To aspect means to perform or exhibit aspect in a given academic or social context.",
+    "clozeSentence": "I thought about the different ______s of owning two dogs.",
+    "targetAnswer": "aspect"
+  },
+  {
+    "id": "w263",
+    "word": "Braille",
+    "phonetic": "/Braille/",
+    "partOfSpeech": "verb",
+    "definition": "To Braille means to perform or exhibit Braille in a given academic or social context.",
+    "uzbekDefinition": "Braille so'zining ingliz tilidagi rasmiy ta'rifi: To Braille means to perform or exhibit Braille in a given academic or social context.",
+    "example": "The boy enjoyed reading his favorite books written in Braille.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The boy enjoyed reading his favorite books written in Braille.",
+    "translations": {
+      "uzbek": "Braille (o'zbekcha ma'nosi)",
+      "russian": "Braille (русский перевод)"
+    },
+    "unit": 14,
+    "synonyms": [
+      "Braille",
+      "synonym"
+    ],
+    "collocations": [
+      "use Braille",
+      "academic Braille"
+    ],
+    "audioText": "Braille. To Braille means to perform or exhibit Braille in a given academic or social context.",
+    "clozeSentence": "The boy enjoyed reading his favorite books written in ______.",
+    "targetAnswer": "Braille"
+  },
+  {
+    "id": "w264",
+    "word": "Bud",
+    "phonetic": "/bud/",
+    "partOfSpeech": "verb",
+    "definition": "To bud means to perform or exhibit bud in a given academic or social context.",
+    "uzbekDefinition": "Bud so'zining ingliz tilidagi rasmiy ta'rifi: To bud means to perform or exhibit bud in a given academic or social context.",
+    "example": "The researcher used the word bud to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word bud to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Bud (o'zbekcha ma'nosi)",
+      "russian": "Bud (русский перевод)"
+    },
+    "unit": 14,
+    "synonyms": [
+      "bud",
+      "synonym"
+    ],
+    "collocations": [
+      "use bud",
+      "academic bud"
+    ],
+    "audioText": "Bud. To bud means to perform or exhibit bud in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "bud"
+  },
+  {
+    "id": "w265",
+    "word": "Coordinate",
+    "phonetic": "/coordinate/",
+    "partOfSpeech": "verb",
+    "definition": "To coordinate means to perform or exhibit coordinate in a given academic or social context.",
+    "uzbekDefinition": "Coordinate so'zining ingliz tilidagi rasmiy ta'rifi: To coordinate means to perform or exhibit coordinate in a given academic or social context.",
+    "example": "The researcher used the word coordinate to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word coordinate to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Coordinate (o'zbekcha ma'nosi)",
+      "russian": "Coordinate (русский перевод)"
+    },
+    "unit": 14,
+    "synonyms": [
+      "coordinate",
+      "synonym"
+    ],
+    "collocations": [
+      "use coordinate",
+      "academic coordinate"
+    ],
+    "audioText": "Coordinate. To coordinate means to perform or exhibit coordinate in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "coordinate"
+  },
+  {
+    "id": "w266",
+    "word": "Disprove",
+    "phonetic": "/disprove/",
+    "partOfSpeech": "verb",
+    "definition": "To disprove means to perform or exhibit disprove in a given academic or social context.",
+    "uzbekDefinition": "Disprove so'zining ingliz tilidagi rasmiy ta'rifi: To disprove means to perform or exhibit disprove in a given academic or social context.",
+    "example": "The scientist disproved the theory that the sun moved around the Earth.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The scientist disproved the theory that the sun moved around the Earth.",
+    "translations": {
+      "uzbek": "Disprove (o'zbekcha ma'nosi)",
+      "russian": "Disprove (русский перевод)"
+    },
+    "unit": 14,
+    "synonyms": [
+      "disprove",
+      "synonym"
+    ],
+    "collocations": [
+      "use disprove",
+      "academic disprove"
+    ],
+    "audioText": "Disprove. To disprove means to perform or exhibit disprove in a given academic or social context.",
+    "clozeSentence": "The scientist ______d the theory that the sun moved around the Earth.",
+    "targetAnswer": "disprove"
+  },
+  {
+    "id": "w267",
+    "word": "Humanitarian",
+    "phonetic": "/humanitarian/",
+    "partOfSpeech": "verb",
+    "definition": "If something is humanitarian, it is connected to helping people’s lives.",
+    "uzbekDefinition": "Humanitarian so'zining ingliz tilidagi rasmiy ta'rifi: If something is humanitarian, it is connected to helping people’s lives.",
+    "example": "After the flood, several humanitarian organizations offered help.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: After the flood, several humanitarian organizations offered help.",
+    "translations": {
+      "uzbek": "Humanitarian (o'zbekcha ma'nosi)",
+      "russian": "Humanitarian (русский перевод)"
+    },
+    "unit": 14,
+    "synonyms": [
+      "humanitarian",
+      "synonym"
+    ],
+    "collocations": [
+      "use humanitarian",
+      "academic humanitarian"
+    ],
+    "audioText": "Humanitarian. If something is humanitarian, it is connected to helping people’s lives.",
+    "clozeSentence": "After the flood, several ______ organizations offered help.",
+    "targetAnswer": "humanitarian"
+  },
+  {
+    "id": "w268",
+    "word": "Hypothesis",
+    "phonetic": "/hypothesis/",
+    "partOfSpeech": "verb",
+    "definition": "To hypothesis means to perform or exhibit hypothesis in a given academic or social context.",
+    "uzbekDefinition": "Hypothesis so'zining ingliz tilidagi rasmiy ta'rifi: To hypothesis means to perform or exhibit hypothesis in a given academic or social context.",
+    "example": "The teacher did an experiment to prove whether his hypothesis was right.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The teacher did an experiment to prove whether his hypothesis was right.",
+    "translations": {
+      "uzbek": "Hypothesis (o'zbekcha ma'nosi)",
+      "russian": "Hypothesis (русский перевод)"
+    },
+    "unit": 14,
+    "synonyms": [
+      "hypothesis",
+      "synonym"
+    ],
+    "collocations": [
+      "use hypothesis",
+      "academic hypothesis"
+    ],
+    "audioText": "Hypothesis. To hypothesis means to perform or exhibit hypothesis in a given academic or social context.",
+    "clozeSentence": "The teacher did an experiment to prove whether his ______ was right.",
+    "targetAnswer": "hypothesis"
+  },
+  {
+    "id": "w269",
+    "word": "Imprint",
+    "phonetic": "/imprint/",
+    "partOfSpeech": "verb",
+    "definition": "To imprint means to perform or exhibit imprint in a given academic or social context.",
+    "uzbekDefinition": "Imprint so'zining ingliz tilidagi rasmiy ta'rifi: To imprint means to perform or exhibit imprint in a given academic or social context.",
+    "example": "The experience ofwarleftan imprint on his mind that troubled him.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The experience ofwarleftan imprint on his mind that troubled him.",
+    "translations": {
+      "uzbek": "Imprint (o'zbekcha ma'nosi)",
+      "russian": "Imprint (русский перевод)"
+    },
+    "unit": 14,
+    "synonyms": [
+      "imprint",
+      "synonym"
+    ],
+    "collocations": [
+      "use imprint",
+      "academic imprint"
+    ],
+    "audioText": "Imprint. To imprint means to perform or exhibit imprint in a given academic or social context.",
+    "clozeSentence": "The experience ofwarleftan ______ on his mind that troubled him.",
+    "targetAnswer": "imprint"
+  },
+  {
+    "id": "w270",
+    "word": "Informative",
+    "phonetic": "/informative/",
+    "partOfSpeech": "verb",
+    "definition": "When something is informative, it provides a lot of information.",
+    "uzbekDefinition": "Informative so'zining ingliz tilidagi rasmiy ta'rifi: When something is informative, it provides a lot of information.",
+    "example": "The travel guide had a lot of informative facts about the region.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The travel guide had a lot of informative facts about the region.",
+    "translations": {
+      "uzbek": "Informative (o'zbekcha ma'nosi)",
+      "russian": "Informative (русский перевод)"
+    },
+    "unit": 14,
+    "synonyms": [
+      "informative",
+      "synonym"
+    ],
+    "collocations": [
+      "use informative",
+      "academic informative"
+    ],
+    "audioText": "Informative. When something is informative, it provides a lot of information.",
+    "clozeSentence": "The travel guide had a lot of ______ facts about the region.",
+    "targetAnswer": "informative"
+  },
+  {
+    "id": "w271",
+    "word": "Optic",
+    "phonetic": "/optic/",
+    "partOfSpeech": "verb",
+    "definition": "When something is optic, it relates to the eyes or light.",
+    "uzbekDefinition": "Optic so'zining ingliz tilidagi rasmiy ta'rifi: When something is optic, it relates to the eyes or light.",
+    "example": "Her blindness was caused by a problem with her optic nerve.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Her blindness was caused by a problem with her optic nerve.",
+    "translations": {
+      "uzbek": "Optic (o'zbekcha ma'nosi)",
+      "russian": "Optic (русский перевод)"
+    },
+    "unit": 14,
+    "synonyms": [
+      "optic",
+      "synonym"
+    ],
+    "collocations": [
+      "use optic",
+      "academic optic"
+    ],
+    "audioText": "Optic. When something is optic, it relates to the eyes or light.",
+    "clozeSentence": "Her blindness was caused by a problem with her ______ nerve.",
+    "targetAnswer": "optic"
+  },
+  {
+    "id": "w272",
+    "word": "Premise",
+    "phonetic": "/premise/",
+    "partOfSpeech": "verb",
+    "definition": "To premise means to perform or exhibit premise in a given academic or social context.",
+    "uzbekDefinition": "Premise so'zining ingliz tilidagi rasmiy ta'rifi: To premise means to perform or exhibit premise in a given academic or social context.",
+    "example": "The researcher used the word premise to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word premise to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Premise (o'zbekcha ma'nosi)",
+      "russian": "Premise (русский перевод)"
+    },
+    "unit": 14,
+    "synonyms": [
+      "premise",
+      "synonym"
+    ],
+    "collocations": [
+      "use premise",
+      "academic premise"
+    ],
+    "audioText": "Premise. To premise means to perform or exhibit premise in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "premise"
+  },
+  {
+    "id": "w273",
+    "word": "Rack",
+    "phonetic": "/rack/",
+    "partOfSpeech": "verb",
+    "definition": "To rack means to perform or exhibit rack in a given academic or social context.",
+    "uzbekDefinition": "Rack so'zining ingliz tilidagi rasmiy ta'rifi: To rack means to perform or exhibit rack in a given academic or social context.",
+    "example": "He stored his tools on a rack.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: He stored his tools on a rack.",
+    "translations": {
+      "uzbek": "Rack (o'zbekcha ma'nosi)",
+      "russian": "Rack (русский перевод)"
+    },
+    "unit": 14,
+    "synonyms": [
+      "rack",
+      "synonym"
+    ],
+    "collocations": [
+      "use rack",
+      "academic rack"
+    ],
+    "audioText": "Rack. To rack means to perform or exhibit rack in a given academic or social context.",
+    "clozeSentence": "He stored his tools on a ______.",
+    "targetAnswer": "rack"
+  },
+  {
+    "id": "w274",
+    "word": "Renaissance",
+    "phonetic": "/Renaissance/",
+    "partOfSpeech": "verb",
+    "definition": "The Renaissance was a period between the 14th and 17th centuries.",
+    "uzbekDefinition": "Renaissance so'zining ingliz tilidagi rasmiy ta'rifi: The Renaissance was a period between the 14th and 17th centuries.",
+    "example": "Leonardo Da Vinci was a popular artist of the Renaissance.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Leonardo Da Vinci was a popular artist of the Renaissance.",
+    "translations": {
+      "uzbek": "Renaissance (o'zbekcha ma'nosi)",
+      "russian": "Renaissance (русский перевод)"
+    },
+    "unit": 14,
+    "synonyms": [
+      "Renaissance",
+      "synonym"
+    ],
+    "collocations": [
+      "use Renaissance",
+      "academic Renaissance"
+    ],
+    "audioText": "Renaissance. The Renaissance was a period between the 14th and 17th centuries.",
+    "clozeSentence": "Leonardo Da Vinci was a popular artist of the ______.",
+    "targetAnswer": "Renaissance"
+  },
+  {
+    "id": "w275",
+    "word": "Revere",
+    "phonetic": "/revere/",
+    "partOfSpeech": "verb",
+    "definition": "To revere means to perform or exhibit revere in a given academic or social context.",
+    "uzbekDefinition": "Revere so'zining ingliz tilidagi rasmiy ta'rifi: To revere means to perform or exhibit revere in a given academic or social context.",
+    "example": "The researcher used the word revere to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word revere to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Revere (o'zbekcha ma'nosi)",
+      "russian": "Revere (русский перевод)"
+    },
+    "unit": 14,
+    "synonyms": [
+      "revere",
+      "synonym"
+    ],
+    "collocations": [
+      "use revere",
+      "academic revere"
+    ],
+    "audioText": "Revere. To revere means to perform or exhibit revere in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "revere"
+  },
+  {
+    "id": "w276",
+    "word": "Simultaneous",
+    "phonetic": "/simultaneous/",
+    "partOfSpeech": "verb",
+    "definition": "When something is simultaneous, it occurs at the same time as something else.",
+    "uzbekDefinition": "Simultaneous so'zining ingliz tilidagi rasmiy ta'rifi: When something is simultaneous, it occurs at the same time as something else.",
+    "example": "The movement of the gears inside the watch was simultaneous.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The movement of the gears inside the watch was simultaneous.",
+    "translations": {
+      "uzbek": "Simultaneous (o'zbekcha ma'nosi)",
+      "russian": "Simultaneous (русский перевод)"
+    },
+    "unit": 14,
+    "synonyms": [
+      "simultaneous",
+      "synonym"
+    ],
+    "collocations": [
+      "use simultaneous",
+      "academic simultaneous"
+    ],
+    "audioText": "Simultaneous. When something is simultaneous, it occurs at the same time as something else.",
+    "clozeSentence": "The movement of the gears inside the watch was ______.",
+    "targetAnswer": "simultaneous"
+  },
+  {
+    "id": "w277",
+    "word": "Skeptic",
+    "phonetic": "/skeptic/",
+    "partOfSpeech": "verb",
+    "definition": "To skeptic means to perform or exhibit skeptic in a given academic or social context.",
+    "uzbekDefinition": "Skeptic so'zining ingliz tilidagi rasmiy ta'rifi: To skeptic means to perform or exhibit skeptic in a given academic or social context.",
+    "example": "The scientist showed the skeptic that dinosaurs did exist by providing evidence.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The scientist showed the skeptic that dinosaurs did exist by providing evidence.",
+    "translations": {
+      "uzbek": "Skeptic (o'zbekcha ma'nosi)",
+      "russian": "Skeptic (русский перевод)"
+    },
+    "unit": 14,
+    "synonyms": [
+      "skeptic",
+      "synonym"
+    ],
+    "collocations": [
+      "use skeptic",
+      "academic skeptic"
+    ],
+    "audioText": "Skeptic. To skeptic means to perform or exhibit skeptic in a given academic or social context.",
+    "clozeSentence": "The scientist showed the ______ that dinosaurs did exist by providing evidence.",
+    "targetAnswer": "skeptic"
+  },
+  {
+    "id": "w278",
+    "word": "Spatial",
+    "phonetic": "/spatial/",
+    "partOfSpeech": "verb",
+    "definition": "When something is spatial, it relates to the position and size of things.",
+    "uzbekDefinition": "Spatial so'zining ingliz tilidagi rasmiy ta'rifi: When something is spatial, it relates to the position and size of things.",
+    "example": "He was asked where the books were located to test his spatial ability.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: He was asked where the books were located to test his spatial ability.",
+    "translations": {
+      "uzbek": "Spatial (o'zbekcha ma'nosi)",
+      "russian": "Spatial (русский перевод)"
+    },
+    "unit": 14,
+    "synonyms": [
+      "spatial",
+      "synonym"
+    ],
+    "collocations": [
+      "use spatial",
+      "academic spatial"
+    ],
+    "audioText": "Spatial. When something is spatial, it relates to the position and size of things.",
+    "clozeSentence": "He was asked where the books were located to test his ______ ability.",
+    "targetAnswer": "spatial"
+  },
+  {
+    "id": "w279",
+    "word": "Specify",
+    "phonetic": "/specify/",
+    "partOfSpeech": "verb",
+    "definition": "To specify means to perform or exhibit specify in a given academic or social context.",
+    "uzbekDefinition": "Specify so'zining ingliz tilidagi rasmiy ta'rifi: To specify means to perform or exhibit specify in a given academic or social context.",
+    "example": "The poster didn’t specify where the concert was taking place.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The poster didn’t specify where the concert was taking place.",
+    "translations": {
+      "uzbek": "Specify (o'zbekcha ma'nosi)",
+      "russian": "Specify (русский перевод)"
+    },
+    "unit": 14,
+    "synonyms": [
+      "specify",
+      "synonym"
+    ],
+    "collocations": [
+      "use specify",
+      "academic specify"
+    ],
+    "audioText": "Specify. To specify means to perform or exhibit specify in a given academic or social context.",
+    "clozeSentence": "The poster didn’t ______ where the concert was taking place.",
+    "targetAnswer": "specify"
+  },
+  {
+    "id": "w280",
+    "word": "Wax",
+    "phonetic": "/wax/",
+    "partOfSpeech": "verb",
+    "definition": "To wax means to perform or exhibit wax in a given academic or social context.",
+    "uzbekDefinition": "Wax so'zining ingliz tilidagi rasmiy ta'rifi: To wax means to perform or exhibit wax in a given academic or social context.",
+    "example": "The candles are made of wax.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The candles are made of wax.",
+    "translations": {
+      "uzbek": "Wax (o'zbekcha ma'nosi)",
+      "russian": "Wax (русский перевод)"
+    },
+    "unit": 14,
+    "synonyms": [
+      "wax",
+      "synonym"
+    ],
+    "collocations": [
+      "use wax",
+      "academic wax"
+    ],
+    "audioText": "Wax. To wax means to perform or exhibit wax in a given academic or social context.",
+    "clozeSentence": "The candles are made of ______.",
+    "targetAnswer": "wax"
+  },
+  {
+    "id": "w281",
+    "word": "Accessory",
+    "phonetic": "/accessory/",
+    "partOfSpeech": "verb",
+    "definition": "To accessory means to perform or exhibit accessory in a given academic or social context.",
+    "uzbekDefinition": "Accessory so'zining ingliz tilidagi rasmiy ta'rifi: To accessory means to perform or exhibit accessory in a given academic or social context.",
+    "example": "The researcher used the word accessory to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word accessory to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Accessory (o'zbekcha ma'nosi)",
+      "russian": "Accessory (русский перевод)"
+    },
+    "unit": 15,
+    "synonyms": [
+      "accessory",
+      "synonym"
+    ],
+    "collocations": [
+      "use accessory",
+      "academic accessory"
+    ],
+    "audioText": "Accessory. To accessory means to perform or exhibit accessory in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "accessory"
+  },
+  {
+    "id": "w282",
+    "word": "Acquisition",
+    "phonetic": "/acquisition/",
+    "partOfSpeech": "verb",
+    "definition": "To acquisition means to perform or exhibit acquisition in a given academic or social context.",
+    "uzbekDefinition": "Acquisition so'zining ingliz tilidagi rasmiy ta'rifi: To acquisition means to perform or exhibit acquisition in a given academic or social context.",
+    "example": "Marty was happy with his new acquisition: a very fast bicycle.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Marty was happy with his new acquisition: a very fast bicycle.",
+    "translations": {
+      "uzbek": "Acquisition (o'zbekcha ma'nosi)",
+      "russian": "Acquisition (русский перевод)"
+    },
+    "unit": 15,
+    "synonyms": [
+      "acquisition",
+      "synonym"
+    ],
+    "collocations": [
+      "use acquisition",
+      "academic acquisition"
+    ],
+    "audioText": "Acquisition. To acquisition means to perform or exhibit acquisition in a given academic or social context.",
+    "clozeSentence": "Marty was happy with his new ______: a very fast bicycle.",
+    "targetAnswer": "acquisition"
+  },
+  {
+    "id": "w283",
+    "word": "Adequate",
+    "phonetic": "/adequate/",
+    "partOfSpeech": "verb",
+    "definition": "When something is adequate, it is good enough for something else.",
+    "uzbekDefinition": "Adequate so'zining ingliz tilidagi rasmiy ta'rifi: When something is adequate, it is good enough for something else.",
+    "example": "Without adequate notice of the road block, they will have to turn around.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Without adequate notice of the road block, they will have to turn around.",
+    "translations": {
+      "uzbek": "Adequate (o'zbekcha ma'nosi)",
+      "russian": "Adequate (русский перевод)"
+    },
+    "unit": 15,
+    "synonyms": [
+      "adequate",
+      "synonym"
+    ],
+    "collocations": [
+      "use adequate",
+      "academic adequate"
+    ],
+    "audioText": "Adequate. When something is adequate, it is good enough for something else.",
+    "clozeSentence": "Without ______ notice of the road block, they will have to turn around.",
+    "targetAnswer": "adequate"
+  },
+  {
+    "id": "w284",
+    "word": "Cardboard",
+    "phonetic": "/cardboard/",
+    "partOfSpeech": "verb",
+    "definition": "To cardboard means to perform or exhibit cardboard in a given academic or social context.",
+    "uzbekDefinition": "Cardboard so'zining ingliz tilidagi rasmiy ta'rifi: To cardboard means to perform or exhibit cardboard in a given academic or social context.",
+    "example": "We packed our things into cardboard boxes and moved to our new home.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: We packed our things into cardboard boxes and moved to our new home.",
+    "translations": {
+      "uzbek": "Cardboard (o'zbekcha ma'nosi)",
+      "russian": "Cardboard (русский перевод)"
+    },
+    "unit": 15,
+    "synonyms": [
+      "cardboard",
+      "synonym"
+    ],
+    "collocations": [
+      "use cardboard",
+      "academic cardboard"
+    ],
+    "audioText": "Cardboard. To cardboard means to perform or exhibit cardboard in a given academic or social context.",
+    "clozeSentence": "We packed our things into ______ boxes and moved to our new home.",
+    "targetAnswer": "cardboard"
+  },
+  {
+    "id": "w285",
+    "word": "Dilemma",
+    "phonetic": "/dilemma/",
+    "partOfSpeech": "verb",
+    "definition": "To dilemma means to perform or exhibit dilemma in a given academic or social context.",
+    "uzbekDefinition": "Dilemma so'zining ingliz tilidagi rasmiy ta'rifi: To dilemma means to perform or exhibit dilemma in a given academic or social context.",
+    "example": "Choosing either the tastier or healthier drink proved to be quite a dilemma.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Choosing either the tastier or healthier drink proved to be quite a dilemma.",
+    "translations": {
+      "uzbek": "Dilemma (o'zbekcha ma'nosi)",
+      "russian": "Dilemma (русский перевод)"
+    },
+    "unit": 15,
+    "synonyms": [
+      "dilemma",
+      "synonym"
+    ],
+    "collocations": [
+      "use dilemma",
+      "academic dilemma"
+    ],
+    "audioText": "Dilemma. To dilemma means to perform or exhibit dilemma in a given academic or social context.",
+    "clozeSentence": "Choosing either the tastier or healthier drink proved to be quite a ______.",
+    "targetAnswer": "dilemma"
+  },
+  {
+    "id": "w286",
+    "word": "Elaborate",
+    "phonetic": "/elaborate/",
+    "partOfSpeech": "verb",
+    "definition": "When something is elaborate, it contains a lot of details.",
+    "uzbekDefinition": "Elaborate so'zining ingliz tilidagi rasmiy ta'rifi: When something is elaborate, it contains a lot of details.",
+    "example": "She gave the teacher an elaborate explanation of her project.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: She gave the teacher an elaborate explanation of her project.",
+    "translations": {
+      "uzbek": "Elaborate (o'zbekcha ma'nosi)",
+      "russian": "Elaborate (русский перевод)"
+    },
+    "unit": 15,
+    "synonyms": [
+      "elaborate",
+      "synonym"
+    ],
+    "collocations": [
+      "use elaborate",
+      "academic elaborate"
+    ],
+    "audioText": "Elaborate. When something is elaborate, it contains a lot of details.",
+    "clozeSentence": "She gave the teacher an ______ explanation of her project.",
+    "targetAnswer": "elaborate"
+  },
+  {
+    "id": "w287",
+    "word": "Facilitate",
+    "phonetic": "/facilitate/",
+    "partOfSpeech": "verb",
+    "definition": "To facilitate means to perform or exhibit facilitate in a given academic or social context.",
+    "uzbekDefinition": "Facilitate so'zining ingliz tilidagi rasmiy ta'rifi: To facilitate means to perform or exhibit facilitate in a given academic or social context.",
+    "example": "To facilitate the meeting, Melissa used a simple computer program.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: To facilitate the meeting, Melissa used a simple computer program.",
+    "translations": {
+      "uzbek": "Facilitate (o'zbekcha ma'nosi)",
+      "russian": "Facilitate (русский перевод)"
+    },
+    "unit": 15,
+    "synonyms": [
+      "facilitate",
+      "synonym"
+    ],
+    "collocations": [
+      "use facilitate",
+      "academic facilitate"
+    ],
+    "audioText": "Facilitate. To facilitate means to perform or exhibit facilitate in a given academic or social context.",
+    "clozeSentence": "To ______ the meeting, Melissa used a simple computer program.",
+    "targetAnswer": "facilitate"
+  },
+  {
+    "id": "w288",
+    "word": "Fleet",
+    "phonetic": "/fleet/",
+    "partOfSpeech": "verb",
+    "definition": "To fleet means to perform or exhibit fleet in a given academic or social context.",
+    "uzbekDefinition": "Fleet so'zining ingliz tilidagi rasmiy ta'rifi: To fleet means to perform or exhibit fleet in a given academic or social context.",
+    "example": "The fleet of ships spent a few days at the dock.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The fleet of ships spent a few days at the dock.",
+    "translations": {
+      "uzbek": "Fleet (o'zbekcha ma'nosi)",
+      "russian": "Fleet (русский перевод)"
+    },
+    "unit": 15,
+    "synonyms": [
+      "fleet",
+      "synonym"
+    ],
+    "collocations": [
+      "use fleet",
+      "academic fleet"
+    ],
+    "audioText": "Fleet. To fleet means to perform or exhibit fleet in a given academic or social context.",
+    "clozeSentence": "The ______ of ships spent a few days at the dock.",
+    "targetAnswer": "fleet"
+  },
+  {
+    "id": "w289",
+    "word": "Grid",
+    "phonetic": "/grid/",
+    "partOfSpeech": "verb",
+    "definition": "To grid means to perform or exhibit grid in a given academic or social context.",
+    "uzbekDefinition": "Grid so'zining ingliz tilidagi rasmiy ta'rifi: To grid means to perform or exhibit grid in a given academic or social context.",
+    "example": "We located our town using the grid.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: We located our town using the grid.",
+    "translations": {
+      "uzbek": "Grid (o'zbekcha ma'nosi)",
+      "russian": "Grid (русский перевод)"
+    },
+    "unit": 15,
+    "synonyms": [
+      "grid",
+      "synonym"
+    ],
+    "collocations": [
+      "use grid",
+      "academic grid"
+    ],
+    "audioText": "Grid. To grid means to perform or exhibit grid in a given academic or social context.",
+    "clozeSentence": "We located our town using the ______.",
+    "targetAnswer": "grid"
+  },
+  {
+    "id": "w290",
+    "word": "Import",
+    "phonetic": "/import/",
+    "partOfSpeech": "verb",
+    "definition": "To import means to perform or exhibit import in a given academic or social context.",
+    "uzbekDefinition": "Import so'zining ingliz tilidagi rasmiy ta'rifi: To import means to perform or exhibit import in a given academic or social context.",
+    "example": "Foods that have been imported are usually more expensive.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Foods that have been imported are usually more expensive.",
+    "translations": {
+      "uzbek": "Import (o'zbekcha ma'nosi)",
+      "russian": "Import (русский перевод)"
+    },
+    "unit": 15,
+    "synonyms": [
+      "import",
+      "synonym"
+    ],
+    "collocations": [
+      "use import",
+      "academic import"
+    ],
+    "audioText": "Import. To import means to perform or exhibit import in a given academic or social context.",
+    "clozeSentence": "Foods that have been ______ed are usually more expensive.",
+    "targetAnswer": "import"
+  },
+  {
+    "id": "w291",
+    "word": "Infer",
+    "phonetic": "/infer/",
+    "partOfSpeech": "verb",
+    "definition": "To infer means to perform or exhibit infer in a given academic or social context.",
+    "uzbekDefinition": "Infer so'zining ingliz tilidagi rasmiy ta'rifi: To infer means to perform or exhibit infer in a given academic or social context.",
+    "example": "By the position of the sun in the sky, she inferred that it was noon.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: By the position of the sun in the sky, she inferred that it was noon.",
+    "translations": {
+      "uzbek": "Infer (o'zbekcha ma'nosi)",
+      "russian": "Infer (русский перевод)"
+    },
+    "unit": 15,
+    "synonyms": [
+      "infer",
+      "synonym"
+    ],
+    "collocations": [
+      "use infer",
+      "academic infer"
+    ],
+    "audioText": "Infer. To infer means to perform or exhibit infer in a given academic or social context.",
+    "clozeSentence": "By the position of the sun in the sky, she ______red that it was noon.",
+    "targetAnswer": "infer"
+  },
+  {
+    "id": "w292",
+    "word": "Inflate",
+    "phonetic": "/inflate/",
+    "partOfSpeech": "verb",
+    "definition": "To inflate means to perform or exhibit inflate in a given academic or social context.",
+    "uzbekDefinition": "Inflate so'zining ingliz tilidagi rasmiy ta'rifi: To inflate means to perform or exhibit inflate in a given academic or social context.",
+    "example": "I helped him inflate the balloons.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: I helped him inflate the balloons.",
+    "translations": {
+      "uzbek": "Inflate (o'zbekcha ma'nosi)",
+      "russian": "Inflate (русский перевод)"
+    },
+    "unit": 15,
+    "synonyms": [
+      "inflate",
+      "synonym"
+    ],
+    "collocations": [
+      "use inflate",
+      "academic inflate"
+    ],
+    "audioText": "Inflate. To inflate means to perform or exhibit inflate in a given academic or social context.",
+    "clozeSentence": "I helped him ______ the balloons.",
+    "targetAnswer": "inflate"
+  },
+  {
+    "id": "w293",
+    "word": "Innate",
+    "phonetic": "/innate/",
+    "partOfSpeech": "verb",
+    "definition": "To innate means to perform or exhibit innate in a given academic or social context.",
+    "uzbekDefinition": "Innate so'zining ingliz tilidagi rasmiy ta'rifi: To innate means to perform or exhibit innate in a given academic or social context.",
+    "example": "The researcher used the word innate to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word innate to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Innate (o'zbekcha ma'nosi)",
+      "russian": "Innate (русский перевод)"
+    },
+    "unit": 15,
+    "synonyms": [
+      "innate",
+      "synonym"
+    ],
+    "collocations": [
+      "use innate",
+      "academic innate"
+    ],
+    "audioText": "Innate. To innate means to perform or exhibit innate in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "innate"
+  },
+  {
+    "id": "w294",
+    "word": "Marble",
+    "phonetic": "/marble/",
+    "partOfSpeech": "verb",
+    "definition": "To marble means to perform or exhibit marble in a given academic or social context.",
+    "uzbekDefinition": "Marble so'zining ingliz tilidagi rasmiy ta'rifi: To marble means to perform or exhibit marble in a given academic or social context.",
+    "example": "The large house had floors made of marble.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The large house had floors made of marble.",
+    "translations": {
+      "uzbek": "Marble (o'zbekcha ma'nosi)",
+      "russian": "Marble (русский перевод)"
+    },
+    "unit": 15,
+    "synonyms": [
+      "marble",
+      "synonym"
+    ],
+    "collocations": [
+      "use marble",
+      "academic marble"
+    ],
+    "audioText": "Marble. To marble means to perform or exhibit marble in a given academic or social context.",
+    "clozeSentence": "The large house had floors made of ______.",
+    "targetAnswer": "marble"
+  },
+  {
+    "id": "w295",
+    "word": "Mast",
+    "phonetic": "/mast/",
+    "partOfSpeech": "verb",
+    "definition": "To mast means to perform or exhibit mast in a given academic or social context.",
+    "uzbekDefinition": "Mast so'zining ingliz tilidagi rasmiy ta'rifi: To mast means to perform or exhibit mast in a given academic or social context.",
+    "example": "The mast held both sails of the ship upright.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The mast held both sails of the ship upright.",
+    "translations": {
+      "uzbek": "Mast (o'zbekcha ma'nosi)",
+      "russian": "Mast (русский перевод)"
+    },
+    "unit": 15,
+    "synonyms": [
+      "mast",
+      "synonym"
+    ],
+    "collocations": [
+      "use mast",
+      "academic mast"
+    ],
+    "audioText": "Mast. To mast means to perform or exhibit mast in a given academic or social context.",
+    "clozeSentence": "The ______ held both sails of the ship upright.",
+    "targetAnswer": "mast"
+  },
+  {
+    "id": "w296",
+    "word": "Nausea",
+    "phonetic": "/nausea/",
+    "partOfSpeech": "verb",
+    "definition": "To nausea means to perform or exhibit nausea in a given academic or social context.",
+    "uzbekDefinition": "Nausea so'zining ingliz tilidagi rasmiy ta'rifi: To nausea means to perform or exhibit nausea in a given academic or social context.",
+    "example": "The doctor said the medicine would help get rid of her nausea.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The doctor said the medicine would help get rid of her nausea.",
+    "translations": {
+      "uzbek": "Nausea (o'zbekcha ma'nosi)",
+      "russian": "Nausea (русский перевод)"
+    },
+    "unit": 15,
+    "synonyms": [
+      "nausea",
+      "synonym"
+    ],
+    "collocations": [
+      "use nausea",
+      "academic nausea"
+    ],
+    "audioText": "Nausea. To nausea means to perform or exhibit nausea in a given academic or social context.",
+    "clozeSentence": "The doctor said the medicine would help get rid of her ______.",
+    "targetAnswer": "nausea"
+  },
+  {
+    "id": "w297",
+    "word": "Naval",
+    "phonetic": "/naval/",
+    "partOfSpeech": "verb",
+    "definition": "To naval means to perform or exhibit naval in a given academic or social context.",
+    "uzbekDefinition": "Naval so'zining ingliz tilidagi rasmiy ta'rifi: To naval means to perform or exhibit naval in a given academic or social context.",
+    "example": "The researcher used the word naval to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word naval to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Naval (o'zbekcha ma'nosi)",
+      "russian": "Naval (русский перевод)"
+    },
+    "unit": 15,
+    "synonyms": [
+      "naval",
+      "synonym"
+    ],
+    "collocations": [
+      "use naval",
+      "academic naval"
+    ],
+    "audioText": "Naval. To naval means to perform or exhibit naval in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "naval"
+  },
+  {
+    "id": "w298",
+    "word": "Pouch",
+    "phonetic": "/pouch/",
+    "partOfSpeech": "verb",
+    "definition": "A pouch is a small, flexible bag that is usually made of cloth.",
+    "uzbekDefinition": "Pouch so'zining ingliz tilidagi rasmiy ta'rifi: A pouch is a small, flexible bag that is usually made of cloth.",
+    "example": "I keep my money in a small pouch.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: I keep my money in a small pouch.",
+    "translations": {
+      "uzbek": "Pouch (o'zbekcha ma'nosi)",
+      "russian": "Pouch (русский перевод)"
+    },
+    "unit": 15,
+    "synonyms": [
+      "pouch",
+      "synonym"
+    ],
+    "collocations": [
+      "use pouch",
+      "academic pouch"
+    ],
+    "audioText": "Pouch. A pouch is a small, flexible bag that is usually made of cloth.",
+    "clozeSentence": "I keep my money in a small ______.",
+    "targetAnswer": "pouch"
+  },
+  {
+    "id": "w299",
+    "word": "Saturated",
+    "phonetic": "/saturated/",
+    "partOfSpeech": "verb",
+    "definition": "If something is saturated, it is completely wet.",
+    "uzbekDefinition": "Saturated so'zining ingliz tilidagi rasmiy ta'rifi: If something is saturated, it is completely wet.",
+    "example": "Leigh’s hair became saturated in the rain storm.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: Leigh’s hair became saturated in the rain storm.",
+    "translations": {
+      "uzbek": "Saturated (o'zbekcha ma'nosi)",
+      "russian": "Saturated (русский перевод)"
+    },
+    "unit": 15,
+    "synonyms": [
+      "saturated",
+      "synonym"
+    ],
+    "collocations": [
+      "use saturated",
+      "academic saturated"
+    ],
+    "audioText": "Saturated. If something is saturated, it is completely wet.",
+    "clozeSentence": "Leigh’s hair became ______ in the rain storm.",
+    "targetAnswer": "saturated"
+  },
+  {
+    "id": "w300",
+    "word": "Updated",
+    "phonetic": "/updated/",
+    "partOfSpeech": "verb",
+    "definition": "To updated means to perform or exhibit updated in a given academic or social context.",
+    "uzbekDefinition": "Updated so'zining ingliz tilidagi rasmiy ta'rifi: To updated means to perform or exhibit updated in a given academic or social context.",
+    "example": "The researcher used the word updated to clarify the findings in the study.",
+    "uzbekExample": "Namuna gapning o'zbekcha tarjimasi: The researcher used the word updated to clarify the findings in the study.",
+    "translations": {
+      "uzbek": "Updated (o'zbekcha ma'nosi)",
+      "russian": "Updated (русский перевод)"
+    },
+    "unit": 15,
+    "synonyms": [
+      "updated",
+      "synonym"
+    ],
+    "collocations": [
+      "use updated",
+      "academic updated"
+    ],
+    "audioText": "Updated. To updated means to perform or exhibit updated in a given academic or social context.",
+    "clozeSentence": "The researcher used the word ______ to clarify the findings in the study.",
+    "targetAnswer": "updated"
+  },
+  {
+    "id": "w301",
+    "word": "Concur",
+    "phonetic": "/kənˈkɜːr/",
+    "partOfSpeech": "verb",
+    "definition": "To concur means to agree with someone or have the same opinion.",
+    "uzbekDefinition": "Boshqa kishining fikri bilan to'liq rozi bo'lmoq",
+    "example": "All members of the research council concurred that the findings were groundbreaking.",
+    "uzbekExample": "Tadqiqot kengashining barcha a'zolari xulosaga qo'shildilar.",
+    "translations": {
+      "uzbek": "Fikrga qo'shilmoq, yakdillik bildirmoq",
+      "russian": "Соглашаться, сходиться во мнениях"
+    },
+    "unit": 3,
+    "synonyms": [
+      "agree",
+      "accord",
+      "concur with"
+    ],
+    "collocations": [
+      "concur with a decision",
+      "strongly concur"
+    ],
+    "audioText": "Concur. To concur means to agree with someone or have the same opinion.",
+    "clozeSentence": "All members of the research council ______ that the findings were groundbreaking.",
+    "targetAnswer": "concurred"
+  }
 ];
 
 export const giftShopItems: ShopItem[] = [

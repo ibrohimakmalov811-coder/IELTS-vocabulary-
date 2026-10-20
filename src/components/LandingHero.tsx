@@ -6,13 +6,14 @@ import { Sparkles, ArrowRight, BookOpenCheck, Gamepad2, Gift, CheckCircle2 } fro
 
 interface LandingHeroProps {
   onStart: () => void;
+  onBrowseLibrary: () => void;
 }
 
-export const LandingHero: React.FC<LandingHeroProps> = ({ onStart }) => {
+export const LandingHero: React.FC<LandingHeroProps> = ({ onStart, onBrowseLibrary }) => {
   return (
-    <div className="relative overflow-hidden bg-background">
+    <div className="relative overflow-hidden bg-background dark:bg-slate-950 transition-colors">
       {/* Decorative Pastel Ambient Gradients */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-primary-light/40 via-tealAccent-light/20 to-transparent pointer-events-none rounded-full blur-3xl -z-10" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-primary-light/40 via-tealAccent-light/20 to-transparent dark:from-primary/10 dark:via-tealAccent/5 pointer-events-none rounded-full blur-3xl -z-10" />
 
       {/* Hero Section */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 pt-16 pb-20 text-center">
@@ -23,15 +24,15 @@ export const LandingHero: React.FC<LandingHeroProps> = ({ onStart }) => {
           className="space-y-6"
         >
           {/* Badge */}
-          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-surface border border-gray-200/80 shadow-soft">
+          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-surface dark:bg-slate-900 border border-gray-200/80 dark:border-slate-800 shadow-soft">
             <span className="flex h-2 w-2 rounded-full bg-tealAccent animate-pulse" />
-            <span className="text-xs font-semibold text-slateText-heading tracking-wide">
+            <span className="text-xs font-semibold text-slateText-heading dark:text-white tracking-wide">
               Based on 4000 Essential English Words Book 5
             </span>
           </div>
 
           {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slateText-heading tracking-tight max-w-4xl mx-auto leading-[1.15]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slateText-heading dark:text-white tracking-tight max-w-4xl mx-auto leading-[1.15]">
             Master IELTS Vocabulary, <br className="hidden sm:inline" />
             <span className="bg-gradient-to-r from-primary to-tealAccent bg-clip-text text-transparent">
               Effortlessly.
@@ -39,11 +40,11 @@ export const LandingHero: React.FC<LandingHeroProps> = ({ onStart }) => {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-base sm:text-lg md:text-xl text-slateText-body max-w-2xl mx-auto font-normal leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-slateText-body dark:text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
             Stop memorizing boring lists. Learn, practice, and master the &apos;Essential 5&apos; vocabulary with interactive games, native pronunciation, and smart repetition.
           </p>
 
-          {/* CTA Button */}
+          {/* CTA Buttons */}
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -53,6 +54,15 @@ export const LandingHero: React.FC<LandingHeroProps> = ({ onStart }) => {
             >
               <span>Start Learning for Free</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </motion.button>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.96 }}
+              onClick={onBrowseLibrary}
+              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-surface dark:bg-slate-900 border border-gray-200 dark:border-slate-700 text-slateText-heading dark:text-white font-semibold text-base sm:text-lg hover:border-primary transition-all cursor-pointer shadow-soft"
+            >
+              Browse 300+ Words
             </motion.button>
           </div>
 
@@ -80,7 +90,7 @@ export const LandingHero: React.FC<LandingHeroProps> = ({ onStart }) => {
           <span className="text-xs uppercase font-bold text-primary tracking-widest block mb-2">
             Why It Works
           </span>
-          <h2 className="text-2xl sm:text-3xl font-bold text-slateText-heading">
+          <h2 className="text-2xl sm:text-3xl font-bold text-slateText-heading dark:text-white">
             Designed for Pre-IELTS &amp; IELTS Success
           </h2>
         </div>
@@ -90,16 +100,16 @@ export const LandingHero: React.FC<LandingHeroProps> = ({ onStart }) => {
           <motion.div
             whileHover={{ scale: 1.03 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="bg-surface p-7 rounded-3xl border border-gray-100 shadow-soft flex flex-col justify-between"
+            className="bg-surface dark:bg-slate-900 p-7 rounded-3xl border border-gray-100 dark:border-slate-800 shadow-soft flex flex-col justify-between"
           >
             <div className="space-y-4">
-              <div className="w-14 h-14 rounded-2xl bg-primary-light flex items-center justify-center text-primary">
+              <div className="w-14 h-14 rounded-2xl bg-primary-light dark:bg-primary/20 flex items-center justify-center text-primary">
                 <BookOpenCheck className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-bold text-slateText-heading">
+              <h3 className="text-xl font-bold text-slateText-heading dark:text-white">
                 Learn in Context
               </h3>
-              <p className="text-sm sm:text-base text-slateText-body leading-relaxed">
+              <p className="text-sm sm:text-base text-slateText-body dark:text-slate-300 leading-relaxed">
                 Every word comes with HD images, native audio, and real-life sentence examples.
               </p>
             </div>
@@ -114,16 +124,16 @@ export const LandingHero: React.FC<LandingHeroProps> = ({ onStart }) => {
           <motion.div
             whileHover={{ scale: 1.03 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="bg-surface p-7 rounded-3xl border border-gray-100 shadow-soft flex flex-col justify-between"
+            className="bg-surface dark:bg-slate-900 p-7 rounded-3xl border border-gray-100 dark:border-slate-800 shadow-soft flex flex-col justify-between"
           >
             <div className="space-y-4">
-              <div className="w-14 h-14 rounded-2xl bg-tealAccent-light flex items-center justify-center text-teal-800">
+              <div className="w-14 h-14 rounded-2xl bg-tealAccent-light dark:bg-tealAccent/20 flex items-center justify-center text-teal-800 dark:text-tealAccent">
                 <Gamepad2 className="w-7 h-7 text-tealAccent" />
               </div>
-              <h3 className="text-xl font-bold text-slateText-heading">
+              <h3 className="text-xl font-bold text-slateText-heading dark:text-white">
                 Interactive Tasks
               </h3>
-              <p className="text-sm sm:text-base text-slateText-body leading-relaxed">
+              <p className="text-sm sm:text-base text-slateText-body dark:text-slate-300 leading-relaxed">
                 Type from memory, match definitions, and train your listening skills to earn coins.
               </p>
             </div>
@@ -138,16 +148,16 @@ export const LandingHero: React.FC<LandingHeroProps> = ({ onStart }) => {
           <motion.div
             whileHover={{ scale: 1.03 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="bg-surface p-7 rounded-3xl border border-gray-100 shadow-soft flex flex-col justify-between"
+            className="bg-surface dark:bg-slate-900 p-7 rounded-3xl border border-gray-100 dark:border-slate-800 shadow-soft flex flex-col justify-between"
           >
             <div className="space-y-4">
-              <div className="w-14 h-14 rounded-2xl bg-secondary-light flex items-center justify-center text-secondary">
+              <div className="w-14 h-14 rounded-2xl bg-secondary-light dark:bg-secondary/20 flex items-center justify-center text-secondary">
                 <Gift className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-bold text-slateText-heading">
+              <h3 className="text-xl font-bold text-slateText-heading dark:text-white">
                 Earn &amp; Unlock
               </h3>
-              <p className="text-sm sm:text-base text-slateText-body leading-relaxed">
+              <p className="text-sm sm:text-base text-slateText-body dark:text-slate-300 leading-relaxed">
                 Exchange your hard-earned coins for exclusive avatars, premium themes, and cheat-sheets in our Gift Shop.
               </p>
             </div>

@@ -47,40 +47,40 @@ export const GiftShopModal: React.FC<GiftShopModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-md">
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 15 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 15 }}
-        className="bg-surface w-full max-w-lg rounded-3xl p-6 sm:p-8 shadow-xl border border-gray-100 space-y-6"
+        className="bg-surface dark:bg-slate-900 w-full max-w-lg rounded-3xl p-6 sm:p-8 shadow-2xl border border-gray-100 dark:border-slate-800 space-y-6"
       >
         {/* Header */}
         <div className="flex justify-between items-start">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slateText-heading">
+            <h2 className="text-2xl sm:text-3xl font-black text-slateText-heading dark:text-white">
               Reward Yourself
             </h2>
-            <p className="text-sm text-slateText-body mt-1">
+            <p className="text-sm text-slateText-body dark:text-slate-300 mt-1">
               Spend your coins on exclusive items.
             </p>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-xl text-slateText-muted hover:bg-gray-100 transition-colors"
+            className="p-2 rounded-xl text-slateText-muted hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Coin Balance Pill */}
-        <div className="flex items-center justify-between px-4 py-3 bg-secondary-light rounded-2xl border border-secondary/20">
+        <div className="flex items-center justify-between px-4 py-3 bg-secondary-light dark:bg-secondary/15 rounded-2xl border border-secondary/25">
           <div className="flex items-center space-x-2">
             <Coins className="w-5 h-5 text-secondary" />
-            <span className="text-sm font-semibold text-slateText-heading">
+            <span className="text-sm font-bold text-slateText-heading dark:text-white">
               Your Coin Balance:
             </span>
           </div>
-          <span className="text-lg font-bold text-secondary">
+          <span className="text-lg font-black text-secondary">
             {totalCoins} Coins
           </span>
         </div>
@@ -88,19 +88,19 @@ export const GiftShopModal: React.FC<GiftShopModalProps> = ({
         {/* Shop Items List */}
         <div className="space-y-3.5">
           {/* Item 1: Freeze Streak */}
-          <div className="p-4 rounded-2xl border border-gray-100 hover:border-gray-200 bg-surface shadow-soft flex items-center justify-between gap-3">
+          <div className="p-4 rounded-2xl border border-gray-100 dark:border-slate-800 bg-surface dark:bg-slate-900 shadow-soft flex items-center justify-between gap-3">
             <div className="flex items-center space-x-3.5">
-              <div className="w-12 h-12 rounded-2xl bg-secondary-light flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 rounded-2xl bg-secondary-light dark:bg-secondary/20 flex items-center justify-center shrink-0">
                 <Flame className="w-6 h-6 text-secondary" />
               </div>
               <div>
-                <h4 className="font-bold text-slateText-heading text-sm sm:text-base">
+                <h4 className="font-bold text-slateText-heading dark:text-white text-sm sm:text-base">
                   Freeze Streak{" "}
                   <span className="text-xs font-semibold text-secondary ml-1">
                     (Cost: 50 Coins)
                   </span>
                 </h4>
-                <p className="text-xs text-slateText-body mt-0.5">
+                <p className="text-xs text-slateText-body dark:text-slate-400 mt-0.5">
                   Keep your streak alive if you miss a day.
                 </p>
               </div>
@@ -108,7 +108,7 @@ export const GiftShopModal: React.FC<GiftShopModalProps> = ({
 
             <div>
               {hasStreakFreeze ? (
-                <span className="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-xl bg-tealAccent-light text-teal-800 font-bold border border-tealAccent/30">
+                <span className="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-xl bg-tealAccent-light text-teal-800 dark:bg-tealAccent/20 dark:text-tealAccent font-bold border border-tealAccent/30">
                   <Check className="w-3.5 h-3.5" /> Active
                 </span>
               ) : (
@@ -117,10 +117,10 @@ export const GiftShopModal: React.FC<GiftShopModalProps> = ({
                   whileTap={totalCoins >= 50 ? { scale: 0.95 } : {}}
                   disabled={totalCoins < 50}
                   onClick={() => handleBuy("freeze", 50)}
-                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                     totalCoins >= 50
-                      ? "bg-primary hover:bg-primary-hover text-white shadow-soft cursor-pointer"
-                      : "bg-gray-100 text-slateText-muted cursor-not-allowed"
+                      ? "bg-primary hover:bg-primary-hover text-white shadow-soft"
+                      : "bg-gray-100 dark:bg-slate-800 text-slateText-muted cursor-not-allowed"
                   }`}
                 >
                   Unlock
@@ -130,19 +130,19 @@ export const GiftShopModal: React.FC<GiftShopModalProps> = ({
           </div>
 
           {/* Item 2: Dark Mode Theme */}
-          <div className="p-4 rounded-2xl border border-gray-100 hover:border-gray-200 bg-surface shadow-soft flex items-center justify-between gap-3">
+          <div className="p-4 rounded-2xl border border-gray-100 dark:border-slate-800 bg-surface dark:bg-slate-900 shadow-soft flex items-center justify-between gap-3">
             <div className="flex items-center space-x-3.5">
-              <div className="w-12 h-12 rounded-2xl bg-primary-light flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 rounded-2xl bg-primary-light dark:bg-primary/20 flex items-center justify-center shrink-0">
                 <Moon className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h4 className="font-bold text-slateText-heading text-sm sm:text-base">
+                <h4 className="font-bold text-slateText-heading dark:text-white text-sm sm:text-base">
                   Dark Mode Theme{" "}
                   <span className="text-xs font-semibold text-primary ml-1">
                     (Cost: 100 Coins)
                   </span>
                 </h4>
-                <p className="text-xs text-slateText-body mt-0.5">
+                <p className="text-xs text-slateText-body dark:text-slate-400 mt-0.5">
                   Unlock the sleek dark UI.
                 </p>
               </div>
@@ -150,7 +150,7 @@ export const GiftShopModal: React.FC<GiftShopModalProps> = ({
 
             <div>
               {isDarkModeUnlocked ? (
-                <span className="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-xl bg-tealAccent-light text-teal-800 font-bold border border-tealAccent/30">
+                <span className="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-xl bg-tealAccent-light text-teal-800 dark:bg-tealAccent/20 dark:text-tealAccent font-bold border border-tealAccent/30">
                   <Check className="w-3.5 h-3.5" /> Unlocked
                 </span>
               ) : (
@@ -159,10 +159,10 @@ export const GiftShopModal: React.FC<GiftShopModalProps> = ({
                   whileTap={totalCoins >= 100 ? { scale: 0.95 } : {}}
                   disabled={totalCoins < 100}
                   onClick={() => handleBuy("dark", 100)}
-                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                     totalCoins >= 100
-                      ? "bg-primary hover:bg-primary-hover text-white shadow-soft cursor-pointer"
-                      : "bg-gray-100 text-slateText-muted cursor-not-allowed"
+                      ? "bg-primary hover:bg-primary-hover text-white shadow-soft"
+                      : "bg-gray-100 dark:bg-slate-800 text-slateText-muted cursor-not-allowed"
                   }`}
                 >
                   Unlock
@@ -172,19 +172,19 @@ export const GiftShopModal: React.FC<GiftShopModalProps> = ({
           </div>
 
           {/* Item 3: Golden Crown Avatar */}
-          <div className="p-4 rounded-2xl border border-gray-100 hover:border-gray-200 bg-surface shadow-soft flex items-center justify-between gap-3">
+          <div className="p-4 rounded-2xl border border-gray-100 dark:border-slate-800 bg-surface dark:bg-slate-900 shadow-soft flex items-center justify-between gap-3">
             <div className="flex items-center space-x-3.5">
-              <div className="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 rounded-2xl bg-amber-50 dark:bg-amber-950/30 flex items-center justify-center shrink-0">
                 <Crown className="w-6 h-6 text-amber-500" />
               </div>
               <div>
-                <h4 className="font-bold text-slateText-heading text-sm sm:text-base">
+                <h4 className="font-bold text-slateText-heading dark:text-white text-sm sm:text-base">
                   Golden Crown Avatar{" "}
-                  <span className="text-xs font-semibold text-amber-600 ml-1">
+                  <span className="text-xs font-semibold text-amber-600 dark:text-amber-400 ml-1">
                     (Cost: 500 Coins)
                   </span>
                 </h4>
-                <p className="text-xs text-slateText-body mt-0.5">
+                <p className="text-xs text-slateText-body dark:text-slate-400 mt-0.5">
                   Show off your mastery.
                 </p>
               </div>
@@ -192,7 +192,7 @@ export const GiftShopModal: React.FC<GiftShopModalProps> = ({
 
             <div>
               {hasGoldenCrown ? (
-                <span className="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-xl bg-tealAccent-light text-teal-800 font-bold border border-tealAccent/30">
+                <span className="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-xl bg-tealAccent-light text-teal-800 dark:bg-tealAccent/20 dark:text-tealAccent font-bold border border-tealAccent/30">
                   <Check className="w-3.5 h-3.5" /> Equipped
                 </span>
               ) : (
@@ -201,10 +201,10 @@ export const GiftShopModal: React.FC<GiftShopModalProps> = ({
                   whileTap={totalCoins >= 500 ? { scale: 0.95 } : {}}
                   disabled={totalCoins < 500}
                   onClick={() => handleBuy("crown", 500)}
-                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                     totalCoins >= 500
-                      ? "bg-primary hover:bg-primary-hover text-white shadow-soft cursor-pointer"
-                      : "bg-gray-100 text-slateText-muted cursor-not-allowed"
+                      ? "bg-primary hover:bg-primary-hover text-white shadow-soft"
+                      : "bg-gray-100 dark:bg-slate-800 text-slateText-muted cursor-not-allowed"
                   }`}
                 >
                   Unlock
@@ -221,7 +221,7 @@ export const GiftShopModal: React.FC<GiftShopModalProps> = ({
               initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              className="p-3 rounded-xl bg-tealAccent-light border border-tealAccent/30 text-teal-900 text-xs font-semibold flex items-center justify-center gap-2"
+              className="p-3 rounded-xl bg-tealAccent-light dark:bg-tealAccent/20 border border-tealAccent/30 text-teal-900 dark:text-tealAccent text-xs font-semibold flex items-center justify-center gap-2"
             >
               <Sparkles className="w-4 h-4 text-secondary" />
               <span>Reward unlocked successfully! Enjoy your perk.</span>
