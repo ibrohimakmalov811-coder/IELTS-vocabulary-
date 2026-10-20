@@ -91,6 +91,8 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
           accent={store.accent}
           onToggleAccent={() => store.setAccent(store.accent === "US" ? "UK" : "US")}
           onOpenShop={() => setIsShopOpen(true)}
+          currentUser={store.currentUser}
+          onLogout={store.logout}
         />
 
         {/* Dynamic Route Content */}

@@ -32,6 +32,27 @@ export interface Unit {
   category?: string;
 }
 
+export interface UserProfile {
+  id: string;
+  name: string;
+  email: string;
+  targetBand: string;
+  avatarColor?: string;
+  joinedAt: string;
+}
+
+export interface TestResultSession {
+  id: string;
+  date: string;
+  mode: "quiz" | "recall" | "cloze";
+  unit: number | "all";
+  totalQuestions: number;
+  correctAnswers: number;
+  accuracy: number;
+  timeSpentSeconds: number;
+  coinsEarned: number;
+}
+
 export interface UserStats {
   userName: string;
   streakDays: number;
@@ -42,6 +63,7 @@ export interface UserStats {
   hasStreakFreeze: boolean;
   isDarkModeUnlocked: boolean;
   hasGoldenCrown: boolean;
+  studyTimeSeconds?: number;
 }
 
 export interface ShopItem {
