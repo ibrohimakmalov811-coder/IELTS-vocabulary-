@@ -26,7 +26,7 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
@@ -42,23 +42,23 @@ export default function LoginPage() {
 
     setIsLoading(true);
 
-    setTimeout(() => {
-      // Login student and persist in localStorage
-      store.login(email);
+    try {
+      await store.login(email, undefined, password);
       setIsLoading(false);
       router.push("/dashboard");
-    }, 600);
+    } catch (e: any) {
+      setIsLoading(false);
+      setError(e.message || "Kirishda xatolik yuz berdi");
+    }
   };
 
-  const handleDemoLogin = () => {
+  const handleDemoLogin = async () => {
     setEmail("ibrohim@ielts.uz");
     setPassword("ielts2026");
     setIsLoading(true);
-    setTimeout(() => {
-      store.login("ibrohim@ielts.uz", "Ibrohim Akmalov");
-      setIsLoading(false);
-      router.push("/dashboard");
-    }, 400);
+    await store.login("ibrohim@ielts.uz", "Ibrohim Akmalov", "ielts2026");
+    setIsLoading(false);
+    router.push("/dashboard");
   };
 
   return (

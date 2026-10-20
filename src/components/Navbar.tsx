@@ -27,6 +27,7 @@ import {
   ChevronDown,
   UserPlus,
   LogIn,
+  ShieldCheck,
 } from "lucide-react";
 
 interface NavbarProps {
@@ -217,6 +218,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                     </Link>
 
                     <Link
+                      href="/admin"
+                      onClick={() => setUserDropdownOpen(false)}
+                      className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 transition-colors"
+                    >
+                      <ShieldCheck className="w-4 h-4 text-indigo-500" />
+                      <span>Admin Panel</span>
+                    </Link>
+
+                    <Link
                       href="/practice"
                       onClick={() => setUserDropdownOpen(false)}
                       className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-slateText-heading dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
@@ -345,6 +355,18 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </Link>
                 );
               })}
+
+              <Link
+                href="/admin"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-200/50 dark:border-indigo-800/40"
+              >
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-indigo-500" />
+                  <span>Admin Boshqaruv Paneli</span>
+                </div>
+                <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-indigo-500 text-white">Staff</span>
+              </Link>
             </div>
 
             {/* Accent and Gift Shop */}

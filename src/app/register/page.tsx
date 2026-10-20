@@ -28,7 +28,7 @@ export default function RegisterPage() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
@@ -47,12 +47,14 @@ export default function RegisterPage() {
 
     setIsLoading(true);
 
-    setTimeout(() => {
-      // Register and save to browser localStorage
-      store.register(name.trim(), email.trim(), targetBand);
+    try {
+      await store.register(name.trim(), email.trim(), targetBand, password);
       setIsLoading(false);
       router.push("/dashboard");
-    }, 600);
+    } catch (e: any) {
+      setIsLoading(false);
+      setError(e.message || "Ro'yxatdan o'tishda xatolik yuz berdi");
+    }
   };
 
   return (

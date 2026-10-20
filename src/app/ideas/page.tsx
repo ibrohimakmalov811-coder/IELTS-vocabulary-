@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useVocab } from "@/components/layout/ClientLayout";
 import { sampleWords } from "@/data/vocabularyData";
+import { submitStudyHack } from "@/lib/services/studyHackService";
 import {
   Lightbulb,
   Sparkles,
@@ -89,7 +90,7 @@ const defaultMnemonics: MnemonicItem[] = [
 ];
 
 export default function IdeasPage() {
-  const { playAudio } = useVocab();
+  const { store, playAudio } = useVocab();
 
   // Local storage mnemonics list
   const [userMnemonics, setUserMnemonics] = useState<MnemonicItem[]>([]);
@@ -115,6 +116,14 @@ export default function IdeasPage() {
     const matchedWord = sampleWords.find(
       (w) => w.word.toLowerCase() === selectedWordStr.toLowerCase()
     );
+
+    // Sync with backend if Supabase is active
+    submitStudyHack(store.currentUser?.id, {
+      title: selectedWordStr,
+      content: customMnemonicText.trim(),
+      tag: customTag,
+      relatedWordId: matchedWord?.id,
+    }).catch(() => {});
 
     const newItem: MnemonicItem = {
       id: "custom-" + Date.now(),

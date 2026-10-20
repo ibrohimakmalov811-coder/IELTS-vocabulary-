@@ -3,6 +3,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { initialUserStats } from "@/data/vocabularyData";
 import { UserStats, UserProfile, TestResultSession } from "@/types/vocabulary";
+import { toggleUserFavorite } from "@/lib/services/progressService";
+import { submitQuizAttempt } from "@/lib/services/quizService";
 
 const DEFAULT_USER: UserProfile = {
   id: "user_default",
@@ -211,6 +213,9 @@ export function useVocabularyStore() {
 
   // Toggle Favorite
   const toggleFavorite = useCallback((wordId: string) => {
+    // Sync with database if logged in
+    toggleUserFavorite(currentUser?.id, wordId).catch(() => {});
+
     setFavoriteWordIds((prev) => {
       const updated = prev.includes(wordId) ? prev.filter((id) => id !== wordId) : [...prev, wordId];
       try {
@@ -218,7 +223,7 @@ export function useVocabularyStore() {
       } catch (e) {}
       return updated;
     });
-  }, []);
+  }, [currentUser?.id]);
 
   // Add Recently Studied
   const addRecentlyStudied = useCallback((wordId: string) => {
@@ -239,6 +244,16 @@ export function useVocabularyStore() {
         ...session,
         id: "ts-" + Date.now(),
       };
+
+      // Server/Database RPC Submission (Anti-Cheat)
+      submitQuizAttempt(currentUser?.id, {
+        quizType: session.mode,
+        unitId: session.unit,
+        totalQuestions: session.totalQuestions,
+        correctAnswers: session.correctAnswers,
+        durationSeconds: session.timeSpentSeconds,
+        answers: [],
+      }).catch(() => {});
 
       setTestHistory((prev) => {
         const updated = [newSession, ...prev];
@@ -325,7 +340,17 @@ export function useVocabularyStore() {
   }, []);
 
   // Auth: Login
-  const login = useCallback((email: string, name?: string) => {
+  const login = useCallback(async (email: string, name?: string, password?: string) => {
+    try {
+      if (password) {
+        await fetch("/api/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        });
+      }
+    } catch (e) {}
+
     const user: UserProfile = {
       id: "user_" + Date.now(),
       name: name || email.split("@")[0],
@@ -342,7 +367,17 @@ export function useVocabularyStore() {
   }, []);
 
   // Auth: Register
-  const register = useCallback((name: string, email: string, targetBand: string) => {
+  const register = useCallback(async (name: string, email: string, targetBand: string, password?: string) => {
+    try {
+      if (password) {
+        await fetch("/api/auth/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, targetBand, password }),
+        });
+      }
+    } catch (e) {}
+
     const user: UserProfile = {
       id: "user_" + Date.now(),
       name,
@@ -359,7 +394,10 @@ export function useVocabularyStore() {
   }, []);
 
   // Auth: Logout
-  const logout = useCallback(() => {
+  const logout = useCallback(async () => {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+    } catch (e) {}
     setCurrentUser(null);
     try {
       localStorage.removeItem("ielts_current_user");

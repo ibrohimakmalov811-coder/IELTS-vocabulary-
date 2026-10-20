@@ -1,10 +1,12 @@
 "use client";
 
-import React, { Suspense } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { useVocab } from "@/components/layout/ClientLayout";
 import { VocabularyLibrary } from "@/components/VocabularyLibrary";
 import { sampleWords, sampleUnits } from "@/data/vocabularyData";
+import { getWords, getUnits } from "@/lib/services/vocabularyService";
+import { WordItem, Unit } from "@/types/vocabulary";
 import { BookOpen, Sparkles, CheckCircle2, Bookmark, GraduationCap } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -14,7 +16,28 @@ function VocabularyContent() {
   const unitParam = searchParams.get("unit");
   const initialUnit = unitParam && !isNaN(Number(unitParam)) ? Number(unitParam) : "all";
 
-  const totalWords = sampleWords.length;
+  const [wordsList, setWordsList] = useState<WordItem[]>(sampleWords);
+  const [unitsList, setUnitsList] = useState<Unit[]>(sampleUnits);
+
+  useEffect(() => {
+    getWords({ limit: 400 })
+      .then((res) => {
+        if (res && res.words && res.words.length > 0) {
+          setWordsList(res.words);
+        }
+      })
+      .catch(() => {});
+
+    getUnits()
+      .then((res) => {
+        if (res && res.length > 0) {
+          setUnitsList(res);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const totalWords = wordsList.length;
   const learnedCount = store.learnedWordIds.length;
   const favoriteCount = store.favoriteWordIds.length;
   const masteryPercentage = Math.round((learnedCount / totalWords) * 100);
@@ -76,8 +99,8 @@ function VocabularyContent() {
 
       {/* Main Vocabulary Library Component */}
       <VocabularyLibrary
-        words={sampleWords}
-        units={sampleUnits}
+        words={wordsList}
+        units={unitsList}
         learnedWordIds={store.learnedWordIds}
         favoriteWordIds={store.favoriteWordIds}
         onToggleLearned={store.toggleLearned}
