@@ -33,6 +33,33 @@ import {
 import { motion } from "framer-motion";
 import Link from "next/link";
 
+const UZBEK_MONTHS = [
+  "yan",
+  "fev",
+  "mar",
+  "apr",
+  "may",
+  "iyn",
+  "iyl",
+  "avg",
+  "sen",
+  "okt",
+  "noy",
+  "dek",
+];
+
+function formatTestDate(value: string) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "Invalid Date";
+
+  const day = date.getUTCDate();
+  const month = UZBEK_MONTHS[date.getUTCMonth()];
+  const hours = String(date.getUTCHours()).padStart(2, "0");
+  const minutes = String(date.getUTCMinutes()).padStart(2, "0");
+
+  return `${day}-${month}, ${hours}:${minutes}`;
+}
+
 function DashboardContent() {
   const router = useRouter();
   const { store, openWordDetails, openShop, playAudio, activePlayingWord } = useVocab();
@@ -479,13 +506,9 @@ function DashboardContent() {
               </thead>
               <tbody className="divide-y divide-slate-100 dark:divide-slate-800/80">
                 {testHistory.slice(0, 6).map((test) => {
-                  const testDate = new Date(test.date);
-                  const formattedDate = testDate.toLocaleDateString("uz-UZ", {
-                    month: "short",
-                    day: "numeric",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  });
+                  const formattedDate = store.isLoaded
+                    ? formatTestDate(test.date)
+                    : "—";
 
                   return (
                     <tr
