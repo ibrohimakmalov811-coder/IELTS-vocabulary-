@@ -54,7 +54,7 @@ export const VocabularyLibrary: React.FC<VocabularyLibraryProps> = ({
 
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
-  const wordsPerPage = 12;
+  const [wordsPerPage, setWordsPerPage] = useState<number>(12);
 
   // Reset all filters
   const handleResetFilters = () => {
@@ -292,10 +292,30 @@ export const VocabularyLibrary: React.FC<VocabularyLibraryProps> = ({
 
         {/* Counter & Active Tags */}
         <div className="flex flex-wrap items-center justify-between text-xs text-slateText-muted pt-2 border-t border-gray-100 dark:border-slate-800 gap-2">
-          <span>
-            Showing <strong className="text-slateText-heading dark:text-white">{filteredWords.length}</strong> of{" "}
-            {words.length} vocabulary words
-          </span>
+          <div className="flex items-center gap-4 flex-wrap">
+            <span>
+              Ko&apos;rsatilyapti: <strong className="text-slateText-heading dark:text-white">{filteredWords.length}</strong> / {words.length} ta so&apos;z
+            </span>
+            <div className="flex items-center gap-1.5 text-[11px]">
+              <span className="font-semibold text-slateText-muted">Sahifada:</span>
+              {[12, 24, 48, 301].map((count) => (
+                <button
+                  key={count}
+                  onClick={() => {
+                    setWordsPerPage(count);
+                    setCurrentPage(1);
+                  }}
+                  className={`px-2 py-0.5 rounded-lg border text-[11px] font-bold transition-all cursor-pointer ${
+                    wordsPerPage === count
+                      ? "bg-primary text-white border-primary"
+                      : "border-slate-200 dark:border-slate-700 text-slateText-muted hover:border-primary hover:text-primary dark:hover:text-white"
+                  }`}
+                >
+                  {count === 301 ? "Barchasi" : count}
+                </button>
+              ))}
+            </div>
+          </div>
 
           <div className="flex items-center gap-2">
             {selectedUnit !== "all" && (

@@ -14,6 +14,7 @@ import {
   Maximize2,
   ArrowRight,
   TrendingUp,
+  TrendingDown,
   Target,
   Bookmark,
   CheckCircle2,
@@ -65,33 +66,32 @@ function DashboardContent() {
   const { store, openWordDetails, openShop, playAudio, activePlayingWord } = useVocab();
 
   const user = store.currentUser || {
-    name: "Ibrohim Akmalov",
-    email: "talaba@ielts.uz",
+    name: "Mehmon O'quvchi",
+    email: "ro'yxatdan o'tilmagan",
     targetBand: "Band 7.5",
-    joinedAt: "2026-10-10",
+    joinedAt: "Bugun",
   };
 
   // Format study time from seconds into human-readable Uzbek string
   const formattedStudyTime = useMemo(() => {
-    const totalSecs = store.studyTimeSeconds || 2100;
+    const totalSecs = store.studyTimeSeconds || 0;
+    if (totalSecs === 0) return "0 daqiqa";
     const hours = Math.floor(totalSecs / 3600);
     const minutes = Math.floor((totalSecs % 3600) / 60);
+    const seconds = totalSecs % 60;
 
     if (hours > 0) {
       return `${hours} soat ${minutes} daqiqa`;
     }
-    return `${minutes} daqiqa`;
+    if (minutes > 0) {
+      return `${minutes} daqiqa`;
+    }
+    return `${seconds} soniya`;
   }, [store.studyTimeSeconds]);
 
   // Test statistics
   const testHistory = store.testHistory || [];
   const totalTestsTaken = testHistory.length;
-
-  const averageAccuracy = useMemo(() => {
-    if (testHistory.length === 0) return 0;
-    const total = testHistory.reduce((sum, item) => sum + item.accuracy, 0);
-    return Math.round(total / testHistory.length);
-  }, [testHistory]);
 
   const totalQuestionsAnswered = useMemo(() => {
     return testHistory.reduce((sum, item) => sum + item.totalQuestions, 0);
@@ -99,6 +99,29 @@ function DashboardContent() {
 
   const totalCorrectQuestions = useMemo(() => {
     return testHistory.reduce((sum, item) => sum + item.correctAnswers, 0);
+  }, [testHistory]);
+
+  const { averageAccuracy, accuracyTrend, trendDiff } = useMemo(() => {
+    if (testHistory.length === 0) {
+      return { averageAccuracy: 0, accuracyTrend: "neutral", trendDiff: 0 };
+    }
+    const total = testHistory.reduce((sum, item) => sum + item.accuracy, 0);
+    const avg = Math.round(total / testHistory.length);
+
+    if (testHistory.length >= 2) {
+      const latest = testHistory[0].accuracy;
+      const prevAvg = Math.round(
+        testHistory.slice(1).reduce((sum, item) => sum + item.accuracy, 0) / (testHistory.length - 1)
+      );
+      const diff = latest - prevAvg;
+      return {
+        averageAccuracy: avg,
+        accuracyTrend: diff > 0 ? "up" : diff < 0 ? "down" : "same",
+        trendDiff: diff,
+      };
+    }
+
+    return { averageAccuracy: avg, accuracyTrend: "first", trendDiff: 0 };
   }, [testHistory]);
 
   // Breakdown by mode
@@ -271,12 +294,33 @@ function DashboardContent() {
                 <CheckCircle2 className="w-4 h-4" />
               </div>
             </div>
-            <div className="text-2xl sm:text-3xl font-black text-slateText-heading dark:text-white">
-              {averageAccuracy}%
+            <div className="text-2xl sm:text-3xl font-black text-slateText-heading dark:text-white flex items-baseline gap-2">
+              <span>{averageAccuracy}%</span>
+              {testHistory.length > 0 && (
+                <span className="text-xs text-slateText-muted font-bold">
+                  ({totalCorrectQuestions}/{totalQuestionsAnswered})
+                </span>
+              )}
             </div>
-            <p className="text-xs text-slateText-muted">
-              {totalCorrectQuestions} ta to&apos;g&apos;ri javob
-            </p>
+            <div>
+              {testHistory.length === 0 ? (
+                <span className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-400 bg-slate-500/10 px-2 py-0.5 rounded-full">
+                  Boshlang&apos;ich daraja
+                </span>
+              ) : accuracyTrend === "up" ? (
+                <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">
+                  <TrendingUp className="w-3 h-3" /> +{trendDiff}% o&apos;sish
+                </span>
+              ) : accuracyTrend === "down" ? (
+                <span className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-full">
+                  <TrendingDown className="w-3 h-3" /> {trendDiff}% o&apos;zgarish
+                </span>
+              ) : (
+                <span className="inline-flex items-center gap-1 text-[11px] font-bold text-sky-500 bg-sky-500/10 px-2 py-0.5 rounded-full">
+                  Barqaror natija
+                </span>
+              )}
+            </div>
           </motion.div>
 
           {/* Metric 4: Day Streak */}
@@ -337,36 +381,48 @@ function DashboardContent() {
             {/* Visual SVG/CSS Interactive Chart */}
             {testHistory.length > 0 ? (
               <div className="pt-4">
-                <div className="h-48 flex items-end justify-between gap-3 sm:gap-6 border-b border-slate-200 dark:border-slate-800 pb-2 px-2">
+                <div className="h-56 flex items-end justify-between gap-2 sm:gap-4 border-b border-slate-200 dark:border-slate-800 pb-3 px-2">
                   {testHistory.slice(0, 8).map((session, index) => {
-                    const heightPercent = Math.max(15, session.accuracy);
+                    const heightPercent = Math.max(16, session.accuracy);
                     const isGreat = session.accuracy >= 80;
 
                     return (
                       <div
                         key={session.id || index}
-                        className="flex-1 flex flex-col items-center gap-2 h-full justify-end group relative"
+                        className="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group relative"
                       >
                         {/* Tooltip on hover */}
-                        <div className="absolute -top-10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none bg-slate-900 text-white text-[11px] font-bold py-1 px-2.5 rounded-lg whitespace-nowrap shadow-lg z-20">
-                          {session.accuracy}% ({session.correctAnswers}/{session.totalQuestions})
+                        <div className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none bg-slate-900 text-white text-[11px] font-bold py-1.5 px-3 rounded-xl whitespace-nowrap shadow-xl z-20 border border-slate-700">
+                          {session.accuracy}% aniqlik • {session.correctAnswers}/{session.totalQuestions} to&apos;g&apos;ri
                         </div>
 
-                        {/* Animated Bar */}
+                        {/* Score pill on top of bar */}
+                        <span
+                          className={`text-[10px] font-black transition-all ${
+                            isGreat ? "text-emerald-500 dark:text-emerald-400" : "text-amber-500"
+                          }`}
+                        >
+                          {session.accuracy}%
+                        </span>
+
+                        {/* Animated Bar with guaranteed visible Tailwind gradient */}
                         <motion.div
                           initial={{ height: 0 }}
                           animate={{ height: `${heightPercent}%` }}
                           transition={{ duration: 0.6, delay: index * 0.08 }}
-                          className={`w-full max-w-[42px] rounded-t-xl transition-all ${
+                          className={`w-full max-w-[46px] rounded-t-xl transition-all shadow-sm ${
                             isGreat
-                              ? "bg-gradient-to-t from-primary to-tealAccent group-hover:brightness-110"
-                              : "bg-gradient-to-t from-amber-500 to-amber-300"
+                              ? "bg-gradient-to-t from-blue-600 via-sky-500 to-teal-400 dark:from-sky-500 dark:via-cyan-400 dark:to-emerald-300"
+                              : "bg-gradient-to-t from-amber-500 via-amber-400 to-yellow-300"
                           }`}
                         />
 
                         {/* Label */}
-                        <span className="text-[10px] font-extrabold text-slateText-muted">
+                        <span className="text-[10px] font-black text-slate-700 dark:text-slate-200">
                           T#{testHistory.length - index}
+                        </span>
+                        <span className="text-[9px] text-slateText-muted font-bold">
+                          {session.correctAnswers}/{session.totalQuestions}
                         </span>
                       </div>
                     );
@@ -377,20 +433,37 @@ function DashboardContent() {
                   <span>← Ilk testlar</span>
                   <div className="flex items-center gap-4">
                     <span className="flex items-center gap-1.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-tealAccent" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-teal-400" />
                       Yuqori ball (&ge;80%)
                     </span>
                     <span className="flex items-center gap-1.5">
                       <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
-                      O&apos;rtacha ball
+                      O&apos;rtacha ball (&lt;80%)
                     </span>
                   </div>
                   <span>Oxirgi test →</span>
                 </div>
               </div>
             ) : (
-              <div className="py-12 text-center text-slateText-muted text-sm">
-                Hali testlar topshirilmagan. Birinchi testingizni hoziroq ishlang!
+              <div className="py-16 text-center space-y-3">
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary mx-auto flex items-center justify-center">
+                  <TrendingUp className="w-6 h-6" />
+                </div>
+                <div className="space-y-1">
+                  <p className="text-sm font-bold text-slateText-heading dark:text-white">
+                    Hozircha testlar topshirilmagan
+                  </p>
+                  <p className="text-xs text-slateText-muted max-w-sm mx-auto">
+                    Lug&apos;at boyligingizni sinab ko&apos;rish uchun test ishlang. Har bir natija real vaqt rejimida ushbu grafikda aks etadi.
+                  </p>
+                </div>
+                <Link
+                  href="/practice"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs font-bold shadow-soft transition-all"
+                >
+                  <span>Birinchi testni boshlash</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
             )}
           </div>

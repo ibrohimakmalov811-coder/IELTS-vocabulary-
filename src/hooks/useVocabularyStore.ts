@@ -19,6 +19,7 @@ interface StoredUserAccount {
   learnedWordIds: string[];
   favoriteWordIds: string[];
   studyTimeSeconds: number;
+  testHistory?: TestResultSession[];
 }
 
 const DEFAULT_DEMO_ACCOUNT: StoredUserAccount = {
@@ -29,74 +30,23 @@ const DEFAULT_DEMO_ACCOUNT: StoredUserAccount = {
   targetBand: "Band 8.5",
   avatarColor: "from-blue-600 to-indigo-600",
   joinedAt: "2026-10-10",
-  totalCoins: 350,
-  streakDays: 7,
-  learnedWordIds: ["w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11", "w12", "w13", "w14", "w15"],
-  favoriteWordIds: ["w1", "w7", "w14"],
-  studyTimeSeconds: 2700,
+  totalCoins: 0,
+  streakDays: 0,
+  learnedWordIds: [],
+  favoriteWordIds: [],
+  studyTimeSeconds: 0,
+  testHistory: [],
 };
-
-const INITIAL_TEST_SESSIONS: TestResultSession[] = [
-  {
-    id: "ts-1",
-    date: new Date(Date.now() - 3 * 86400000).toISOString(),
-    mode: "quiz",
-    unit: 1,
-    totalQuestions: 10,
-    correctAnswers: 9,
-    accuracy: 90,
-    timeSpentSeconds: 95,
-    coinsEarned: 90,
-  },
-  {
-    id: "ts-2",
-    date: new Date(Date.now() - 2 * 86400000).toISOString(),
-    mode: "recall",
-    unit: 1,
-    totalQuestions: 10,
-    correctAnswers: 8,
-    accuracy: 80,
-    timeSpentSeconds: 120,
-    coinsEarned: 80,
-  },
-  {
-    id: "ts-3",
-    date: new Date(Date.now() - 1 * 86400000).toISOString(),
-    mode: "cloze",
-    unit: 2,
-    totalQuestions: 10,
-    correctAnswers: 10,
-    accuracy: 100,
-    timeSpentSeconds: 110,
-    coinsEarned: 100,
-  },
-  {
-    id: "ts-4",
-    date: new Date().toISOString(),
-    mode: "quiz",
-    unit: 3,
-    totalQuestions: 10,
-    correctAnswers: 9,
-    accuracy: 90,
-    timeSpentSeconds: 85,
-    coinsEarned: 90,
-  },
-];
 
 export function useVocabularyStore() {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [currentUser, setCurrentUser] = useState<UserProfile | null>(DEFAULT_DEMO_ACCOUNT);
-  const [learnedWordIds, setLearnedWordIds] = useState<string[]>(DEFAULT_DEMO_ACCOUNT.learnedWordIds);
-  const [favoriteWordIds, setFavoriteWordIds] = useState<string[]>(DEFAULT_DEMO_ACCOUNT.favoriteWordIds);
-  const [recentlyStudiedIds, setRecentlyStudiedIds] = useState<string[]>(["w1", "w2", "w3"]);
-  const [stats, setStats] = useState<UserStats>({
-    ...initialUserStats,
-    userName: DEFAULT_DEMO_ACCOUNT.name,
-    totalCoins: DEFAULT_DEMO_ACCOUNT.totalCoins,
-    streakDays: DEFAULT_DEMO_ACCOUNT.streakDays,
-  });
-  const [testHistory, setTestHistory] = useState<TestResultSession[]>(INITIAL_TEST_SESSIONS);
-  const [studyTimeSeconds, setStudyTimeSeconds] = useState<number>(DEFAULT_DEMO_ACCOUNT.studyTimeSeconds);
+  const [currentUser, setCurrentUser] = useState<UserProfile | null>(null);
+  const [learnedWordIds, setLearnedWordIds] = useState<string[]>([]);
+  const [favoriteWordIds, setFavoriteWordIds] = useState<string[]>([]);
+  const [recentlyStudiedIds, setRecentlyStudiedIds] = useState<string[]>([]);
+  const [stats, setStats] = useState<UserStats>(initialUserStats);
+  const [testHistory, setTestHistory] = useState<TestResultSession[]>([]);
+  const [studyTimeSeconds, setStudyTimeSeconds] = useState<number>(0);
   const [accent, setAccentState] = useState<"US" | "UK">("US");
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -109,6 +59,8 @@ export function useVocabularyStore() {
   statsRef.current = stats;
   const studyTimeRef = useRef(studyTimeSeconds);
   studyTimeRef.current = studyTimeSeconds;
+  const testHistoryRef = useRef(testHistory);
+  testHistoryRef.current = testHistory;
   const currentUserRef = useRef(currentUser);
   currentUserRef.current = currentUser;
 
@@ -125,65 +77,65 @@ export function useVocabularyStore() {
       const storedUser = localStorage.getItem("ielts_current_user");
       if (storedUser) {
         try {
-          const userObj = JSON.parse(storedUser);
+          const userObj: StoredUserAccount = JSON.parse(storedUser);
           setCurrentUser(userObj);
-          if (userObj.name) {
-            setStats((prev) => ({ ...prev, userName: userObj.name }));
+
+          const userLearned = userObj.learnedWordIds || [];
+          const userFavs = userObj.favoriteWordIds || [];
+          const userTime = userObj.studyTimeSeconds || 0;
+          const userCoins = userObj.totalCoins || 0;
+          const userStreak = userObj.streakDays || 0;
+
+          setLearnedWordIds(userLearned);
+          setFavoriteWordIds(userFavs);
+          setStudyTimeSeconds(userTime);
+
+          // User-specific or general test history
+          const userHistoryKey = `ielts_test_history_${userObj.id}`;
+          const storedUserHistory = localStorage.getItem(userHistoryKey) || localStorage.getItem("ielts_test_history");
+          if (storedUserHistory) {
+            try {
+              setTestHistory(JSON.parse(storedUserHistory));
+            } catch (e) {
+              setTestHistory(userObj.testHistory || []);
+            }
+          } else {
+            setTestHistory(userObj.testHistory || []);
           }
+
+          setStats({
+            ...initialUserStats,
+            userName: userObj.name,
+            totalCoins: userCoins,
+            streakDays: userStreak,
+            wordsMastered: userLearned.length,
+          });
         } catch (e) {
-          setCurrentUser(DEFAULT_DEMO_ACCOUNT);
+          setCurrentUser(null);
         }
       } else {
-        localStorage.setItem("ielts_current_user", JSON.stringify(DEFAULT_DEMO_ACCOUNT));
+        // Guest user: starts at zero
+        setCurrentUser(null);
+        setLearnedWordIds([]);
+        setFavoriteWordIds([]);
+        setTestHistory([]);
+        setStudyTimeSeconds(0);
+        setStats(initialUserStats);
       }
 
-      // 3. Learned Words
-      const storedLearned = localStorage.getItem("ielts_learned_words");
-      if (storedLearned) {
-        setLearnedWordIds(JSON.parse(storedLearned));
-      }
-
-      // 4. Favorite Words
-      const storedFavorites = localStorage.getItem("ielts_favorite_words");
-      if (storedFavorites) {
-        setFavoriteWordIds(JSON.parse(storedFavorites));
-      }
-
-      // 5. Recently Studied
+      // 3. Recently Studied
       const storedRecent = localStorage.getItem("ielts_recent_words");
       if (storedRecent) {
         setRecentlyStudiedIds(JSON.parse(storedRecent));
       }
 
-      // 6. Test History
-      const storedHistory = localStorage.getItem("ielts_test_history");
-      if (storedHistory) {
-        try {
-          setTestHistory(JSON.parse(storedHistory));
-        } catch (e) {}
-      } else {
-        localStorage.setItem("ielts_test_history", JSON.stringify(INITIAL_TEST_SESSIONS));
-      }
-
-      // 7. Study Time
-      const storedTime = localStorage.getItem("ielts_study_time_seconds");
-      if (storedTime) {
-        setStudyTimeSeconds(parseInt(storedTime, 10) || 2700);
-      }
-
-      // 8. Stats
-      const storedStats = localStorage.getItem("ielts_user_stats");
-      if (storedStats) {
-        setStats(JSON.parse(storedStats));
-      }
-
-      // 9. Accent
+      // 4. Accent
       const storedAccent = localStorage.getItem("ielts_accent") as "US" | "UK";
       if (storedAccent === "US" || storedAccent === "UK") {
         setAccentState(storedAccent);
       }
 
-      // 10. Dark Mode
+      // 5. Dark Mode
       const storedTheme = localStorage.getItem("ielts_dark_mode");
       if (storedTheme === "true") {
         setIsDarkMode(true);
@@ -205,17 +157,36 @@ export function useVocabularyStore() {
     }
   }, []);
 
-  // Time Tracker: increments every 10 seconds while page is open
+  // Real-time Active Study Time Tracker
+  // Increments every second while page/tab is actively visible
   useEffect(() => {
     const timer = setInterval(() => {
-      setStudyTimeSeconds((prev) => {
-        const next = prev + 10;
-        try {
-          localStorage.setItem("ielts_study_time_seconds", String(next));
-        } catch (e) {}
-        return next;
-      });
-    }, 10000);
+      if (typeof document !== "undefined" && !document.hidden) {
+        setStudyTimeSeconds((prev) => {
+          const next = prev + 1;
+          // Periodically sync every 5 seconds to localStorage and user DB
+          if (next % 5 === 0) {
+            try {
+              localStorage.setItem("ielts_study_time_seconds", String(next));
+              if (currentUserRef.current?.email) {
+                const storedUsers = localStorage.getItem("ielts_users_db");
+                if (storedUsers) {
+                  const users: StoredUserAccount[] = JSON.parse(storedUsers);
+                  const idx = users.findIndex(
+                    (u) => u.email.toLowerCase() === currentUserRef.current?.email.toLowerCase()
+                  );
+                  if (idx !== -1) {
+                    users[idx].studyTimeSeconds = next;
+                    localStorage.setItem("ielts_users_db", JSON.stringify(users));
+                  }
+                }
+              }
+            } catch (e) {}
+          }
+          return next;
+        });
+      }
+    }, 1000);
 
     return () => clearInterval(timer);
   }, []);
@@ -233,7 +204,14 @@ export function useVocabularyStore() {
           users[idx].totalCoins = statsRef.current.totalCoins;
           users[idx].streakDays = statsRef.current.streakDays;
           users[idx].studyTimeSeconds = studyTimeRef.current;
+          users[idx].testHistory = testHistoryRef.current;
           localStorage.setItem("ielts_users_db", JSON.stringify(users));
+
+          // Also save user-specific storage keys
+          const uid = users[idx].id;
+          localStorage.setItem(`ielts_learned_words_${uid}`, JSON.stringify(learnedRef.current));
+          localStorage.setItem(`ielts_favorite_words_${uid}`, JSON.stringify(favoritesRef.current));
+          localStorage.setItem(`ielts_test_history_${uid}`, JSON.stringify(testHistoryRef.current));
         }
       }
     } catch (e) {}
@@ -246,6 +224,9 @@ export function useVocabularyStore() {
       const updated = isCurrentlyLearned ? prev.filter((id) => id !== wordId) : [...prev, wordId];
       try {
         localStorage.setItem("ielts_learned_words", JSON.stringify(updated));
+        if (currentUserRef.current?.id) {
+          localStorage.setItem(`ielts_learned_words_${currentUserRef.current.id}`, JSON.stringify(updated));
+        }
       } catch (e) {}
 
       setStats((prevStats) => {
@@ -268,17 +249,28 @@ export function useVocabularyStore() {
   }, []);
 
   // Toggle Favorite
-  const toggleFavorite = useCallback((wordId: string) => {
-    toggleUserFavorite(currentUser?.id, wordId).catch(() => {});
+  const toggleFavorite = useCallback(
+    (wordId: string) => {
+      setFavoriteWordIds((prev) => {
+        const isFav = prev.includes(wordId);
+        const updated = isFav ? prev.filter((id) => id !== wordId) : [...prev, wordId];
+        try {
+          localStorage.setItem("ielts_favorite_words", JSON.stringify(updated));
+          if (currentUserRef.current?.id) {
+            localStorage.setItem(`ielts_favorite_words_${currentUserRef.current.id}`, JSON.stringify(updated));
+          }
+        } catch (e) {}
 
-    setFavoriteWordIds((prev) => {
-      const updated = prev.includes(wordId) ? prev.filter((id) => id !== wordId) : [...prev, wordId];
-      try {
-        localStorage.setItem("ielts_favorite_words", JSON.stringify(updated));
-      } catch (e) {}
-      return updated;
-    });
-  }, [currentUser?.id]);
+        // Backend integration if available
+        if (currentUser?.id) {
+          toggleUserFavorite(currentUser.id, wordId).catch(() => {});
+        }
+
+        return updated;
+      });
+    },
+    [currentUser?.id]
+  );
 
   // Add Recently Studied
   const addRecentlyStudied = useCallback((wordId: string) => {
@@ -301,28 +293,35 @@ export function useVocabularyStore() {
       };
 
       // Server/Database RPC Submission (Anti-Cheat)
-      submitQuizAttempt(currentUser?.id, {
-        quizType: session.mode,
-        unitId: session.unit,
-        totalQuestions: session.totalQuestions,
-        correctAnswers: session.correctAnswers,
-        durationSeconds: session.timeSpentSeconds,
-        answers: [],
-      }).catch(() => {});
+      if (currentUser?.id) {
+        submitQuizAttempt(currentUser.id, {
+          quizType: session.mode,
+          unitId: session.unit,
+          totalQuestions: session.totalQuestions,
+          correctAnswers: session.correctAnswers,
+          durationSeconds: session.timeSpentSeconds,
+          answers: [],
+        }).catch(() => {});
+      }
 
       setTestHistory((prev) => {
         const updated = [newSession, ...prev];
         try {
           localStorage.setItem("ielts_test_history", JSON.stringify(updated));
+          if (currentUserRef.current?.id) {
+            localStorage.setItem(`ielts_test_history_${currentUserRef.current.id}`, JSON.stringify(updated));
+          }
         } catch (e) {}
         return updated;
       });
 
-      // Update total coins and daily stats
+      // Update total coins and daily stats accurately
       setStats((prev) => {
+        const updatedStreak = prev.streakDays === 0 ? 1 : prev.streakDays;
         const updated = {
           ...prev,
           totalCoins: prev.totalCoins + session.coinsEarned,
+          streakDays: updatedStreak,
           completedTodayWords: Math.min(
             prev.dailyGoalWords,
             prev.completedTodayWords + session.correctAnswers
@@ -333,18 +332,23 @@ export function useVocabularyStore() {
         } catch (e) {}
         return updated;
       });
+
+      // Auto-save to users DB
+      if (currentUserRef.current?.email) {
+        setTimeout(() => {
+          if (currentUserRef.current?.email) {
+            persistUserToDb(currentUserRef.current.email);
+          }
+        }, 100);
+      }
     },
-    [currentUser?.id]
+    [currentUser?.id, persistUserToDb]
   );
 
   // Coins
   const addCoins = useCallback((amount: number) => {
     setStats((prev) => {
-      const updated = {
-        ...prev,
-        totalCoins: prev.totalCoins + amount,
-        completedTodayWords: Math.min(prev.dailyGoalWords, prev.completedTodayWords + 1),
-      };
+      const updated = { ...prev, totalCoins: prev.totalCoins + amount };
       try {
         localStorage.setItem("ielts_user_stats", JSON.stringify(updated));
       } catch (e) {}
@@ -352,41 +356,48 @@ export function useVocabularyStore() {
     });
   }, []);
 
-  // Gift shop purchase
-  const purchaseItem = useCallback((item: "freeze" | "dark" | "crown", cost: number) => {
-    setStats((prev) => {
-      if (prev.totalCoins < cost) return prev;
-      const updated = {
-        ...prev,
-        totalCoins: prev.totalCoins - cost,
-        hasStreakFreeze: item === "freeze" ? true : prev.hasStreakFreeze,
-        isDarkModeUnlocked: item === "dark" ? true : prev.isDarkModeUnlocked,
-        hasGoldenCrown: item === "crown" ? true : prev.hasGoldenCrown,
-      };
-      try {
-        localStorage.setItem("ielts_user_stats", JSON.stringify(updated));
-      } catch (e) {}
-      return updated;
-    });
-  }, []);
+  // Shop purchase
+  const purchaseItem = useCallback(
+    (itemType: "freeze" | "dark" | "crown", cost: number) => {
+      if (stats.totalCoins < cost) return false;
 
-  // Dark mode toggle
+      setStats((prev) => {
+        const updated = {
+          ...prev,
+          totalCoins: prev.totalCoins - cost,
+          hasStreakFreeze: itemType === "freeze" ? true : prev.hasStreakFreeze,
+          isDarkModeUnlocked: itemType === "dark" ? true : prev.isDarkModeUnlocked,
+          hasGoldenCrown: itemType === "crown" ? true : prev.hasGoldenCrown,
+        };
+        try {
+          localStorage.setItem("ielts_user_stats", JSON.stringify(updated));
+        } catch (e) {}
+        return updated;
+      });
+
+      return true;
+    },
+    [stats.totalCoins]
+  );
+
+  // Dark Mode Toggle
   const toggleDarkMode = useCallback(() => {
     setIsDarkMode((prev) => {
       const next = !prev;
+      try {
+        localStorage.setItem("ielts_dark_mode", String(next));
+      } catch (e) {}
+
       if (next) {
         document.documentElement.classList.add("dark");
       } else {
         document.documentElement.classList.remove("dark");
       }
-      try {
-        localStorage.setItem("ielts_dark_mode", String(next));
-      } catch (e) {}
       return next;
     });
   }, []);
 
-  // Accent Switcher
+  // Pronunciation Accent
   const setAccent = useCallback((newAccent: "US" | "UK") => {
     setAccentState(newAccent);
     try {
@@ -425,7 +436,7 @@ export function useVocabularyStore() {
         persistUserToDb(currentUserRef.current.email);
       }
 
-      // Create new student account
+      // Create new student account initialized at ZERO
       const newAccount: StoredUserAccount = {
         id: "user_" + Date.now(),
         name: name.trim(),
@@ -434,34 +445,38 @@ export function useVocabularyStore() {
         targetBand: targetBand || "Band 7.5",
         avatarColor: "from-teal-500 to-sky-600",
         joinedAt: new Date().toISOString().split("T")[0],
-        totalCoins: 240,
-        streakDays: 1,
-        learnedWordIds: ["w1", "w2", "w3", "w4", "w5"],
-        favoriteWordIds: ["w1"],
-        studyTimeSeconds: 60,
+        totalCoins: 0,
+        streakDays: 0,
+        learnedWordIds: [],
+        favoriteWordIds: [],
+        studyTimeSeconds: 0,
+        testHistory: [],
       };
 
       usersDb.push(newAccount);
       try {
         localStorage.setItem("ielts_users_db", JSON.stringify(usersDb));
         localStorage.setItem("ielts_current_user", JSON.stringify(newAccount));
-        localStorage.setItem("ielts_learned_words", JSON.stringify(newAccount.learnedWordIds));
-        localStorage.setItem("ielts_favorite_words", JSON.stringify(newAccount.favoriteWordIds));
-        localStorage.setItem("ielts_study_time_seconds", String(newAccount.studyTimeSeconds));
+        localStorage.setItem("ielts_learned_words", JSON.stringify([]));
+        localStorage.setItem("ielts_favorite_words", JSON.stringify([]));
+        localStorage.setItem("ielts_study_time_seconds", "0");
+        localStorage.setItem("ielts_test_history", JSON.stringify([]));
+        localStorage.setItem(`ielts_test_history_${newAccount.id}`, JSON.stringify([]));
       } catch (e) {}
 
-      // Update state
+      // Update state to absolute zero
       setCurrentUser(newAccount);
-      setLearnedWordIds(newAccount.learnedWordIds);
-      setFavoriteWordIds(newAccount.favoriteWordIds);
-      setStudyTimeSeconds(newAccount.studyTimeSeconds);
-      setStats((prev) => ({
-        ...prev,
+      setLearnedWordIds([]);
+      setFavoriteWordIds([]);
+      setTestHistory([]);
+      setStudyTimeSeconds(0);
+      setStats({
+        ...initialUserStats,
         userName: newAccount.name,
-        totalCoins: newAccount.totalCoins,
-        streakDays: newAccount.streakDays,
-        wordsMastered: newAccount.learnedWordIds.length,
-      }));
+        totalCoins: 0,
+        streakDays: 0,
+        wordsMastered: 0,
+      });
 
       return newAccount;
     },
@@ -514,15 +529,25 @@ export function useVocabularyStore() {
       }
 
       // Restore matched user's personal data
-      const userLearned = matchedUser.learnedWordIds || ["w1", "w2", "w3", "w4", "w5"];
-      const userFavs = matchedUser.favoriteWordIds || ["w1"];
-      const userCoins = matchedUser.totalCoins ?? 240;
-      const userStreak = matchedUser.streakDays ?? 1;
-      const userTime = matchedUser.studyTimeSeconds ?? 120;
+      const userLearned = matchedUser.learnedWordIds || [];
+      const userFavs = matchedUser.favoriteWordIds || [];
+      const userCoins = matchedUser.totalCoins ?? 0;
+      const userStreak = matchedUser.streakDays ?? 0;
+      const userTime = matchedUser.studyTimeSeconds ?? 0;
+
+      // Restore user-specific test history
+      let userHistory = matchedUser.testHistory || [];
+      try {
+        const storedUserHist = localStorage.getItem(`ielts_test_history_${matchedUser.id}`);
+        if (storedUserHist) {
+          userHistory = JSON.parse(storedUserHist);
+        }
+      } catch (e) {}
 
       setCurrentUser(matchedUser);
       setLearnedWordIds(userLearned);
       setFavoriteWordIds(userFavs);
+      setTestHistory(userHistory);
       setStudyTimeSeconds(userTime);
       setStats((prev) => ({
         ...prev,
@@ -537,6 +562,8 @@ export function useVocabularyStore() {
         localStorage.setItem("ielts_learned_words", JSON.stringify(userLearned));
         localStorage.setItem("ielts_favorite_words", JSON.stringify(userFavs));
         localStorage.setItem("ielts_study_time_seconds", String(userTime));
+        localStorage.setItem("ielts_test_history", JSON.stringify(userHistory));
+        localStorage.setItem(`ielts_test_history_${matchedUser.id}`, JSON.stringify(userHistory));
       } catch (e) {}
 
       return matchedUser;
@@ -556,8 +583,18 @@ export function useVocabularyStore() {
     }
 
     setCurrentUser(null);
+    setLearnedWordIds([]);
+    setFavoriteWordIds([]);
+    setTestHistory([]);
+    setStudyTimeSeconds(0);
+    setStats(initialUserStats);
+
     try {
       localStorage.removeItem("ielts_current_user");
+      localStorage.removeItem("ielts_learned_words");
+      localStorage.removeItem("ielts_favorite_words");
+      localStorage.removeItem("ielts_study_time_seconds");
+      localStorage.removeItem("ielts_test_history");
     } catch (e) {}
   }, [persistUserToDb]);
 

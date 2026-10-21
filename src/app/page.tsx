@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useVocab } from "@/components/layout/ClientLayout";
 import { sampleWords, sampleUnits } from "@/data/vocabularyData";
@@ -26,8 +27,17 @@ import {
 } from "lucide-react";
 
 export default function HomePage() {
+  const router = useRouter();
   const { store, openWordDetails, playAudio, activePlayingWord } = useVocab();
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+
+  const handleStartLearning = () => {
+    if (!store.currentUser) {
+      router.push("/register");
+    } else {
+      router.push("/vocabulary");
+    }
+  };
 
   // Real preview words for library section (first 6 words from Book 5)
   const previewWords = sampleWords.slice(0, 6);
@@ -100,13 +110,13 @@ export default function HomePage() {
 
               {/* Primary & Secondary CTAs */}
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                <Link
-                  href="/practice"
-                  className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-primary via-blue-600 to-indigo-600 hover:from-primary-hover hover:to-indigo-700 text-white font-bold text-base shadow-soft hover:shadow-glow-blue flex items-center justify-center gap-2.5 transition-all group"
+                <button
+                  onClick={handleStartLearning}
+                  className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-primary via-blue-600 to-indigo-600 hover:from-primary-hover hover:to-indigo-700 text-white font-bold text-base shadow-soft hover:shadow-glow-blue flex items-center justify-center gap-2.5 transition-all group cursor-pointer"
                 >
                   <span>Start Learning</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
+                </button>
 
                 <Link
                   href="/vocabulary"
@@ -319,49 +329,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ==================================================== */}
-      {/* 3. VOCABULARY LIBRARY PREVIEW (Real Words)           */}
-      {/* ==================================================== */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-          <div>
-            <span className="text-xs uppercase font-black text-tealAccent tracking-widest px-3 py-1 rounded-full bg-tealAccent-light dark:bg-tealAccent/20 text-teal-900 dark:text-tealAccent">
-              Verified Curriculum Preview
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-slateText-heading dark:text-white tracking-tight mt-2">
-              Essential 5 Vocabulary Cards
-            </h2>
-            <p className="text-xs sm:text-sm text-slateText-body dark:text-slate-300 mt-1">
-              Every card integrates translation, clear definition, highlighted example sentence, audio, and learning actions.
-            </p>
-          </div>
 
-          <Link
-            href="/vocabulary"
-            className="px-5 py-2.5 rounded-2xl bg-surface dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-bold text-slateText-heading dark:text-white hover:border-primary flex items-center gap-2 shadow-soft transition-all shrink-0"
-          >
-            <span>View All 301 Words</span>
-            <ArrowRight className="w-4 h-4 text-primary" />
-          </Link>
-        </div>
-
-        {/* 6 Real Cards Preview */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {previewWords.map((word) => (
-            <WordCard
-              key={word.id}
-              word={word}
-              isLearned={store.learnedWordIds.includes(word.id)}
-              isFavorite={store.favoriteWordIds.includes(word.id)}
-              onToggleLearned={store.toggleLearned}
-              onToggleFavorite={store.toggleFavorite}
-              onOpenDetails={openWordDetails}
-              onPlayAudio={playAudio}
-              isPlayingAudio={activePlayingWord === word.word}
-            />
-          ))}
-        </div>
-      </section>
 
       {/* ==================================================== */}
       {/* 4. LEARN WITH AUDIO SECTION                          */}
@@ -677,15 +645,15 @@ export default function HomePage() {
           </div>
 
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
-            <Link
-              href="/practice"
-              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white text-primary hover:bg-slate-50 font-black text-base shadow-xl transition-all"
+            <button
+              onClick={handleStartLearning}
+              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white text-primary hover:bg-slate-50 font-black text-base shadow-xl transition-all cursor-pointer"
             >
               Start Learning Now — 100% Free
-            </Link>
+            </button>
             <Link
               href="/vocabulary"
-              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-base border border-white/25 transition-all"
+              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-base border border-white/25 transition-all flex items-center justify-center"
             >
               Browse Vocabulary
             </Link>
