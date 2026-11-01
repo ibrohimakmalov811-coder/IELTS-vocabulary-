@@ -27,16 +27,26 @@ import {
   LayoutDashboard,
   CheckCircle,
   HelpCircle,
+  PenTool,
+  Send,
+  Globe,
+  AlertTriangle,
 } from "lucide-react";
 import Link from "next/link";
+import { getWordsForTopic } from "@/data/topicsData";
+import { logWordMistake, logWordSuccess } from "@/lib/services/weakWordService";
+import { evaluateSentence, saveUserSentence } from "@/lib/services/sentenceService";
+import { supabase } from "@/lib/supabase";
 
-type PracticeMode = "quiz" | "recall" | "cloze";
+type PracticeMode = "quiz" | "recall" | "cloze" | "sentence";
 
 function PracticeContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const targetWordParam = searchParams.get("word");
   const unitParam = searchParams.get("unit");
+  const topicParam = searchParams.get("topic");
+  const modeParam = searchParams.get("mode");
 
   const { store, playAudio, activePlayingWord, openWordDetails } = useVocab();
 
@@ -44,7 +54,9 @@ function PracticeContent() {
   const [selectedUnit, setSelectedUnit] = useState<number | "all">(
     unitParam && !isNaN(Number(unitParam)) ? Number(unitParam) : "all"
   );
-  const [mode, setMode] = useState<PracticeMode>("quiz");
+  const [mode, setMode] = useState<PracticeMode>(
+    modeParam === "sentence" ? "sentence" : "quiz"
+  );
 
   // Round questions
   const [questionList, setQuestionList] = useState<WordItem[]>([]);
@@ -56,6 +68,11 @@ function PracticeContent() {
   const [showHint, setShowHint] = useState(false);
   const [isAnswerSubmitted, setIsAnswerSubmitted] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+
+  // Sentence mode states
+  const [typedSentence, setTypedSentence] = useState("");
+  const [ieltsContext, setIeltsContext] = useState<"Writing Task 2" | "Speaking Part 2/3" | "General IELTS">("Writing Task 2");
+  const [sentenceFeedback, setSentenceFeedback] = useState<string | null>(null);
 
   // Timer & Scoring
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
@@ -83,6 +100,13 @@ function PracticeContent() {
   // Initialize questions
   const initializeRound = (unit: number | "all", targetWordStr?: string | null) => {
     let pool = unit === "all" ? [...sampleWords] : sampleWords.filter((w) => w.unit === unit);
+
+    // Topic filtering if requested via URL
+    if (topicParam) {
+      const topicWords = getWordsForTopic(topicParam);
+      if (topicWords.length > 0) pool = topicWords;
+    }
+
     if (pool.length === 0) pool = [...sampleWords];
 
     let selectedQuestions: WordItem[] = [];
@@ -106,6 +130,8 @@ function PracticeContent() {
     setCurrentIndex(0);
     setSelectedOption(null);
     setTypedAnswer("");
+    setTypedSentence("");
+    setSentenceFeedback(null);
     setShowHint(false);
     setIsAnswerSubmitted(false);
     setIsCorrect(null);
@@ -118,7 +144,7 @@ function PracticeContent() {
 
   useEffect(() => {
     initializeRound(selectedUnit, targetWordParam);
-  }, [selectedUnit, targetWordParam]);
+  }, [selectedUnit, targetWordParam, topicParam]);
 
   const currentWord = questionList[currentIndex];
 
@@ -147,12 +173,25 @@ function PracticeContent() {
       correct = answerProvided.trim().toLowerCase() === currentWord.translations.uzbek.trim().toLowerCase();
     } else if (mode === "recall" || mode === "cloze") {
       correct = answerProvided.trim().toLowerCase() === currentWord.word.trim().toLowerCase();
+    } else if (mode === "sentence") {
+      const evalResult = evaluateSentence(currentWord.word, typedSentence);
+      correct = evalResult.isValid;
+      setSentenceFeedback(evalResult.feedback);
+      if (correct) {
+        saveUserSentence(store.currentUser?.id, {
+          wordId: currentWord.id,
+          word: currentWord.word,
+          sentenceEn: typedSentence,
+          ieltsContext,
+        });
+      }
     }
 
     setIsAnswerSubmitted(true);
     setIsCorrect(correct);
 
     if (correct) {
+      logWordSuccess(currentWord.id);
       setSessionScore((prev) => prev + 1);
       setCoinsEarned((prev) => prev + 10);
       store.addCoins(10);
@@ -168,7 +207,42 @@ function PracticeContent() {
         colors: ["#38BDF8", "#50E3C2", "#F5A623", "#6366F1"],
       });
     } else {
+      logWordMistake(currentWord.id);
       setMissedWords((prev) => [...prev, currentWord]);
+
+      // Cloud SRS Weak Words Sync to Supabase
+      try {
+        supabase.auth.getUser().then(({ data: authData }) => {
+          if (authData?.user) {
+            supabase
+              .from("vocabulary")
+              .select("id")
+              .ilike("word", currentWord.word)
+              .maybeSingle()
+              .then(({ data: vocabData }) => {
+                if (vocabData?.id) {
+                  supabase
+                    .from("user_word_progress")
+                    .upsert(
+                      {
+                        user_id: authData.user.id,
+                        word_id: vocabData.id,
+                        incorrect_count: 1,
+                        last_reviewed: new Date().toISOString(),
+                        mastered: false,
+                      },
+                      { onConflict: "user_id,word_id" }
+                    )
+                    .then(({ error }) => {
+                      if (error) console.warn("Weak word sync notice:", error.message);
+                    });
+                }
+              });
+          }
+        });
+      } catch (e) {
+        console.warn("Weak word cloud sync error:", e);
+      }
     }
   };
 
@@ -178,6 +252,8 @@ function PracticeContent() {
       setCurrentIndex((prev) => prev + 1);
       setSelectedOption(null);
       setTypedAnswer("");
+      setTypedSentence("");
+      setSentenceFeedback(null);
       setShowHint(false);
       setIsAnswerSubmitted(false);
       setIsCorrect(null);
@@ -188,10 +264,10 @@ function PracticeContent() {
       const finalScore = sessionScore + (isCorrect ? 1 : 0);
       const accuracy = Math.round((finalScore / questionList.length) * 100);
 
-      // Save to Student's persistent test history in Chrome's localStorage!
+      // Save to Student's persistent test history in Chrome's localStorage
       store.recordTestSession({
         date: new Date().toISOString(),
-        mode,
+        mode: mode === "sentence" ? "quiz" : mode,
         unit: selectedUnit,
         totalQuestions: questionList.length,
         correctAnswers: finalScore,
@@ -199,6 +275,38 @@ function PracticeContent() {
         timeSpentSeconds: elapsedSeconds,
         coinsEarned: finalScore * 10,
       });
+
+      // Also persist to Supabase quiz_sessions in cloud!
+      try {
+        const testTypeLabel =
+          mode === "sentence"
+            ? "Sentence Writing"
+            : (mode as string) === "spelling"
+            ? "Spelling & Recall"
+            : mode === "recall"
+            ? "Spaced Recall"
+            : "Vocabulary Quiz";
+
+        supabase.auth.getUser().then(({ data: authData }) => {
+          supabase
+            .from("quiz_sessions")
+            .insert({
+              user_id: authData?.user?.id || null,
+              unit_number: selectedUnit,
+              test_type: testTypeLabel,
+              total_questions: questionList.length,
+              correct_answers: finalScore,
+              accuracy_rate: accuracy,
+              time_spent_seconds: elapsedSeconds || 60,
+              completed_at: new Date().toISOString(),
+            })
+            .then(({ error }) => {
+              if (error) console.warn("Supabase quiz session sync notice:", error.message);
+            });
+        });
+      } catch (err) {
+        console.warn("Quiz session sync error:", err);
+      }
 
       confetti({
         particleCount: 100,
@@ -321,6 +429,21 @@ function PracticeContent() {
             >
               <Sparkles className="w-3.5 h-3.5" />
               <span>Gapni To&apos;ldirish</span>
+            </button>
+
+            <button
+              onClick={() => {
+                setMode("sentence");
+                initializeRound(selectedUnit, targetWordParam);
+              }}
+              className={`px-3.5 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
+                mode === "sentence"
+                  ? "bg-white dark:bg-slate-800 text-teal-600 dark:text-tealAccent shadow-xs"
+                  : "text-slateText-muted hover:text-slateText-heading dark:hover:text-white"
+              }`}
+            >
+              <PenTool className="w-3.5 h-3.5" />
+              <span>Gap Tuzish</span>
             </button>
           </div>
 
@@ -747,6 +870,97 @@ function PracticeContent() {
                       >
                         Boshlanishi: <strong className="uppercase">{currentWord.word[0]}</strong> • Ta&apos;rif: {currentWord.definition}
                       </motion.div>
+                    )}
+                  </form>
+                </div>
+              )}
+
+              {/* MODE 4: ACTIVE SENTENCE BUILDER */}
+              {mode === "sentence" && (
+                <div className="space-y-6">
+                  <div className="text-center space-y-2">
+                    <p className="text-xs font-bold uppercase tracking-wider text-tealAccent">
+                      Active Vocabulary Practice • IELTS kontekstida original gap tuzing:
+                    </p>
+                    <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 max-w-xl mx-auto space-y-2">
+                      <div className="flex items-center justify-center gap-2">
+                        <span className="text-2xl font-black text-slateText-heading dark:text-white capitalize">
+                          {currentWord.word}
+                        </span>
+                        <span className="text-xs text-slateText-muted font-mono">{currentWord.phonetic}</span>
+                      </div>
+                      <p className="text-xs font-bold text-primary">{currentWord.translations.uzbek}</p>
+                      <p className="text-xs text-slateText-muted italic">&quot;{currentWord.definition}&quot;</p>
+                    </div>
+                  </div>
+
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      if (typedSentence.trim()) {
+                        handleSubmitAnswer(typedSentence);
+                      }
+                    }}
+                    className="max-w-xl mx-auto space-y-4"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-1.5">
+                        <label className="text-xs font-bold text-slateText-muted uppercase tracking-wider">
+                          IELTS Konteksti
+                        </label>
+                        <span className="text-[11px] text-slateText-muted">Kamida 5-6 ta so&apos;z</span>
+                      </div>
+                      <select
+                        value={ieltsContext}
+                        onChange={(e) => setIeltsContext(e.target.value as any)}
+                        disabled={isAnswerSubmitted}
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-surface dark:bg-slate-900 text-xs font-bold text-slateText-heading dark:text-white focus:outline-none focus:border-primary"
+                      >
+                        <option value="Writing Task 2">Writing Task 2 (Akademik Insho)</option>
+                        <option value="Speaking Part 2/3">Speaking Part 2/3 (Og&apos;zaki Nutq)</option>
+                        <option value="General IELTS">General IELTS Practice</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <textarea
+                        rows={3}
+                        autoFocus
+                        disabled={isAnswerSubmitted}
+                        value={typedSentence}
+                        onChange={(e) => setTypedSentence(e.target.value)}
+                        placeholder={`Masalan: In modern society, students should use "${currentWord.word}" to express their ideas clearly...`}
+                        className="w-full px-4 py-3 rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-surface dark:bg-slate-900 text-slateText-heading dark:text-white text-sm focus:outline-none focus:border-primary transition-colors disabled:opacity-80"
+                      />
+                    </div>
+
+                    {!isAnswerSubmitted && (
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="text-xs text-slateText-muted">
+                          Namuna: <span className="italic text-slateText-body dark:text-slate-300">&quot;{currentWord.example.slice(0, 45)}...&quot;</span>
+                        </div>
+
+                        <button
+                          type="submit"
+                          disabled={!typedSentence.trim()}
+                          className="px-6 py-2.5 rounded-xl bg-primary hover:bg-primary-hover disabled:opacity-40 text-white font-extrabold text-sm shadow-soft transition-all cursor-pointer flex items-center gap-1.5"
+                        >
+                          <Send className="w-4 h-4" />
+                          <span>Jumlani Baholash &amp; Saqlash</span>
+                        </button>
+                      </div>
+                    )}
+
+                    {sentenceFeedback && (
+                      <div
+                        className={`p-3.5 rounded-xl border text-xs font-medium ${
+                          isCorrect
+                            ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-800 dark:text-emerald-300"
+                            : "bg-amber-500/10 border-amber-500/30 text-amber-800 dark:text-amber-300"
+                        }`}
+                      >
+                        {sentenceFeedback}
+                      </div>
                     )}
                   </form>
                 </div>

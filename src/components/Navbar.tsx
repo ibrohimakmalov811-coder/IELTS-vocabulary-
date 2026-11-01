@@ -74,11 +74,12 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/vocabulary", label: "Vocabulary" },
+    { href: "/topics", label: "Topics" },
+    { href: "/weak-words", label: "Weak Words" },
     { href: "/practice", label: "Practice" },
     { href: "/learn", label: "Methods" },
     { href: "/dashboard", label: "Dashboard" },
     { href: "/ideas", label: "Study Hacks" },
-    { href: "/about", label: "About" },
   ];
 
   return (

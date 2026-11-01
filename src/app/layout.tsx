@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ClientLayout } from "@/components/layout/ClientLayout";
+import MobileBottomNav from "@/components/MobileBottomNav";
 
 export const metadata: Metadata = {
   title: "LexiVance IELTS | 4000 Essential English Words Book 5 Platform",
@@ -27,6 +28,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased selection:bg-sky-500/20 selection:text-primary">
         <ClientLayout>{children}</ClientLayout>
+        <MobileBottomNav />
       </body>
     </html>
   );

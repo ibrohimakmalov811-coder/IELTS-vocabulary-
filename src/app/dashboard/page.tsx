@@ -1,773 +1,263 @@
-"use client";
+'use client';
 
-import React, { useMemo, Suspense } from "react";
-import { useRouter } from "next/navigation";
-import { useVocab } from "@/components/layout/ClientLayout";
-import { sampleWords, sampleUnits } from "@/data/vocabularyData";
-import { WordItem, TestResultSession } from "@/types/vocabulary";
-import {
-  Trophy,
-  Award,
-  Sparkles,
-  Heart,
-  Volume2,
-  Maximize2,
-  ArrowRight,
-  TrendingUp,
-  TrendingDown,
-  Target,
-  Bookmark,
-  CheckCircle2,
-  Clock,
-  Zap,
-  BarChart3,
-  PieChart,
-  Calendar,
-  Layers,
-  User,
-  ShieldCheck,
-  Flame,
-  Coins,
-  History,
-  RotateCcw,
-} from "lucide-react";
-import { motion } from "framer-motion";
-import Link from "next/link";
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { supabase } from '@/lib/supabase';
+import { Flame, Clock, Target, Award, AlertTriangle, ArrowRight, BookCheck, RefreshCw } from 'lucide-react';
 
-const UZBEK_MONTHS = [
-  "yan",
-  "fev",
-  "mar",
-  "apr",
-  "may",
-  "iyn",
-  "iyl",
-  "avg",
-  "sen",
-  "okt",
-  "noy",
-  "dek",
-];
-
-function formatTestDate(value: string) {
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return "Invalid Date";
-
-  const day = date.getUTCDate();
-  const month = UZBEK_MONTHS[date.getUTCMonth()];
-  const hours = String(date.getUTCHours()).padStart(2, "0");
-  const minutes = String(date.getUTCMinutes()).padStart(2, "0");
-
-  return `${day}-${month}, ${hours}:${minutes}`;
+interface QuizSession {
+  id: string;
+  unit_number: number;
+  test_type: string;
+  total_questions: number;
+  correct_answers: number;
+  accuracy_rate: number;
+  completed_at: string;
 }
 
-function DashboardContent() {
-  const router = useRouter();
-  const { store, openWordDetails, openShop, playAudio, activePlayingWord } = useVocab();
+interface VocabularyDetails {
+  word: string;
+  definition_en: string;
+  definition_uz: string;
+}
 
-  const user = store.currentUser || {
-    name: "Mehmon O'quvchi",
-    email: "ro'yxatdan o'tilmagan",
-    targetBand: "Band 7.5",
-    joinedAt: "Bugun",
-  };
+interface WeakWord {
+  id: string;
+  incorrect_count: number;
+  vocabulary: VocabularyDetails | VocabularyDetails[] | null;
+}
 
-  // Format study time from seconds into human-readable Uzbek string
-  const formattedStudyTime = useMemo(() => {
-    const totalSecs = store.studyTimeSeconds || 0;
-    if (totalSecs === 0) return "0 daqiqa";
-    const hours = Math.floor(totalSecs / 3600);
-    const minutes = Math.floor((totalSecs % 3600) / 60);
-    const seconds = totalSecs % 60;
-
-    if (hours > 0) {
-      return `${hours} soat ${minutes} daqiqa`;
-    }
-    if (minutes > 0) {
-      return `${minutes} daqiqa`;
-    }
-    return `${seconds} soniya`;
-  }, [store.studyTimeSeconds]);
-
-  // Test statistics
-  const testHistory = store.testHistory || [];
-  const totalTestsTaken = testHistory.length;
-
-  const totalQuestionsAnswered = useMemo(() => {
-    return testHistory.reduce((sum, item) => sum + item.totalQuestions, 0);
-  }, [testHistory]);
-
-  const totalCorrectQuestions = useMemo(() => {
-    return testHistory.reduce((sum, item) => sum + item.correctAnswers, 0);
-  }, [testHistory]);
-
-  const { averageAccuracy, accuracyTrend, trendDiff } = useMemo(() => {
-    if (testHistory.length === 0) {
-      return { averageAccuracy: 0, accuracyTrend: "neutral", trendDiff: 0 };
-    }
-    const total = testHistory.reduce((sum, item) => sum + item.accuracy, 0);
-    const avg = Math.round(total / testHistory.length);
-
-    if (testHistory.length >= 2) {
-      const latest = testHistory[0].accuracy;
-      const prevAvg = Math.round(
-        testHistory.slice(1).reduce((sum, item) => sum + item.accuracy, 0) / (testHistory.length - 1)
-      );
-      const diff = latest - prevAvg;
-      return {
-        averageAccuracy: avg,
-        accuracyTrend: diff > 0 ? "up" : diff < 0 ? "down" : "same",
-        trendDiff: diff,
-      };
-    }
-
-    return { averageAccuracy: avg, accuracyTrend: "first", trendDiff: 0 };
-  }, [testHistory]);
-
-  // Breakdown by mode
-  const modeBreakdown = useMemo(() => {
-    const counts = { quiz: 0, recall: 0, cloze: 0 };
-    testHistory.forEach((t) => {
-      if (counts[t.mode] !== undefined) {
-        counts[t.mode] += 1;
-      }
-    });
-    return counts;
-  }, [testHistory]);
-
-  // Resolve recently studied words from IDs
-  const recentlyStudiedWords = useMemo(() => {
-    return store.recentlyStudiedIds
-      .map((id) => sampleWords.find((w) => w.id === id))
-      .filter((w): w is WordItem => w !== undefined);
-  }, [store.recentlyStudiedIds]);
-
-  // Resolve favorite saved words
-  const favoriteWords = useMemo(() => {
-    return store.favoriteWordIds
-      .map((id) => sampleWords.find((w) => w.id === id))
-      .filter((w): w is WordItem => w !== undefined);
-  }, [store.favoriteWordIds]);
-
-  // Projected IELTS Band Calculation
-  const masteredCount = store.learnedWordIds.length;
-  const projectedBand = useMemo(() => {
-    if (masteredCount >= 250)
-      return {
-        band: "Band 8.5",
-        label: "Very High / Native-like Academic User",
-        color: "text-emerald-500",
-        bg: "bg-emerald-500/10 border-emerald-500/20",
-      };
-    if (masteredCount >= 180)
-      return {
-        band: "Band 8.0",
-        label: "Fluent Academic Discourse",
-        color: "text-sky-500",
-        bg: "bg-sky-500/10 border-sky-500/20",
-      };
-    if (masteredCount >= 100)
-      return {
-        band: "Band 7.5",
-        label: "Good User with Lexical Flexibility",
-        color: "text-indigo-500",
-        bg: "bg-indigo-500/10 border-indigo-500/20",
-      };
-    if (masteredCount >= 40)
-      return {
-        band: "Band 6.5",
-        label: "Competent User (Common Academic Core)",
-        color: "text-amber-500",
-        bg: "bg-amber-500/10 border-amber-500/20",
-      };
-    return {
-      band: "Band 5.5",
-      label: "Modest Foundation (Building Academic Base)",
-      color: "text-slate-500",
-      bg: "bg-slate-500/10 border-slate-500/20",
-    };
-  }, [masteredCount]);
-
-  return (
-    <div className="min-h-screen py-8 sm:py-12 space-y-10">
-      {/* 1. Student Identity Header Banner */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="p-6 sm:p-8 rounded-3xl glass-card border border-slate-200/80 dark:border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-soft">
-          <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-sky-500 via-primary to-indigo-600 text-white font-black text-2xl flex items-center justify-center shadow-md">
-              {user.name.charAt(0).toUpperCase()}
-            </div>
-            <div className="space-y-1">
-              <div className="flex items-center gap-2 flex-wrap">
-                <h1 className="text-2xl sm:text-3xl font-black text-slateText-heading dark:text-white">
-                  {user.name}
-                </h1>
-                <span className="px-3 py-1 rounded-full text-xs font-black bg-tealAccent-light dark:bg-tealAccent/20 text-teal-900 dark:text-tealAccent border border-tealAccent/30">
-                  {user.targetBand}
-                </span>
-                {store.stats.hasGoldenCrown && (
-                  <span className="px-2.5 py-0.5 rounded-full text-xs font-black bg-amber-400/20 text-amber-600 dark:text-amber-300 border border-amber-400/40 flex items-center gap-1">
-                    👑 Oltin Toj
-                  </span>
-                )}
-              </div>
-              <p className="text-xs sm:text-sm text-slateText-muted">
-                {user.email} • Ro&apos;yxatdan o&apos;tgan: {user.joinedAt}
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2.5 shrink-0 flex-wrap">
-            <Link
-              href="/practice"
-              className="px-5 py-2.5 rounded-2xl bg-primary hover:bg-primary-hover text-white text-xs sm:text-sm font-bold flex items-center gap-2 shadow-soft transition-all cursor-pointer"
-            >
-              <Zap className="w-4 h-4 text-amber-300" />
-              <span>Yangi Test Ishlash</span>
-            </Link>
-            <button
-              onClick={openShop}
-              className="px-4 py-2.5 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-300/40 dark:border-amber-600/30 text-amber-700 dark:text-amber-300 text-xs sm:text-sm font-bold flex items-center gap-2 transition-colors cursor-pointer"
-            >
-              <Coins className="w-4 h-4 text-amber-500" />
-              <span>{store.stats.totalCoins} Tangalar</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* 2. Key Student Metrics Grid (Time on Site, Tests Solved, Accuracy, Streak) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {/* Metric 1: Nechta Test Yechgani */}
-          <motion.div
-            whileHover={{ y: -2 }}
-            className="p-5 sm:p-6 rounded-3xl glass-card border border-slate-200/80 dark:border-slate-800 space-y-2"
-          >
-            <div className="flex items-center justify-between">
-              <span className="text-[11px] font-black uppercase tracking-wider text-primary">
-                Yechilgan Testlar
-              </span>
-              <div className="w-8 h-8 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-                <Zap className="w-4 h-4" />
-              </div>
-            </div>
-            <div className="text-2xl sm:text-3xl font-black text-slateText-heading dark:text-white">
-              {totalTestsTaken} <span className="text-xs text-slateText-muted font-bold">ta sessiya</span>
-            </div>
-            <p className="text-xs text-slateText-muted">
-              Jami {totalQuestionsAnswered} ta savol ishlandi
-            </p>
-          </motion.div>
-
-          {/* Metric 2: Qancha Vaqt Siteda Bo'lgani */}
-          <motion.div
-            whileHover={{ y: -2 }}
-            className="p-5 sm:p-6 rounded-3xl glass-card border border-slate-200/80 dark:border-slate-800 space-y-2"
-          >
-            <div className="flex items-center justify-between">
-              <span className="text-[11px] font-black uppercase tracking-wider text-tealAccent">
-                O&apos;rganish Vaqti
-              </span>
-              <div className="w-8 h-8 rounded-xl bg-tealAccent/20 text-teal-800 dark:text-tealAccent flex items-center justify-center">
-                <Clock className="w-4 h-4" />
-              </div>
-            </div>
-            <div className="text-2xl sm:text-3xl font-black text-slateText-heading dark:text-white">
-              {formattedStudyTime}
-            </div>
-            <p className="text-xs text-tealAccent font-semibold">
-              Xotirada real vaqt rejimida hisoblanadi
-            </p>
-          </motion.div>
-
-          {/* Metric 3: O'rtacha Aniqlik (Accuracy) */}
-          <motion.div
-            whileHover={{ y: -2 }}
-            className="p-5 sm:p-6 rounded-3xl glass-card border border-slate-200/80 dark:border-slate-800 space-y-2"
-          >
-            <div className="flex items-center justify-between">
-              <span className="text-[11px] font-black uppercase tracking-wider text-emerald-500">
-                O&apos;rtacha Aniqlik
-              </span>
-              <div className="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
-                <CheckCircle2 className="w-4 h-4" />
-              </div>
-            </div>
-            <div className="text-2xl sm:text-3xl font-black text-slateText-heading dark:text-white flex items-baseline gap-2">
-              <span>{averageAccuracy}%</span>
-              {testHistory.length > 0 && (
-                <span className="text-xs text-slateText-muted font-bold">
-                  ({totalCorrectQuestions}/{totalQuestionsAnswered})
-                </span>
-              )}
-            </div>
-            <div>
-              {testHistory.length === 0 ? (
-                <span className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-400 bg-slate-500/10 px-2 py-0.5 rounded-full">
-                  Boshlang&apos;ich daraja
-                </span>
-              ) : accuracyTrend === "up" ? (
-                <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">
-                  <TrendingUp className="w-3 h-3" /> +{trendDiff}% o&apos;sish
-                </span>
-              ) : accuracyTrend === "down" ? (
-                <span className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-full">
-                  <TrendingDown className="w-3 h-3" /> {trendDiff}% o&apos;zgarish
-                </span>
-              ) : (
-                <span className="inline-flex items-center gap-1 text-[11px] font-bold text-sky-500 bg-sky-500/10 px-2 py-0.5 rounded-full">
-                  Barqaror natija
-                </span>
-              )}
-            </div>
-          </motion.div>
-
-          {/* Metric 4: Day Streak */}
-          <motion.div
-            whileHover={{ y: -2 }}
-            className="p-5 sm:p-6 rounded-3xl glass-card border border-slate-200/80 dark:border-slate-800 space-y-2"
-          >
-            <div className="flex items-center justify-between">
-              <span className="text-[11px] font-black uppercase tracking-wider text-secondary">
-                Kunlik Seriya
-              </span>
-              <div className="w-8 h-8 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center">
-                <Flame className="w-4 h-4" />
-              </div>
-            </div>
-            <div className="text-2xl sm:text-3xl font-black text-slateText-heading dark:text-white">
-              {store.stats.streakDays} <span className="text-xs text-slateText-muted font-bold">Kun</span>
-            </div>
-            <p className="text-xs text-secondary font-semibold">
-              {store.stats.hasStreakFreeze ? "Freeze himoyasi ostida" : "Ketma-ket faol o'rganish"}
-            </p>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* 3. VISUAL DIAGRAMS (DIAGRAMMALAR) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-6">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <BarChart3 className="w-5 h-5 text-primary" />
-            <h2 className="text-xl sm:text-2xl font-black text-slateText-heading dark:text-white">
-              Student Natijalari Diagrammasi
-            </h2>
-          </div>
-          <span className="text-xs font-bold text-slateText-muted">
-            Oxirgi testlar bo&apos;yicha tahlil
-          </span>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* DIAGRAMMA 1: Test Natijalari Dinamikasi (Test Accuracy Trend Bar Chart) */}
-          <div className="lg:col-span-2 p-6 sm:p-8 rounded-3xl glass-card border border-slate-200/80 dark:border-slate-800 space-y-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="font-extrabold text-base text-slateText-heading dark:text-white flex items-center gap-2">
-                  <TrendingUp className="w-4 h-4 text-emerald-500" />
-                  <span>Test Natijalari Aniqlik Grafigi (%)</span>
-                </h3>
-                <p className="text-xs text-slateText-muted mt-0.5">
-                  Har bir yechilgan test sessiyasidagi to&apos;g&apos;ri javoblar foizi
-                </p>
-              </div>
-              <span className="text-xs font-extrabold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-                O&apos;rtacha: {averageAccuracy}%
-              </span>
-            </div>
-
-            {/* Visual SVG/CSS Interactive Chart */}
-            {testHistory.length > 0 ? (
-              <div className="pt-4">
-                <div className="h-56 flex items-end justify-between gap-2 sm:gap-4 border-b border-slate-200 dark:border-slate-800 pb-3 px-2">
-                  {testHistory.slice(0, 8).map((session, index) => {
-                    const heightPercent = Math.max(16, session.accuracy);
-                    const isGreat = session.accuracy >= 80;
-
-                    return (
-                      <div
-                        key={session.id || index}
-                        className="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group relative"
-                      >
-                        {/* Tooltip on hover */}
-                        <div className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none bg-slate-900 text-white text-[11px] font-bold py-1.5 px-3 rounded-xl whitespace-nowrap shadow-xl z-20 border border-slate-700">
-                          {session.accuracy}% aniqlik • {session.correctAnswers}/{session.totalQuestions} to&apos;g&apos;ri
-                        </div>
-
-                        {/* Score pill on top of bar */}
-                        <span
-                          className={`text-[10px] font-black transition-all ${
-                            isGreat ? "text-emerald-500 dark:text-emerald-400" : "text-amber-500"
-                          }`}
-                        >
-                          {session.accuracy}%
-                        </span>
-
-                        {/* Animated Bar with guaranteed visible Tailwind gradient */}
-                        <motion.div
-                          initial={{ height: 0 }}
-                          animate={{ height: `${heightPercent}%` }}
-                          transition={{ duration: 0.6, delay: index * 0.08 }}
-                          className={`w-full max-w-[46px] rounded-t-xl transition-all shadow-sm ${
-                            isGreat
-                              ? "bg-gradient-to-t from-blue-600 via-sky-500 to-teal-400 dark:from-sky-500 dark:via-cyan-400 dark:to-emerald-300"
-                              : "bg-gradient-to-t from-amber-500 via-amber-400 to-yellow-300"
-                          }`}
-                        />
-
-                        {/* Label */}
-                        <span className="text-[10px] font-black text-slate-700 dark:text-slate-200">
-                          T#{testHistory.length - index}
-                        </span>
-                        <span className="text-[9px] text-slateText-muted font-bold">
-                          {session.correctAnswers}/{session.totalQuestions}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
-
-                <div className="flex items-center justify-between text-xs text-slateText-muted pt-3">
-                  <span>← Ilk testlar</span>
-                  <div className="flex items-center gap-4">
-                    <span className="flex items-center gap-1.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-teal-400" />
-                      Yuqori ball (&ge;80%)
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
-                      O&apos;rtacha ball (&lt;80%)
-                    </span>
-                  </div>
-                  <span>Oxirgi test →</span>
-                </div>
-              </div>
-            ) : (
-              <div className="py-16 text-center space-y-3">
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary mx-auto flex items-center justify-center">
-                  <TrendingUp className="w-6 h-6" />
-                </div>
-                <div className="space-y-1">
-                  <p className="text-sm font-bold text-slateText-heading dark:text-white">
-                    Hozircha testlar topshirilmagan
-                  </p>
-                  <p className="text-xs text-slateText-muted max-w-sm mx-auto">
-                    Lug&apos;at boyligingizni sinab ko&apos;rish uchun test ishlang. Har bir natija real vaqt rejimida ushbu grafikda aks etadi.
-                  </p>
-                </div>
-                <Link
-                  href="/practice"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs font-bold shadow-soft transition-all"
-                >
-                  <span>Birinchi testni boshlash</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            )}
-          </div>
-
-          {/* DIAGRAMMA 2: Test Rejimlari Bo'yicha Taqsimot (Donut/Breakdown) */}
-          <div className="p-6 sm:p-8 rounded-3xl glass-card border border-slate-200/80 dark:border-slate-800 space-y-6 flex flex-col justify-between">
-            <div>
-              <h3 className="font-extrabold text-base text-slateText-heading dark:text-white flex items-center gap-2">
-                <PieChart className="w-4 h-4 text-primary" />
-                <span>Test Turlari Taqsimoti</span>
-              </h3>
-              <p className="text-xs text-slateText-muted mt-0.5">
-                Qaysi rejimda ko&apos;proq mashq qilingani
-              </p>
-            </div>
-
-            <div className="space-y-4 py-2">
-              {/* Meaning Quiz */}
-              <div className="space-y-1.5">
-                <div className="flex items-center justify-between text-xs font-bold">
-                  <span className="text-slateText-heading dark:text-white flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-primary" />
-                    Ma&apos;no Testi (Multiple Choice)
-                  </span>
-                  <span className="text-primary font-black">{modeBreakdown.quiz} marta</span>
-                </div>
-                <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-primary rounded-full"
-                    style={{
-                      width: `${totalTestsTaken > 0 ? (modeBreakdown.quiz / totalTestsTaken) * 100 : 0}%`,
-                    }}
-                  />
-                </div>
-              </div>
-
-              {/* Active Recall */}
-              <div className="space-y-1.5">
-                <div className="flex items-center justify-between text-xs font-bold">
-                  <span className="text-slateText-heading dark:text-white flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-tealAccent" />
-                    Imlo &amp; Yozish (Active Recall)
-                  </span>
-                  <span className="text-tealAccent font-black">{modeBreakdown.recall} marta</span>
-                </div>
-                <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-tealAccent rounded-full"
-                    style={{
-                      width: `${totalTestsTaken > 0 ? (modeBreakdown.recall / totalTestsTaken) * 100 : 0}%`,
-                    }}
-                  />
-                </div>
-              </div>
-
-              {/* Sentence Cloze */}
-              <div className="space-y-1.5">
-                <div className="flex items-center justify-between text-xs font-bold">
-                  <span className="text-slateText-heading dark:text-white flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-indigo-500" />
-                    Gapni To&apos;ldirish (Cloze)
-                  </span>
-                  <span className="text-indigo-500 font-black">{modeBreakdown.cloze} marta</span>
-                </div>
-                <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-indigo-500 rounded-full"
-                    style={{
-                      width: `${totalTestsTaken > 0 ? (modeBreakdown.cloze / totalTestsTaken) * 100 : 0}%`,
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-
-            <Link
-              href="/practice"
-              className="w-full py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-primary text-center text-xs font-bold text-primary dark:text-sky-300 transition-colors cursor-pointer block"
-            >
-              Yangi Rejimda Test Ishlash →
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* 4. YECHILGAN TESTLAR TARIXI JADVALI (TEST HISTORY LOG) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <History className="w-5 h-5 text-primary" />
-            <h3 className="text-xl font-black text-slateText-heading dark:text-white">
-              Oxirgi Testlar Tarixi
-            </h3>
-          </div>
-          <span className="text-xs font-bold text-slateText-muted">
-            Xotirada avtomatik qayd etilgan
-          </span>
-        </div>
-
-        <div className="rounded-3xl glass-card border border-slate-200/80 dark:border-slate-800 overflow-hidden shadow-soft">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs sm:text-sm">
-              <thead className="bg-slate-50 dark:bg-slate-900/80 border-b border-slate-200/80 dark:border-slate-800 text-[11px] font-black uppercase text-slateText-muted tracking-wider">
-                <tr>
-                  <th className="py-3.5 px-4 sm:px-6">Sana</th>
-                  <th className="py-3.5 px-4">Test Turi</th>
-                  <th className="py-3.5 px-4">Unit</th>
-                  <th className="py-3.5 px-4">Natija</th>
-                  <th className="py-3.5 px-4">Aniqlik</th>
-                  <th className="py-3.5 px-4">Vaqt</th>
-                  <th className="py-3.5 px-4 sm:px-6 text-right">Yutuq</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800/80">
-                {testHistory.slice(0, 6).map((test) => {
-                  const formattedDate = store.isLoaded
-                    ? formatTestDate(test.date)
-                    : "—";
-
-                  return (
-                    <tr
-                      key={test.id}
-                      className="hover:bg-slate-50/50 dark:hover:bg-slate-900/50 transition-colors"
-                    >
-                      <td className="py-3.5 px-4 sm:px-6 font-bold text-slateText-heading dark:text-white">
-                        {formattedDate}
-                      </td>
-                      <td className="py-3.5 px-4">
-                        <span className="capitalize font-semibold text-slateText-body dark:text-slate-300">
-                          {test.mode === "quiz"
-                            ? "Ma'no Testi"
-                            : test.mode === "recall"
-                            ? "Imlo & Yozish"
-                            : "Gap Cloze"}
-                        </span>
-                      </td>
-                      <td className="py-3.5 px-4 font-bold text-primary">
-                        {test.unit === "all" ? "Barcha Unitlar" : `Unit ${test.unit}`}
-                      </td>
-                      <td className="py-3.5 px-4 font-black text-slateText-heading dark:text-white">
-                        {test.correctAnswers}/{test.totalQuestions}
-                      </td>
-                      <td className="py-3.5 px-4">
-                        <span
-                          className={`px-2.5 py-1 rounded-full text-xs font-black ${
-                            test.accuracy >= 80
-                              ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
-                              : "bg-amber-500/10 text-amber-600 dark:text-amber-400"
-                          }`}
-                        >
-                          {test.accuracy}%
-                        </span>
-                      </td>
-                      <td className="py-3.5 px-4 text-slateText-muted font-medium">
-                        {Math.floor(test.timeSpentSeconds / 60)}d {test.timeSpentSeconds % 60}s
-                      </td>
-                      <td className="py-3.5 px-4 sm:px-6 text-right font-black text-amber-500">
-                        +{test.coinsEarned} 🪙
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      {/* 5. 15 TA UNIT BO'YICHA O'ZLASHTIRISH DARAXTI (UNIT MASTERY BREAKDOWN) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Layers className="w-5 h-5 text-tealAccent" />
-            <h3 className="text-xl font-black text-slateText-heading dark:text-white">
-              Unitlar Bo&apos;yicha O&apos;zlashtirish (1–15 Core)
-            </h3>
-          </div>
-          <Link
-            href="/vocabulary"
-            className="text-xs font-bold text-primary dark:text-sky-400 hover:underline cursor-pointer"
-          >
-            Kutubxonada ko&apos;rish →
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-          {sampleUnits.slice(0, 15).map((unit) => {
-            const unitWords = sampleWords.filter((w) => w.unit === unit.id);
-            const masteredInUnit = unitWords.filter((w) =>
-              store.learnedWordIds.includes(w.id)
-            ).length;
-            const percent = Math.round((masteredInUnit / (unitWords.length || 20)) * 100);
-
-            return (
-              <div
-                key={unit.id}
-                className="p-4 rounded-2xl glass-card border border-slate-200/80 dark:border-slate-800 space-y-3"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-black text-primary">Unit {unit.id}</span>
-                  <span className="text-[11px] font-extrabold text-slateText-muted">
-                    {masteredInUnit}/{unitWords.length || 20}
-                  </span>
-                </div>
-
-                <div className="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-gradient-to-r from-primary to-tealAccent rounded-full"
-                    style={{ width: `${percent}%` }}
-                  />
-                </div>
-
-                <div className="flex items-center justify-between pt-1">
-                  <Link
-                    href={`/practice?unit=${unit.id}`}
-                    className="text-[11px] font-bold text-tealAccent hover:underline flex items-center gap-0.5"
-                  >
-                    <span>Test ishlash</span>
-                    <ArrowRight className="w-2.5 h-2.5" />
-                  </Link>
-                  <span className="text-[11px] font-black text-slateText-muted">{percent}%</span>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* 6. Saved Bookmarks / Sevimli So'zlar Javoni */}
-      {favoriteWords.length > 0 && (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-4">
-          <div className="flex items-center justify-between">
-            <h3 className="text-xl font-black text-slateText-heading dark:text-white flex items-center gap-2">
-              <Bookmark className="w-5 h-5 text-rose-500 fill-rose-500" />
-              <span>Saqlab Qo&apos;yilgan So&apos;zlar ({favoriteWords.length})</span>
-            </h3>
-            <Link
-              href="/vocabulary"
-              className="text-xs font-bold text-primary dark:text-sky-400 hover:underline cursor-pointer"
-            >
-              Filtrda ko&apos;rish →
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {favoriteWords.map((word) => (
-              <motion.div
-                key={word.id}
-                whileHover={{ y: -2 }}
-                className="p-4 rounded-2xl glass-card border border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-3"
-              >
-                <div className="space-y-0.5">
-                  <div className="flex items-center gap-2">
-                    <span className="font-extrabold text-sm text-slateText-heading dark:text-white capitalize">
-                      {word.word}
-                    </span>
-                    <span className="text-[10px] font-bold text-slateText-muted uppercase">
-                      {word.partOfSpeech}
-                    </span>
-                  </div>
-                  <p className="text-xs text-primary font-semibold">
-                    {word.translations.uzbek}
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-1.5 shrink-0">
-                  <button
-                    onClick={() => playAudio(word.word)}
-                    className="p-2 rounded-xl text-slateText-muted hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
-                    title="Talaffuz"
-                  >
-                    <Volume2 className="w-4 h-4" />
-                  </button>
-
-                  <button
-                    onClick={() => openWordDetails(word)}
-                    className="p-2 rounded-xl text-slateText-muted hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
-                    title="Batafsil"
-                  >
-                    <Maximize2 className="w-4 h-4" />
-                  </button>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
+interface Profile {
+  id: string;
+  full_name?: string;
+  target_band?: number;
+  current_streak?: number;
 }
 
 export default function DashboardPage() {
-  return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen max-w-7xl mx-auto px-4 py-16 flex items-center justify-center">
-          <div className="text-center space-y-3">
-            <div className="w-8 h-8 border-3 border-primary border-t-transparent rounded-full animate-spin mx-auto" />
-            <p className="text-sm font-semibold text-slateText-muted">Dashboard Yuklanmoqda...</p>
-          </div>
-        </div>
+  const [sessions, setSessions] = useState<QuizSession[]>([]);
+  const [weakWords, setWeakWords] = useState<WeakWord[]>([]);
+  const [profile, setProfile] = useState<Profile | null>(null);
+  const [masteredCount, setMasteredCount] = useState<number>(64);
+  const [loading, setLoading] = useState(true);
+
+  async function loadDashboardData() {
+    setLoading(true);
+
+    try {
+      // 1. Fetch Quiz History
+      const { data: sessionData, error: sessionError } = await supabase
+        .from('quiz_sessions')
+        .select('*')
+        .order('completed_at', { ascending: false })
+        .limit(5);
+
+      if (sessionError) {
+        console.warn('Quiz sessions fetch notice:', sessionError.message);
+      } else if (sessionData) {
+        setSessions(sessionData as QuizSession[]);
       }
-    >
-      <DashboardContent />
-    </Suspense>
+
+      // 2. Fetch Words needing practice
+      const { data: weakData, error: weakError } = await supabase
+        .from('user_word_progress')
+        .select('id, incorrect_count, vocabulary(word, definition_en, definition_uz)')
+        .gt('incorrect_count', 0)
+        .eq('mastered', false)
+        .order('incorrect_count', { ascending: false })
+        .limit(4);
+
+      if (weakError) {
+        console.warn('Weak words fetch notice:', weakError.message);
+      } else if (weakData) {
+        setWeakWords(weakData as unknown as WeakWord[]);
+      }
+
+      // 3. Fetch Student Profile & Streak (if authenticated)
+      const { data: authData } = await supabase.auth.getUser();
+      if (authData?.user) {
+        const { data: profileData } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('id', authData.user.id)
+          .maybeSingle();
+
+        if (profileData) {
+          setProfile(profileData as Profile);
+        }
+
+        // Count Mastered Words
+        const { count } = await supabase
+          .from('user_word_progress')
+          .select('*', { count: 'exact', head: true })
+          .eq('user_id', authData.user.id)
+          .eq('mastered', true);
+
+        if (count !== null && count !== undefined && count > 0) {
+          setMasteredCount(count);
+        }
+      }
+    } catch (err) {
+      console.error('Dashboard data loading error:', err);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    loadDashboardData();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center">
+        <p className="animate-pulse text-lg text-emerald-400 font-medium">Dashboard yuklanmoqda...</p>
+      </div>
+    );
+  }
+
+  const streakDays = profile?.current_streak ?? 3;
+  const targetBandText = profile?.target_band ? `Band ${profile.target_band}` : 'Band 7.5';
+  const profileTitle = profile?.full_name || 'Talaba Profili';
+
+  const averageAccuracy =
+    sessions.length > 0
+      ? Math.round(sessions.reduce((acc, s) => acc + Number(s.accuracy_rate), 0) / sessions.length)
+      : 0;
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100 pb-24 md:pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-8">
+      {/* 1. Header Profile Summary */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-8">
+        <div>
+          <h1 className="text-2xl font-bold text-white">{profileTitle}</h1>
+          <p className="text-sm text-slate-400">Maqsad: {targetBandText} • Paul Nation Book 5</p>
+        </div>
+        <div className="flex items-center gap-3 w-full sm:w-auto">
+          <button
+            onClick={() => loadDashboardData()}
+            title="Yangilash"
+            className="p-2.5 rounded-xl border border-slate-800 bg-slate-950 hover:bg-slate-800 text-slate-400 hover:text-white transition"
+          >
+            <RefreshCw className="w-5 h-5" />
+          </button>
+          <Link
+            className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-semibold px-5 py-2.5 rounded-xl transition"
+            href="/practice"
+          >
+            <BookCheck className="w-5 h-5" />
+            <span>Yangi Test Ishlash</span>
+          </Link>
+        </div>
+      </div>
+
+      {/* 2. Key Metrics Grid */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div className="bg-slate-900/60 border border-slate-800 p-4 rounded-xl">
+          <div className="flex items-center gap-2 text-amber-400 mb-2">
+            <Flame className="w-5 h-5" />
+            <span className="text-xs font-semibold uppercase">Kunlik Seriya</span>
+          </div>
+          <p className="text-2xl font-extrabold">{streakDays} Kun</p>
+        </div>
+
+        <div className="bg-slate-900/60 border border-slate-800 p-4 rounded-xl">
+          <div className="flex items-center gap-2 text-emerald-400 mb-2">
+            <Target className="w-5 h-5" />
+            <span className="text-xs font-semibold uppercase">O‘rtacha Aniqlik</span>
+          </div>
+          <p className="text-2xl font-extrabold">{sessions.length > 0 ? `${averageAccuracy}%` : '0%'}</p>
+        </div>
+
+        <div className="bg-slate-900/60 border border-slate-800 p-4 rounded-xl">
+          <div className="flex items-center gap-2 text-cyan-400 mb-2">
+            <Clock className="w-5 h-5" />
+            <span className="text-xs font-semibold uppercase">Sessiyalar</span>
+          </div>
+          <p className="text-2xl font-extrabold">{sessions.length} ta</p>
+        </div>
+
+        <div className="bg-slate-900/60 border border-slate-800 p-4 rounded-xl">
+          <div className="flex items-center gap-2 text-purple-400 mb-2">
+            <Award className="w-5 h-5" />
+            <span className="text-xs font-semibold uppercase">O‘zlashtirilgan</span>
+          </div>
+          <p className="text-2xl font-extrabold">{masteredCount} / 300</p>
+        </div>
+      </div>
+
+      {/* 3. Spaced Repetition / Weak Words Module */}
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-8">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            <AlertTriangle className="w-5 h-5 text-amber-400" />
+            <h2 className="text-lg font-bold text-white">Qaytarish Kerak Bo‘lgan So‘zlar (Weak Words)</h2>
+          </div>
+          <Link className="text-xs text-emerald-400 hover:underline flex items-center gap-1" href="/practice">
+            Qayta mashq qilish <ArrowRight className="w-3 h-3" />
+          </Link>
+        </div>
+
+        {weakWords.length === 0 ? (
+          <p className="text-slate-400 text-sm py-4">Barcha so‘zlar yaxshi o‘zlashtirilgan!</p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {weakWords.map((item) => {
+              const vocab = Array.isArray(item.vocabulary) ? item.vocabulary[0] : item.vocabulary;
+              const word = vocab?.word || 'So‘z';
+              const definition = vocab?.definition_uz || vocab?.definition_en || 'Ta’rif mavjud emas';
+
+              return (
+                <div key={item.id} className="bg-slate-950 border border-slate-800/80 p-4 rounded-xl">
+                  <span className="text-xs text-rose-400 font-semibold">{item.incorrect_count} marta xato</span>
+                  <h3 className="text-base font-bold text-white mt-1">{word}</h3>
+                  <p className="text-xs text-slate-400 mt-1 line-clamp-1">{definition}</p>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+
+      {/* 4. Recent Test Sessions (Mobile Card-based / Desktop Responsive) */}
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+        <h2 className="text-lg font-bold text-white mb-4">Oxirgi Testlar Tarixi</h2>
+
+        {sessions.length === 0 ? (
+          <div className="text-center py-10 border border-dashed border-slate-800 rounded-xl">
+            <p className="text-slate-400 text-sm">Hozircha topshirilgan testlar mavjud emas.</p>
+            <Link
+              className="mt-3 inline-block text-xs bg-slate-800 text-slate-200 px-4 py-2 rounded-lg hover:bg-slate-700 transition"
+              href="/practice"
+            >
+              Birinchi testni boshlash
+            </Link>
+          </div>
+        ) : (
+          <div className="space-y-3">
+            {sessions.map((session) => (
+              <div
+                key={session.id}
+                className="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-slate-950 border border-slate-800 rounded-xl gap-2 hover:border-slate-700 transition"
+              >
+                <div>
+                  <span className="text-xs text-emerald-400 font-semibold uppercase">Unit {session.unit_number}</span>
+                  <p className="text-sm font-medium text-slate-200">{session.test_type}</p>
+                </div>
+                <div className="flex items-center justify-between sm:justify-end gap-6 text-sm">
+                  <span className="text-slate-400">
+                    {session.correct_answers}/{session.total_questions} to‘g‘ri
+                  </span>
+                  <span className="font-bold text-emerald-400">{session.accuracy_rate}%</span>
+                  <span className="text-xs text-slate-500">
+                    {session.completed_at ? new Date(session.completed_at).toLocaleDateString() : ''}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
   );
 }

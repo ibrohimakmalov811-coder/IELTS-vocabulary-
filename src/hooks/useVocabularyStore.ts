@@ -609,6 +609,8 @@ export function useVocabularyStore() {
     studyTimeSeconds,
     accent,
     isDarkMode,
+    isWordLearned: (id: string) => learnedWordIds.includes(id),
+    isWordFavorite: (id: string) => favoriteWordIds.includes(id),
     toggleLearned,
     toggleFavorite,
     addRecentlyStudied,
